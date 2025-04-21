@@ -1,0 +1,106 @@
+{
+  "class_name": "TECH GENIUS",
+  "baseSize": {
+    "rank": 0,
+    "name": "Medium",
+    "options_source": "Class Template"
+  },
+  "stats": {
+    "body_adj": 0,
+    "mind_adj": 2,
+    "soul_adj": 0
+  },
+  "attributes": [
+    {
+      "custom_name": "Gear",
+      "key": "gear",
+      "level": 5,
+      "user_description": "(Various Equipment)",
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Class Template",
+      "valid": true,
+      "name": "Gear",
+      "details": "(Various Equipment)",
+      "rank": null
+    },
+    {
+      "custom_name": "Features",
+      "key": "features",
+      "level": 2,
+      "user_description": "(Eidetic Memory, Lightning Calculator, Speed Reading)",
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Class Template",
+      "valid": true,
+      "name": "Features",
+      "details": "(Eidetic Memory, Lightning Calculator, Speed Reading)",
+      "rank": null
+    },
+    {
+      "custom_name": "Item",
+      "key": "item",
+      "level": 10,
+      "user_description": "(Powerful Gadgets; 20 Points)",
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Class Template",
+      "valid": false,
+      "name": "Item",
+      "details": "(Powerful Gadgets; 20 Points)",
+      "rank": null
+    },
+    {
+      "custom_name": "Power Flux",
+      "key": "power_flux",
+      "level": 6,
+      "user_description": "(Primal: Super Inventor -2; Activation +3; Equipment: Workshop +3)",
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Class Template",
+      "valid": true,
+      "name": "Power Flux",
+      "details": "(Primal: Super Inventor -2; Activation +3; Equipment: Workshop +3)",
+      "rank": null
+    },
+    {
+      "custom_name": "Skill Group",
+      "key": "skill_group",
+      "level": 1,
+      "user_description": "(Business)",
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Class Template",
+      "valid": true,
+      "name": "Skill Group",
+      "details": "(Business)",
+      "rank": null
+    },
+    {
+      "custom_name": "Skill Group",
+      "key": "skill_group",
+      "level": 6,
+      "user_description": "(Technical)",
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Class Template",
+      "valid": true,
+      "name": "Skill Group",
+      "details": "(Technical)",
+      "rank": null
+    }
+  ],
+  "defects": []
+}

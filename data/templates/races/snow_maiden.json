@@ -1,0 +1,203 @@
+{
+  "race_name": "SNOW MAIDEN",
+  "baseSize": {
+    "size_rank": 0,
+    "size_name": "Medium",
+    "options_source": "Race Template"
+  },
+  "stats": {
+    "body_adj": 0,
+    "mind_adj": 0,
+    "soul_adj": 2
+  },
+  "attributes": [
+    {
+      "custom_name": "Armour",
+      "key": "armour",
+      "level": 6,
+      "user_description": "(Optimised: Cold +2)",
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Race Template",
+      "valid": true,
+      "name": "Armour"
+    },
+    {
+      "custom_name": "Cognition: Precognition",
+      "key": "cognition:_precognition",
+      "level": 2,
+      "user_description": null,
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Race Template",
+      "valid": false,
+      "name": "Cognition: Precognition"
+    },
+    {
+      "custom_name": "Energised",
+      "key": "energised",
+      "level": 3,
+      "user_description": null,
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Race Template",
+      "valid": true,
+      "name": "Energised"
+    },
+    {
+      "custom_name": "Features",
+      "key": "features",
+      "level": 1,
+      "user_description": "(Appearance)",
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Race Template",
+      "valid": true,
+      "name": "Features"
+    },
+    {
+      "custom_name": "Flight",
+      "key": "flight",
+      "level": 1,
+      "user_description": "(Deplete +1)",
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Race Template",
+      "valid": true,
+      "name": "Flight"
+    },
+    {
+      "custom_name": "Resilient",
+      "key": "resilient",
+      "level": 4,
+      "user_description": "(Ageing, Disease, Intense Cold, Lack of Food and Water; Complete -4)",
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Race Template",
+      "valid": true,
+      "name": "Resilient"
+    },
+    {
+      "custom_name": "Sensory Block: Blizzard",
+      "key": "sensory_block:_blizzard",
+      "level": 2,
+      "user_description": "(Hearing, Smell, Vision; Deplete +1)",
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Race Template",
+      "valid": false,
+      "name": "Sensory Block: Blizzard"
+    },
+    {
+      "custom_name": "Supersense",
+      "key": "supersense",
+      "level": 1,
+      "user_description": "(Infrared Vision)",
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Race Template",
+      "valid": true,
+      "name": "Supersense"
+    },
+    {
+      "custom_name": "Superstrength",
+      "key": "superstrength",
+      "level": 3,
+      "user_description": "(Environmental: Cold +2)",
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Race Template",
+      "valid": true,
+      "name": "Superstrength"
+    },
+    {
+      "custom_name": "Weapon: Ice Storm",
+      "key": "weapon",
+      "level": 2,
+      "user_description": "(Range -2; Spreading -3; Deplete +2)",
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Race Template",
+      "valid": true,
+      "name": "Weapon: Ice Storm"
+    },
+    {
+      "custom_name": "Weapon: Winter\u2019s Kiss",
+      "key": "weapon",
+      "level": 2,
+      "user_description": "(Incapacitating: Frozen -2; Penetrating -4; Deplete +2)",
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Race Template",
+      "valid": true,
+      "name": "Weapon: Winter\u2019s Kiss"
+    }
+  ],
+  "defects": [
+    {
+      "custom_name": "Achilles Heel",
+      "key": "achilles_heel",
+      "rank": 1,
+      "user_description": "(Fire Attacks)",
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Race Template",
+      "valid": true,
+      "cp_refund": 2,
+      "name": "Achilles Heel"
+    },
+    {
+      "custom_name": "Confined",
+      "key": "confined",
+      "rank": 1,
+      "user_description": "(Near World Gates)",
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Race Template",
+      "valid": true,
+      "cp_refund": 3,
+      "name": "Confined"
+    },
+    {
+      "custom_name": "Special Requirement",
+      "key": "special_requirement",
+      "rank": 1,
+      "user_description": "(Fresh Blood)",
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Race Template",
+      "valid": true,
+      "cp_refund": 3,
+      "name": "Special Requirement"
+    }
+  ],
+  "key": "snow_maiden"
+}

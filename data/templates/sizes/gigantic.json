@@ -1,0 +1,109 @@
+{
+  "size_name": "Gigantic",
+  "key": "gigantic",
+  "size_rank": 4,
+  "typicalHeight": "16-30 m",
+  "typicalMass": "75 - 500 tonnes",
+  "stats": {
+    "body_adj": 0,
+    "mind_adj": 0,
+    "soul_adj": 0
+  },
+  "modifiers": {
+    "liftingCapacity": "x 500",
+    "strengthDamage": "+40",
+    "armourEffect": "+40 AR",
+    "rangedModifier": "-8",
+    "speedRangeMultiplier": "x 15"
+  },
+  "attributes": [
+    {
+      "custom_name": "Superstrength",
+      "key": "superstrength",
+      "level": 8,
+      "user_description": null,
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Size Template",
+      "valid": true
+    },
+    {
+      "custom_name": "Armour",
+      "key": "armour",
+      "level": 8,
+      "user_description": null,
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Size Template",
+      "valid": true
+    },
+    {
+      "custom_name": "Special Movement",
+      "key": "special_movement",
+      "level": 4,
+      "user_description": null,
+      "enhancements": [],
+      "limiters": [],
+      "options": [
+        "fast"
+      ],
+      "user_input": null,
+      "options_source": "Size Template",
+      "valid": true
+    },
+    {
+      "custom_name": "x2 Thrown Weapon Distance",
+      "key": "unique_attribute",
+      "level": 4,
+      "user_description": null,
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Size Template",
+      "valid": true
+    }
+  ],
+  "defects": [
+    {
+      "rank": 4,
+      "custom_name": "Big, Heavy, and Obvious",
+      "key": "unique_defect",
+      "user_description": null,
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Size Template",
+      "valid": true
+    },
+    {
+      "rank": 4,
+      "custom_name": "Inept Attack: Ranged",
+      "key": "inept_attack",
+      "user_description": null,
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Size Template",
+      "valid": true
+    },
+    {
+      "rank": 4,
+      "custom_name": "Inept Defence: Ranged",
+      "key": "inept_defence",
+      "user_description": null,
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Size Template",
+      "valid": true
+    }
+  ]
+}

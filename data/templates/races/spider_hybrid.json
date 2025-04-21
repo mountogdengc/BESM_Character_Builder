@@ -1,0 +1,160 @@
+{
+  "race_name": "SPIDER HYBRID",
+  "baseSize": {
+    "size_rank": 0,
+    "size_name": "Medium",
+    "options_source": "Race Template"
+  },
+  "stats": {
+    "body_adj": 0,
+    "mind_adj": 0,
+    "soul_adj": 0
+  },
+  "attributes": [
+    {
+      "custom_name": "Armour",
+      "key": "armour",
+      "level": 3,
+      "user_description": "(AR 15)",
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Race Template",
+      "valid": true,
+      "name": "Armour"
+    },
+    {
+      "custom_name": "Augmented",
+      "key": "augmented",
+      "level": 1,
+      "user_description": "(Body Stat; Demonic Magic)",
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Race Template",
+      "valid": true,
+      "name": "Augmented"
+    },
+    {
+      "custom_name": "Combat Technique",
+      "key": "combat_technique",
+      "level": 3,
+      "user_description": "(Brutal, Lethal Blow, Lightning Reflexes)",
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Race Template",
+      "valid": true,
+      "name": "Combat Technique"
+    },
+    {
+      "custom_name": "Extra Actions",
+      "key": "extra_actions",
+      "level": 1,
+      "user_description": null,
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Race Template",
+      "valid": true,
+      "name": "Extra Actions"
+    },
+    {
+      "custom_name": "Extra Arms",
+      "key": "extra_arms",
+      "level": 4,
+      "user_description": null,
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Race Template",
+      "valid": true,
+      "name": "Extra Arms"
+    },
+    {
+      "custom_name": "Features",
+      "key": "features",
+      "level": 1,
+      "user_description": "(Low-Light Vision)",
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Race Template",
+      "valid": true,
+      "name": "Features"
+    },
+    {
+      "custom_name": "Jumping",
+      "key": "jumping",
+      "level": 2,
+      "user_description": null,
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Race Template",
+      "valid": true,
+      "name": "Jumping"
+    },
+    {
+      "custom_name": "Special Movement",
+      "key": "special_movement",
+      "level": 2,
+      "user_description": "(Wall-Crawling 2)",
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Race Template",
+      "valid": true,
+      "name": "Special Movement"
+    },
+    {
+      "custom_name": "Superstrength",
+      "key": "superstrength",
+      "level": 1,
+      "user_description": null,
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Race Template",
+      "valid": true,
+      "name": "Superstrength"
+    },
+    {
+      "custom_name": "Weapon: Demonic Fangs",
+      "key": "weapon",
+      "level": 3,
+      "user_description": "(Enervation -2; Muscle -1; Vampiric -2)",
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Race Template",
+      "valid": true,
+      "name": "Weapon: Demonic Fangs"
+    },
+    {
+      "custom_name": "Weapon: Web",
+      "key": "weapon",
+      "level": -1,
+      "user_description": "(Insidious -3; Range -2; Spreading -2; Tangle -3; Charges +3; Deplete +3)",
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Race Template",
+      "valid": true,
+      "name": "Weapon: Web"
+    }
+  ],
+  "defects": [],
+  "key": "spider_hybrid"
+}

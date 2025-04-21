@@ -1,0 +1,1224 @@
+{
+    "sizeTemplates": {
+      "description": "Size templates based on BESM Fourth Edition Table-03: Size Modifiers and accompanying rules.",
+      "sizes": [
+        {
+          "name": "Point",
+          "key": "point",
+          "rank": -10,
+          "typicalHeight": "100-400 \u00b5m",
+          "typicalMass": "1-40 \u00b5g",
+          "modifiers": {
+            "liftingCapacity": "\u00f7 5 M",
+            "strengthDamage": "-100",
+            "armourEffect": "+100 damage",
+            "rangedModifier": "+20",
+            "speedRangeMultiplier": "\u00f7 1,000"
+          },
+          "attributes": [
+            {
+              "level": 10,
+              "points": 10,
+              "name": "Ranged Attack",
+              "key": "ranged_attack",
+              "details": "All"
+            },
+            {
+              "level": 10,
+              "points": 10,
+              "name": "Ranged Defence",
+              "key": "ranged_defence",
+              "details": "All"
+            },
+            {
+              "level": 10,
+              "points": 20,
+              "name": "Unique Attribute",
+              "key": "unique_attribute",
+              "details": "Small, Light, and Unobtrusive"
+            }
+          ],
+          "defects": [
+            {
+              "rank": 10,
+              "cp_refund": 138,
+              "name": "Lifting Capacity",
+              "key": "unique_defect",
+              "details": "Lifting Capacity \u00f75 (Multiple Ranks)"
+            },
+            {
+              "rank": 10,
+              "cp_refund": 10,
+              "name": "Running Speed",
+              "key": "unique_defect",
+              "details": "Running Speed \u00f71024"
+            },
+            {
+              "rank": 10,
+              "cp_refund": 20,
+              "name": "Strength Damage",
+              "key": "unique_defect",
+              "details": "-100 Strength Damage"
+            },
+            {
+              "rank": 10,
+              "cp_refund": 40,
+              "name": "Vulnerable",
+              "key": "unique_defect",
+              "details": "Suffers 100 Extra Damage from all Attacks"
+            },
+            {
+              "rank": 10,
+              "cp_refund": 10,
+              "name": "Weak Throw",
+              "key": "unique_defect",
+              "details": "Thrown weapon distance \u00f71024"
+            }
+          ],
+          "totalPoints": -158
+        },
+        {
+          "name": "Mote",
+          "key": "mote",
+          "rank": -9,
+          "typicalHeight": "500-900 \u00b5m",
+          "typicalMass": "50-500 \u00b5g",
+          "modifiers": {
+            "liftingCapacity": "\u00f7 1 M",
+            "strengthDamage": "-90",
+            "armourEffect": "+90 damage",
+            "rangedModifier": "+18",
+            "speedRangeMultiplier": "\u00f7 500"
+          },
+          "attributes": [
+            {
+              "level": 9,
+              "points": 9,
+              "name": "Ranged Attack",
+              "key": "ranged_attack",
+              "details": "All"
+            },
+            {
+              "level": 9,
+              "points": 9,
+              "name": "Ranged Defence",
+              "key": "ranged_defence",
+              "details": "All"
+            },
+            {
+              "level": 9,
+              "points": 18,
+              "name": "Unique Attribute",
+              "key": "unique_attribute",
+              "details": "Small, Light, and Unobtrusive"
+            }
+          ],
+          "defects": [
+            {
+              "rank": 9,
+              "cp_refund": 54,
+              "name": "Lifting Capacity",
+              "key": "unique_defect",
+              "details": "Lifting Capacity \u00f75 (Multiple Ranks)"
+            },
+            {
+              "rank": 9,
+              "cp_refund": 9,
+              "name": "Running Speed",
+              "key": "unique_defect",
+              "details": "Running Speed \u00f7512"
+            },
+            {
+              "rank": 9,
+              "cp_refund": 18,
+              "name": "Strength Damage",
+              "key": "unique_defect",
+              "details": "-90 Strength Damage"
+            },
+            {
+              "rank": 9,
+              "cp_refund": 36,
+              "name": "Vulnerable",
+              "key": "unique_defect",
+              "details": "Suffers 90 Extra Damage from all Attacks"
+            },
+            {
+              "rank": 9,
+              "cp_refund": 9,
+              "name": "Weak Throw",
+              "key": "unique_defect",
+              "details": "Thrown weapon distance \u00f7512"
+            }
+          ],
+          "totalPoints": -80
+        },
+         {
+          "name": "Speck",
+          "key": "speck",
+          "rank": -8,
+          "typicalHeight": "1-4 mm",
+          "typicalMass": "1-5mg",
+          "modifiers": {
+            "liftingCapacity": "\u00f7 250 k",
+            "strengthDamage": "-80",
+            "armourEffect": "+80 damage",
+            "rangedModifier": "+16",
+            "speedRangeMultiplier": "\u00f7 250"
+          },
+          "attributes": [
+            {
+              "level": 8,
+              "points": 8,
+              "name": "Ranged Attack",
+              "key": "ranged_attack",
+              "details": "All"
+            },
+            {
+              "level": 8,
+              "points": 8,
+              "name": "Ranged Defence",
+              "key": "ranged_defence",
+              "details": "All"
+            },
+            {
+              "level": 8,
+              "points": 16,
+              "name": "Unique Attribute",
+              "key": "unique_attribute",
+              "details": "Small, Light, and Unobtrusive"
+            }
+          ],
+          "defects": [
+            {
+              "rank": 8,
+              "cp_refund": 48,
+              "name": "Lifting Capacity",
+              "key": "unique_defect",
+              "details": "Lifting Capacity \u00f75 (Multiple Ranks)"
+            },
+            {
+              "rank": 8,
+              "cp_refund": 8,
+              "name": "Running Speed",
+              "key": "unique_defect",
+              "details": "Running Speed \u00f7256"
+            },
+            {
+              "rank": 8,
+              "cp_refund": 16,
+              "name": "Strength Damage",
+              "key": "unique_defect",
+              "details": "-80 Strength Damage"
+            },
+            {
+              "rank": 8,
+              "cp_refund": 32,
+              "name": "Vulnerable",
+              "key": "unique_defect",
+              "details": "Suffers 80 Extra Damage from all Attacks"
+            },
+            {
+              "rank": 8,
+              "cp_refund": 8,
+              "name": "Weak Throw",
+              "key": "unique_defect",
+              "details": "Thrown weapon distance \u00f7256"
+            }
+          ],
+          "totalPoints": -64
+        },
+        {
+          "name": "Minute",
+          "key": "minute",
+          "rank": -7,
+          "typicalHeight": "5-9 mm",
+          "typicalMass": "6-40 mg",
+          "modifiers": {
+            "liftingCapacity": "\u00f7 50 k",
+            "strengthDamage": "-70",
+            "armourEffect": "+70 damage",
+            "rangedModifier": "+14",
+            "speedRangeMultiplier": "\u00f7 125"
+          },
+          "attributes": [
+            {
+              "level": 7,
+              "points": 7,
+              "name": "Ranged Attack",
+              "key": "ranged_attack",
+              "details": "All"
+            },
+            {
+              "level": 7,
+              "points": 7,
+              "name": "Ranged Defence",
+              "key": "ranged_defence",
+              "details": "All"
+            },
+            {
+              "level": 7,
+              "points": 14,
+              "name": "Unique Attribute",
+              "key": "unique_attribute",
+              "details": "Small, Light, and Unobtrusive"
+            }
+          ],
+          "defects": [
+            {
+              "rank": 7,
+              "cp_refund": 42,
+              "name": "Lifting Capacity",
+              "key": "unique_defect",
+              "details": "Lifting Capacity \u00f75 (Multiple Ranks)"
+            },
+            {
+              "rank": 7,
+              "cp_refund": 14,
+              "name": "Strength Damage",
+              "key": "unique_defect",
+              "details": "-10 Strength Damage (Multiple Ranks)"
+            },
+            {
+              "rank": 7,
+              "cp_refund": 28,
+              "name": "Vulnerable",
+              "key": "unique_defect",
+              "details": "Suffers 10 Extra Damage from all Attacks (Multiple Ranks)"
+            },
+            {
+              "rank": 7,
+              "cp_refund": 7,
+              "name": "Weak Throw",
+              "key": "unique_defect",
+              "details": "Thrown weapon distance \u00f7128"
+            },
+            {
+              "rank": 7,
+              "cp_refund": 7,
+              "name": "Running Speed",
+              "key": "unique_defect",
+              "details": "Running Speed \u00f7128"
+            }
+          ],
+          "totalPoints": -50
+        },
+        {
+          "name": "Wee",
+          "key": "wee",
+          "rank": -6,
+          "typicalHeight": "1-2 cm",
+          "typicalMass": "50-500 mg",
+          "modifiers": {
+            "liftingCapacity": "\u00f7 10 k",
+            "strengthDamage": "-60",
+            "armourEffect": "+60 damage",
+            "rangedModifier": "+12",
+            "speedRangeMultiplier": "\u00f7 60"
+          },
+
+          "totalPoints": -40
+        },
+        {
+          "name": "Teeny",
+          "key": "teeny",
+          "rank": -5,
+          "typicalHeight": "3-4 cm",
+          "typicalMass": "1-5 g",
+          "modifiers": {
+            "liftingCapacity": "\u00f7 2.5 k",
+            "strengthDamage": "-50",
+            "armourEffect": "+50 damage",
+            "rangedModifier": "+10",
+            "speedRangeMultiplier": "\u00f7 30"
+          },
+          "attributes": [
+            {
+              "level": 5,
+              "points": 5,
+              "name": "Ranged Attack",
+              "key": "ranged_attack",
+              "details": "All"
+            },
+            {
+              "level": 5,
+              "points": 5,
+              "name": "Ranged Defence",
+              "key": "ranged_defence",
+              "details": "All"
+            },
+            {
+              "level": 5,
+              "points": 10,
+              "name": "Unique Attribute",
+              "key": "unique_attribute",
+              "details": "Small, Light, and Unobtrusive"
+            }
+          ],
+          "defects": [
+            {
+              "rank": 5,
+              "cp_refund": 30,
+              "name": "Lifting Capacity",
+              "key": "unique_defect",
+              "details": "Lifting Capacity \u00f75 (Multiple Ranks)"
+            },
+            {
+              "rank": 5,
+              "cp_refund": 5,
+              "name": "Running Speed",
+              "key": "unique_defect",
+              "details": "Running Speed \u00f732"
+            },
+            {
+              "rank": 5,
+              "cp_refund": 10,
+              "name": "Strength Damage",
+              "key": "unique_defect",
+              "details": "-50 Strength Damage"
+            },
+            {
+              "rank": 5,
+              "cp_refund": 20,
+              "name": "Vulnerable",
+              "key": "unique_defect",
+              "details": "Suffers 50 Extra Damage from all Attacks"
+            },
+            {
+              "rank": 5,
+              "cp_refund": 5,
+              "name": "Weak Throw",
+              "key": "unique_defect",
+              "details": "Thrown weapon distance \u00f732"
+            }
+          ],
+          "totalPoints": -30
+        },
+        {
+          "name": "Fine",
+          "rank": -4,
+          "typicalHeight": "5-9 cm",
+          "typicalMass": "6-30 g",
+          "modifiers": {
+            "liftingCapacity": "\u00f7 500",
+            "strengthDamage": "-40",
+            "armourEffect": "+40 damage",
+            "rangedModifier": "+8",
+            "speedRangeMultiplier": "\u00f7 15"
+          },
+          "attributes": [
+            {
+              "level": 4,
+              "points": 4,
+              "name": "Ranged Attack",
+              "key": "ranged_attack",
+              "details": "All"
+            },
+            {
+              "level": 4,
+              "points": 4,
+              "name": "Ranged Defence",
+              "key": "ranged_defence",
+              "details": "All"
+            },
+            {
+              "level": 4,
+              "points": 8,
+              "name": "Unique Attribute",
+              "key": "unique_attribute",
+              "details": "Small, Light, and Unobtrusive"
+            }
+          ],
+          "defects": [
+            {
+              "rank": 4,
+              "cp_refund": 24,
+              "name": "Lifting Capacity",
+              "key": "unique_defect",
+              "details": "Lifting Capacity \u00f75 (Multiple Ranks)"
+            },
+            {
+              "rank": 4,
+              "cp_refund": 4,
+              "name": "Running Speed",
+              "key": "unique_defect",
+              "details": "Running Speed \u00f716"
+            },
+            {
+              "rank": 4,
+              "cp_refund": 8,
+              "name": "Strength Damage",
+              "key": "unique_defect",
+              "details": "-40 Strength Damage"
+            },
+            {
+              "rank": 4,
+              "cp_refund": 16,
+              "name": "Vulnerable",
+              "key": "unique_defect",
+              "details": "Suffers 40 Extra Damage from all Attacks"
+            },
+            {
+              "rank": 4,
+              "cp_refund": 4,
+              "name": "Weak Throw",
+              "key": "unique_defect",
+              "details": "Thrown weapon distance \u00f716"
+            }
+          ],
+          "totalPoints": -24
+        },
+        {
+          "name": "Diminutive",
+          "key": "diminutive",
+          "rank": -3,
+          "typicalHeight": "10-24 cm",
+          "typicalMass": "50-300 g",
+          "modifiers": {
+            "liftingCapacity": "\u00f7 100",
+            "strengthDamage": "-30",
+            "armourEffect": "+30 damage",
+            "rangedModifier": "+6",
+            "speedRangeMultiplier": "\u00f7 8"
+          },
+          "attributes": [
+            {
+              "level": 3,
+              "points": 3,
+              "name": "Ranged Attack",
+              "key": "ranged_attack",
+              "details": "All"
+            },
+            {
+              "level": 3,
+              "points": 3,
+              "name": "Ranged Defence",
+              "key": "ranged_defence",
+              "details": "All"
+            },
+            {
+              "level": 3,
+              "points": 6,
+              "name": "Unique Attribute",
+              "key": "unique_attribute",
+              "details": "Small, Light, and Unobtrusive"
+            }
+          ],
+          "defects": [
+            {
+              "rank": 3,
+              "cp_refund": 18,
+              "name": "Lifting Capacity",
+              "key": "unique_defect",
+              "details": "Lifting Capacity \u00f75 (Multiple Ranks)"
+            },
+            {
+              "rank": 3,
+              "cp_refund": 6,
+              "name": "Strength Damage",
+              "key": "unique_defect",
+              "details": "-10 Strength Damage (Multiple Ranks)"
+            },
+            {
+              "rank": 3,
+              "cp_refund": 12,
+              "name": "Vulnerable",
+              "key": "unique_defect",
+              "details": "Suffers 10 Extra Damage from all Attacks (Multiple Ranks)"
+            },
+            {
+              "rank": 3,
+              "cp_refund": 3,
+              "name": "Weak Throw",
+              "key": "unique_defect",
+              "details": "Thrown weapon distance \u00f78"
+            },
+            {
+              "rank": 3,
+              "cp_refund": 3,
+              "name": "Running Speed",
+              "key": "unique_defect",
+              "details": "Running Speed \u00f78"
+            }
+          ],
+          "totalPoints": -18
+        },
+        {
+          "name": "Tiny",
+          "key": "tiny",
+          "rank": -2,
+          "typicalHeight": "25-49 cm",
+          "typicalMass": "500 g - 2 kg",
+          "modifiers": {
+            "liftingCapacity": "\u00f7 25",
+            "strengthDamage": "-20",
+            "armourEffect": "+20 damage",
+            "rangedModifier": "+4",
+            "speedRangeMultiplier": "\u00f7 4"
+          },
+          "attributes": [
+            {
+              "level": 2,
+              "points": 2,
+              "name": "Ranged Attack",
+              "key": "ranged_attack",
+              "details": "All"
+            },
+            {
+              "level": 2,
+              "points": 2,
+              "name": "Ranged Defence",
+              "key": "ranged_defence",
+              "details": "All"
+            },
+            {
+              "level": 2,
+              "points": 4,
+              "name": "Unique Attribute",
+              "key": "unique_attribute",
+              "details": "Small, Light, and Unobtrusive"
+            }
+          ],
+          "defects": [
+            {
+              "rank": 2,
+              "cp_refund": 12,
+              "name": "Lifting Capacity",
+              "key": "unique_defect",
+              "details": "Lifting Capacity \u00f725"
+            },
+            {
+              "rank": 2,
+              "cp_refund": 2,
+              "name": "Running Speed",
+              "key": "unique_defect",
+              "details": "Running Speed \u00f74"
+            },
+            {
+              "rank": 2,
+              "cp_refund": 4,
+              "name": "Strength Damage",
+              "key": "unique_defect",
+              "details": "-20 Strength Damage"
+            },
+            {
+              "rank": 2,
+              "cp_refund": 8,
+              "name": "Vulnerable",
+              "key": "unique_defect",
+              "details": "Suffers 20 Extra Damage from all Attacks"
+            },
+            {
+              "rank": 2,
+              "cp_refund": 2,
+              "name": "Weak Throw",
+              "key": "unique_defect",
+              "details": "Thrown weapon distance \u00f74"
+            }
+          ],
+          "totalPoints": -20
+        },
+        {
+          "name": "Small",
+          "rank": -1,
+          "typicalHeight": "50-99 cm",
+          "typicalMass": "6-20 kg",
+          "modifiers": {
+            "liftingCapacity": "\u00f7 5",
+            "strengthDamage": "-10",
+            "armourEffect": "+10 damage",
+            "rangedModifier": "+2",
+            "speedRangeMultiplier": "\u00f7 2"
+          },
+          "attributes": [
+            {
+              "level": 1,
+              "points": 1,
+              "name": "Ranged Attack",
+              "key": "ranged_attack",
+              "details": "All"
+            },
+            {
+              "level": 1,
+              "points": 1,
+              "name": "Ranged Defence",
+              "key": "ranged_defence",
+              "details": "All"
+            },
+            {
+              "level": 1,
+              "points": 2,
+              "name": "Unique Attribute",
+              "key": "unique_attribute",
+              "details": "Small, Light, and Unobtrusive"
+            }
+          ],
+          "defects": [
+            {
+              "rank": 1,
+              "cp_refund": 6,
+              "name": "Lifting Capacity",
+              "key": "unique_defect",
+              "details": "Lifting Capacity \u00f75"
+            },
+            {
+              "rank": 1,
+              "cp_refund": 2,
+              "name": "Strength Damage",
+              "key": "unique_defect",
+              "details": "-10 Strength Damage"
+            },
+            {
+              "rank": 1,
+              "cp_refund": 4,
+              "name": "Vulnerable",
+              "key": "unique_defect",
+              "details": "Suffers 10 Extra Damage from all Attacks"
+            },
+            {
+              "rank": 1,
+              "cp_refund": 1,
+              "name": "Weak Throw",
+              "key": "unique_defect",
+              "details": "Thrown weapon distance \u00f72"
+            },
+            {
+              "rank": 1,
+              "cp_refund": 1,
+              "name": "Running Speed",
+              "key": "unique_defect",
+              "details": "Running Speed \u00f72"
+            }
+          ],
+          "totalPoints": -6
+        },
+        {
+          "name": "Medium",
+          "rank": 0,
+          "typicalHeight": "1-2 m",
+          "typicalMass": "50 - 150 kg",
+          "modifiers": {
+            "liftingCapacity": "—",
+            "strengthDamage": "—",
+            "armourEffect": "—",
+            "rangedModifier": "—",
+            "speedRangeMultiplier": "—"
+          },
+          "attributes": [],
+          "defects": []
+        },
+        {
+          "name": "Large",
+          "rank": 1,
+          "typicalHeight": "3-4 m",
+          "typicalMass": "200 - 1,200 kg",
+          "modifiers": {
+            "liftingCapacity": "x 5",
+            "strengthDamage": "+10",
+            "armourEffect": "+10 AR",
+            "rangedModifier": "-2",
+            "speedRangeMultiplier": "x 2"
+          },
+          "attributes": [
+            {
+              "level": 2,
+              "points": 8,
+              "name": "Superstrength",
+              "key": "superstrength",
+              "details": null
+            },
+            {
+              "level": 2,
+              "points": 4,
+              "name": "Armour",
+              "key": "armour",
+              "details": null
+            },
+            {
+              "level": 1,
+              "points": 1,
+              "name": "Special Movement",
+              "key": "special_movement",
+              "details": "Fast"
+            },
+            {
+              "level": 1,
+              "points": 1,
+              "name": "Unique Attribute",
+              "key": "unique_attribute",
+              "details": "x2 Thrown Weapon Distance"
+            }
+          ],
+          "defects": [
+            {
+              "rank": 1,
+              "cp_refund": 2,
+              "name": "Big, Heavy, and Obvious",
+              "key": "unique_defect",
+              "details": null
+            },
+            {
+              "rank": 1,
+              "cp_refund": 1,
+              "name": "Inept Attack",
+              "key": "inept_attack",
+              "details": "Ranged"
+            },
+            {
+              "rank": 1,
+              "cp_refund": 1,
+              "name": "Inept Defence",
+              "key": "inept_defence",
+              "details": "Ranged"
+            }
+          ],
+          "totalPoints": 10
+        },
+        {
+          "name": "Huge",
+          "rank": 2,
+          "typicalHeight": "5-8 m",
+          "typicalMass": "1.5 - 8 tonnes",
+          "modifiers": {
+            "liftingCapacity": "x 25",
+            "strengthDamage": "+20",
+            "armourEffect": "+20 AR",
+            "rangedModifier": "-4",
+            "speedRangeMultiplier": "x 4"
+          },
+          "attributes": [
+            {
+              "level": 4,
+              "points": 16,
+              "name": "Superstrength",
+              "key": "superstrength",
+              "details": null
+            },
+            {
+              "level": 4,
+              "points": 8,
+              "name": "Armour",
+              "key": "armour",
+              "details": null
+            },
+            {
+              "level": 2,
+              "points": 2,
+              "name": "Special Movement",
+              "key": "special_movement",
+              "details": "Fast"
+            },
+            {
+              "level": 2,
+              "points": 2,
+              "name": "Unique Attribute",
+              "key": "unique_attribute",
+              "details": "x2 Thrown Weapon Distance (Multiple Ranks)"
+            }
+          ],
+          "defects": [
+            {
+              "rank": 2,
+              "cp_refund": 4,
+              "name": "Big, Heavy, and Obvious",
+              "key": "unique_defect",
+              "details": null
+            },
+            {
+              "rank": 2,
+              "cp_refund": 2,
+              "name": "Inept Attack",
+              "key": "inept_attack",
+              "details": "Ranged"
+            },
+            {
+              "rank": 2,
+              "cp_refund": 2,
+              "name": "Inept Defence",
+              "key": "inept_defence",
+              "details": "Ranged"
+            }
+          ],
+          "totalPoints": 20
+        },
+         {
+          "name": "Mammoth",
+          "rank": 3,
+          "typicalHeight": "9-15 m",
+          "typicalMass": "10 - 60 tonnes",
+          "modifiers": {
+            "liftingCapacity": "x 100",
+            "strengthDamage": "+30",
+            "armourEffect": "+30 AR",
+            "rangedModifier": "-6",
+            "speedRangeMultiplier": "x 8"
+          },
+          "attributes": [
+            {
+              "level": 6,
+              "points": 24,
+              "name": "Superstrength",
+              "key": "superstrength",
+              "details": null
+            },
+            {
+              "level": 6,
+              "points": 12,
+              "name": "Armour",
+              "key": "armour",
+              "details": null
+            },
+            {
+              "level": 3,
+              "points": 3,
+              "name": "Special Movement",
+              "key": "special_movement",
+              "details": "Fast"
+            },
+            {
+              "level": 3,
+              "points": 3,
+              "name": "Unique Attribute",
+              "key": "unique_attribute",
+              "details": "x2 Thrown Weapon Distance (Multiple Ranks)"
+            }
+          ],
+          "defects": [
+            {
+              "rank": 3,
+              "cp_refund": 6,
+              "name": "Big, Heavy, and Obvious",
+              "key": "unique_defect",
+              "details": "Big, Heavy, and Obvious"
+            },
+            {
+              "rank": 3,
+              "cp_refund": 3,
+              "name": "Inept Attack",
+              "key": "inept_attack",
+              "details": "Ranged"
+            },
+            {
+              "rank": 3,
+              "cp_refund": 3,
+              "name": "Inept Defence",
+              "key": "inept_defence",
+              "details": "Ranged"
+            }
+          ],
+          "totalPoints": 30
+        },
+        {
+          "name": "Gigantic",
+          "rank": 4,
+          "typicalHeight": "16-30 m",
+          "typicalMass": "75 - 500 tonnes",
+          "modifiers": {
+            "liftingCapacity": "x 500",
+            "strengthDamage": "+40",
+            "armourEffect": "+40 AR",
+            "rangedModifier": "-8",
+            "speedRangeMultiplier": "x 15"
+          },
+          "attributes": [
+            {
+              "level": 8,
+              "points": 32,
+              "name": "Superstrength",
+              "key": "superstrength",
+              "details": null
+            },
+            {
+              "level": 8,
+              "points": 16,
+              "name": "Armour",
+              "key": "armour",
+              "details": null
+            },
+            {
+              "level": 4,
+              "points": 4,
+              "name": "Special Movement",
+              "key": "special_movement",
+              "details": "Fast"
+            },
+            {
+              "level": 4,
+              "points": 4,
+              "name": "Unique Attribute",
+              "key": "unique_attribute",
+              "details": "x2 Thrown Weapon Distance (Multiple Ranks)"
+            }
+          ],
+          "defects": [
+            {
+              "rank": 4,
+              "cp_refund": 8,
+              "name": "Big, Heavy, and Obvious",
+              "key": "unique_defect",
+              "details": null
+            },
+            {
+              "rank": 4,
+              "cp_refund": 4,
+              "name": "Inept Attack",
+              "key": "inept_attack",
+              "details": "Ranged"
+            },
+            {
+              "rank": 4,
+              "cp_refund": 4,
+              "name": "Inept Defence",
+              "key": "inept_defence",
+              "details": "Ranged"
+            }
+          ],
+          "totalPoints": 40
+        },
+        {
+            "name": "Gargantuan",
+            "rank": 5,
+            "typicalHeight": "31-60 m",
+            "typicalMass": "550 - 4,000 tonnes",
+            "modifiers": {
+              "liftingCapacity": "x 2.5 k",
+              "strengthDamage": "+50",
+              "armourEffect": "+50 AR",
+              "rangedModifier": "-10",
+              "speedRangeMultiplier": "x 30"
+            },
+            "attributes": [
+              {
+                "level": 10,
+                "points": 40,
+                "name": "Superstrength",
+                "key": "superstrength",
+                "details": null
+              },
+              {
+                "level": 10,
+                "points": 20,
+                "name": "Armour",
+                "key": "armour",
+                "details": null
+              },
+              {
+                "level": 5,
+                "points": 5,
+                "name": "Special Movement",
+                "key": "special_movement",
+                "details": "Fast"
+              },
+              {
+                "level": 5,
+                "points": 5,
+                "name": "Unique Attribute",
+                "key": "unique_attribute",
+                "details": "x2 Thrown Weapon Distance (Multiple Ranks)"
+              }
+            ],
+            "totalPoints": 50
+          },
+          {
+            "name": "Colossal",
+            "rank": 6,
+            "typicalHeight": "61-125 m",
+            "typicalMass": "4 k - 30 k tonnes",
+            "modifiers": {
+              "liftingCapacity": "x 10 k",
+              "strengthDamage": "+60",
+              "armourEffect": "+60 AR",
+              "rangedModifier": "-12",
+              "speedRangeMultiplier": "x 60"
+            },
+            "attributes": [
+              {
+                "level": 12,
+                "points": 48,
+                "name": "Superstrength",
+                "key": "superstrength",
+                "details": null
+              },
+              {
+                "level": 12,
+                "points": 24,
+                "name": "Armour",
+                "key": "armour",
+                "details": null
+              },
+              {
+                "level": 6,
+                "points": 6,
+                "name": "Special Movement",
+                "key": "special_movement",
+                "details": "Fast"
+              },
+              {
+                "level": 6,
+                "points": 6,
+                "name": "Unique Attribute",
+                "key": "unique_attribute",
+                "details": "x2 Thrown Weapon Distance (Multiple Ranks)"
+              }
+            ],
+            "defects": [
+              {
+                "rank": 6,
+                "cp_refund": 12,
+                "name": "Big, Heavy, and Obvious",
+                "key": "unique_defect",
+                "details": null
+              },
+              {
+                "rank": 6,
+                "cp_refund": 6,
+                "name": "Inept Attack",
+                "key": "inept_attack",
+                "details": "Ranged"
+              },
+              {
+                "rank": 6,
+                "cp_refund": 6,
+                "name": "Inept Defence",
+                "key": "inept_defence",
+                "details": "Ranged"
+              }
+            ],
+            "totalPoints": 60
+          },
+          {
+            "name": "Enormous",
+            "rank": 7,
+            "typicalHeight": "126-250 m",
+            "typicalMass": "40 k - 250 k tonnes",
+            "modifiers": {
+              "liftingCapacity": "x 50 k",
+              "strengthDamage": "+70",
+              "armourEffect": "+70 AR",
+              "rangedModifier": "-14",
+              "speedRangeMultiplier": "x 125"
+            },
+            "attributes": [
+              {
+                "level": 14,
+                "points": 56,
+                "name": "Superstrength",
+                "key": "superstrength",
+                "details": null
+              },
+              {
+                "level": 14,
+                "points": 28,
+                "name": "Armour",
+                "key": "armour",
+                "details": null
+              },
+              {
+                "level": 7,
+                "points": 7,
+                "name": "Special Movement",
+                "key": "special_movement",
+                "details": "Fast"
+              },
+              {
+                "level": 7,
+                "points": 7,
+                "name": "Unique Attribute",
+                "key": "unique_attribute",
+                "details": "x2 Thrown Weapon Distance (Multiple Ranks)"
+              }
+            ],
+            "defects": [
+              {
+                "rank": 7,
+                "cp_refund": 14,
+                "name": "Big, Heavy, and Obvious",
+                "key": "unique_defect",
+                "details": null
+              },
+              {
+                "rank": 7,
+                "cp_refund": 7,
+                "name": "Inept Attack",
+                "key": "inept_attack",
+                "details": "Ranged"
+              },
+              {
+                "rank": 7,
+                "cp_refund": 7,
+                "name": "Inept Defence",
+                "key": "inept_defence",
+                "details": "Ranged"
+              }
+            ],
+            "totalPoints": 70
+          },
+          {
+            "name": "Monumental",
+            "rank": 10,
+            "typicalHeight": "1-2 km",
+            "typicalMass": "15 M - 125 M tonnes",
+            "modifiers": {
+              "liftingCapacity": "x 250 M",
+              "strengthDamage": "+100",
+              "armourEffect": "+100 AR",
+              "rangedModifier": "-20",
+              "speedRangeMultiplier": "x 1,000"
+            },
+            "attributes": [
+            {
+              "level": 20,
+              "points": 80,
+              "name": "Superstrength",
+              "key": "superstrength",
+              "details": null
+            },
+            {
+              "level": 20,
+              "points": 40,
+              "name": "Armour",
+              "key": "armour",
+              "details": null
+            },
+            {
+              "level": 10,
+              "points": 10,
+              "name": "Special Movement",
+              "key": "special_movement",
+              "details": "Fast"
+            },
+            {
+              "level": 10,
+              "points": 10,
+              "name": "Unique Attribute",
+              "key": "unique_attribute",
+              "details": "x2 Thrown Weapon Distance (Multiple Ranks)"
+            }
+          ],
+          "defects": [
+            {
+              "rank": 10,
+              "cp_refund": 20,
+              "name": "Big, Heavy, and Obvious",
+              "key": "unique_defect",
+              "details": null
+            },
+            {
+              "rank": 10,
+              "cp_refund": 10,
+              "name": "Inept Attack",
+              "key": "inept_attack",
+              "details": "Ranged"
+            },
+            {
+              "rank": 10,
+              "cp_refund": 10,
+              "name": "Inept Defence",
+              "key": "inept_defence",
+              "details": "Ranged"
+            }
+          ],
+          "totalPoints": 100
+        }
+      ]
+    }
+  }

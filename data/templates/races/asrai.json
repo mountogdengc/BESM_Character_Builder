@@ -1,0 +1,101 @@
+{
+  "race_name": "ASRAI",
+  "baseSize": {
+    "size_rank": 0,
+    "size_name": "Medium",
+    "options_source": "Race Template"
+  },
+  "stats": {
+    "body_adj": 0,
+    "mind_adj": 1,
+    "soul_adj": 2
+  },
+  "attributes": [
+    {
+      "custom_name": "Dynamic Powers",
+      "key": "unknown_key",
+      "level": 2,
+      "user_description": "(Major: Natural Magic -1)",
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Race Template",
+      "valid": false
+    },
+    {
+      "custom_name": "Energised",
+      "key": "unknown_key",
+      "level": 2,
+      "user_description": null,
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Race Template",
+      "valid": false
+    },
+    {
+      "custom_name": "Features",
+      "key": "unknown_key",
+      "level": 1,
+      "user_description": "(Appearance)",
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Race Template",
+      "valid": false
+    },
+    {
+      "custom_name": "Flight",
+      "key": "unknown_key",
+      "level": 1,
+      "user_description": null,
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Race Template",
+      "valid": false
+    },
+    {
+      "custom_name": "Sixth Sense",
+      "key": "unknown_key",
+      "level": 1,
+      "user_description": "(Danger)",
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Race Template",
+      "valid": false
+    },
+    {
+      "custom_name": "Skill Group",
+      "key": "unknown_key",
+      "level": 1,
+      "user_description": "(Domestic)",
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Race Template",
+      "valid": false
+    },
+    {
+      "custom_name": "Special Movement",
+      "key": "unknown_key",
+      "level": 1,
+      "user_description": "(Zen Direction)",
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Race Template",
+      "valid": false
+    }
+  ],
+  "defects": [],
+  "key": "asrai"
+}

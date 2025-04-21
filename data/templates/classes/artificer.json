@@ -1,0 +1,82 @@
+{
+  "class_name": "ARTIFICER",
+  "baseSize": {
+    "rank": 0,
+    "name": "Medium",
+    "options_source": "Class Template"
+  },
+  "stats": {
+    "body_adj": 0,
+    "mind_adj": 1,
+    "soul_adj": 0
+  },
+  "attributes": [
+    {
+      "custom_name": "Augmented",
+      "key": "augmented",
+      "level": 1,
+      "user_description": "(Body: tech enhancement)",
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Class Template"
+    },
+    {
+      "custom_name": "Item",
+      "key": "item",
+      "level": 10,
+      "user_description": "(Multi-Gadget; 20 Points)",
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Class Template"
+    },
+    {
+      "custom_name": "Power Flux",
+      "key": "power_flux",
+      "level": 2,
+      "user_description": "(Major: Item Gadgeteer -1; Equipment: Multi-Gadget +1)",
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Class Template"
+    },
+    {
+      "custom_name": "Skill Group",
+      "key": "skill_group",
+      "level": 2,
+      "user_description": "(Artistic)",
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Class Template"
+    },
+    {
+      "custom_name": "Skill Group",
+      "key": "skill_group",
+      "level": 1,
+      "user_description": "(Scientific)",
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Class Template"
+    },
+    {
+      "custom_name": "Skill Group",
+      "key": "skill_group",
+      "level": 3,
+      "user_description": "(Technical)",
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Class Template"
+    }
+  ],
+  "defects": []
+}

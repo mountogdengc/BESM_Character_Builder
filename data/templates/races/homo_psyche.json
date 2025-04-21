@@ -1,0 +1,121 @@
+{
+  "race_name": "HOMO PSYCHE",
+  "baseSize": {
+    "size_rank": 0,
+    "size_name": "Medium",
+    "options_source": "Race Template"
+  },
+  "stats": {
+    "body_adj": 0,
+    "mind_adj": 1,
+    "soul_adj": 0
+  },
+  "attributes": [
+    {
+      "custom_name": "Control Environment",
+      "key": "control_environment",
+      "level": 2,
+      "user_description": "(Cold, Heat)",
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Race Template",
+      "valid": true,
+      "name": "Control Environment"
+    },
+    {
+      "custom_name": "Energised",
+      "key": "energised",
+      "level": 6,
+      "user_description": null,
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Race Template",
+      "valid": true,
+      "name": "Energised"
+    },
+    {
+      "custom_name": "Flight",
+      "key": "flight",
+      "level": 1,
+      "user_description": "(Potent -1; Concentration +1; Deplete +1)",
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Race Template",
+      "valid": true,
+      "name": "Flight"
+    },
+    {
+      "custom_name": "Healing",
+      "key": "healing",
+      "level": 1,
+      "user_description": "(Potent -1; Concentration +1; Deplete +1)",
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Race Template",
+      "valid": true,
+      "name": "Healing"
+    },
+    {
+      "custom_name": "Sixth Sense",
+      "key": "sixth_sense",
+      "level": 2,
+      "user_description": "(Emotions, Psionics; Deplete +1)",
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Race Template",
+      "valid": true,
+      "name": "Sixth Sense"
+    },
+    {
+      "custom_name": "Telekinesis",
+      "key": "telekinesis",
+      "level": 1,
+      "user_description": "(Concentration +1; Deplete +1)",
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Race Template",
+      "valid": true,
+      "name": "Telekinesis"
+    },
+    {
+      "custom_name": "Telepathy",
+      "key": "telepathy",
+      "level": 1,
+      "user_description": "(Concentration +1; Deplete +1; Unpredictable +1)",
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Race Template",
+      "valid": true,
+      "name": "Telepathy"
+    },
+    {
+      "custom_name": "Unaffected",
+      "key": "unaffected",
+      "level": 4,
+      "user_description": "(Source: Psionics; All Attributes -3; Deplete +1)",
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Race Template",
+      "valid": true,
+      "name": "Unaffected"
+    }
+  ],
+  "defects": [],
+  "key": "homo_psyche"
+}

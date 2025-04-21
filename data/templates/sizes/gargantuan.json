@@ -1,0 +1,71 @@
+{
+  "size_name": "Gargantuan",
+  "key": "gargantuan",
+  "size_rank": 5,
+  "typicalHeight": "31-60 m",
+  "typicalMass": "550 - 4,000 tonnes",
+  "stats": {
+    "body_adj": 0,
+    "mind_adj": 0,
+    "soul_adj": 0
+  },
+  "modifiers": {
+    "liftingCapacity": "x 2.5 k",
+    "strengthDamage": "+50",
+    "armourEffect": "+50 AR",
+    "rangedModifier": "-10",
+    "speedRangeMultiplier": "x 30"
+  },
+  "attributes": [
+    {
+      "custom_name": "Superstrength",
+      "key": "superstrength",
+      "level": 10,
+      "user_description": null,
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Size Template",
+      "valid": true
+    },
+    {
+      "custom_name": "Armour",
+      "key": "armour",
+      "level": 10,
+      "user_description": null,
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Size Template",
+      "valid": true
+    },
+    {
+      "custom_name": "Special Movement",
+      "key": "special_movement",
+      "level": 5,
+      "user_description": null,
+      "enhancements": [],
+      "limiters": [],
+      "options": [
+        "fast"
+      ],
+      "user_input": null,
+      "options_source": "Size Template",
+      "valid": true
+    },
+    {
+      "custom_name": "x2 Thrown Weapon Distance",
+      "key": "unique_attribute",
+      "level": 5,
+      "user_description": null,
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Size Template",
+      "valid": true
+    }
+  ]
+}

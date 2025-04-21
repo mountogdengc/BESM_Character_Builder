@@ -1,0 +1,163 @@
+{
+  "race_name": "WOOLIE",
+  "baseSize": {
+    "size_rank": 0,
+    "size_name": "Medium",
+    "options_source": "Race Template"
+  },
+  "stats": {
+    "body_adj": 2,
+    "mind_adj": 0,
+    "soul_adj": 1
+  },
+  "attributes": [
+    {
+      "custom_name": "Armour",
+      "key": "armour",
+      "level": 1,
+      "user_description": "(AR 5)",
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Race Template",
+      "valid": true,
+      "name": "Armour"
+    },
+    {
+      "custom_name": "Combat Technique",
+      "key": "combat_technique",
+      "level": 1,
+      "user_description": "(Brutal)",
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Race Template",
+      "valid": true,
+      "name": "Combat Technique"
+    },
+    {
+      "custom_name": "Features",
+      "key": "features",
+      "level": 2,
+      "user_description": "(Homing Instinct, Pouch, Scent Glands)",
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Race Template",
+      "valid": true,
+      "name": "Features"
+    },
+    {
+      "custom_name": "Melee Attack",
+      "key": "melee_attack",
+      "level": 1,
+      "user_description": "(Unarmed)",
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Race Template",
+      "valid": true,
+      "name": "Melee Attack"
+    },
+    {
+      "custom_name": "Resilient",
+      "key": "resilient",
+      "level": 1,
+      "user_description": "(Intense Cold)",
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Race Template",
+      "valid": true,
+      "name": "Resilient"
+    },
+    {
+      "custom_name": "Skill Group",
+      "key": "skill_group",
+      "level": 2,
+      "user_description": "(Domestic)",
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Race Template",
+      "valid": true,
+      "name": "Skill Group"
+    },
+    {
+      "custom_name": "Special Movement",
+      "key": "special_movement",
+      "level": 1,
+      "user_description": "(Swinging)",
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Race Template",
+      "valid": true,
+      "name": "Special Movement"
+    },
+    {
+      "custom_name": "Superstrength",
+      "key": "superstrength",
+      "level": 1,
+      "user_description": null,
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Race Template",
+      "valid": true,
+      "name": "Superstrength"
+    },
+    {
+      "custom_name": "Tough",
+      "key": "tough",
+      "level": 1,
+      "user_description": null,
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Race Template",
+      "valid": true,
+      "name": "Tough"
+    }
+  ],
+  "defects": [
+    {
+      "custom_name": "Shortcoming",
+      "key": "shortcoming",
+      "rank": 1,
+      "user_description": "(Body: Major - Agility)",
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Race Template",
+      "valid": true,
+      "cp_refund": 1,
+      "name": "Shortcoming"
+    },
+    {
+      "custom_name": "Shortcoming",
+      "key": "shortcoming",
+      "rank": 1,
+      "user_description": "(Body: Minor - Manual Dexterity)",
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Race Template",
+      "valid": true,
+      "cp_refund": 1,
+      "name": "Shortcoming"
+    }
+  ],
+  "key": "woolie"
+}

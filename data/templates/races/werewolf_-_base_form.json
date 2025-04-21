@@ -1,0 +1,139 @@
+{
+  "race_name": "WEREWOLF - BASE FORM",
+  "baseSize": {
+    "size_rank": 0,
+    "size_name": "Medium",
+    "options_source": "Race Template"
+  },
+  "stats": {
+    "body_adj": 2,
+    "mind_adj": 0,
+    "soul_adj": 0
+  },
+  "attributes": [
+    {
+      "custom_name": "Alternate Form",
+      "key": "alternate_form",
+      "level": 4,
+      "user_description": "(Wolf Form: 20 Points; Delay +1; Concentration +2)",
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Race Template",
+      "valid": true,
+      "name": "Alternate Form"
+    },
+    {
+      "custom_name": "Connected",
+      "key": "connected",
+      "level": 1,
+      "user_description": "(Lycanthrope Community)",
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Race Template",
+      "valid": true,
+      "name": "Connected"
+    },
+    {
+      "custom_name": "Heightened Awareness",
+      "key": "heightened_awareness",
+      "level": 2,
+      "user_description": null,
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Race Template",
+      "valid": true,
+      "name": "Heightened Awareness"
+    },
+    {
+      "custom_name": "Regeneration",
+      "key": "regeneration",
+      "level": 1,
+      "user_description": null,
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Race Template",
+      "valid": true,
+      "name": "Regeneration"
+    },
+    {
+      "custom_name": "Sixth Sense",
+      "key": "sixth_sense",
+      "level": 1,
+      "user_description": "(Blood)",
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Race Template",
+      "valid": true,
+      "name": "Sixth Sense"
+    }
+  ],
+  "defects": [
+    {
+      "custom_name": "Cursed",
+      "key": "cursed",
+      "rank": 2,
+      "user_description": "(Werewolf)",
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Race Template",
+      "valid": true,
+      "cp_refund": 4,
+      "name": "Cursed"
+    },
+    {
+      "custom_name": "Involuntary Change",
+      "key": "involuntary_change",
+      "rank": 1,
+      "user_description": "(Full Moon)",
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Race Template",
+      "valid": true,
+      "cp_refund": 1,
+      "name": "Involuntary Change"
+    },
+    {
+      "custom_name": "Nightmares",
+      "key": "nightmares",
+      "rank": 1,
+      "user_description": "(Flashbacks of Wolf Kills)",
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Race Template",
+      "valid": true,
+      "cp_refund": 1,
+      "name": "Nightmares"
+    },
+    {
+      "custom_name": "Skeleton in the Closet",
+      "key": "skeleton_in_the_closet",
+      "rank": 3,
+      "user_description": "(Werewolf)",
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Race Template",
+      "valid": true,
+      "cp_refund": 6,
+      "name": "Skeleton in the Closet"
+    }
+  ],
+  "key": "werewolf_-_base_form"
+}

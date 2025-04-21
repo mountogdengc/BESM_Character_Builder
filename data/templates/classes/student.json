@@ -1,0 +1,137 @@
+{
+  "class_name": "STUDENT",
+  "baseSize": {
+    "rank": 0,
+    "name": "Medium",
+    "options_source": "Class Template"
+  },
+  "stats": {
+    "body_adj": 0,
+    "mind_adj": 0,
+    "soul_adj": 2
+  },
+  "attributes": [
+    {
+      "custom_name": "Connected",
+      "key": "connected",
+      "level": 1,
+      "user_description": "(Select One)",
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Class Template",
+      "valid": true,
+      "name": "Connected",
+      "details": "(Select One)",
+      "rank": null
+    },
+    {
+      "custom_name": "Energised",
+      "key": "energised",
+      "level": 4,
+      "user_description": null,
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Class Template",
+      "valid": true,
+      "name": "Energised",
+      "details": null,
+      "rank": null
+    },
+    {
+      "custom_name": "Features",
+      "key": "features",
+      "level": 1,
+      "user_description": "(Animal Empathy)",
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Class Template",
+      "valid": true,
+      "name": "Features",
+      "details": "(Animal Empathy)",
+      "rank": null
+    },
+    {
+      "custom_name": "Heightened Awareness",
+      "key": "heightened_awareness",
+      "level": 1,
+      "user_description": null,
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Class Template",
+      "valid": true,
+      "name": "Heightened Awareness",
+      "details": null,
+      "rank": null
+    },
+    {
+      "custom_name": "Mulligan",
+      "key": "mulligan",
+      "level": 3,
+      "user_description": null,
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Class Template",
+      "valid": true,
+      "name": "Mulligan",
+      "details": null,
+      "rank": null
+    },
+    {
+      "custom_name": "Skill Group",
+      "key": "skill_group",
+      "level": 2,
+      "user_description": "(Occupation: Student)",
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Class Template",
+      "valid": true,
+      "name": "Skill Group",
+      "details": "(Occupation: Student)",
+      "rank": null
+    },
+    {
+      "custom_name": "Unknown Power",
+      "key": "unknown_power",
+      "level": 20,
+      "user_description": "(30 Points)",
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Class Template",
+      "valid": true,
+      "name": "Unknown Power",
+      "details": "(30 Points)",
+      "rank": null
+    }
+  ],
+  "defects": [
+    {
+      "custom_name": "Magnet",
+      "key": "magnet",
+      "rank": 1,
+      "user_description": null,
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Class Template",
+      "valid": true,
+      "name": "Magnet",
+      "details": null,
+      "level": null
+    }
+  ]
+}

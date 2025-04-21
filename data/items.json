@@ -1,0 +1,40 @@
+{
+    "items": [
+        {
+            "name": "Item",
+            "description": "An object, tool, weapon, or vehicle that grants the user additional abilities. Items are built using other Attributes and Defects and are treated separately from the character’s innate powers. The total cost of the item is half the cost of all included Attributes and Defects, rounded down.",
+            "cost_formula": "sum_of_attributes / 2",
+            "relevant_stat": null,
+            "user_input_required": [
+              {
+                "label": "Item Type",
+                "key": "item_type",
+                "field_type": "select",
+                "description": "Select the general category this item belongs to.",
+                "options": [
+                  "Artifact",
+                  "Armor",
+                  "Base",
+                  "Gadget",
+                  "Implant",
+                  "Tool",
+                  "Vehicle",
+                  "Weapon"
+                ]
+              },
+              {
+                "label": "Removable",
+                "key": "removable",
+                "field_type": "select",
+                "description": "Is this item removable from the character?",
+                "options": ["Yes", "No"]
+              }
+            ],
+            "structure": {
+              "attributes": [],
+              "defects": [],
+              "total_cp_cost": 0
+            }
+          }          
+    ]
+  }  

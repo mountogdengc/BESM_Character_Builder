@@ -1,0 +1,143 @@
+{
+  "class_name": "SENTAI MEMBER",
+  "baseSize": {
+    "rank": 0,
+    "name": "Medium",
+    "options_source": "Class Template"
+  },
+  "stats": {
+    "body_adj": 2,
+    "mind_adj": 0,
+    "soul_adj": 0
+  },
+  "attributes": [
+    {
+      "custom_name": "Attack Mastery",
+      "key": "attack_mastery",
+      "level": 1,
+      "user_description": "(Environmental: Near Teammates +1)",
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Class Template",
+      "valid": true,
+      "name": "Attack Mastery",
+      "details": "(Environmental: Near Teammates +1)",
+      "rank": null
+    },
+    {
+      "custom_name": "Defence Mastery",
+      "key": "defence_mastery",
+      "level": 1,
+      "user_description": "(Environmental: Near Teammates +1)",
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Class Template",
+      "valid": true,
+      "name": "Defence Mastery",
+      "details": "(Environmental: Near Teammates +1)",
+      "rank": null
+    },
+    {
+      "custom_name": "Item",
+      "key": "item",
+      "level": 10,
+      "user_description": "(Pool of Shared Mecha Equipment; 20 Points)",
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Class Template",
+      "valid": false,
+      "name": "Item",
+      "details": "(Pool of Shared Mecha Equipment; 20 Points)",
+      "rank": null
+    },
+    {
+      "custom_name": "Massive Damage",
+      "key": "massive_damage",
+      "level": 3,
+      "user_description": "(Environmental: Near Teammates +1; Focussed: Choose Weapon +1)",
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Class Template",
+      "valid": true,
+      "name": "Massive Damage",
+      "details": "(Environmental: Near Teammates +1; Focussed: Choose Weapon +1)",
+      "rank": null
+    },
+    {
+      "custom_name": "Mulligan",
+      "key": "mulligan",
+      "level": 3,
+      "user_description": "(Environmental: Near Teammates +1)",
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Class Template",
+      "valid": true,
+      "name": "Mulligan",
+      "details": "(Environmental: Near Teammates +1)",
+      "rank": null
+    },
+    {
+      "custom_name": "Sixth Sense",
+      "key": "sixth_sense",
+      "level": 1,
+      "user_description": "(Danger to Teammates)",
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Class Template",
+      "valid": true,
+      "name": "Sixth Sense",
+      "details": "(Danger to Teammates)",
+      "rank": null
+    },
+    {
+      "custom_name": "Skill Group",
+      "key": "skill_group",
+      "level": 1,
+      "user_description": "(Adventuring)",
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Class Template",
+      "valid": true,
+      "name": "Skill Group",
+      "details": "(Adventuring)",
+      "rank": null
+    },
+    {
+      "custom_name": "Weapon: Combined Attack",
+      "key": "weapon",
+      "level": 5,
+      "user_description": "(Assisted: Teammates",
+      "enhancements": [
+        "piercing",
+        "range_1",
+        "stun_1"
+      ],
+      "limiters": [
+        "assisted",
+        "emotional"
+      ],
+      "options": [],
+      "user_input": null,
+      "options_source": "Class Template",
+      "valid": true,
+      "name": "Weapon: Combined Attack",
+      "details": "(Assisted: Teammates",
+      "rank": null
+    }
+  ],
+  "defects": []
+}

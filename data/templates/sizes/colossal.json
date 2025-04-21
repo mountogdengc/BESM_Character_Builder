@@ -1,0 +1,108 @@
+{
+  "size_name": "Colossal",
+  "key": "colossal",
+  "size_rank": 6,
+  "typicalHeight": "61-125 m",
+  "typicalMass": "4 k - 30 k tonnes",
+  "stats": {
+    "body_adj": 0,
+    "mind_adj": 0,
+    "soul_adj": 0
+  },
+  "options_source": "Size Template",
+  "modifiers": {
+    "liftingCapacity": "x 10 k",
+    "strengthDamage": "+60",
+    "armourEffect": "+60 AR",
+    "rangedModifier": "-12",
+    "speedRangeMultiplier": "x 60"
+  },
+  "attributes": [
+    {
+      "custom_name": "Superstrength",
+      "key": "superstrength",
+      "level": 12,
+      "user_description": null,
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Size Template",
+      "valid": true
+    },
+    {
+      "custom_name": "Armour",
+      "key": "armour",
+      "level": 12,
+      "user_description": null,
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Size Template",
+      "valid": true
+    },
+    {
+      "custom_name": "Special Movement",
+      "key": "special_movement",
+      "level": 6,
+      "user_description": null,
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Size Template",
+      "valid": true
+    },
+    {
+      "custom_name": "x2 Thrown Weapon Distance",
+      "key": "unique_attribute",
+      "level": 6,
+      "user_description": null,
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Size Template",
+      "valid": true
+    }
+  ],
+  "defects": [
+    {
+      "custom_name": "Big, Heavy, and Obvious",
+      "key": "unique_defect",
+      "rank": 6,
+      "user_description": null,
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Size Template",
+      "valid": true
+    },
+    {
+      "custom_name": "Inept Attack",
+      "key": "inept_attack",
+      "rank": 6,
+      "user_description": null,
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Size Template",
+      "valid": true
+    },
+    {
+      "custom_name": "Inept Defence",
+      "key": "inept_defence",
+      "rank": 6,
+      "user_description": null,
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Size Template",
+      "valid": true
+    }
+  ]
+}

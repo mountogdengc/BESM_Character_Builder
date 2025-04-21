@@ -1,0 +1,20 @@
+{
+  "key": "wee",
+  "typicalHeight": "1-2 cm",
+  "typicalMass": "50-500 mg",
+  "stats": {
+    "body_adj": 0,
+    "mind_adj": 0,
+    "soul_adj": 0
+  },
+  "name": "Wee",
+  "rank": -6,
+  "modifiers": {
+    "liftingCapacity": "\u00f7 10 k",
+    "strengthDamage": "-60",
+    "armourEffect": "+60 damage",
+    "rangedModifier": "+12",
+    "speedRangeMultiplier": "\u00f7 60"
+  },
+  "totalPoints": -40
+}

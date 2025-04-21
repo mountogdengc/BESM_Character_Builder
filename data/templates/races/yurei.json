@@ -1,0 +1,110 @@
+{
+  "race_name": "YUREI",
+  "baseSize": {
+    "size_rank": 0,
+    "size_name": "Medium",
+    "options_source": "Race Template"
+  },
+  "stats": {
+    "body_adj": 0,
+    "mind_adj": 0,
+    "soul_adj": 0
+  },
+  "attributes": [
+    {
+      "custom_name": "Change State",
+      "key": "change_state",
+      "level": 5,
+      "user_description": "(Incorporeal; Potent -1; Maximum +3; Semi-Permanent +2)",
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Race Template",
+      "valid": true,
+      "name": "Change State"
+    },
+    {
+      "custom_name": "Flight",
+      "key": "flight",
+      "level": 1,
+      "user_description": null,
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Race Template",
+      "valid": true,
+      "name": "Flight"
+    },
+    {
+      "custom_name": "Mind Shield",
+      "key": "mind_shield",
+      "level": 2,
+      "user_description": null,
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Race Template",
+      "valid": true,
+      "name": "Mind Shield"
+    },
+    {
+      "custom_name": "Reincarnation",
+      "key": "reincarnation",
+      "level": 5,
+      "user_description": "(Difficult to Stop -1)",
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Race Template",
+      "valid": true,
+      "name": "Reincarnation"
+    },
+    {
+      "custom_name": "Resilient",
+      "key": "resilient",
+      "level": 5,
+      "user_description": "(Ageing, Airborne Toxins, Disease, Lack of Air, Poisons; All Complete -5)",
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Race Template",
+      "valid": true,
+      "name": "Resilient"
+    },
+    {
+      "custom_name": "Weapon: Deadly Touch",
+      "key": "weapon",
+      "level": -1,
+      "user_description": "(Drain: Soul -3; Psychic -4)",
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Race Template",
+      "valid": true,
+      "name": "Weapon: Deadly Touch"
+    }
+  ],
+  "defects": [
+    {
+      "custom_name": "Marked",
+      "key": "marked",
+      "rank": 2,
+      "user_description": "(Shrouded in Mist)",
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Race Template",
+      "valid": true,
+      "cp_refund": 2,
+      "name": "Marked"
+    }
+  ],
+  "key": "yurei"
+}

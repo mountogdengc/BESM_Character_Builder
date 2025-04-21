@@ -1,0 +1,108 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "BESM 4e Attribute",
+  "description": "Schema for BESM 4e attributes in the Character Generator",
+  "type": "object",
+  "required": ["name", "key", "level"],
+  "properties": {
+    "custom_name": {
+      "type": "string",
+      "description": "Display name for the attribute as shown in the UI"
+    },
+    "name": {
+      "type": "string",
+      "description": "Original name of the attribute from BESM 4e"
+    },
+    "key": {
+      "type": "string",
+      "description": "Unique identifier for the attribute in snake_case format",
+      "pattern": "^[a-z][a-z0-9_]*$"
+    },
+    "level": {
+      "type": "integer",
+      "description": "Power rating of the attribute (BESM 4e uses 'level' for attributes)",
+      "minimum": 1
+    },
+    "cost_per_level": {
+      "type": "integer",
+      "description": "Character point cost per level of the attribute"
+    },
+    "user_description": {
+      "type": ["string", "null"],
+      "description": "User-provided description or specification for the attribute"
+    },
+    "is_human_attribute": {
+      "type": "boolean",
+      "description": "Whether this attribute makes sense for a normal human to have"
+    },
+    "enhancements": {
+      "type": "array",
+      "description": "List of enhancements applied to the attribute",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": { "type": "string" },
+          "key": { "type": "string" },
+          "multiplier": { "type": "number" },
+          "description": { "type": "string" }
+        }
+      }
+    },
+    "limiters": {
+      "type": "array",
+      "description": "List of limiters applied to the attribute",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": { "type": "string" },
+          "key": { "type": "string" },
+          "multiplier": { "type": "number" },
+          "description": { "type": "string" }
+        }
+      }
+    },
+    "options": {
+      "type": "array",
+      "description": "List of options for the attribute",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": { "type": "string" },
+          "key": { "type": "string" },
+          "value": { "type": "string" }
+        }
+      }
+    },
+    "user_input": {
+      "type": ["string", "null"],
+      "description": "User-provided input for the attribute"
+    },
+    "options_source": {
+      "type": "string",
+      "description": "Source of the attribute (e.g., 'Race Template')"
+    },
+    "valid": {
+      "type": "boolean",
+      "description": "Whether the attribute is valid"
+    },
+    "base_name": {
+      "type": "string",
+      "description": "Base name for special attributes like Companion, Item, etc."
+    },
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for this specific instance of the attribute"
+    },
+    "cost": {
+      "type": "integer",
+      "description": "Total character point cost of the attribute"
+    },
+    "sources": {
+      "type": "array",
+      "description": "List of sources that provided this attribute (e.g., template names)",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

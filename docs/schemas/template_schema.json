@@ -1,0 +1,299 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "BESM 4e Template",
+  "description": "Schema for BESM 4e templates in the Character Generator",
+  "type": "object",
+  "oneOf": [
+    { "$ref": "#/definitions/raceTemplate" },
+    { "$ref": "#/definitions/classTemplate" },
+    { "$ref": "#/definitions/sizeTemplate" }
+  ],
+  "definitions": {
+    "attribute": {
+      "type": "object",
+      "required": ["custom_name", "key", "level"],
+      "properties": {
+        "custom_name": {
+          "type": "string",
+          "description": "Display name for the attribute"
+        },
+        "key": {
+          "type": "string",
+          "description": "Unique identifier matching attributes.json"
+        },
+        "level": {
+          "type": "integer",
+          "description": "Power rating of the attribute (BESM 4e uses 'level' for attributes)",
+          "minimum": 1
+        },
+        "user_description": {
+          "type": ["string", "null"],
+          "description": "Optional description or specification"
+        },
+        "enhancements": {
+          "type": "array",
+          "description": "List of enhancements applied to the attribute",
+          "items": {
+            "type": "object"
+          }
+        },
+        "limiters": {
+          "type": "array",
+          "description": "List of limiters applied to the attribute",
+          "items": {
+            "type": "object"
+          }
+        },
+        "options": {
+          "type": "array",
+          "description": "List of options for the attribute",
+          "items": {
+            "type": "object"
+          }
+        },
+        "user_input": {
+          "type": ["string", "null"],
+          "description": "User-provided input for the attribute"
+        },
+        "options_source": {
+          "type": "string",
+          "description": "Source of the attribute (e.g., 'Race Template')"
+        },
+        "valid": {
+          "type": "boolean",
+          "description": "Whether the attribute is valid"
+        }
+      }
+    },
+    "defect": {
+      "type": "object",
+      "required": ["custom_name", "key", "rank"],
+      "properties": {
+        "custom_name": {
+          "type": "string",
+          "description": "Display name for the defect"
+        },
+        "key": {
+          "type": "string",
+          "description": "Unique identifier matching defects.json"
+        },
+        "rank": {
+          "type": "integer",
+          "description": "Power rating of the defect (BESM 4e uses 'rank' for defects)",
+          "minimum": 1
+        },
+        "user_description": {
+          "type": ["string", "null"],
+          "description": "Optional description or specification"
+        },
+        "enhancements": {
+          "type": "array",
+          "description": "List of enhancements applied to the defect",
+          "items": {
+            "type": "object"
+          }
+        },
+        "limiters": {
+          "type": "array",
+          "description": "List of limiters applied to the defect",
+          "items": {
+            "type": "object"
+          }
+        },
+        "options": {
+          "type": "array",
+          "description": "List of options for the defect",
+          "items": {
+            "type": "object"
+          }
+        },
+        "user_input": {
+          "type": ["string", "null"],
+          "description": "User-provided input for the defect"
+        },
+        "options_source": {
+          "type": "string",
+          "description": "Source of the defect (e.g., 'Race Template')"
+        },
+        "valid": {
+          "type": "boolean",
+          "description": "Whether the defect is valid"
+        }
+      }
+    },
+    "stats": {
+      "type": "object",
+      "properties": {
+        "body_adj": {
+          "type": "integer",
+          "description": "Adjustment to Body stat"
+        },
+        "mind_adj": {
+          "type": "integer",
+          "description": "Adjustment to Mind stat"
+        },
+        "soul_adj": {
+          "type": "integer",
+          "description": "Adjustment to Soul stat"
+        }
+      }
+    },
+    "baseSize": {
+      "type": "object",
+      "properties": {
+        "size_rank": {
+          "type": "integer",
+          "description": "Rank of the size template"
+        },
+        "size_name": {
+          "type": "string",
+          "description": "Name of the size template"
+        },
+        "name": {
+          "type": "string",
+          "description": "Alternative name field for backward compatibility"
+        },
+        "rank": {
+          "type": "integer",
+          "description": "Alternative rank field for backward compatibility"
+        },
+        "key": {
+          "type": "string",
+          "description": "Key of the size template for lookup"
+        },
+        "options_source": {
+          "type": "string",
+          "description": "Source of the size template"
+        }
+      }
+    },
+    "raceTemplate": {
+      "type": "object",
+      "required": ["race_name", "key"],
+      "properties": {
+        "race_name": {
+          "type": "string",
+          "description": "Name of the race template"
+        },
+        "key": {
+          "type": "string",
+          "description": "Unique identifier for the race template"
+        },
+        "baseSize": {
+          "$ref": "#/definitions/baseSize"
+        },
+        "stats": {
+          "$ref": "#/definitions/stats"
+        },
+        "attributes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/attribute"
+          }
+        },
+        "defects": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/defect"
+          }
+        }
+      }
+    },
+    "classTemplate": {
+      "type": "object",
+      "required": ["class_name", "key"],
+      "properties": {
+        "class_name": {
+          "type": "string",
+          "description": "Name of the class template"
+        },
+        "key": {
+          "type": "string",
+          "description": "Unique identifier for the class template"
+        },
+        "baseSize": {
+          "$ref": "#/definitions/baseSize"
+        },
+        "stats": {
+          "$ref": "#/definitions/stats"
+        },
+        "attributes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/attribute"
+          }
+        },
+        "defects": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/defect"
+          }
+        }
+      }
+    },
+    "sizeTemplate": {
+      "type": "object",
+      "required": ["name", "key", "rank"],
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Name of the size template"
+        },
+        "key": {
+          "type": "string",
+          "description": "Unique identifier for the size template"
+        },
+        "rank": {
+          "type": "integer",
+          "description": "Rank of the size template"
+        },
+        "typicalHeight": {
+          "type": "string",
+          "description": "Typical height range for this size"
+        },
+        "typicalMass": {
+          "type": "string",
+          "description": "Typical mass range for this size"
+        },
+        "modifiers": {
+          "type": "object",
+          "description": "Size-specific modifiers",
+          "properties": {
+            "liftingCapacity": {
+              "type": "string",
+              "description": "Modifier to lifting capacity"
+            },
+            "strengthDamage": {
+              "type": "string",
+              "description": "Modifier to strength damage"
+            },
+            "armourEffect": {
+              "type": "string",
+              "description": "Modifier to armour effect"
+            },
+            "rangedModifier": {
+              "type": "string",
+              "description": "Modifier to ranged attacks"
+            },
+            "speedRangeMultiplier": {
+              "type": "string",
+              "description": "Modifier to speed and range"
+            }
+          }
+        },
+        "attributes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/attribute"
+          }
+        },
+        "defects": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/defect"
+          }
+        }
+      }
+    }
+  }
+}
