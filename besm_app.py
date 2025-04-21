@@ -35,10 +35,13 @@ from PyQt5.QtWidgets import (
     QComboBox, QSpinBox, QPushButton, QToolButton, QTabWidget, QWidget, QGridLayout
 )
 
+from tools.data_migrations import DataMigrator
+
 class BESMCharacterApp(ui.QMainWindow):
     def __init__(self):
         super().__init__()
         self.settings = ui.QSettings("Legendmasters", "BESMCharacterApp")
+        self.data_migrator = DataMigrator()
 
         # Load attributes data
         base_path = os.path.dirname(os.path.abspath(__file__))
@@ -255,6 +258,7 @@ class BESMCharacterApp(ui.QMainWindow):
             apply_text_shadow(btn)
 
         self.character_data = {
+            "version": self.data_migrator.current_version,
             "name": "",
             "player": "",
             "gm": "",
@@ -319,7 +323,6 @@ class BESMCharacterApp(ui.QMainWindow):
             "custom_rules": [],
             "saved_loadouts": [],
             "benchmark": None,
-            "version": "1.0",
             "totalPoints": 0
         }
 
@@ -1137,6 +1140,10 @@ class BESMCharacterApp(ui.QMainWindow):
                 self.character_data["homeworld"] = self.homeworld_input.text()
                 self.character_data["size"] = self.size_input.text()
                 self.character_data["benchmark"] = self.selected_benchmark["name"] if self.selected_benchmark else None
+                
+                # Ensure version is set
+                self.character_data["version"] = self.data_migrator.current_version
+                
                 json.dump(self.character_data, f, indent=4)
 
             self.last_directory = os.path.dirname(path)
@@ -1152,14 +1159,51 @@ class BESMCharacterApp(ui.QMainWindow):
         )
 
         if path:
-            with open(path, 'r') as f:
-                self.character_data = json.load(f)
+            try:
+                with open(path, 'r') as f:
+                    data = json.load(f)
+                    
+                # Migrate data if needed
+                try:
+                    data = self.data_migrator.migrate_character_data(data)
+                except ValueError as e:
+                    ui.QMessageBox.warning(
+                        self,
+                        "Migration Error",
+                        f"Failed to migrate character data: {str(e)}\n\nPlease contact support."
+                    )
+                    return
+                    
+                # Set the migrated data
+                self.character_data = data
 
-            self.last_directory = os.path.dirname(path)
-            self.settings.setValue("last_directory", self.last_directory)
-            self.load_character_into_ui()
-            self.update_point_total()
-            ui.QMessageBox.information(self, "Loaded", "Character loaded successfully.")
+                self.last_directory = os.path.dirname(path)
+                self.settings.setValue("last_directory", self.last_directory)
+                self.load_character_into_ui()
+                self.update_point_total()
+                
+                # Show migration message if needed
+                if data.get("version") != self.data_migrator.current_version:
+                    ui.QMessageBox.information(
+                        self,
+                        "Data Updated",
+                        "Your character data has been updated to the latest version."
+                    )
+                else:
+                    ui.QMessageBox.information(self, "Loaded", "Character loaded successfully.")
+                    
+            except json.JSONDecodeError:
+                ui.QMessageBox.critical(
+                    self,
+                    "Error",
+                    "Failed to load character: Invalid JSON file."
+                )
+            except Exception as e:
+                ui.QMessageBox.critical(
+                    self,
+                    "Error",
+                    f"Failed to load character: {str(e)}"
+                )
 
     def set_benchmark(self, label):
         """
