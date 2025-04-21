@@ -36,13 +36,18 @@ from PyQt5.QtWidgets import (
 )
 
 from tools.data_migrations import DataMigrator
+from tools.backup_manager import BackupManager
+from dialogs.backup_dialog import BackupDialog
 
 class BESMCharacterApp(ui.QMainWindow):
     def __init__(self):
         super().__init__()
         self.settings = ui.QSettings("Legendmasters", "BESMCharacterApp")
         self.data_migrator = DataMigrator()
-
+        
+        # Initialize backup manager
+        self.backup_manager = BackupManager(self)
+        
         # Load attributes data
         base_path = os.path.dirname(os.path.abspath(__file__))
         with open(os.path.join(base_path, "data", "attributes.json"), "r", encoding="utf-8") as f:
@@ -1111,10 +1116,20 @@ class BESMCharacterApp(ui.QMainWindow):
         toggle_row("Society Points", sop, self.sop_label, sop_range, "Society Points")
 
     def save_character(self):
+        # Get character name from input field or use default
+        char_name = self.char_name_input.text().strip()
+        if not char_name:
+            char_name = "newCharacter"
+            
+        # Create default filename
+        safe_char_name = char_name.replace(" ", "_").replace("/", "-").replace("\\", "-")
+        safe_char_name = ''.join(c for c in safe_char_name if c.isalnum() or c in "_-")
+        default_path = os.path.join(self.last_directory, f"{safe_char_name}.json")
+        
         path, _ = ui.QFileDialog.getSaveFileName(
             self,
             "Save Character",
-            directory=self.last_directory,
+            directory=default_path,
             filter="JSON Files (*.json)"
         )
 
@@ -1132,7 +1147,8 @@ class BESMCharacterApp(ui.QMainWindow):
                     return
 
             with open(path, 'w') as f:
-                self.character_data["name"] = self.char_name_input.text()
+                # Update character data with current values
+                self.character_data["name"] = char_name
                 self.character_data["player"] = self.player_name_input.text()
                 self.character_data["gm"] = self.gm_name_input.text()
                 self.character_data["race"] = self.race_input.text()
@@ -1148,6 +1164,10 @@ class BESMCharacterApp(ui.QMainWindow):
 
             self.last_directory = os.path.dirname(path)
             self.settings.setValue("last_directory", self.last_directory)
+            
+            # Create automatic backup
+            self.backup_manager.create_backup(self.character_data, manual=False)
+            
             ui.QMessageBox.information(self, "Saved", "Character saved successfully.")
 
     def load_character(self):
@@ -1181,6 +1201,9 @@ class BESMCharacterApp(ui.QMainWindow):
                 self.settings.setValue("last_directory", self.last_directory)
                 self.load_character_into_ui()
                 self.update_point_total()
+                
+                # Create automatic backup after loading
+                self.backup_manager.create_backup(self.character_data, manual=False)
                 
                 # Show migration message if needed
                 if data.get("version") != self.data_migrator.current_version:
@@ -1730,6 +1753,9 @@ class BESMCharacterApp(ui.QMainWindow):
         # Update points and UI
         self.update_point_total()
         self.update_dynamic_tabs_visibility()
+        
+        # Create automatic backup of new character
+        self.backup_manager.create_backup(self.character_data, manual=False)
 
     def edit_alternate_form(self, uid):
         from dialogs.alternate_form_editor_dialog import AlternateFormEditorDialog
@@ -1912,6 +1938,11 @@ class BESMCharacterApp(ui.QMainWindow):
                 f"Failed to export character to PDF:\n{str(e)}\n\nDetails:\n{error_details}"
             )
 
+    def open_backup_manager(self):
+        """Open the backup manager dialog"""
+        dialog = BackupDialog(self, self.backup_manager)
+        dialog.exec_()
+
 if __name__ == "__main__":
     app = ui.QApplication(sys.argv)
 
@@ -1922,5 +1953,10 @@ if __name__ == "__main__":
         print(f"Failed to load stylesheet: {e}")
 
     window = BESMCharacterApp()
+    
+    # Add backup menu item
+    backup_action = window.menuBar().addAction("Backup Manager")
+    backup_action.triggered.connect(window.open_backup_manager)
+    
     window.show()
     sys.exit(app.exec_())

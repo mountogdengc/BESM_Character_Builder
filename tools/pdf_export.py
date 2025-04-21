@@ -28,14 +28,28 @@ def export_character_to_pdf(character_data, output_path=None):
         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
         output_path = os.path.join(desktop, f"{char_name}_{timestamp}.pdf")
     
-    # Create the document
+    # Create the document with footer
+    def add_footer(canvas, doc):
+        canvas.saveState()
+        # Get character version
+        version = character_data.get("version", 1)
+        # Create footer text
+        footer_text = f"Character Version: {version} | Generated on {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}"
+        # Set font and size
+        canvas.setFont('Helvetica', 8)
+        # Draw footer text
+        canvas.drawString(inch, 0.5*inch, footer_text)
+        canvas.restoreState()
+    
     doc = SimpleDocTemplate(
         output_path,
         pagesize=letter,
         rightMargin=0.5*inch,
         leftMargin=0.5*inch,
         topMargin=0.5*inch,
-        bottomMargin=0.5*inch
+        bottomMargin=0.75*inch,  # Increased bottom margin to accommodate footer
+        onFirstPage=add_footer,
+        onLaterPages=add_footer
     )
     
     # Styles

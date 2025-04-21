@@ -1,0 +1,136 @@
+2025-04-20 23:22:34,360 - INFO - Created manual backup: character_backup_manual_20250420_232234.json
+2025-04-20 23:22:34,383 - INFO - Created manual backup: character_backup_manual_20250420_232234.json
+2025-04-20 23:22:34,390 - INFO - Created manual backup: character_backup_manual_20250420_232234.json
+2025-04-20 23:22:34,401 - INFO - Created manual backup: character_backup_manual_20250420_232234.json
+2025-04-20 23:22:34,402 - INFO - Restored backup: character_backup_manual_20250420_232234.json
+2025-04-20 23:22:34,416 - INFO - Created manual backup: character_backup_manual_20250420_232234.json
+2025-04-20 23:22:34,418 - INFO - Created manual backup: character_backup_manual_20250420_232234.json
+2025-04-20 23:22:34,419 - INFO - Created manual backup: character_backup_manual_20250420_232234.json
+2025-04-20 23:22:34,421 - INFO - Created manual backup: character_backup_manual_20250420_232234.json
+2025-04-20 23:22:34,422 - INFO - Created manual backup: character_backup_manual_20250420_232234.json
+2025-04-20 23:22:34,424 - INFO - Created manual backup: character_backup_manual_20250420_232234.json
+2025-04-20 23:22:34,425 - INFO - Created manual backup: character_backup_manual_20250420_232234.json
+2025-04-20 23:22:34,426 - INFO - Removed old backup: character_backup_manual_20250420_232234.json
+2025-04-20 23:22:34,560 - INFO - Created manual backup: character_backup_manual_20250420_232234.json
+2025-04-20 23:22:34,562 - INFO - Created manual backup: character_backup_manual_20250420_232234.json
+2025-04-20 23:22:34,563 - INFO - Created manual backup: character_backup_manual_20250420_232234.json
+2025-04-20 23:22:34,577 - ERROR - Failed to create backup: 'NoneType' object has no attribute 'get'
+2025-04-20 23:22:34,584 - INFO - Created manual backup: character_backup_manual_20250420_232234.json
+2025-04-20 23:22:34,597 - INFO - Created manual backup: character_backup_manual_20250420_232234.json
+2025-04-20 23:23:17,552 - INFO - Backup manager initialized
+2025-04-20 23:23:17,555 - INFO - Created manual backup: character_backup_manual_20250420_232317.json
+2025-04-20 23:23:17,561 - INFO - Backup manager initialized
+2025-04-20 23:23:17,574 - INFO - Created manual backup: character_backup_manual_20250420_232317.json
+2025-04-20 23:23:17,578 - INFO - Backup manager initialized
+2025-04-20 23:23:17,581 - INFO - Created manual backup: character_backup_manual_20250420_232317.json
+2025-04-20 23:23:17,587 - INFO - Backup manager initialized
+2025-04-20 23:23:17,590 - INFO - Created manual backup: character_backup_manual_20250420_232317.json
+2025-04-20 23:23:17,591 - INFO - Restored backup: character_backup_manual_20250420_232317.json
+2025-04-20 23:23:17,595 - INFO - Backup manager initialized
+2025-04-20 23:23:17,598 - INFO - Created manual backup: character_backup_manual_20250420_232317.json
+2025-04-20 23:23:17,600 - INFO - Created manual backup: character_backup_manual_20250420_232317.json
+2025-04-20 23:23:17,602 - INFO - Created manual backup: character_backup_manual_20250420_232317.json
+2025-04-20 23:23:17,604 - INFO - Created manual backup: character_backup_manual_20250420_232317.json
+2025-04-20 23:23:17,606 - INFO - Created manual backup: character_backup_manual_20250420_232317.json
+2025-04-20 23:23:17,608 - INFO - Created manual backup: character_backup_manual_20250420_232317.json
+2025-04-20 23:23:17,610 - INFO - Created manual backup: character_backup_manual_20250420_232317.json
+2025-04-20 23:23:17,611 - INFO - Removed old backup: character_backup_manual_20250420_232317.json
+2025-04-20 23:23:17,727 - INFO - Backup manager initialized
+2025-04-20 23:23:17,741 - INFO - Created manual backup: character_backup_manual_20250420_232317.json
+2025-04-20 23:23:17,743 - INFO - Created manual backup: character_backup_manual_20250420_232317.json
+2025-04-20 23:23:17,745 - INFO - Created manual backup: character_backup_manual_20250420_232317.json
+2025-04-20 23:23:17,749 - INFO - Backup manager initialized
+2025-04-20 23:23:17,753 - ERROR - Failed to create backup: 'NoneType' object has no attribute 'get'
+2025-04-20 23:23:17,758 - INFO - Backup manager initialized
+2025-04-20 23:23:17,762 - INFO - Created manual backup: character_backup_manual_20250420_232317.json
+2025-04-20 23:23:17,774 - INFO - Backup manager initialized
+2025-04-20 23:23:17,777 - INFO - Created manual backup: character_backup_manual_20250420_232317.json
+2025-04-20 23:23:17,784 - INFO - Backup manager initialized
+2025-04-20 23:23:58,402 - INFO - Backup manager initialized
+2025-04-20 23:23:58,404 - INFO - Created manual backup: character_backup_manual_20250420_232358.json
+2025-04-20 23:23:58,415 - INFO - Backup manager initialized
+2025-04-20 23:23:58,429 - INFO - Created manual backup: character_backup_manual_20250420_232358.json
+2025-04-20 23:23:58,434 - INFO - Backup manager initialized
+2025-04-20 23:23:58,436 - INFO - Created manual backup: character_backup_manual_20250420_232358.json
+2025-04-20 23:23:58,441 - INFO - Backup manager initialized
+2025-04-20 23:23:58,448 - INFO - Created manual backup: character_backup_manual_20250420_232358.json
+2025-04-20 23:23:58,450 - INFO - Restored backup: character_backup_manual_20250420_232358.json
+2025-04-20 23:23:58,453 - INFO - Backup manager initialized
+2025-04-20 23:23:58,463 - INFO - Created manual backup: character_backup_manual_20250420_232358.json
+2025-04-20 23:23:58,465 - INFO - Created manual backup: character_backup_manual_20250420_232358.json
+2025-04-20 23:23:58,467 - INFO - Created manual backup: character_backup_manual_20250420_232358.json
+2025-04-20 23:23:58,469 - INFO - Created manual backup: character_backup_manual_20250420_232358.json
+2025-04-20 23:23:58,471 - INFO - Created manual backup: character_backup_manual_20250420_232358.json
+2025-04-20 23:23:58,473 - INFO - Created manual backup: character_backup_manual_20250420_232358.json
+2025-04-20 23:23:58,475 - INFO - Created manual backup: character_backup_manual_20250420_232358.json
+2025-04-20 23:23:58,476 - INFO - Removed old backup: character_backup_manual_20250420_232358.json
+2025-04-20 23:23:58,614 - INFO - Backup manager initialized
+2025-04-20 23:23:58,634 - INFO - Created manual backup: character_backup_manual_20250420_232358.json
+2025-04-20 23:23:58,636 - INFO - Created manual backup: character_backup_manual_20250420_232358.json
+2025-04-20 23:23:58,639 - INFO - Created manual backup: character_backup_manual_20250420_232358.json
+2025-04-20 23:23:58,646 - INFO - Backup manager initialized
+2025-04-20 23:23:58,649 - ERROR - Failed to create backup: 'NoneType' object has no attribute 'get'
+2025-04-20 23:23:58,654 - INFO - Backup manager initialized
+2025-04-20 23:23:58,664 - INFO - Created manual backup: character_backup_manual_20250420_232358.json
+2025-04-20 23:23:58,679 - INFO - Backup manager initialized
+2025-04-20 23:23:58,699 - INFO - Created manual backup: character_backup_manual_20250420_232358.json
+2025-04-20 23:23:58,709 - INFO - Backup manager initialized
+2025-04-20 23:24:43,814 - INFO - Backup manager initialized
+2025-04-20 23:24:43,816 - INFO - Created manual backup: character_backup_manual_20250420_232443.json
+2025-04-20 23:24:43,822 - INFO - Backup manager initialized
+2025-04-20 23:24:43,842 - INFO - Created manual backup: character_backup_manual_20250420_232443.json
+2025-04-20 23:24:43,846 - INFO - Backup manager initialized
+2025-04-20 23:24:43,849 - INFO - Created manual backup: character_backup_manual_20250420_232443.json
+2025-04-20 23:24:43,855 - INFO - Backup manager initialized
+2025-04-20 23:24:43,859 - INFO - Created manual backup: character_backup_manual_20250420_232443.json
+2025-04-20 23:24:43,860 - INFO - Restored backup: character_backup_manual_20250420_232443.json
+2025-04-20 23:24:43,865 - INFO - Backup manager initialized
+2025-04-20 23:24:43,869 - INFO - Created manual backup: character_backup_manual_20250420_232443.json
+2025-04-20 23:24:43,871 - INFO - Created manual backup: character_backup_manual_20250420_232443.json
+2025-04-20 23:24:43,873 - INFO - Created manual backup: character_backup_manual_20250420_232443.json
+2025-04-20 23:24:43,875 - INFO - Created manual backup: character_backup_manual_20250420_232443.json
+2025-04-20 23:24:43,877 - INFO - Created manual backup: character_backup_manual_20250420_232443.json
+2025-04-20 23:24:43,879 - INFO - Created manual backup: character_backup_manual_20250420_232443.json
+2025-04-20 23:24:43,881 - INFO - Created manual backup: character_backup_manual_20250420_232443.json
+2025-04-20 23:24:43,882 - INFO - Removed old backup: character_backup_manual_20250420_232443.json
+2025-04-20 23:24:43,998 - INFO - Backup manager initialized
+2025-04-20 23:24:44,001 - INFO - Created manual backup: character_backup_manual_20250420_232444.json
+2025-04-20 23:24:44,003 - INFO - Created manual backup: character_backup_manual_20250420_232444.json
+2025-04-20 23:24:44,005 - INFO - Created manual backup: character_backup_manual_20250420_232444.json
+2025-04-20 23:24:44,010 - INFO - Backup manager initialized
+2025-04-20 23:24:44,013 - ERROR - Failed to create backup: 'NoneType' object has no attribute 'get'
+2025-04-20 23:24:44,017 - INFO - Backup manager initialized
+2025-04-20 23:24:44,021 - INFO - Created manual backup: character_backup_manual_20250420_232444.json
+2025-04-20 23:24:44,035 - INFO - Backup manager initialized
+2025-04-20 23:24:44,040 - INFO - Created manual backup: character_backup_manual_20250420_232444.json
+2025-04-20 23:24:44,050 - INFO - Backup manager initialized
+2025-04-20 23:25:29,365 - INFO - Backup manager initialized
+2025-04-20 23:25:29,381 - INFO - Backup manager initialized
+2025-04-20 23:25:29,391 - INFO - Backup manager initialized
+2025-04-20 23:25:29,403 - INFO - Backup manager initialized
+2025-04-20 23:25:29,413 - INFO - Backup manager initialized
+2025-04-20 23:25:29,568 - INFO - Backup manager initialized
+2025-04-20 23:25:29,595 - INFO - Backup manager initialized
+2025-04-20 23:25:29,603 - INFO - Backup manager initialized
+2025-04-20 23:25:29,612 - INFO - Backup manager initialized
+2025-04-20 23:25:29,624 - INFO - Backup manager initialized
+2025-04-20 23:26:21,092 - INFO - Backup manager initialized
+2025-04-20 23:26:21,126 - INFO - Backup manager initialized
+2025-04-20 23:26:21,135 - INFO - Backup manager initialized
+2025-04-20 23:26:21,145 - INFO - Backup manager initialized
+2025-04-20 23:26:21,160 - INFO - Backup manager initialized
+2025-04-20 23:26:22,010 - INFO - Backup manager initialized
+2025-04-20 23:26:22,033 - INFO - Backup manager initialized
+2025-04-20 23:26:22,045 - INFO - Backup manager initialized
+2025-04-20 23:26:22,056 - INFO - Backup manager initialized
+2025-04-20 23:26:22,084 - INFO - Backup manager initialized
+2025-04-20 23:27:08,893 - INFO - Backup manager initialized
+2025-04-20 23:27:08,928 - INFO - Backup manager initialized
+2025-04-20 23:27:08,938 - INFO - Backup manager initialized
+2025-04-20 23:27:08,951 - INFO - Backup manager initialized
+2025-04-20 23:27:08,965 - INFO - Backup manager initialized
+2025-04-20 23:27:09,716 - INFO - Backup manager initialized
+2025-04-20 23:27:09,748 - INFO - Backup manager initialized
+2025-04-20 23:27:09,755 - INFO - Backup manager initialized
+2025-04-20 23:27:09,764 - INFO - Backup manager initialized
+2025-04-20 23:27:09,773 - INFO - Backup manager initialized
