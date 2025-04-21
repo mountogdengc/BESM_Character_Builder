@@ -1,0 +1,39 @@
+name: Count lines of code
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  loc:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Rust & tokei
+        run: |
+          sudo apt update
+          sudo apt install -y curl
+          curl https://sh.rustup.rs -sSf | sh -s -- -y
+          source $HOME/.cargo/env
+          cargo install tokei
+
+      - name: Count lines
+        id: count
+        run: |
+          source $HOME/.cargo/env
+          tokei --output json > loc.json
+          total=$(jq '.Total.code' loc.json)
+          echo "total=$total" >> "$GITHUB_OUTPUT"
+
+      - name: Upload LOC report
+        uses: actions/upload-artifact@v4
+        with:
+          name: loc-report
+          path: loc.json
+
+      - name: Add summary
+        run: echo "🧮 **Total code lines:** ${{ steps.count.outputs.total }}" >> $GITHUB_STEP_SUMMARY

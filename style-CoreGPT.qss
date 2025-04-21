@@ -1,0 +1,234 @@
+/* ---------------------------------------------------
+   BASE WIDGET STYLES
+--------------------------------------------------- */
+QMainWindow, QDialog {
+    background-color: #a383ab;
+}
+
+QWidget#qt_tabwidget_stackedwidget {
+    background-color: #d4b7dc;
+}
+
+/* ---------------------------------------------------
+   LABELS & TEXT
+--------------------------------------------------- */
+QLabel {
+    color: #ffffff;
+    font-family: "Comic Sans MS", cursive;
+    font-size: 14px;
+    padding: 2px;
+    font-weight: bold;
+}
+
+#cardTitle {
+    font-weight: bold;
+    font-size: 10pt;
+    color: #ffffff;
+    font-family: "Comic Sans MS", cursive;
+    padding: 2px 4px 1px 4px;
+}
+
+#suggestionLabel {
+    color: #ff5aa9;
+    font-family: "Comic Sans MS", cursive;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 5px;
+    margin: 5px;
+    border-radius: 5px;
+}
+
+#suggestionLabel:hover {
+    text-decoration: underline;
+}
+
+.cardLabel {
+    color: #ffffff;
+    font-family: "Comic Sans MS", cursive;
+    font-size: 10pt;
+    padding: 2px 4px;
+}
+
+/* ---------------------------------------------------
+   BUTTONS
+--------------------------------------------------- */
+QPushButton, QToolButton {
+    background-color: rgba(255, 255, 255, 0.05);
+    color: #ffddee;
+    font-family: "Comic Sans MS", cursive;
+    font-size: 18px;
+    font-weight: bold;
+    border: 1px solid black;
+    padding: 6px 10px;
+    border-radius: 4px;
+    text-align: left;
+}
+
+QPushButton:hover, QToolButton::menu-indicator {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+QDialogButtonBox {
+    background-color: rgba(255, 255, 255, 0.05);
+    color: #ffddee;
+    font-family: "Comic Sans MS", cursive;
+    font-size: 16px;
+    font-weight: bold;
+    border: 1px solid black;
+    border-radius: 4px;
+    padding: 6px 10px;
+}
+
+/* ---------------------------------------------------
+   INPUT FIELDS
+--------------------------------------------------- */
+QLineEdit, QTextEdit, QSpinBox, QComboBox {
+    background-color: #d4b7dc;
+    border: 2px solid white;
+    border-radius: 6px;
+    padding: 4px;
+    color: #ffffff;
+    font-size: 14px;
+    font-family: "Comic Sans MS", cursive;
+}
+
+/*QSpinBox::up-button, QSpinBox::down-button {
+    background-color: #b07fbe;
+    border: 1px solid #ffffff;
+    subcontrol-origin: border;
+    width: 16px;
+}*/
+
+/*QSpinBox::up-arrow, QSpinBox::down-arrow {
+    border: none;
+    background: #ffffff;
+    width: 8px;
+    height: 8px;
+}*/
+
+/* ---------------------------------------------------
+   TABS
+--------------------------------------------------- */
+QTabWidget::pane {
+    border: 2px solid white;
+    border-radius: 8px;
+}
+
+QTabBar::tab {
+    background-color: rgba(0, 0, 0, 0.1);
+    border: 1px solid black;
+    border-radius: 6px;
+    margin: 2px;
+    padding: 8px 12px;
+    min-width: 150px;
+    font-weight: bold;
+    color: #ffffff;
+    font-family: "Comic Sans MS", cursive;
+}
+
+QTabBar::tab:selected {
+    background-color: #7a3b8f;
+    color: #5a0040;
+    font-weight: bold;
+}
+
+QTabBar::tab:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* ---------------------------------------------------
+   TABLES
+--------------------------------------------------- */
+QTableWidget {
+    background-color: #d4b7dc;
+    color: white;
+    font-family: "Comic Sans MS", cursive;
+    gridline-color: white;
+    border: 2px solid white;
+    border-radius: 6px;
+}
+
+/* ---------------------------------------------------
+   TOOLTIP
+--------------------------------------------------- */
+QToolTip {
+    background-color: #f5cde6;
+    color: #3e0031;
+    border: 1px solid #ffb3e0;
+    font-family: "Comic Sans MS", cursive;
+    font-size: 12px;
+}
+
+/* ---------------------------------------------------
+   SCROLLBARS
+--------------------------------------------------- */
+QScrollBar:vertical, QScrollBar:horizontal {
+    background: #c39ac9;
+    border: 1px solid white;
+    width: 12px;
+    margin: 0px;
+}
+
+QScrollBar::handle:vertical, QScrollBar::handle:horizontal {
+    background: #ff5aa9;
+    border-radius: 6px;
+}
+
+QScrollArea {
+    background-color: transparent;
+    border: none;
+}
+
+QScrollArea QWidget {
+    background-color: transparent;
+}
+
+/* ---------------------------------------------------
+   ALTERNATE FORM CARDS
+--------------------------------------------------- */
+QWidget#alternateFormCard {
+    background-color: #222222;
+    border: 2px solid #555555;
+    border-radius: 6px;
+    padding: 10px;
+    margin: 8px 0;
+    min-height: 80px;
+}
+
+QWidget#alternateFormCard:hover {
+    background-color: #333333;
+}
+
+/* ---------------------------------------------------
+   MISC CUSTOM WIDGETS
+--------------------------------------------------- */
+#spentCpDisplay, #unspentCpDisplay {
+    font-weight: bold;
+}
+
+#unspentCpDisplay[negative="true"] {
+    color: red;
+    font-weight: bold;
+}
+
+#unspentCpDisplay[negative="false"] {
+    color: #ffffff;
+}
+
+/* ---------------------------------------------------
+   REMOVE BUTTON
+--------------------------------------------------- */
+#removeButton {
+    background-color: #ff5a5a;
+    color: white;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 0px;
+    margin: 0px;
+    text-align: center;
+}
+
+#removeButton:hover {
+    background-color: #ff0000;
+}
