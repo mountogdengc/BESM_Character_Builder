@@ -1,0 +1,12 @@
+0000000000000000000000000000000000000000 e10daf6e5be063b1bbf6090c55f59b439dcac16d davidthegnome <david.lee.morris@gmail.com> 1744511481 -0600	commit (initial): first commit
+e10daf6e5be063b1bbf6090c55f59b439dcac16d 4732de6d98814325cb928879809a25ebb0c0b08c davidthegnome <david.lee.morris@gmail.com> 1744515582 -0600	commit: Add defects system with builder dialog and JSON data
+4732de6d98814325cb928879809a25ebb0c0b08c 045fd80cc3661b5230e725e989f710345009d2e3 davidthegnome <david.lee.morris@gmail.com> 1744518218 -0600	commit: Add initial tab implementation and JSON data for character attributes
+045fd80cc3661b5230e725e989f710345009d2e3 a64030fffbd4b19533d0fe518535ba2ef32e715b davidthegnome <david.lee.morris@gmail.com> 1744521335 -0600	commit: Crashes when trying to edit attributes or defects. Have to click card titles to edit.
+a64030fffbd4b19533d0fe518535ba2ef32e715b a64030fffbd4b19533d0fe518535ba2ef32e715b davidthegnome <david.lee.morris@gmail.com> 1744575665 -0600	checkout: moving from main to metamorphosis-implementation
+a64030fffbd4b19533d0fe518535ba2ef32e715b 66457bac0a6c7d1f278b21f26b39e2061c83a114 davidthegnome <david.lee.morris@gmail.com> 1744605467 -0600	commit: Add Weapon and Item attributes with builder dialogs and templates
+66457bac0a6c7d1f278b21f26b39e2061c83a114 60c865fd904c61e977ec63394a1de3bab7b34856 davidthegnome <david.lee.morris@gmail.com> 1744861876 -0600	commit: Add PDF export and defect builder, remove utility scripts
+60c865fd904c61e977ec63394a1de3bab7b34856 2e3b25c00ce461a7d670aa981114f7aaf1a005b0 davidthegnome <david.lee.morris@gmail.com> 1744873723 -0600	commit: Add template manager and PDF export functionality with size templates
+2e3b25c00ce461a7d670aa981114f7aaf1a005b0 d09d481ffc1b57106a26b5adeb545acbf1036c6d davidthegnome <david.lee.morris@gmail.com> 1744875872 -0600	commit: Add race and size templates for character generation
+d09d481ffc1b57106a26b5adeb545acbf1036c6d d849e025b8c59f1dae7cd7f11283ed3c6dcd52f8 davidthegnome <david.lee.morris@gmail.com> 1744957481 -0600	commit: Add race templates and character data files, update UI styling
+d849e025b8c59f1dae7cd7f11283ed3c6dcd52f8 ad0a2775402a5e62774f7a0ac873418ea2d22b55 davidthegnome <david.lee.morris@gmail.com> 1744995306 -0600	commit: Add initial attribute builder dialog and user guide with data files
+ad0a2775402a5e62774f7a0ac873418ea2d22b55 ad0a2775402a5e62774f7a0ac873418ea2d22b55 davidthegnome <david.lee.morris@gmail.com> 1745205194 -0600	checkout: moving from metamorphosis-implementation to fix-git-issues
