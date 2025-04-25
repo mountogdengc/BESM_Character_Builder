@@ -293,8 +293,15 @@ def apply_template_to_character(app, template_data, template_type):
     current_race = app.race_input.text()
     current_class = app.class_input.text()
     
+    # Update points first
     app.update_point_total()
-    app.load_character_into_ui()
+    
+    # Update attributes UI only once
+    from tabs.attributes_tab import sync_attributes
+    sync_attributes(app)
+    
+    # Update dynamic tabs visibility
+    app.update_dynamic_tabs_visibility()
     
     # Restore race and class fields if they were set
     if current_race and current_race.strip():
@@ -795,67 +802,6 @@ def apply_size_from_template(app, size_info, template_changes):
             "size_name": matching_template.get("name", "Unknown Size"),
             "applied_by": template_changes.get("name", "Unknown Template")
         })
-
-
-def apply_size_template(app, template_data, template_changes):
-    """Apply a size template to the character"""
-    # Update size field
-    if "name" in template_data:
-        old_size = app.size_input.text()
-        app.size_input.setText(template_data["name"])
-        template_changes["changes"].append({
-            "field": "size",
-            "old_value": old_size,
-            "new_value": template_data["name"]
-        })
-    
-    # Apply stat changes by adding to existing stats
-    if "stats" in template_data:
-        # Handle new stats structure (object with body_adj, mind_adj, soul_adj)
-        if isinstance(template_data["stats"], dict):
-            # New format
-            stats_dict = template_data["stats"]
-            
-            # Map the new field names to the old ones
-            stat_mapping = {
-                "body_adj": "Body",
-                "mind_adj": "Mind",
-                "soul_adj": "Soul"
-            }
-            
-            for new_field, old_field in stat_mapping.items():
-                value = stats_dict.get(new_field, 0)
-                if value and old_field in app.stat_spinners:
-                    old_value = app.stat_spinners[old_field].value()
-                    new_value = old_value + value
-                    app.stat_spinners[old_field].setValue(new_value)
-                    template_changes["changes"].append({
-                        "field": f"stat_{old_field}",
-                        "old_value": old_value,
-                        "new_value": new_value,
-                        "modifier": f"+{value}"  # Record that this was an addition
-                    })
-        else:
-            # Old format - list of stat entries
-            for stat_entry in template_data["stats"]:
-                stat = stat_entry.get("stat")
-                value = stat_entry.get("value")
-                if stat in app.stat_spinners:
-                    old_value = app.stat_spinners[stat].value()
-                    new_value = old_value + value  # Add instead of replace
-                    app.stat_spinners[stat].setValue(new_value)
-                    template_changes["changes"].append({
-                        "field": f"stat_{stat}",
-                        "old_value": old_value,
-                        "new_value": new_value,
-                        "modifier": f"+{value}"  # Record that this was an addition
-                    })
-    
-    # Apply attribute changes
-    apply_attributes(app, template_data, template_changes)
-    
-    # Apply defect changes
-    apply_defects(app, template_data, template_changes)
 
 
 def remove_template_from_character(app, template_id):

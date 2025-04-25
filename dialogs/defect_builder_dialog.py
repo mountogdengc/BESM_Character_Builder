@@ -442,3 +442,66 @@ class DefectBuilderDialog(QDialog):
 
         # Default fallback
         self.custom_name_input.setText(fallback_name)
+
+    def load_defect_data(self, defect_data):
+        """Load existing defect data into the dialog"""
+        if not defect_data:
+            return
+            
+        # First determine the correct base defect name
+        base_name = None
+        if "key" in defect_data:
+            # Find the defect name that matches this key
+            for defect_name, defect_info in self.defects.items():
+                if defect_info.get("key") == defect_data["key"]:
+                    base_name = defect_name
+                    break
+        
+        if not base_name:
+            base_name = defect_data.get("base_name", defect_data.get("name", ""))
+        
+        # Set the base defect type if it exists in our defects list
+        if base_name in self.defects:
+            self.defect_dropdown.setCurrentText(base_name)
+            self.update_defect_info()
+        
+        # Set the custom name
+        custom_name = defect_data.get("name", "")
+        self.custom_name_input.setText(custom_name)
+        self._custom_name_edited = custom_name != base_name
+        
+        # Set the rank
+        rank = defect_data.get("rank", 1)
+        self.rank_spin.setValue(rank)
+        
+        # Set the user description/notes
+        notes = defect_data.get("notes", "")
+        self.user_description.setPlainText(notes)
+        
+        # Select enhancements
+        enhancements = defect_data.get("enhancements", [])
+        for i in range(self.enhancement_list.count()):
+            item = self.enhancement_list.item(i)
+            if item.text() in enhancements:
+                item.setSelected(True)
+                
+        # Select limiters
+        limiters = defect_data.get("limiters", [])
+        for i in range(self.limiter_list.count()):
+            item = self.limiter_list.item(i)
+            if item.text() in limiters:
+                item.setSelected(True)
+                
+        # Populate custom fields
+        custom_fields = defect_data.get("custom_fields", {})
+        for field_name, value in custom_fields.items():
+            if field_name in self.custom_input_widgets:
+                widget = self.custom_input_widgets[field_name]
+                if isinstance(widget, QLineEdit):
+                    widget.setText(value)
+                elif isinstance(widget, QComboBox):
+                    widget.setCurrentText(value)
+                elif isinstance(widget, QSpinBox):
+                    widget.setValue(int(value))
+                elif isinstance(widget, QTextEdit):
+                    widget.setPlainText(value)

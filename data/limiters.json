@@ -91,7 +91,7 @@
     {
       "name": "Ammo",
       "key": "ammo",
-      "description": "The Ammo Limiter – which is often assigned in conjunction with the Range Enhancement – represents the total ammunition typically carried by the character relative to the Weapon’s rate of fire. When the Ammo is depleted, the character cannot use the Weapon again until the Ammo is replaced (which usually cannot occur until the current combat or dramatic scene is completed). Note that Ammo does not refer to the number of shots a Weapon can fire with a loaded projectile (which is one for a longbow, six for a revolver pistol, etc.) if additional ammunition is readily available and the Weapon can be reloaded easily to allow continued use. If a Weapon such as a crossbow or cannon has plenty of ammunition available but requires time to reload between shots, assign the Activation Limiter instead. One assignment of Ammo means the Weapon can fire 4-6 shots before ammunition runs out; two assignments means 2-3 shots; and three assignments means only 1 shot. Four assignments of Ammo represents a Weapon that is destroyed after a single use, such as a grenade or mine.",
+      "description": "The Ammo Limiter – which is often assigned in conjunction with the Range Enhancement – represents the total ammunition typically carried by the character relative to the Weapon's rate of fire. When the Ammo is depleted, the character cannot use the Weapon again until the Ammo is replaced (which usually cannot occur until the current combat or dramatic scene is completed). Note that Ammo does not refer to the number of shots a Weapon can fire with a loaded projectile (which is one for a longbow, six for a revolver pistol, etc.) if additional ammunition is readily available and the Weapon can be reloaded easily to allow continued use. If a Weapon such as a crossbow or cannon has plenty of ammunition available but requires time to reload between shots, assign the Activation Limiter instead. One assignment of Ammo means the Weapon can fire 4-6 shots before ammunition runs out; two assignments means 2-3 shots; and three assignments means only 1 shot. Four assignments of Ammo represents a Weapon that is destroyed after a single use, such as a grenade or mine.",
       "compatible_with": ["weapon"],
       "source": "BESM4e",
       "picks": 1
@@ -139,7 +139,7 @@
     {
       "name": "Fieldless",
       "key": "fieldless",
-      "description": "This Limiter can only be assigned if the character or Item also has the Force Field Attribute. The Weapon cannot be used unless all Force Fields are turned off before using the attack. The Force Fields remain off until the character’s first opportunity to act in the following combat round.",
+      "description": "This Limiter can only be assigned if the character or Item also has the Force Field Attribute. The Weapon cannot be used unless all Force Fields are turned off before using the attack. The Force Fields remain off until the character's first opportunity to act in the following combat round.",
       "compatible_with": ["weapon", "item", "force_field"],
       "source": "BESM4e",
       "picks": 1
@@ -147,7 +147,7 @@
     {
       "name": "Focussed",
       "key": "focussed",
-      "description": "This Limiter restricts the character to telekinetically moving or sculpting one specific type of matter – such as air, earth, fire, metal, water, wood, etc. – that is selected during character creation. Context is provided below for each of these examples:\nAIR: The character can only move air (or other gases). A cubic metre of air masses about 1.3 kg. Enough air to fill a 3 metre by 3 metre by 3 metre (roughly 1,000 cubic feet) room masses 35 kg.\nEARTH: The character can only move dirt, rock, stone, sand, etc. and cannot affect treated metals such as iron or lead. A cubic metre of packed dirt masses about 2 tonnes; the same mass of concrete masses about 2.5 tonnes, while a cubic metre of solid granite masses about 2.8 tonnes.\nFIRE: The character can only affect flames of an existing fire, or can possibly start small ones (and manipulate them into larger ones, as appropriate) with their mind as well. Since fire does not have mass, the Level indicates the size of the flames that can be controlled and manipulated: small fires at Level 1 (like a candle or match flame), up to a large conflagrations that could encompass an apartment building at Level 6.\nMETAL: The character’s Telekinesis only works on metal. This may be a mystical limitation, or it may be the character’s Attribute is actually magnetic (or pseudo-magnetic if it works on most metals). A cubic metre of steel masses about 8 tonnes.\nWATER: The character can lift and move water. A cubic metre of water (1,000 litres) masses one tonne while a gallon of water (about 4 litres) masses about 4 kilograms.\nWOOD: The character’s Attribute only works on wood (living or dead). This ability is usually mystical in origin and common to druids and woodland spirits. A cubic metre of wood masses just under a tonne.",
+      "description": "This Limiter restricts the character to telekinetically moving or sculpting one specific type of matter – such as air, earth, fire, metal, water, wood, etc. – that is selected during character creation. Context is provided below for each of these examples:\nAIR: The character can only move air (or other gases). A cubic metre of air masses about 1.3 kg. Enough air to fill a 3 metre by 3 metre by 3 metre (roughly 1,000 cubic feet) room masses 35 kg.\nEARTH: The character can only move dirt, rock, stone, sand, etc. and cannot affect treated metals such as iron or lead. A cubic metre of packed dirt masses about 2 tonnes; the same mass of concrete masses about 2.5 tonnes, while a cubic metre of solid granite masses about 2.8 tonnes.\nFIRE: The character can only affect flames of an existing fire, or can possibly start small ones (and manipulate them into larger ones, as appropriate) with their mind as well. Since fire does not have mass, the Level indicates the size of the flames that can be controlled and manipulated: small fires at Level 1 (like a candle or match flame), up to a large conflagrations that could encompass an apartment building at Level 6.\nMETAL: The character's Telekinesis only works on metal. This may be a mystical limitation, or it may be the character's Attribute is actually magnetic (or pseudo-magnetic if it works on most metals). A cubic metre of steel masses about 8 tonnes.\nWATER: The character can lift and move water. A cubic metre of water (1,000 litres) masses one tonne while a gallon of water (about 4 litres) masses about 4 kilograms.\nWOOD: The character's Attribute only works on wood (living or dead). This ability is usually mystical in origin and common to druids and woodland spirits. A cubic metre of wood masses just under a tonne.",
       "compatible_with": ["telekinesis"],
       "source": "BESM4e",
       "picks": 1
@@ -203,7 +203,7 @@
     {
       "name": "Non-Penetrating",
       "key": "non_penetrating",
-      "description": "The Weapon has an inferior ability to penetrate existing Armour and Force Fields (with Armour Ratings of at least 5 AR) to inflict damage. Examples include unarmed attacks, shotgun blasts, hollow-point bullets, bated swords, caltrops, a storm of icicles, etc. The Armour Rating of Armour and Force Fields is increased by 10 against such Weapons each time Non-Penetrating is assigned. For example, two assignments of Non-Penetrating increase the target’s chainmail Armour Rating by 20. This Limiter can only be assigned to Weapons that are somehow reduced in effectiveness by a target’s Armour Rating, and consequently cannot be assigned to those with Enhancements such as Insidious and Quake.",
+      "description": "The Weapon has an inferior ability to penetrate existing Armour and Force Fields (with Armour Ratings of at least 5 AR) to inflict damage. Examples include unarmed attacks, shotgun blasts, hollow-point bullets, bated swords, caltrops, a storm of icicles, etc. The Armour Rating of Armour and Force Fields is increased by 10 against such Weapons each time Non-Penetrating is assigned. For example, two assignments of Non-Penetrating increase the target's chainmail Armour Rating by 20. This Limiter can only be assigned to Weapons that are somehow reduced in effectiveness by a target's Armour Rating, and consequently cannot be assigned to those with Enhancements such as Insidious and Quake.",
       "compatible_with": ["weapon"],
       "source": "BESM4e"
     },
@@ -226,7 +226,7 @@
     {
       "name": "Single Category",
       "key": "single_category_mind_control",
-      "description": "Counts as 4 Limiters (Attribute effectiveness increased by 4 Levels). The character’s Mind Control is restricted to a single targetted group, such as members of the character’s family, or mutants with a specific gene, or poodles.",
+      "description": "Counts as 4 Limiters (Attribute effectiveness increased by 4 Levels). The character's Mind Control is restricted to a single targetted group, such as members of the character's family, or mutants with a specific gene, or poodles.",
       "compatible_with": ["mind_control"],
       "source": "BESM4e",
       "picks": 4
@@ -242,7 +242,7 @@
     {
       "name": "Single Category",
       "key": "single_category_telepathy",
-      "description": "Counts as 4 Limiters (Attribute effectiveness increased by 4 Levels). The character’s Telepathy is restricted to a single targetted group, such as family members, or mutants with a specific gene, or poodles.",
+      "description": "Counts as 4 Limiters (Attribute effectiveness increased by 4 Levels). The character's Telepathy is restricted to a single targetted group, such as family members, or mutants with a specific gene, or poodles.",
       "compatible_with": ["telepathy"],
       "source": "BESM4e",
       "picks": 4
@@ -258,7 +258,7 @@
     {
       "name": "Specific Category",
       "key": "specific_category_mind_control",
-      "description": "Counts as 3 Limiters (Attribute effectiveness increased by 3 Levels). The character’s Mind Control is restricted to a specific category of targets, such as “dogs” or “people obsessed with beauty” or “any being, but only on Sundays”.",
+      "description": "Counts as 3 Limiters (Attribute effectiveness increased by 3 Levels). The character's Mind Control is restricted to a specific category of targets, such as \"dogs\" or \"people obsessed with beauty\" or \"any being, but only on Sundays\".",
       "compatible_with": ["mind_control"],
       "source": "BESM4e",
       "picks": 3
@@ -274,7 +274,7 @@
     {
       "name": "Specific Category",
       "key": "specific_category_telepathy",
-      "description": "Counts as 3 Limiters (Attribute effectiveness increased by 3 Levels). The character’s Telepathy is restricted to a specific category of targets, such as “dogs” or “people obsessed with beauty” or “any being, but only on Sundays”.",
+      "description": "Counts as 3 Limiters (Attribute effectiveness increased by 3 Levels). The character's Telepathy is restricted to a specific category of targets, such as \"dogs\" or \"people obsessed with beauty\" or \"any being, but only on Sundays\".",
       "compatible_with": ["telepathy"],
       "source": "BESM4e",
       "picks": 3
@@ -298,7 +298,7 @@
     {
       "name": "Toxic",
       "key": "toxic",
-      "description": "The Weapon is a gas, toxin, biological agent, sound, radiation, or other harmful effect that only damages living things. One assignment means that targets who have the appropriate Resilient Attribute are completely immune to its effects. Two assignments means that a target who is expecting the attack can also render themselves immune for at least one round (usually enough time to escape) if they had prepared for the attack by taking a simple precaution such as holding one’s breath or using a wet rag to resist a toxic gas.",
+      "description": "The Weapon is a gas, toxin, biological agent, sound, radiation, or other harmful effect that only damages living things. One assignment means that targets who have the appropriate Resilient Attribute are completely immune to its effects. Two assignments means that a target who is expecting the attack can also render themselves immune for at least one round (usually enough time to escape) if they had prepared for the attack by taking a simple precaution such as holding one's breath or using a wet rag to resist a toxic gas.",
       "compatible_with": ["weapon"],
       "source": "BESM4e",
       "picks": 1
@@ -314,82 +314,37 @@
     {
       "name": "Unreliable",
       "key": "unreliable",
-      "description": "Any time an Unreliable Weapon is used and the attack roll results in an unmodified (or “natural”) 2, the attack fails to take place and the Weapon burns out, jams, overheats, or otherwise malfunctions. For two assignments, an unmodified roll of 2 or 3 produces the same results and for three assignments, unmodified rolls of 2, 3, or 4 also trigger the malfunction. The Weapon will not work again until some condition is fulfilled as determined by the GM. For example, repairing a technological weapon may require a skilled individual to make a successful average Mind Stat roll (Target Number 12). Other remedies might be appropriate for recovering different attacks, such as a supernatural monster whose breath weapon has “burned out” might have to eat a hearty meal first.",
+      "description": "Any time an Unreliable Weapon is used and the attack roll results in an unmodified (or \"natural\") 2, the attack fails to take place and the Weapon burns out, jams, overheats, or otherwise malfunctions. For two assignments, an unmodified roll of 2 or 3 produces the same results and for three assignments, unmodified rolls of 2, 3, or 4 also trigger the malfunction. The Weapon will not work again until some condition is fulfilled as determined by the GM. For example, repairing a technological weapon may require a skilled individual to make a successful average Mind Stat roll (Target Number 12). Other remedies might be appropriate for recovering different attacks, such as a supernatural monster whose breath weapon has \"burned out\" might have to eat a hearty meal first.",
       "compatible_with": ["weapon"],
       "source": "BESM4e",
       "picks": 1
     },
     {
-      "name": "Activation (1 Round)",
-      "key": "activation_1",
-      "description": "The Attribute requires concentration/preparation (chanting, focussing, loading, programming, etc.). Character cannot move or defend during activation round. Must spend one round preparing the Attribute before it is used. (Usually applies to instantaneous effects like Healing/Weapon, or ongoing Attributes like Armour/Flight if they also have Deplete, Detectable, Irreversible, or Recovery Limiters).",
-      "compatible_with": ["various_attributes"],
+      "name": "Activation",
+      "key": "activation",
+      "description": "The ability requires time to prepare before use.",
+      "compatible_with": ["ranged_attack", "flight", "force_field"],
       "source": "BESM4e",
-      "picks": 1
-    },
-    {
-      "name": "Activation (1 Minute)",
-      "key": "activation_2",
-      "description": "The Attribute requires concentration/preparation (chanting, focussing, loading, programming, etc.). Character cannot move or defend during activation round. Must spend one minute preparing the Attribute before it is used. (Usually applies to instantaneous effects like Healing/Weapon, or ongoing Attributes like Armour/Flight if they also have Deplete, Detectable, Irreversible, or Recovery Limiters).",
-      "compatible_with": ["various_attributes"],
-      "source": "BESM4e",
-      "picks": 2
-    },
-    {
-      "name": "Activation (1 Hour)",
-      "key": "activation_3",
-      "description": "The Attribute requires concentration/preparation (chanting, focussing, loading, programming, etc.). Character cannot move or defend during activation round. Must spend one hour preparing the Attribute before it is used. (Usually applies to instantaneous effects like Healing/Weapon, or ongoing Attributes like Armour/Flight if they also have Deplete, Detectable, Irreversible, or Recovery Limiters).",
-      "compatible_with": ["various_attributes"],
-      "source": "BESM4e",
-      "picks": 3
-    },
-    {
-      "name": "Assisted (Single Assistant)",
-      "key": "assisted_1",
-      "description": "The Attribute requires supporting individuals (meeting special requirements) for function/activation. Requires a single assistant.",
-      "compatible_with": ["various_attributes", "item"],
-      "source": "BESM4e",
-      "picks": 1
-    },
-    {
-      "name": "Assisted (Small Group)",
-      "key": "assisted_2",
-      "description": "The Attribute requires supporting individuals (meeting special requirements) for function/activation. Requires a small group of assistants (2-10).",
-      "compatible_with": ["various_attributes", "item"],
-      "source": "BESM4e",
-      "picks": 2
-    },
-    {
-      "name": "Assisted (Large Group)",
-      "key": "assisted_3",
-      "description": "The Attribute requires supporting individuals (meeting special requirements) for function/activation. Requires a large group of assistants (11-100).",
-      "compatible_with": ["various_attributes", "item"],
-      "source": "BESM4e",
-      "picks": 3
-    },
-    {
-      "name": "Backlash (Significant Failure)",
-      "key": "backlash_1",
-      "description": "Character suffers a side effect (damage, Stat drain, etc.) if Attribute use fails (failed Stat roll or missed Weapon attack). Backlash occurs if the character fails their roll by a significant margin (6 or more).",
-      "compatible_with": ["various_attributes", "weapon"],
-      "source": "BESM4e",
-      "picks": 1
-    },
-    {
-      "name": "Backlash (Moderate Failure)",
-      "key": "backlash_2",
-      "description": "Character suffers a side effect (damage, Stat drain, etc.) if Attribute use fails (failed Stat roll or missed Weapon attack). Backlash occurs if the character fails their roll by a moderate margin (3 or more).",
-      "compatible_with": ["various_attributes", "weapon"],
-      "source": "BESM4e",
-      "picks": 2
-    },
-    {
-      "name": "Backlash (Any Failure)",
-      "key": "backlash_3",
-      "description": "Character suffers a side effect (damage, Stat drain, etc.) if Attribute use fails (failed Stat roll or missed Weapon attack). Backlash occurs if the character fails their roll.",
-      "compatible_with": ["various_attributes", "weapon"],
-      "source": "BESM4e",
-      "picks": 3
+      "picks": 1,
+      "max_selections": 1,
+      "is_power_pack": false,
+      "potency_levels": [
+        {
+          "level": 1,
+          "preparation_time": "1 round",
+          "description": "Requires 1 round of preparation time before use."
+        },
+        {
+          "level": 2,
+          "preparation_time": "1 minute",
+          "description": "Requires 1 minute of preparation time before use."
+        },
+        {
+          "level": 3,
+          "preparation_time": "10 minutes",
+          "description": "Requires 10 minutes of preparation time before use."
+        }
+      ]
     },
     {
       "name": "Charges (4-6/day)",
@@ -682,7 +637,7 @@
     {
       "name": "Localised (Large Part)",
       "key": "localised_large",
-      "description": "Only part of the character’s body is affected. Affects a large part (torso, both legs or arms, etc.). (For Item Armour, usually implies riding on vehicle).",
+      "description": "Only part of the character's body is affected. Affects a large part (torso, both legs or arms, etc.). (For Item Armour, usually implies riding on vehicle).",
       "compatible_with": ["absorption", "alternate_form", "armour", "change_state", "conversion", "resilient", "superstrength", "undetectable", "item"],
       "source": "BESM4e",
       "picks": 1
@@ -690,7 +645,7 @@
     {
       "name": "Localised (Small Part)",
       "key": "localised_small",
-      "description": "Only part of the character’s body is affected. Affects a small part (one leg or arm, abdomen, chest, head, etc.).",
+      "description": "Only part of the character's body is affected. Affects a small part (one leg or arm, abdomen, chest, head, etc.).",
       "compatible_with": ["absorption", "alternate_form", "armour", "change_state", "conversion", "resilient", "superstrength", "undetectable"],
       "source": "BESM4e",
       "picks": 2
@@ -698,7 +653,7 @@
     {
       "name": "Localised (Tiny Part)",
       "key": "localised_tiny",
-      "description": "Only part of the character’s body is affected. Affects a tiny part (one hand or foot, face, groin, knee, etc.).",
+      "description": "Only part of the character's body is affected. Affects a tiny part (one hand or foot, face, groin, knee, etc.).",
       "compatible_with": ["absorption", "alternate_form", "armour", "change_state", "conversion", "resilient", "superstrength", "undetectable"],
       "source": "BESM4e",
       "picks": 3
@@ -730,7 +685,7 @@
     {
       "name": "Object (Moderate Benefit)",
       "key": "object_moderate",
-      "description": "Usually for Attributes within Items contrary to 'normal use'. Benefits Item, not user directly. The Item’s Attribute still provides moderate benefit to the character.",
+      "description": "Usually for Attributes within Items contrary to 'normal use'. Benefits Item, not user directly. The Item's Attribute still provides moderate benefit to the character.",
       "compatible_with": ["item"],
       "source": "BESM4e",
       "picks": 1
@@ -738,7 +693,7 @@
     {
       "name": "Object (Slight Benefit)",
       "key": "object_slight",
-      "description": "Usually for Attributes within Items contrary to 'normal use'. Benefits Item, not user directly. The Item’s Attribute still provides slight benefit to the character.",
+      "description": "Usually for Attributes within Items contrary to 'normal use'. Benefits Item, not user directly. The Item's Attribute still provides slight benefit to the character.",
       "compatible_with": ["item"],
       "source": "BESM4e",
       "picks": 2
@@ -746,7 +701,7 @@
     {
       "name": "Object (Negligible Benefit)",
       "key": "object_negligible",
-      "description": "Usually for Attributes within Items contrary to 'normal use'. Benefits Item, not user directly. The Item’s Attribute hardly provides any benefit to the character.",
+      "description": "Usually for Attributes within Items contrary to 'normal use'. Benefits Item, not user directly. The Item's Attribute hardly provides any benefit to the character.",
       "compatible_with": ["item"],
       "source": "BESM4e",
       "picks": 3

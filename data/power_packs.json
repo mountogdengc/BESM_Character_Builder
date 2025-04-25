@@ -1,0 +1,89 @@
+{
+  "power_packs": [
+    {
+      "name": "Crystalist",
+      "description": "Taps into the vibrations and resonance of natural crystals to transform, absorb, amplify, and transmit universal forces. Appropriate for empaths, mystics, occultists, spiritual leaders, thaumaturgists, and woke practitioners.",
+      "source": "Extras",
+      "enhancements": [],
+      "limiters": [
+        {"name": "Delay", "count": 1},
+        {"name": "Detectable", "count": 1},
+        {"name": "Equipment", "count": 1},
+        {"name": "Unpredictable", "count": 2}
+      ],
+      "power_value": 5
+    },
+    {
+      "name": "Divine",
+      "description": "Powers granted by a greater being or higher power. The character prays to or calls upon the divine being for intervention. Appropriate for clerics, priests, shrine maidens, and exorcists.",
+      "source": "Extras",
+      "enhancements": [
+        {"name": "Potent", "count": 3}
+      ],
+      "limiters": [
+        {"name": "Activation", "count": 1},
+        {"name": "Charges", "count": 2},
+        {"name": "Detectable", "count": 1},
+        {"name": "Unique Restriction", "count": 1}
+      ],
+      "power_value": 2
+    },
+    {
+      "name": "Psi",
+      "description": "Powered by raw psychic energy, channeling thoughts into waves of reality that affect the physical world. Appropriate for psionicists, extraterrestrials, psychics, and demons.",
+      "source": "Extras",
+      "enhancements": [],
+      "limiters": [
+        {"name": "Backlash", "count": 1},
+        {"name": "Concentration", "count": 2},
+        {"name": "Deplete", "count": 1},
+        {"name": "Detectable", "count": 1},
+        {"name": "Recovery", "count": 1}
+      ],
+      "power_value": 6
+    },
+    {
+      "name": "Ritualist",
+      "description": "Powerful attributes requiring painstakingly specific preparation, several assistants, and distinct tools. Carries risk of disastrous consequences if performed improperly. Appropriate for necromancers, blood mages, conjurers, and demonologists.",
+      "source": "Extras",
+      "enhancements": [
+        {"name": "Potent", "count": 2}
+      ],
+      "limiters": [
+        {"name": "Activation", "count": 3},
+        {"name": "Assisted", "count": 2},
+        {"name": "Backlash", "count": 2},
+        {"name": "Concentration", "count": 1},
+        {"name": "Equipment", "count": 1}
+      ],
+      "power_value": 7
+    },
+    {
+      "name": "Shamanist",
+      "description": "Powered by forces of nature and internal balance. Abilities manifest when emotionally invested and primarily benefit friends or companions. Appropriate for shamans, medicine gurus, druids, and spiritualists.",
+      "source": "Extras",
+      "enhancements": [
+        {"name": "Imbue", "count": 1}
+      ],
+      "limiters": [
+        {"name": "Emotional", "count": 2},
+        {"name": "Environmental", "count": 1}
+      ],
+      "power_value": 4
+    },
+    {
+      "name": "Wizardry",
+      "description": "Spells or enchantments involving memorization of arcane phrases and precise movements, often recorded in ancient tomes. Requires material components that are consumed during casting. Appropriate for wizards, spellslingers, sorcerers, and magical girls.",
+      "source": "Extras",
+      "enhancements": [
+        {"name": "Potent", "count": 1}
+      ],
+      "limiters": [
+        {"name": "Consumable", "count": 1},
+        {"name": "Deplete", "count": 2},
+        {"name": "Detectable", "count": 1}
+      ],
+      "power_value": 3
+    }
+  ]
+}

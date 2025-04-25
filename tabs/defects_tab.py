@@ -105,13 +105,24 @@ def populate_defects_ui(self):
                 self.edit_defect_by_id(defect_id)
             return edit_handler
         
+        # Get the base defect data to access the description
+        base_defect = self.defects.get(defect.get("name", ""), {})
+        
+        # Start with the basic lines
         lines = [
             f"Rank: {defect.get('rank', 0)}",
-            f"Cost: {defect.get('cost', 0)} CP",
-            f"Enhancements: {', '.join(defect.get('enhancements', [])) or 'None'}",
-            f"Limiters: {', '.join(defect.get('limiters', [])) or 'None'}",
-            f"Tags: {', '.join(defect.get('custom_fields', {}).values()) or 'None'}"
+            f"Recovered CP: {abs(defect.get('cost', 0))}"  # Use abs() to show positive number
         ]
+        
+        # Add description from base defect data if available
+        if "description" in base_defect and base_defect["description"]:
+            lines.append(f"Description: {base_defect['description']}")
+            
+        # Add enhancements and limiters
+        lines.extend([
+            f"Enhancements: {', '.join(defect.get('enhancements', [])) or 'None'}",
+            f"Limiters: {', '.join(defect.get('limiters', [])) or 'None'}"
+        ])
         
         card = create_card_widget(
             title=defect.get("name", "Unnamed Defect"),

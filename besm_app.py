@@ -11,6 +11,7 @@ from tools.pdf_export import export_character_to_pdf
 from tools.widgets import ClickableCard, AttributeListWidget, LabeledRowWithHelp
 import common_ui as ui
 from dialogs.attribute_builder_dialog import AttributeBuilderDialog
+from dialogs.defect_builder_dialog import DefectBuilderDialog
 
 from tabs.alternate_forms_tab import (
     init_alternate_forms_tab,
@@ -30,80 +31,102 @@ from tabs import (
     init_minions_tab,
 )
 
+from tabs.items_tab import init_items_tab
+
 from PyQt5.QtWidgets import (
     QScrollArea, QVBoxLayout, QHBoxLayout, QLabel, QLineEdit, QTextEdit,
-    QComboBox, QSpinBox, QPushButton, QToolButton, QTabWidget, QWidget, QGridLayout
+    QComboBox, QSpinBox, QPushButton, QToolButton, QTabWidget, QWidget, QGridLayout,
+    QMainWindow, QMessageBox, QFileDialog, QStatusBar
 )
+from PyQt5.QtCore import QSettings, Qt
 
 from tools.data_migrations import DataMigrator
 from tools.backup_manager import BackupManager
 from dialogs.backup_dialog import BackupDialog
+from tabs.data_management_tab import init_data_management_tab
 
-class BESMCharacterApp(ui.QMainWindow):
+class BESMCharacterApp(QMainWindow):
     def __init__(self):
         super().__init__()
-        self.settings = ui.QSettings("Legendmasters", "BESMCharacterApp")
-        self.data_migrator = DataMigrator()
+        self.setWindowTitle("BESM Character Generator")
+        
+        # Initialize settings
+        self.settings = QSettings("LegendMasters", "BESM Character Generator")
         
         # Initialize backup manager
         self.backup_manager = BackupManager(self)
         
-        # Load attributes data
+        # Load attributes from JSON
         base_path = os.path.dirname(os.path.abspath(__file__))
-        with open(os.path.join(base_path, "data", "attributes.json"), "r", encoding="utf-8") as f:
-            raw_attributes = json.load(f)["attributes"]
-            self.attributes = {attr["name"]: attr for attr in raw_attributes}
-            self.attributes_by_key = {attr["key"]: attr for attr in raw_attributes if "key" in attr}
-            
-        # Initialize template manager as an object with properties
-        class TemplateManager:
-            def __init__(self):
-                self.race_templates = []
-                self.size_templates = []
-                self.class_templates = []
-                
-        self.template_manager = TemplateManager()
+        with open(os.path.join(base_path, "data", "attributes.json")) as f:
+            self.attributes_data = json.load(f)
         
-        # Load templates from the new directory structure
-        template_path = os.path.join(base_path, "data", "templates")
-        index_path = os.path.join(template_path, "index.json")
+        # Load defects from JSON
+        with open(os.path.join(base_path, "data", "defects.json")) as f:
+            defects_list = json.load(f)["defects"]
+            self.defects = {defect["name"]: defect for defect in defects_list}
         
-        if os.path.exists(index_path):
-            with open(index_path, "r", encoding="utf-8") as f:
-                index_data = json.load(f)
-                
-            # Load race templates
-            if "races" in index_data:
-                for race_name in index_data["races"]:
-                    race_path = os.path.join(template_path, "races", f"{race_name}.json")
-                    if os.path.exists(race_path):
-                        with open(race_path, "r", encoding="utf-8") as f:
-                            race_data = json.load(f)
-                            self.template_manager.race_templates.append(race_data)
-            
-            # Load size templates
-            if "sizes" in index_data:
-                for size_name in index_data["sizes"]:
-                    size_path = os.path.join(template_path, "sizes", f"{size_name}.json")
-                    if os.path.exists(size_path):
-                        with open(size_path, "r", encoding="utf-8") as f:
-                            size_data = json.load(f)
-                            self.template_manager.size_templates.append(size_data)
-            
-            # Load class templates
-            if "classes" in index_data:
-                for class_name in index_data["classes"]:
-                    class_path = os.path.join(template_path, "classes", f"{class_name}.json")
-                    if os.path.exists(class_path):
-                        with open(class_path, "r", encoding="utf-8") as f:
-                            class_data = json.load(f)
-                            self.template_manager.class_templates.append(class_data)
+        # Initialize character data
+        self.character_data = {
+            "name": "",
+            "stats": {},
+            "attributes": [],
+            "defects": [],
+            "items": [],
+            "skills": [],
+            "derived_values": {},
+            "notes": ""
+        }
+        
+        # Initialize attributes dictionaries for template management
+        self.attributes = {}
+        self.attributes_by_key = {}
+        with open(os.path.join(base_path, "data", "attributes.json")) as f:
+            attributes_data = json.load(f)
+            for attr in attributes_data.get("attributes", []):
+                self.attributes[attr["name"]] = attr
+                if "key" in attr:
+                    self.attributes_by_key[attr["key"]] = attr
+        
+        # Create tabs
+        self.tabs = QTabWidget()
+        self.setCentralWidget(self.tabs)
+        
+        # Initialize all tabs
+        # Create a layout for the attributes tab
+        attributes_tab_layout = QVBoxLayout()
+        init_attributes_tab(self, attributes_tab_layout)
 
+        # Create a QWidget for the attributes tab and set its layout
+        attributes_tab_widget = QWidget()
+        attributes_tab_widget.setLayout(attributes_tab_layout)
+
+        # Add the attributes tab to the QTabWidget
+        self.tabs.addTab(attributes_tab_widget, "Attributes")
+        self.init_defects_tab()
+        init_items_tab(self)
+        # Replace non-existent init_skills_tab() and init_notes_tab() with placeholders
+        # self.init_skills_tab()  # Not implemented yet
+        # self.init_notes_tab()   # Not implemented yet
+        init_data_management_tab(self)  # Initialize the new data management tab
+        
+        # Create status bar
+        self.statusBar = QStatusBar()
+        self.setStatusBar(self.statusBar)
+        
+        # Create menu bar
+        self.init_menu_bar()
+        
+        # Set window properties
+        self.setGeometry(100, 100, 800, 1200)
+        
+        # Initialize data migrator
+        self.data_migrator = DataMigrator()
+        
         # Load last folder or default to ./characters
         self.last_directory = self.settings.value("last_directory", os.path.join(base_path, "characters"))
         os.makedirs(self.last_directory, exist_ok=True)
         self.menuBar().setVisible(False)
-        self.setWindowTitle("BESM 4e Character Builder")
         self.setMinimumSize(1200, 600)
         main_layout = ui.QHBoxLayout()
         container = ui.QWidget()
@@ -1116,117 +1139,190 @@ class BESMCharacterApp(ui.QMainWindow):
         toggle_row("Society Points", sop, self.sop_label, sop_range, "Society Points")
 
     def save_character(self):
-        # Get character name from input field or use default
-        char_name = self.char_name_input.text().strip()
-        if not char_name:
-            char_name = "newCharacter"
+        """Save the current character to the last used file path"""
+        if not hasattr(self, 'current_file_path') or not self.current_file_path:
+            self.save_character_as()
+            return
             
-        # Create default filename
-        safe_char_name = char_name.replace(" ", "_").replace("/", "-").replace("\\", "-")
-        safe_char_name = ''.join(c for c in safe_char_name if c.isalnum() or c in "_-")
-        default_path = os.path.join(self.last_directory, f"{safe_char_name}.json")
-        
-        path, _ = ui.QFileDialog.getSaveFileName(
+        try:
+            self.save_character_to_file(self.current_file_path)
+            self.statusBar().showMessage(f"Character saved to {self.current_file_path}", 3000)
+        except Exception as e:
+            QMessageBox.critical(self, "Error", f"Failed to save character: {str(e)}")
+            
+    def save_character_as(self):
+        """Save the current character to a new file"""
+        last_dir = self.settings.value("last_directory", "./characters")
+        file_path, _ = QFileDialog.getSaveFileName(
             self,
             "Save Character",
-            directory=default_path,
-            filter="JSON Files (*.json)"
+            last_dir,
+            "BESM Character Files (*.json);;All Files (*.*)"
         )
-
-        if path:
-            # Confirm overwrite if file already exists
-            if os.path.exists(path):
-                reply = ui.QMessageBox.question(
-                    self,
-                    "Overwrite File?",
-                    f"The file '{os.path.basename(path)}' already exists. Overwrite it?",
-                    ui.QMessageBox.Yes | ui.QMessageBox.No,
-                    ui.QMessageBox.No
-                )
-                if reply != ui.QMessageBox.Yes:
-                    return
-
-            with open(path, 'w') as f:
-                # Update character data with current values
-                self.character_data["name"] = char_name
-                self.character_data["player"] = self.player_name_input.text()
-                self.character_data["gm"] = self.gm_name_input.text()
-                self.character_data["race"] = self.race_input.text()
-                self.character_data["class"] = self.class_input.text()
-                self.character_data["homeworld"] = self.homeworld_input.text()
-                self.character_data["size"] = self.size_input.text()
-                self.character_data["benchmark"] = self.selected_benchmark["name"] if self.selected_benchmark else None
+        
+        if file_path:
+            try:
+                # Update the last used directory
+                self.settings.setValue("last_directory", os.path.dirname(file_path))
+                self.current_file_path = file_path
+                self.save_character_to_file(file_path)
+                self.statusBar().showMessage(f"Character saved to {file_path}", 3000)
+            except Exception as e:
+                QMessageBox.critical(self, "Error", f"Failed to save character: {str(e)}")
                 
-                # Ensure version is set
-                self.character_data["version"] = self.data_migrator.current_version
-                
-                json.dump(self.character_data, f, indent=4)
-
-            self.last_directory = os.path.dirname(path)
-            self.settings.setValue("last_directory", self.last_directory)
+    def save_character_to_file(self, file_path):
+        """Save the character data to the specified file"""
+        # Collect all character data from tabs
+        character_data = self.character_data.copy()
+        
+        # Create a backup before saving
+        self.backup_manager.create_backup(self.character_data, manual=False)
+        
+        # Ensure the directory exists
+        os.makedirs(os.path.dirname(file_path), exist_ok=True)
+        
+        # Save the file
+        with open(file_path, 'w', encoding='utf-8') as f:
+            json.dump(character_data, f, indent=4)
             
-            # Create automatic backup
-            self.backup_manager.create_backup(self.character_data, manual=False)
-            
-            ui.QMessageBox.information(self, "Saved", "Character saved successfully.")
-
     def load_character(self):
-        path, _ = ui.QFileDialog.getOpenFileName(
+        """Load a character from a file"""
+        last_dir = self.settings.value("last_directory", "./characters")
+        file_path, _ = QFileDialog.getOpenFileName(
             self,
             "Load Character",
-            directory=self.last_directory,
-            filter="JSON Files (*.json)"
+            last_dir,
+            "BESM Character Files (*.json);;All Files (*.*)"
         )
-
-        if path:
+        
+        if file_path:
             try:
-                with open(path, 'r') as f:
-                    data = json.load(f)
-                    
-                # Migrate data if needed
-                try:
-                    data = self.data_migrator.migrate_character_data(data)
-                except ValueError as e:
-                    ui.QMessageBox.warning(
-                        self,
-                        "Migration Error",
-                        f"Failed to migrate character data: {str(e)}\n\nPlease contact support."
-                    )
-                    return
-                    
-                # Set the migrated data
-                self.character_data = data
-
-                self.last_directory = os.path.dirname(path)
-                self.settings.setValue("last_directory", self.last_directory)
-                self.load_character_into_ui()
-                self.update_point_total()
-                
-                # Create automatic backup after loading
+                # Create a backup before loading
                 self.backup_manager.create_backup(self.character_data, manual=False)
                 
-                # Show migration message if needed
-                if data.get("version") != self.data_migrator.current_version:
-                    ui.QMessageBox.information(
-                        self,
-                        "Data Updated",
-                        "Your character data has been updated to the latest version."
-                    )
-                else:
-                    ui.QMessageBox.information(self, "Loaded", "Character loaded successfully.")
-                    
-            except json.JSONDecodeError:
-                ui.QMessageBox.critical(
-                    self,
-                    "Error",
-                    "Failed to load character: Invalid JSON file."
-                )
+                # Update the last used directory
+                self.settings.setValue("last_directory", os.path.dirname(file_path))
+                
+                # Load the character data
+                with open(file_path, 'r', encoding='utf-8') as f:
+                    loaded_data = json.load(f)
+                
+                # Validate the loaded data
+                if not self.validate_loaded_data(loaded_data):
+                    raise ValueError("Invalid character data format")
+                
+                # Update the current file path
+                self.current_file_path = file_path
+                
+                # Update the character data
+                self.character_data.update(loaded_data)
+                
+                # Refresh all tabs with the new data
+                self.refresh_all_tabs()
+                
+                self.statusBar().showMessage(f"Character loaded from {file_path}", 3000)
             except Exception as e:
-                ui.QMessageBox.critical(
-                    self,
-                    "Error",
-                    f"Failed to load character: {str(e)}"
-                )
+                QMessageBox.critical(self, "Error", f"Failed to load character: {str(e)}")
+                
+    def validate_loaded_data(self, data):
+        """Validate that the loaded data has the required structure"""
+        required_keys = [
+            "attributes", "derived_stats", "defects", "skills",
+            "items", "powers", "character_info", "notes"
+        ]
+        return all(key in data for key in required_keys)
+        
+    def refresh_all_tabs(self):
+        """Refresh all tabs with the current character data"""
+        for i in range(self.tabs.count()):
+            tab = self.tabs.widget(i)
+            if hasattr(tab, 'refresh'):
+                tab.refresh()
+                
+    def new_character(self):
+        """Create a new character"""
+        if hasattr(self, 'current_file_path') and self.current_file_path:
+            reply = QMessageBox.question(
+                self,
+                "New Character",
+                "Do you want to save the current character before creating a new one?",
+                QMessageBox.Yes | QMessageBox.No | QMessageBox.Cancel
+            )
+            
+            if reply == QMessageBox.Yes:
+                self.save_character()
+            elif reply == QMessageBox.Cancel:
+                return
+                
+        # Create a backup before creating new character
+        self.backup_manager.create_backup(self.character_data, manual=False)
+        
+        # Reset character data to default values
+        self.character_data = {
+            "version": self.data_migrator.current_version,
+            "name": "",
+            "player": "",
+            "gm": "",
+            "race": "",
+            "class": "",
+            "homeworld": "",
+            "size": "",
+            "background": {
+                "origin": "",
+                "faction": "",
+                "goals": "",
+                "personality": "",
+                "history": ""
+            },
+            "stats": {
+                "Body": 4,
+                "Mind": 4,
+                "Soul": 4
+            },
+            "derived": {
+                "CV": 0,
+                "ACV": 0,
+                "DCV": 0,
+                "HP": 0,
+                "EP": 0,
+                "DM": 0,
+                "SV": 0,
+                "SP": 0,
+                "SCV": 0,
+                "SOP": 0
+            },
+            "drama_points": {
+                "current": 3,
+                "max": 5
+            },
+            "attributes": [],
+            "defects": [],
+            "skills": [],
+            "weapons": [],
+            "armor": [],
+            "items": [],
+            "techniques": [],
+            "templates": [],
+            "alternate_forms": [],
+            "metamorphosis": [],
+            "companions": [],
+            "minions": [],
+            "relationships": [],
+            "notes": "",
+            "custom_fields": {},
+            "custom_rules": [],
+            "saved_loadouts": [],
+            "benchmark": None,
+            "totalPoints": 0
+        }
+        
+        # Clear the current file path
+        self.current_file_path = None
+        
+        # Refresh all tabs
+        self.refresh_all_tabs()
+        
+        self.statusBar().showMessage("New character created", 3000)
 
     def set_benchmark(self, label):
         """
@@ -1401,180 +1497,105 @@ class BESMCharacterApp(ui.QMainWindow):
     
     def add_defect(self):
         """Open the defect builder dialog to add a new defect"""
-        from dialogs.defect_builder_dialog import DefectBuilderDialog
+        dialog = DefectBuilderDialog(self, self.defects)
         
-        dialog = DefectBuilderDialog(self)
-        if dialog.exec_() == ui.QDialog.Accepted:
-            print("Dialog accepted, getting defect data...")
-            defect = dialog.get_defect_data()
-            print(f"Defect data: {defect}")
+        if dialog.exec_():
+            defect_data = dialog.get_defect_data()
+            defect_data["id"] = str(uuid.uuid4())  # Generate a unique ID
             
-            # Ensure defects list exists
+            # Add to character data
             if "defects" not in self.character_data:
                 self.character_data["defects"] = []
-                
-            # Add the defect to character data
-            self.character_data["defects"].append(defect)
-            print(f"Defects in character data: {len(self.character_data['defects'])}")
+            self.character_data["defects"].append(defect_data)
             
-            # Sync the defects tab to update the UI
-            print("Calling sync_defects...")
+            # Update the UI
             from tabs.defects_tab import sync_defects
             sync_defects(self)
             
-            print("Updating point total...")
+            # Update points
             self.update_point_total()
-            print("Defect added successfully!")
-    
+            
     def edit_defect_by_id(self, defect_id):
-        """Edit a defect by its ID"""
-        # Find the defect with the given ID
-        defect_index = -1
-        for i, defect in enumerate(self.character_data.get("defects", [])):
+        """Edit an existing defect by ID"""
+        # Find the existing defect
+        defect_data = None
+        for defect in self.character_data.get("defects", []):
             if defect.get("id") == defect_id:
-                defect_index = i
+                defect_data = defect
                 break
                 
-        if defect_index == -1:
-            ui.QMessageBox.warning(self, "Error", f"Defect with ID {defect_id} not found.")
+        if not defect_data:
+            print(f"[ERROR] Could not find defect with ID {defect_id}")
             return
             
-        # Get the existing defect data
-        existing_defect = self.character_data["defects"][defect_index]
+        # Create and show the dialog
+        dialog = DefectBuilderDialog(self, self.defects)
         
-        # Open the defect builder dialog with the existing data
-        from dialogs.defect_builder_dialog import DefectBuilderDialog
-        dialog = DefectBuilderDialog(self, existing_defect)
+        # If we have a key, use it to find the correct base defect
+        if "key" in defect_data:
+            # Find the defect name that matches this key
+            for defect_name, defect_info in self.defects.items():
+                if defect_info.get("key") == defect_data["key"]:
+                    defect_data["base_name"] = defect_name
+                    break
         
-        if dialog.exec_() == ui.QDialog.Accepted:
-            updated_defect = dialog.get_defect_data()
-            # Preserve the ID
-            updated_defect["id"] = defect_id
-            # Update the defect in character data
-            self.character_data["defects"][defect_index] = updated_defect
+        dialog.load_defect_data(defect_data)
+        
+        if dialog.exec_():
+            # Get the updated defect data
+            new_defect_data = dialog.get_defect_data()
+            new_defect_data["id"] = defect_id  # Preserve the ID
             
+            # Preserve the key if it existed
+            if "key" in defect_data:
+                new_defect_data["key"] = defect_data["key"]
+            
+            # Update the defect in the character data
+            defects = self.character_data.get("defects", [])
+            for i, defect in enumerate(defects):
+                if defect.get("id") == defect_id:
+                    defects[i] = new_defect_data
+                    break
+                    
             # Update the UI
             from tabs.defects_tab import sync_defects
             sync_defects(self)
             
             # Update point total
             self.update_point_total()
-    
-    def remove_defect_by_id(self, defect_id):
-        """Remove a defect by its ID"""
-        # Find the defect with the given ID
-        defect_index = -1
-        for i, defect in enumerate(self.character_data.get("defects", [])):
-            if defect.get("id") == defect_id:
-                defect_index = i
-                break
-                
-        if defect_index == -1:
-            ui.QMessageBox.warning(self, "Error", f"Defect with ID {defect_id} not found.")
-            return
-            
-        # Remove the defect from character data
-        self.character_data["defects"].pop(defect_index)
-        
-        # Update the UI
-        from tabs.defects_tab import sync_defects
-        sync_defects(self)
-        
-        # Update point total
-        self.update_point_total()
     
     def edit_attribute_by_id(self, attr_id):
-        # Find the attribute with the given ID
-        attr_index = -1
-        for i, attr in enumerate(self.character_data.get("attributes", [])):
+        """Edit an attribute by its ID"""
+        # Find the attribute with this ID
+        existing_attr = None
+        for attr in self.character_data.get("attributes", []):
             if attr.get("id") == attr_id:
-                attr_index = i
+                existing_attr = attr
                 break
                 
-        if attr_index == -1:
-            ui.QMessageBox.warning(self, "Error", f"Attribute with ID {attr_id} not found.")
+        if not existing_attr:
+            ui.QMessageBox.warning(self, "Error", "Attribute not found.")
             return
-            
-        # Directly edit the attribute using the attribute at the found index
-        from dialogs.attribute_builder_dialog import AttributeBuilderDialog
         
-        existing_attr = self.character_data["attributes"][attr_index]
+        dialog = AttributeBuilderDialog(self, existing_attr=existing_attr)
         
-        dialog = AttributeBuilderDialog(self)
-        
-        base_name = existing_attr.get("base_name", existing_attr["name"])
-        dialog.attr_dropdown.setCurrentText(base_name)
-        dialog.update_attribute_info()
-        dialog.level_spin.setValue(existing_attr["level"])
-        dialog.description.setPlainText(existing_attr.get("description", ""))
-        dialog.user_description.setPlainText(existing_attr.get("user_description", ""))
-        
-        # Set custom name and flag it as user-edited if not default
-        dialog.custom_name_input.setText(existing_attr["name"])
-        dialog._custom_name_edited = existing_attr["name"] != base_name
-        
-        # Populate custom fields
-        custom_fields = existing_attr.get("custom_fields", {})
-        for key, value in custom_fields.items():
-            widget = dialog.custom_input_widgets.get(key)
-            if isinstance(widget, ui.QComboBox):
-                index = widget.findText(value)
-                if index >= 0:
-                    widget.setCurrentIndex(index)
-            elif isinstance(widget, ui.QSpinBox) or isinstance(widget, ui.QDoubleSpinBox):
-                widget.setValue(float(value))
-            elif isinstance(widget, ui.QLineEdit):
-                widget.setText(value)
-            elif isinstance(widget, ui.QTextEdit):
-                widget.setPlainText(value)
-        
-        # Set the existing attribute ID so we can update it instead of creating a new one
-        dialog.existing_attribute_id = attr_id
-        dialog.existing_attribute_index = attr_index
-        
-        # Load existing enhancements and limiters
-        dialog.load_existing_enhancements_and_limiters(existing_attr)
-        
-        # Show the dialog
         if dialog.exec_() == ui.QDialog.Accepted:
-            # Get the updated attribute data
-            updated_attr = dialog.get_attribute_data()
+            print("Dialog accepted, getting attribute data...")
+            new_attr = dialog.get_attribute_data()
+            print(f"Attribute data: {new_attr}")
             
-            # Ensure the ID is preserved
-            updated_attr["id"] = attr_id
+            # Replace the old attribute with the new one
+            for i, attr in enumerate(self.character_data["attributes"]):
+                if attr.get("id") == attr_id:
+                    self.character_data["attributes"][i] = new_attr
+                    break
+                
+            # Refresh the UI
+            print(f"Attributes in character data: {len(self.character_data['attributes'])}")
+            self._safe_refresh_attributes_ui()
             
-            # Update the attribute in the character data
-            self.character_data["attributes"][attr_index] = updated_attr
-            
-            print(f"Updated attribute at index {attr_index}: {updated_attr['name']}")
-            
-            # Update the UI
-            from tabs.attributes_tab import sync_attributes
-            sync_attributes(self)
-            
-            # Update point total
-            self.update_point_total()
-            
-            # Sync all special attribute tabs based on the attribute type
-            base_name = updated_attr.get("base_name", updated_attr["name"])
-            
-            # Always sync alternate forms
-            from tabs.alternate_forms_tab import sync_alternate_forms_from_attributes
-            sync_alternate_forms_from_attributes(self)
-            
-            # Sync specific tabs based on attribute type
-            if base_name in ["Companion", "Companions"]:
-                from tabs.companions_tab import sync_companions_from_attributes
-                sync_companions_from_attributes(self)
-            elif base_name in ["Item", "Items"]:
-                from tabs.items_tab import sync_items_from_attributes
-                sync_items_from_attributes(self)
-            elif base_name == "Metamorphosis":
-                from tabs.metamorphosis_tab import sync_metamorphosis_from_attributes
-                sync_metamorphosis_from_attributes(self)
-            elif base_name == "Minions":
-                from tabs.minions_tab import sync_minions_from_attributes
-                sync_minions_from_attributes(self)
+            # Update derived values
+            self.update_derived_values()
     
     def remove_attribute_by_id(self, attr_id):
         """Remove an attribute by its ID and update the UI safely."""
@@ -1698,24 +1719,6 @@ class BESMCharacterApp(ui.QMainWindow):
         except Exception as e:
             print(f"[DEBUG] Critical error in _safe_refresh_attributes_ui: {e}")
         
-    def remove_defect_by_id(self, defect_id):
-        # Find the defect with the given ID
-        for i, defect in enumerate(self.character_data["defects"]):
-            if defect.get("id") == defect_id:
-                # Remove the defect from the character data
-                del self.character_data["defects"][i]
-                
-                # Update the defects tab
-                from tabs.defects_tab import sync_defects
-                sync_defects(self)
-                
-                # Update point total
-                self.update_point_total()
-                return
-        
-        # If we get here, the defect wasn't found
-        print(f"Warning: Defect with ID {defect_id} not found")
-
     def create_new_character(self):
         # Clear basic fields
         self.char_name_input.clear()
@@ -1942,6 +1945,68 @@ class BESMCharacterApp(ui.QMainWindow):
         """Open the backup manager dialog"""
         dialog = BackupDialog(self, self.backup_manager)
         dialog.exec_()
+
+    def init_menu_bar(self):
+        menubar = self.menuBar()
+        
+        # File menu
+        file_menu = menubar.addMenu('File')
+        
+        new_action = file_menu.addAction('New Character')
+        new_action.triggered.connect(self.new_character)
+        
+        load_action = file_menu.addAction('Load Character')
+        load_action.triggered.connect(self.load_character)
+        
+        save_action = file_menu.addAction('Save Character')
+        save_action.triggered.connect(self.save_character)
+        
+        save_as_action = file_menu.addAction('Save Character As...')
+        save_as_action.triggered.connect(self.save_character_as)
+        
+        export_pdf_action = file_menu.addAction('Export to PDF')
+        export_pdf_action.triggered.connect(self.export_to_pdf)
+        
+        # Data Management menu
+        data_menu = menubar.addMenu('Data Management')
+        
+        backup_action = data_menu.addAction('Create Backup')
+        backup_action.triggered.connect(lambda: self.backup_manager.create_manual_backup())
+        
+        restore_action = data_menu.addAction('Restore from Backup')
+        restore_action.triggered.connect(lambda: self.tabs.setCurrentIndex(self.tabs.count() - 1))  # Switch to Data Management tab
+        
+        validate_action = data_menu.addAction('Validate Character Data')
+        validate_action.triggered.connect(self.validate_current_character)
+        
+        repair_action = data_menu.addAction('Repair Database')
+        repair_action.triggered.connect(self.repair_database)
+        
+        # Help menu
+        help_menu = menubar.addMenu('Help')
+        about_action = help_menu.addAction('About')
+        about_action.triggered.connect(self.show_about)
+        
+    def validate_current_character(self):
+        """Validate the current character data and show results"""
+        self.tabs.setCurrentIndex(self.tabs.count() - 1)  # Switch to Data Management tab
+        # The validation will be handled by the Data Management tab's validation function
+        
+    def repair_database(self):
+        """Open the Data Management tab's repair tools"""
+        self.tabs.setCurrentIndex(self.tabs.count() - 1)  # Switch to Data Management tab
+        # The repair will be handled by the Data Management tab's repair function
+
+    def show_about(self):
+        """Show the About dialog"""
+        QMessageBox.about(
+            self,
+            "About BESM Character Generator",
+            "BESM Character Generator\n\n"
+            "A tool for creating and managing BESM (Big Eyes, Small Mouth) characters.\n\n"
+            "Version: 1.0\n"
+            "Created by: LegendMasters"
+        )
 
 if __name__ == "__main__":
     app = ui.QApplication(sys.argv)

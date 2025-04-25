@@ -1,15 +1,19 @@
 import json
 import os
+import uuid
 
 from PyQt5.QtWidgets import (
     QDialog, QVBoxLayout, QHBoxLayout, QLabel, QLineEdit, QTextEdit,
     QComboBox, QSpinBox, QPushButton, QScrollArea, QWidget, QFormLayout,
-    QGroupBox, QListWidget, QListWidgetItem, QCompleter
+    QGroupBox, QListWidget, QListWidgetItem, QCompleter, QCheckBox, QMessageBox
 )
 from PyQt5.QtCore import Qt, QStringListModel, QEvent, QTimer
 
+from dialogs.enhancement_dialog import EnhancementDialog
+from dialogs.limiter_dialog import LimiterDialog
+
 class AttributeBuilderDialog(QDialog):
-    def __init__(self, parent=None):
+    def __init__(self, parent=None, existing_attr=None, base_attributes=None):
         super().__init__(parent)
         
         # Load attribute, enhancement, limiter data
@@ -21,30 +25,54 @@ class AttributeBuilderDialog(QDialog):
 
         with open(os.path.join(base_path, "data", "enhancements.json"), "r", encoding="utf-8") as f:
             self.raw_enhancements = json.load(f)["enhancements"]
+            # Group enhancements by category
+            self.enhancement_categories = self._group_by_category(self.raw_enhancements)
 
         with open(os.path.join(base_path, "data", "limiters.json"), "r", encoding="utf-8") as f:
             self.raw_limiters = json.load(f)["limiters"]
+            # Group limiters by category
+            self.limiter_categories = self._group_by_category(self.raw_limiters)
+
+        # Load power packs
+        with open(os.path.join(base_path, "data", "power_packs.json"), "r", encoding="utf-8") as f:
+            self.power_packs = json.load(f)["power_packs"]
+        
+        # Initialize enhancement and limiter counts
+        self.enhancement_counts = {}
+        self.limiter_counts = {}
+        
+        # Define maximum number of times each enhancement can be selected
+        self.max_enhancement_picks = {
+            "Area": 6,
+            "Duration": 6,
+            "Potent": 6,
+            "Range": 6,
+            "Targets": 6
+        }
+        
+        # Define maximum number of times each limiter can be selected
+        self.max_limiter_picks = {
+            "Maximum (Lvl 3-4 Max)": 1,
+            "Maximum (Lvl 5+ Max)": 1,
+            "Maximum (Lvl 2 Max)": 1
+        }
+        
+        # Track if an existing attribute is being edited
+        self.existing_attribute_id = None
+        if existing_attr and "id" in existing_attr:
+            self.existing_attribute_id = existing_attr["id"]
+            
+        # Allow caller to customize attributes
+        self.custom_attributes = base_attributes
         
         self.setWindowTitle("Attribute Builder")
-        self.setMinimumWidth(500)
-
+        self.setMinimumWidth(600)
         self.layout = QVBoxLayout()
         self.setLayout(self.layout)
-
-        self.custom_inputs = {}  # Dictionary to hold dynamically added fields
-        self.custom_input_widgets = {}  # Keyed by field name to retrieve later
-
+        
         form_layout = QFormLayout()
-
-        self.autocomplete_links = {}  # maps controller -> dependent
-        self.autocomplete_data = {}   # maps field_key -> autocomplete_by_category
-
-        self.custom_field_group = QGroupBox("Custom Attribute Fields")
-        self.custom_field_form = QFormLayout()
-        self.custom_field_group.setLayout(self.custom_field_form)
-        self.custom_field_group.setVisible(False)  # Hidden unless fields are needed
-
-        # Attribute selection
+        
+        # Attribute dropdown
         self.attr_dropdown = QComboBox()
         # Don't connect yet
         self.attr_dropdown.blockSignals(True)
@@ -60,12 +88,12 @@ class AttributeBuilderDialog(QDialog):
         self.custom_name_input = QLineEdit()
         form_layout.addRow("Custom Name:", self.custom_name_input)
 
-        # level
+        # Level
         self.level_spin = QSpinBox()
         self.level_spin.setRange(1, 10)
         self.level_spin.setValue(1)
         self.level_spin.valueChanged.connect(self.update_cp_cost)
-        form_layout.addRow("level:", self.level_spin)
+        form_layout.addRow("Level:", self.level_spin)
 
         # CP Cost (calculated)
         self.cp_cost_label = QLabel("0")
@@ -73,23 +101,54 @@ class AttributeBuilderDialog(QDialog):
 
         self.cp_cost_label.setStyleSheet("font-weight: bold; color: darkblue;")
 
-        # Enhancement multi-select list
-        self.enhancement_list = QListWidget()
-        self.enhancement_list.setSelectionMode(QListWidget.MultiSelection)
-        form_layout.addRow("Enhancements:", self.enhancement_list)
+        # Selected Enhancements and Limiters Section
+        self.customization_group = QGroupBox("Customization")
+        customization_layout = QVBoxLayout()
+        
+        # Selected Enhancements list
+        self.selected_enhancements_label = QLabel("Selected Enhancements:")
+        customization_layout.addWidget(self.selected_enhancements_label)
+        
+        self.selected_enhancements_list = QListWidget()
+        self.selected_enhancements_list.setMaximumHeight(100)
+        customization_layout.addWidget(self.selected_enhancements_list)
+        
+        # Button to add enhancements
+        self.add_enhancement_btn = QPushButton("Add Enhancements")
+        self.add_enhancement_btn.clicked.connect(self.open_enhancement_dialog)
+        customization_layout.addWidget(self.add_enhancement_btn)
+        
+        # Selected Limiters list
+        self.selected_limiters_label = QLabel("Selected Limiters:")
+        customization_layout.addWidget(self.selected_limiters_label)
+        
+        self.selected_limiters_list = QListWidget()
+        self.selected_limiters_list.setMaximumHeight(100)
+        customization_layout.addWidget(self.selected_limiters_list)
+        
+        # Button to add limiters
+        self.add_limiter_btn = QPushButton("Add Limiters")
+        self.add_limiter_btn.clicked.connect(self.open_limiter_dialog)
+        customization_layout.addWidget(self.add_limiter_btn)
+        
+        self.customization_group.setLayout(customization_layout)
+        form_layout.addRow(self.customization_group)
 
-        # Limiter multi-select list
-        self.limiter_list = QListWidget()
-        self.limiter_list.setSelectionMode(QListWidget.MultiSelection)
-        form_layout.addRow("Limiters:", self.limiter_list)
+        # Custom fields group
+        self.custom_field_group = QGroupBox("Custom Fields")
+        self.custom_field_form = QFormLayout()
+        self.custom_field_group.setLayout(self.custom_field_form)
+        self.custom_input_widgets = {}
 
-        self.enhancement_list.itemSelectionChanged.connect(self.update_cp_cost)
-        self.limiter_list.itemSelectionChanged.connect(self.update_cp_cost)
+        # Power pack button
+        self.power_pack_button = QPushButton("Use Power Pack")
+        self.power_pack_button.clicked.connect(self.show_power_pack_dialog)
+        form_layout.addRow(self.power_pack_button)
 
         self.layout.addLayout(form_layout)
         self.layout.addWidget(self.custom_field_group)
 
-        # description - match the attribute builder dialog's approach
+        # Description - match the attribute builder dialog's approach
         self.description = QTextEdit()
         self.description.setReadOnly(True)
         self.description.setFixedHeight(80)
@@ -98,414 +157,139 @@ class AttributeBuilderDialog(QDialog):
 
         # User description
         self.user_description = QTextEdit()
-        self.user_description.setPlaceholderText("Enter your own notes about this attribute here...")
-        self.layout.addWidget(QLabel("Your Notes:"))
+        self.user_description.setFixedHeight(80)
+        self.layout.addWidget(QLabel("Notes:"))
         self.layout.addWidget(self.user_description)
 
-        # Buttons
-        button_layout = QHBoxLayout()
+        # Buttons for Ok/Cancel
+        button_box = QHBoxLayout()
         self.ok_button = QPushButton("OK")
-        self.cancel_button = QPushButton("Cancel")
         self.ok_button.clicked.connect(self.accept)
-        self.cancel_button.clicked.connect(self.reject)
-        button_layout.addWidget(self.ok_button)
-        button_layout.addWidget(self.cancel_button)
-        self.layout.addLayout(button_layout)
-
+        cancel_button = QPushButton("Cancel")
+        cancel_button.clicked.connect(self.reject)
+        
+        button_box.addWidget(self.ok_button)
+        button_box.addWidget(cancel_button)
+        
+        self.layout.addLayout(button_box)
+        
+        # Flag to track if the custom name has been edited
         self._custom_name_edited = False
-        self.custom_name_input.textChanged.connect(self._track_custom_name_edit)
-
-        self.dynamic_cost_map = {}  # Holds the current attribute's dynamic cost mapping
-        self.dynamic_cost_category_key = None  # Key in custom fields (e.g., "category")
-
-        # Initialize with first attribute's data
-        self.update_attribute_info()
-
-        self.ok_button.clicked.disconnect()
-        self.ok_button.clicked.connect(self.finalize_and_accept)
-
-    def finalize_and_accept(self):
-        # 1) Force commit from editable QComboBox
-        for key, widget in self.custom_input_widgets.items():
-            if isinstance(widget, QComboBox) and widget.isEditable():
-                widget.setCurrentText(widget.lineEdit().text())
-
-        # 2) If user never manually edited name, auto‐generate it once more
-        if not self._custom_name_edited:
-            self._set_dynamic_custom_name(self.attr_dropdown.currentText())
-
-        self.accept()
+        self.custom_name_input.textEdited.connect(self._track_custom_name_edit)
         
-    def get_attribute_data(self):
-        """Return the attribute data based on the dialog inputs"""
-        attr_name = self.attr_dropdown.currentText()
-        attr_data = self.attributes.get(attr_name, {})
-        
-        # Create a new attribute dictionary with the selected values
-        attribute = {
-            "name": self.custom_name_input.text(),
-            "base_name": attr_name,  # Store the original attribute name
-            "level": self.level_spin.value(),
-            "cost": self.cp_cost_label.text().split()[0],  # Extract just the number
-            "cost_per_level": attr_data.get("cost_per_level", 1),
-            "user_description": self.user_description.toPlainText(),
-            "description": self.description.toPlainText()
-        }
-        
-        # Add custom fields if any
-        if self.custom_input_widgets:
-            custom_fields = {}
-            for key, widget in self.custom_input_widgets.items():
-                if isinstance(widget, QComboBox):
-                    custom_fields[key] = widget.currentText()
-                elif isinstance(widget, QSpinBox) or isinstance(widget, QDoubleSpinBox):
-                    custom_fields[key] = widget.value()
-                elif isinstance(widget, QLineEdit):
-                    custom_fields[key] = widget.text()
-                elif isinstance(widget, QTextEdit):
-                    custom_fields[key] = widget.toPlainText()
+        # Load existing attribute data if provided
+        if existing_attr:
+            self.load_existing_attribute(existing_attr)
             
-            if custom_fields:
-                attribute["custom_fields"] = custom_fields
+    def open_enhancement_dialog(self):
+        """Open dialog to select enhancements"""
+        dialog = EnhancementDialog(
+            self, 
+            self.get_selected_enhancements(), 
+            self.enhancement_counts
+        )
         
-        # Add selected enhancements if any
-        if hasattr(self, 'enhancement_list') and self.enhancement_list.count() > 0:
-            enhancements = []
-            for i in range(self.enhancement_list.count()):
-                item = self.enhancement_list.item(i)
-                if item.isSelected():
-                    enhancement_data = item.data(Qt.UserRole)
-                    enhancements.append(enhancement_data["name"])
-            
-            if enhancements:
-                attribute["enhancements"] = enhancements
-                print(f"[DEBUG SUBMIT] Selected enhancements: {enhancements}")
+        if dialog.exec_() == QDialog.Accepted:
+            self.enhancement_counts = dialog.get_selected_enhancements()
+            self.update_selected_enhancements_display()
+            self.update_cp_cost()
+    
+    def open_limiter_dialog(self):
+        """Open dialog to select limiters"""
+        dialog = LimiterDialog(
+            self, 
+            self.get_selected_limiters(), 
+            self.limiter_counts
+        )
         
-        # Add selected limiters if any
-        if hasattr(self, 'limiter_list') and self.limiter_list.count() > 0:
-            limiters = []
-            for i in range(self.limiter_list.count()):
-                item = self.limiter_list.item(i)
-                if item.isSelected():
-                    limiter_data = item.data(Qt.UserRole)
-                    limiters.append(limiter_data["name"])
-            
-            if limiters:
-                attribute["limiters"] = limiters
-                print(f"[DEBUG SUBMIT] Selected limiters: {limiters}")
+        if dialog.exec_() == QDialog.Accepted:
+            self.limiter_counts = dialog.get_selected_limiters()
+            self.update_selected_limiters_display()
+            self.update_cp_cost()
+    
+    def get_selected_enhancements(self):
+        """Get list of enhancement names that have a count > 0"""
+        return [name for name, count in self.enhancement_counts.items() if count > 0]
+    
+    def get_selected_limiters(self):
+        """Get list of limiter names that have a count > 0"""
+        return [name for name, count in self.limiter_counts.items() if count > 0]
+    
+    def update_selected_enhancements_display(self):
+        """Update the selected enhancements list display"""
+        self.selected_enhancements_list.clear()
         
-        # Preserve the existing ID if editing an existing attribute
-        if hasattr(self, 'existing_attribute_id') and self.existing_attribute_id:
-            attribute["id"] = self.existing_attribute_id
-            
-        return attribute
+        for name, count in self.enhancement_counts.items():
+            if count > 0:
+                max_count = self.max_enhancement_picks.get(name, 1)
+                item = QListWidgetItem(f"(E) {name} ({count}/{max_count})")
+                self.selected_enhancements_list.addItem(item)
+    
+    def update_selected_limiters_display(self):
+        """Update the selected limiters list display"""
+        self.selected_limiters_list.clear()
+        
+        for name, count in self.limiter_counts.items():
+            if count > 0:
+                max_count = self.max_limiter_picks.get(name, 1)
+                item = QListWidgetItem(f"(L) {name} ({count}/{max_count})")
+                self.selected_limiters_list.addItem(item)
 
-    def _track_custom_name_edit(self):
-        self._custom_name_edited = True
-
-    def set_attribute_by_name(self, name):
-        self.attr_dropdown.setCurrentText(name)
-        self.update_attribute_info()
-
-    def clear_custom_fields(self):
-        self.custom_input_widgets.clear()
-        while self.custom_field_form.rowCount() > 0:
-            self.custom_field_form.removeRow(0)
-            
-    def create_custom_field(self, field):
-        """Create a custom field widget based on field definition"""
-        key = field.get("key")
-        label = field.get("label", key)
-        field_type = field.get("field_type", "text")
-        desc = field.get("description", "")
-        options = field.get("options", [])
-        required = field.get("required", False)
-        default = field.get("default", "")
+    def _group_by_category(self, items):
+        """Group the items by category for display"""
+        categories = {}
+        for item in items:
+            category = item.get("category", "Uncategorized")
+            if category not in categories:
+                categories[category] = []
+            categories[category].append(item)
+        return categories
         
-        widget = None
-        
-        if field_type == "dropdown":
-            widget = QComboBox()
-            widget.addItems(options)
-            widget.view().setMinimumHeight(100)  # Make dropdown list taller
-            widget.currentTextChanged.connect(self.update_cp_cost)
-            
-            # Set default if specified
-            if default and default in options:
-                index = widget.findText(default)
-                if index >= 0:
-                    widget.setCurrentIndex(index)
-        
-        elif field_type == "number":
-            widget = QSpinBox()
-            widget.setRange(0, 100)  # Reasonable default range
-            if "min" in field:
-                widget.setMinimum(field["min"])
-            if "max" in field:
-                widget.setMaximum(field["max"])
-            if default:
-                try:
-                    widget.setValue(int(default))
-                except (ValueError, TypeError):
-                    pass
-            widget.valueChanged.connect(self.update_cp_cost)
-            
-        elif field_type == "combo_editable":
-            widget = QComboBox()
-            widget.setEditable(True)
-            widget.addItems(options)
-            widget.view().setMinimumHeight(100)
-            widget.lineEdit().setPlaceholderText(desc)
-            widget.currentTextChanged.connect(self.update_cp_cost)
-            
-            if "autocomplete_by_category" in field:
-                self.autocomplete_links.setdefault("category_type", []).append(key)
-                self.autocomplete_data[key] = field["autocomplete_by_category"]
-                widget.lineEdit().installEventFilter(self)
-                
-            if default:
-                widget.setCurrentText(default)
-        
-        elif field_type in ("text", "string"):
-            widget = QLineEdit()
-            widget.setPlaceholderText(desc)
-            if default:
-                widget.setText(default)
-            widget.installEventFilter(self)
-            
-            if "autocomplete_by_category" in field:
-                self.autocomplete_links.setdefault("category_type", []).append(key)
-                self.autocomplete_data[key] = field["autocomplete_by_category"]
-                widget.installEventFilter(self)
-        
-        elif field_type == "list":
-            widget = QTextEdit()
-            widget.setPlaceholderText(desc)
-            widget.setFixedHeight(80)
-            if default:
-                widget.setPlainText(default)
-            
-            if "autocomplete_options" in field:
-                tooltip = "Suggested: " + ", ".join(field["autocomplete_options"])
-                widget.setToolTip(tooltip)
-        
-        # If a widget was created, add it to the form and tracking
-        if widget:
-            self.custom_input_widgets[key] = widget
-            self.custom_field_form.addRow(label + ":", widget)
-            
-            # Add dynamic name update for certain fields
-            if not self._custom_name_edited:
-                if isinstance(widget, QLineEdit):
-                    widget.textChanged.connect(lambda _: self._set_dynamic_custom_name(self.attr_dropdown.currentText()))
-                elif isinstance(widget, QComboBox):
-                    widget.currentTextChanged.connect(lambda _: self._set_dynamic_custom_name(self.attr_dropdown.currentText()))
-
-    def update_attribute_info(self):
-        self._custom_name_edited = False
-        attr_name = self.attr_dropdown.currentText()
-        attribute_data = self.attributes[attr_name]
-
-        print(f"[DEBUG] Attribute data for {attr_name}: {attribute_data}")
-
-        # Reset name and description
-        if not self._custom_name_edited:
-            self._set_dynamic_custom_name(attr_name)
-        
-        print(f"[DEBUG] Processing attribute: {attr_name}, key: {attribute_data.get('key', 'unknown')}")
-        
-        # Set the description
-        self.description.setText(attribute_data.get("description", "No description available."))
-        print(f"[DEBUG] Setting description: '{self.description.toPlainText()[:50]}...'")
-        
-        # Make sure the QTextEdit is visible
-        self.description.setVisible(True)
-
-        # Clear previous custom fields
-        self.clear_custom_fields()
-        
-        # Load dynamic cost info BEFORE building fields
-        self.dynamic_cost_map = attribute_data.get("dynamic_cost", {})
-        self.dynamic_cost_category_key = attribute_data.get("dynamic_cost_category", None)
-        
-        # Create custom fields based on attribute definition
-        if "user_input_required" in attribute_data:
-            self.custom_field_group.setVisible(True)
-            for field in attribute_data["user_input_required"]:
-                self.create_custom_field(field)
-        else:
-            self.custom_field_group.setVisible(False)
-            
-        # Populate enhancements and limiters lists
-        # First, get the attribute key for compatibility checking
-        attr_key = attribute_data.get("key", "").lower()
-        
-        # Enhancements
-        self.enhancement_list.clear()
-        
-        # Debug counter for compatible enhancements
-        enhancement_count = 0
-        
-        # Store compatible enhancements for later use
-        self.compatible_enhancements = []
-        
-        for enhancement in self.raw_enhancements:
-            # Handle both direct objects and nested arrays
-            if isinstance(enhancement, list):
-                # Skip nested arrays for now - we'll handle them separately
-                continue
-            
-            # Get the compatible_with list or empty list if not present
-            compatible_with = enhancement.get("compatible_with", [])
-            
-            # If compatible_with is None or empty, this enhancement is compatible with all attributes
-            # Otherwise, check if our attribute key is in the compatible_with list
-            is_compatible = (not compatible_with) or (attr_key and any(attr_key == key.lower() for key in compatible_with))
-            
-            if is_compatible:
-                enhancement_count += 1
-                self.compatible_enhancements.append(enhancement)
-                item = QListWidgetItem(enhancement["name"])
-                tooltip = enhancement.get("description", "") + "\n+1 CP"
-                item.setToolTip(tooltip)
-                item.setData(Qt.UserRole, enhancement)
-                self.enhancement_list.addItem(item)
-        
-        print(f"DEBUG: Found {enhancement_count} compatible enhancements for {attr_name}")
-
-        # Limiters
-        self.limiter_list.clear()
-        # We already have the attribute key from above
-        
-        # Debug counter for compatible limiters
-        limiter_count = 0
-        
-        # Store compatible limiters for later use
-        self.compatible_limiters = []
-        
-        for limiter in self.raw_limiters:
-            # Handle both direct objects and nested arrays
-            if isinstance(limiter, list):
-                # Skip nested arrays for now
-                continue
-        
-            # Get the compatible_with list or empty list if not present
-            compatible_with = limiter.get("compatible_with", [])
-            
-            # If compatible_with is None or empty, this limiter is compatible with all attributes
-            # Otherwise, check if our attribute key is in the compatible_with list
-            is_compatible = (not compatible_with) or (attr_key and any(attr_key == key.lower() for key in compatible_with))
-            
-            if is_compatible:
-                limiter_count += 1
-                self.compatible_limiters.append(limiter)
-                item = QListWidgetItem(limiter["name"])
-                tooltip = limiter.get("description", "") + "\n−1 CP"
-                item.setToolTip(tooltip)
-                item.setData(Qt.UserRole, limiter)
-                self.limiter_list.addItem(item)
-        
-        print(f"DEBUG: Found {limiter_count} compatible limiters for {attr_name}")
-
-        # Trigger dependent category population
-        if "category_type" in self.custom_input_widgets:
-            current_type = self.custom_input_widgets["category_type"].currentText()
-            self.on_category_type_changed(current_type)
-
-        # If the dynamic field is a dropdown, hook it to cost updates
-        if self.dynamic_cost_category_key:
-            widget = self.custom_input_widgets.get(self.dynamic_cost_category_key)
-            if isinstance(widget, QComboBox):
-                try:
-                    widget.currentTextChanged.disconnect()
-                except Exception:
-                    pass
-                widget.currentTextChanged.connect(self.update_cp_cost)
-
-        self.update_cp_cost()
-
-        # Trigger custom name update for Skill Group after all fields are populated
-        if attr_name == "Skill Group" and not self._custom_name_edited:
-            self._update_skill_group_name()
-
-        if not self._custom_name_edited and attr_name in {
-            "Skill Group", "Enemy Attack", "Enemy Defence",
-            "Melee Attack", "Melee Defence", "Ranged Attack",
-            "Power Flux", "Dynamic Powers", "Metamorphosis"
-        }:
-            for key, widget in self.custom_input_widgets.items():
-                try:
-                    if isinstance(widget, QComboBox):
-                        widget.currentTextChanged.disconnect()
-                        widget.currentTextChanged.connect(lambda _: self._set_dynamic_custom_name(attr_name))
-                    elif isinstance(widget, QLineEdit):
-                        widget.textChanged.disconnect()
-                        widget.textChanged.connect(lambda _: self._set_dynamic_custom_name(attr_name))
-                except Exception:
-                    # Skip if wasn't connected yet
-                    pass
-
-        self.update_cp_cost()
-
-        # If name hasn't been custom edited, try to smart-name it again now
-        if not self._custom_name_edited:
-            self._set_dynamic_custom_name(attr_name)
-            print("[DEBUG] Final name update triggered")
-
-        # Debug output
-        print("[DEBUG INIT] Loaded Attribute:", attr_name)
-        print("[DEBUG INIT] Dynamic Cost Map:", self.dynamic_cost_map)
-        print("[DEBUG INIT] Dynamic Key:", self.dynamic_cost_category_key)
-        if self.dynamic_cost_category_key in self.custom_input_widgets:
-            print("[DEBUG INIT] Found widget for key")
-            print("[DEBUG INIT] Initial category value:", self.custom_input_widgets[self.dynamic_cost_category_key].currentText())
-
-    def load_existing_enhancements_and_limiters(self, existing_attr):
-        """Load existing enhancements and limiters for an attribute being edited"""
+    def load_existing_attribute(self, existing_attr):
+        """Load data from an existing attribute"""
         try:
-            # Load existing enhancements if any
-            if "enhancements" in existing_attr and existing_attr["enhancements"]:
-                print(f"Loading {len(existing_attr['enhancements'])} existing enhancements")
+            # Set base attribute name
+            base_name = existing_attr.get("base_name", existing_attr.get("name", ""))
+            if base_name in self.attributes:
+                self.attr_dropdown.setCurrentText(base_name)
                 
-                # For each enhancement in the attribute, find and select it in the list
+            # Set custom name if different
+            custom_name = existing_attr.get("name", "")
+            if custom_name != base_name:
+                self.custom_name_input.setText(custom_name)
+                self._custom_name_edited = True
+                
+            # Set level
+            level = existing_attr.get("level", 1)
+            self.level_spin.setValue(level)
+            
+            # Set user description if any
+            user_desc = existing_attr.get("user_description", "")
+            self.user_description.setPlainText(user_desc)
+            
+            # Load existing enhancements and limiters if any
+            if "enhancements" in existing_attr and existing_attr["enhancements"]:
                 for enhancement in existing_attr["enhancements"]:
                     # Handle both string and dictionary enhancements
                     if isinstance(enhancement, str):
                         enhancement_name = enhancement
+                        self.enhancement_counts[enhancement_name] = 1
                     else:
                         enhancement_name = enhancement.get("name")
-                        
-                    if not enhancement_name:
-                        continue
-                        
-                    # Find the enhancement in the list
-                    for i in range(self.enhancement_list.count()):
-                        item = self.enhancement_list.item(i)
-                        if item.text() == enhancement_name:
-                            item.setSelected(True)
-                            break
+                        count = enhancement.get("count", 1)
+                        self.enhancement_counts[enhancement_name] = count
             
             # Load existing limiters if any
             if "limiters" in existing_attr and existing_attr["limiters"]:
-                print(f"Loading {len(existing_attr['limiters'])} existing limiters")
-                
-                # For each limiter in the attribute, find and select it in the list
                 for limiter in existing_attr["limiters"]:
                     # Handle both string and dictionary limiters
                     if isinstance(limiter, str):
                         limiter_name = limiter
+                        self.limiter_counts[limiter_name] = 1
                     else:
                         limiter_name = limiter.get("name")
-                        
-                    if not limiter_name:
-                        continue
-                        
-                    # Find the limiter in the list
-                    for i in range(self.limiter_list.count()):
-                        item = self.limiter_list.item(i)
-                        if item.text() == limiter_name:
-                            item.setSelected(True)
-                            break
+                        count = limiter.get("count", 1)
+                        self.limiter_counts[limiter_name] = count
         except Exception as e:
             print(f"Error loading enhancements and limiters: {e}")
 
@@ -522,441 +306,309 @@ class AttributeBuilderDialog(QDialog):
         for field in user_fields:
             self.add_custom_field_widget(field)
             
-        # Set custom field values from existing attribute if available
-        if "custom_fields" in existing_attr and existing_attr["custom_fields"]:
-            for key, value in existing_attr["custom_fields"].items():
-                if key in self.custom_input_widgets:
-                    widget = self.custom_input_widgets[key]
-                    if isinstance(widget, QComboBox):
-                        index = widget.findText(value)
-                        if index >= 0:
-                            widget.setCurrentIndex(index)
-                        else:
-                            # For editable combo boxes
-                            if widget.isEditable():
-                                widget.setCurrentText(value)
-                    elif isinstance(widget, QSpinBox):
-                        try:
-                            widget.setValue(int(value))
-                        except (ValueError, TypeError):
-                            pass
-                    elif isinstance(widget, QLineEdit):
-                        widget.setText(value)
-                    elif isinstance(widget, QTextEdit):
-                        widget.setPlainText(value)
-
-        # For Skill Group, hook dropdowns to update custom name
-        if attr_name == "Skill Group" and not self._custom_name_edited:
-            cat_widget = self.custom_input_widgets.get("category")
-            name_widget = self.custom_input_widgets.get("skill_group_name")
-
-            if cat_widget:
-                cat_widget.currentTextChanged.connect(self._update_skill_group_name)
-            if name_widget:
-                name_widget.currentTextChanged.connect(self._update_skill_group_name)
-
-        self.custom_field_group.setVisible(bool(user_fields))
-
-        # enhancements
-        self.enhancement_list.clear()
-        # Get the attribute key for compatibility checking
-        attr_key = self.attributes[attr_name].get("key", "").lower()
-        print(f"DEBUG: Current attribute: {attr_name}, key: {attr_key}")
-        
-        # Debug counter for compatible enhancements
-        enhancement_count = 0
-        
-        # Store compatible enhancements for later use
-        self.compatible_enhancements = []
-        
-        for enhancement in self.raw_enhancements:
-            # Handle both direct objects and nested arrays
-            if isinstance(enhancement, list):
-                # Skip nested arrays for now - we'll handle them separately
-                continue
-            
-            # Get the compatible_with list or empty list if not present
-            compatible_with = enhancement.get("compatible_with", [])
-            
-            # If compatible_with is None or empty, this enhancement is compatible with all attributes
-            # Otherwise, check if our attribute key is in the compatible_with list
-            is_compatible = (not compatible_with) or (attr_key and any(attr_key == key.lower() for key in compatible_with))
-            
-            if is_compatible:
-                enhancement_count += 1
-                self.compatible_enhancements.append(enhancement)
-                item = QListWidgetItem(enhancement["name"])
-                tooltip = enhancement.get("description", "") + "\n+1 CP"
-                item.setToolTip(tooltip)
-                item.setData(Qt.UserRole, enhancement)
-                self.enhancement_list.addItem(item)
-        
-        print(f"DEBUG: Found {enhancement_count} compatible enhancements for {attr_name}")
-
-        # Limiters
-        self.limiter_list.clear()
-        # We already have the attribute key from above
-        
-        # Debug counter for compatible limiters
-        limiter_count = 0
-        
-        # Store compatible limiters for later use
-        self.compatible_limiters = []
-        
-        for limiter in self.raw_limiters:
-            # Handle both direct objects and nested arrays
-            if isinstance(limiter, list):
-                # Skip nested arrays for now
-                continue
-            
-            # Get the compatible_with list or empty list if not present
-            compatible_with = limiter.get("compatible_with", [])
-            
-            # If compatible_with is None or empty, this limiter is compatible with all attributes
-            # Otherwise, check if our attribute key is in the compatible_with list
-            is_compatible = (not compatible_with) or (attr_key and any(attr_key == key.lower() for key in compatible_with))
-            
-            if is_compatible:
-                limiter_count += 1
-                self.compatible_limiters.append(limiter)
-                item = QListWidgetItem(limiter["name"])
-                tooltip = limiter.get("description", "") + "\n−1 CP"
-                item.setToolTip(tooltip)
-                item.setData(Qt.UserRole, limiter)
-                self.limiter_list.addItem(item)
-        
-        print(f"DEBUG: Found {limiter_count} compatible limiters for {attr_name}")
-
-        # Trigger dependent category population
-        if "category_type" in self.custom_input_widgets:
-            current_type = self.custom_input_widgets["category_type"].currentText()
-            self.on_category_type_changed(current_type)
-
-        # If the dynamic field is a dropdown, hook it to cost updates
-        if self.dynamic_cost_category_key:
-            widget = self.custom_input_widgets.get(self.dynamic_cost_category_key)
-            if isinstance(widget, QComboBox):
-                try:
-                    widget.currentTextChanged.disconnect()
-                except Exception:
-                    pass
-                widget.currentTextChanged.connect(self.update_cp_cost)
-
+        # Load values for custom fields
+        custom_fields = existing_attr.get("custom_fields", {})
+        for field_name, value in custom_fields.items():
+            if field_name in self.custom_input_widgets:
+                widget = self.custom_input_widgets[field_name]
+                if isinstance(widget, QComboBox):
+                    widget.setCurrentText(value)
+                elif isinstance(widget, QLineEdit):
+                    widget.setText(value)
+                # Add support for other widget types as needed
+                
+        # Update the enhanced/limiter displays
+        self.update_selected_enhancements_display()
+        self.update_selected_limiters_display()
+                
+        # Update CP cost
         self.update_cp_cost()
 
-        # Trigger custom name update for Skill Group after all fields are populated
-        if attr_name == "Skill Group" and not self._custom_name_edited:
-            self._update_skill_group_name()
-
-        if not self._custom_name_edited and attr_name in {
-            "Skill Group", "Enemy Attack", "Enemy Defence",
-            "Melee Attack", "Melee Defence", "Ranged Attack",
-            "Power Flux", "Dynamic Powers", "Metamorphosis"
-        }:
-            for key, widget in self.custom_input_widgets.items():
-                try:
-                    if isinstance(widget, QComboBox):
-                        widget.currentTextChanged.disconnect()
-                        widget.currentTextChanged.connect(lambda _: self._set_dynamic_custom_name(attr_name))
-                    elif isinstance(widget, QLineEdit):
-                        widget.textChanged.disconnect()
-                        widget.textChanged.connect(lambda _: self._set_dynamic_custom_name(attr_name))
-                except Exception:
-                    # Skip if wasn't connected yet
-                    pass
-
-        self.update_cp_cost()
-
-        # If name hasn't been custom edited, try to smart-name it again now
-        if not self._custom_name_edited:
-            self._set_dynamic_custom_name(attr_name)
-            print("[DEBUG] Final name update triggered")
-
-        # Debug output
-        print("[DEBUG INIT] Loaded Attribute:", attr_name)
-        print("[DEBUG INIT] Dynamic Cost Map:", self.dynamic_cost_map)
-        print("[DEBUG INIT] Dynamic Key:", self.dynamic_cost_category_key)
-        if self.dynamic_cost_category_key in self.custom_input_widgets:
-            print("[DEBUG INIT] Found widget for key")
-            print("[DEBUG INIT] Initial category value:", self.custom_input_widgets[self.dynamic_cost_category_key].currentText())
-
-    def on_category_type_changed(self, selected_type):
-        controller_key = "category_type"
-        for dependent_key in self.autocomplete_links.get("category_type", []):
-            options = self.autocomplete_data.get(dependent_key, {}).get(selected_type, [])
-            widget = self.custom_input_widgets.get(dependent_key)
-
-            if isinstance(widget, QComboBox):
-                widget.clear()
-                widget.addItems(options)
-                widget.setCurrentIndex(-1)
-
-    def update_cp_cost(self):
-        name = self.attr_dropdown.currentText()
-        attribute = self.attributes[name]
-        level = self.level_spin.value()
-
-        # Initialize category
-        category = None
-
-        # Dynamic cost support
-        base_cost = 0  # Default to 0 if no cost is found
-        if self.dynamic_cost_map and self.dynamic_cost_category_key:
-            widget = self.custom_input_widgets.get(self.dynamic_cost_category_key)
-            if isinstance(widget, QComboBox):
-                category = widget.currentText()
-                base_cost = self.dynamic_cost_map.get(category, 0)  # Use cost from dynamic_cost or default to 0
-
-        # enhancements / Limiters
-        enhancement_count = len(self.enhancement_list.selectedItems())
-        limiter_count = len(self.limiter_list.selectedItems())
-
-        # Calculate total CP using the same logic as the attribute card
-        total_cp = attribute.get("cost_per_level", 0) * level
-        effective_level = max(1, level - enhancement_count + limiter_count)
-
-        # Update CP Cost label
-        self.cp_cost_label.setText(f"{total_cp} CP")
-        self.cp_cost_label.setToolTip(f"Effective Level: {effective_level}")
-
-        # Debug logging to verify calculations
-        print(f"[DEBUG] Attribute: {name}, Level: {level}, Base Cost: {base_cost}, Total CP: {total_cp}, Effective Level: {effective_level}")
-
-    def on_controller_field_changed(self, controller_key, selected_value):
-        if controller_key not in self.autocomplete_links:
+    def update_attribute_info(self):
+        """Update UI for the selected attribute"""
+        attribute_name = self.attr_dropdown.currentText()
+        if not attribute_name:
             return
-
-        for dependent_key in self.autocomplete_links[controller_key]:
-            data = self.autocomplete_data.get(dependent_key)
-            if not data or data["controller"] != controller_key:
-                continue
-
-            options = data["options_map"].get(selected_value, [])
-            widget = self.custom_fields_widgets.get(dependent_key)
-            if isinstance(widget, QLineEdit):
-                completer = QCompleter(options)
-                completer.setCaseSensitivity(Qt.CaseInsensitive)
-                completer.setFilterMode(Qt.MatchContains)
-                widget.setCompleter(completer)
-
-    def get_attribute_data(self):
-        # Make sure name reflects the latest field values
+            
+        # Get attribute data
+        attribute = self.attributes.get(attribute_name, {})
+        
+        # Update description
+        description = attribute.get("description", "No description available.")
+        self.description.setPlainText(description)
+        
+        # Update custom name if not already edited
         if not self._custom_name_edited:
-            self._set_dynamic_custom_name(self.attr_dropdown.currentText())
+            self.custom_name_input.setText(attribute_name)
         
-        custom_fields = {}
-        for key, widget in self.custom_input_widgets.items():
-            if isinstance(widget, QLineEdit):
-                custom_fields[key] = widget.text()
-            elif isinstance(widget, QComboBox):
-                custom_fields[key] = widget.currentText()
-            # You can add more types here in the future if needed
-
-        enhancements = [item.text() for item in self.enhancement_list.selectedItems()]
-        limiters = [item.text() for item in self.limiter_list.selectedItems()]
-
-        name = self.attr_dropdown.currentText()
+        # Clear existing custom fields
+        self.clear_custom_fields()
         
-        attribute = self.attributes[name]
-        base_cost = attribute.get("cost_per_level", attribute.get("base_cost"))
+        # Add user input fields
+        user_fields = attribute.get("user_input_required", [])
+        for field in user_fields:
+            self.add_custom_field_widget(field)
+            
+        # Update CP cost
+        self.update_cp_cost()
 
-        # Handle dynamic cost
-        if self.dynamic_cost_map and self.dynamic_cost_category_key:
-            widget = self.custom_input_widgets.get(self.dynamic_cost_category_key)
-            if isinstance(widget, QComboBox):
-                category = widget.currentText()
-                if category in self.dynamic_cost_map:
-                    base_cost = self.dynamic_cost_map[category]
-
-        level = self.level_spin.value()
-        enhancement_count = len(enhancements)
-        limiter_count = len(limiters)
-        
-        total_cp = base_cost * level
-        effective_level = max(1, level - enhancement_count + limiter_count)
-
-        # Force dynamic name update if user hasn't manually edited it
-        from PyQt5.QtWidgets import QApplication  # (already imported at top)
-
-        # Make sure all text/selection changes are processed
-        QApplication.processEvents()
-
-        if not self._custom_name_edited:
-            self._set_dynamic_custom_name(self.attr_dropdown.currentText())
-
-        print("[DEBUG SUBMIT] Final Name:", self.custom_name_input.text())
-        print("[DEBUG SUBMIT] Custom Fields:", custom_fields)
-        return {
-            "name": self.custom_name_input.text(),
-            "base_name": name,
-            "level": level,
-            "cost": total_cp,
-            "effective_level": effective_level,
-            "enhancements": enhancements,
-            "limiters": limiters,
-            "description": self.description.toPlainText(),
-            "user_description": self.user_description.toPlainText(),
-            "custom_fields": custom_fields
-        }
+    def clear_custom_fields(self):
+        self.custom_input_widgets.clear()
+        while self.custom_field_form.rowCount() > 0:
+            self.custom_field_form.removeRow(0)
 
     def add_custom_field_widget(self, field):
-        label = field.get("label", "Unnamed")
-        key = field.get("key") or field.get("field_name")
-        field_type = field.get("field_type", "text")
-        options = field.get("options", [])
-        desc = field.get("description", "")
+        """Add a widget for a custom field"""
+        field_name = field.get("name", "")
+        field_type = field.get("type", "text")
+        field_label = field.get("label", field_name)
+        field_options = field.get("options", [])
+        
+        if field_type == "select":
+            # Create dropdown for select fields
+            widget = QComboBox()
+            widget.addItems(field_options)
+        else:
+            # Default to text input
+            widget = QLineEdit()
+            
+        # Store reference to widget
+        self.custom_input_widgets[field_name] = widget
+        
+        # Add to form layout
+        self.custom_field_form.addRow(field_label + ":", widget)
 
-        # Prevent duplicate keys
-        if not key or key in self.custom_input_widgets:
+    def update_cp_cost(self):
+        """Calculate and update the CP cost based on selections"""
+        attribute_name = self.attr_dropdown.currentText()
+        if not attribute_name:
+            return
+            
+        # Calculate base attribute cost
+        attribute = self.attributes.get(attribute_name)
+        if not attribute:
+            self.cp_cost_label.setText("0")
             return
 
-        # Track dynamic cost category key if relevant
-        if self.dynamic_cost_map and self.dynamic_cost_category_key is None:
-            self.dynamic_cost_category_key = field.get("key")
+        # Get the cost per level - handle dictionary costs
+        try:
+            if isinstance(attribute.get("cost_per_level"), dict):
+                # Handle level bands
+                level = self.level_spin.value()
+                cost_map = attribute.get("cost_per_level")
+                cost_per_level = 0
+                
+                # Find the right level band
+                for level_band, cost in cost_map.items():
+                    level_min, level_max = level_band.split("-")
+                    level_min = int(level_min)
+                    level_max = int(level_max) if level_max != "max" else float('inf')
+                    
+                    if level_min <= level <= level_max:
+                        cost_per_level = cost
+                        break
+            else:
+                cost_per_level = attribute.get("cost_per_level", 1)
+        except Exception as e:
+            print(f"Error calculating cost: {e}")
+            cost_per_level = 1
 
-        widget = None
+        # Calculate base cost
+        base_cost = self.level_spin.value() * cost_per_level
+        
+        # Add costs for enhancements
+        enhancement_multiplier = 1.0
+        for name, count in self.enhancement_counts.items():
+            enhancement = next((e for e in self.raw_enhancements if e["name"] == name), None)
+            if enhancement:
+                # Each enhancement typically adds 0.5x per assignment
+                enhancement_multiplier += count * 0.5
+        
+        total_cost = base_cost * enhancement_multiplier
+        
+        # Apply limiters (reduce cost)
+        limiter_multiplier = 1.0
+        for name, count in self.limiter_counts.items():
+            limiter = next((l for l in self.raw_limiters if l["name"] == name), None)
+            if limiter:
+                # Each limiter typically reduces by 0.1x per assignment
+                limiter_multiplier -= count * 0.1
+        
+        # Ensure limiter multiplier doesn't go below minimum (usually 0.5)
+        limiter_multiplier = max(limiter_multiplier, 0.5)
+        
+        total_cost = total_cost * limiter_multiplier
+        
+        # Apply any custom field-based cost modifications
+        if hasattr(self, 'dynamic_cost_map') and self.dynamic_cost_map:
+            try:
+                # Check if we have a dynamic cost category
+                if self.dynamic_cost_category_key and self.dynamic_cost_category_key in self.custom_input_widgets:
+                    category_widget = self.custom_input_widgets[self.dynamic_cost_category_key]
+                    if isinstance(category_widget, QComboBox):
+                        selected_category = category_widget.currentText()
+                        category_multiplier = self.dynamic_cost_map.get(selected_category, 1.0)
+                        total_cost *= category_multiplier
+            except Exception as e:
+                print(f"Error applying dynamic cost: {e}")
+                
+        # Round to nearest integer
+        total_cost = round(total_cost)
+        
+        # Update UI
+        self.cp_cost_label.setText(str(total_cost))
 
-        if field_type in ("dropdown", "select"):
-            widget = QComboBox()
-            widget.addItems(options)
-            if widget.count() > 0:
-                widget.setCurrentIndex(0)
-            widget.currentTextChanged.connect(self.update_cp_cost)
-            widget.installEventFilter(self)
+    def get_attribute_data(self):
+        """Return the attribute data based on the dialog inputs"""
+        # Get base attribute name and custom name
+        base_name = self.attr_dropdown.currentText()
+        name = self.custom_name_input.text() or base_name
+        
+        # Build attribute data structure
+        attribute = {
+            "name": name,
+            "base_name": base_name,
+            "level": self.level_spin.value(),
+            "cost": int(self.cp_cost_label.text()),
+            "user_description": self.user_description.toPlainText()
+        }
+        
+        # Get custom field values
+        custom_fields = {}
+        for field_name, widget in self.custom_input_widgets.items():
+            if isinstance(widget, QComboBox):
+                value = widget.currentText()
+            elif isinstance(widget, QLineEdit):
+                value = widget.text()
+            else:
+                value = ""
+            
+            custom_fields[field_name] = value
+            
+        # Add custom fields if any
+        if custom_fields:
+            attribute["custom_fields"] = custom_fields
+            
+        # Add description from base attribute
+        base_attr = self.attributes.get(base_name, {})
+        if "description" in base_attr:
+            attribute["description"] = base_attr["description"]
+            
+        # Get the official attribute key if available
+        if "key" in base_attr:
+            attribute["key"] = base_attr["key"]
+            
+        # Add selected enhancements if any
+        enhancements = self.get_selected_enhancements()
+        if enhancements:
+            attribute["enhancements"] = enhancements
+            
+        # Add enhancement counts if any
+        if self.enhancement_counts:
+            attribute["enhancement_counts"] = self.enhancement_counts
+            
+        # Add selected limiters if any
+        limiters = self.get_selected_limiters()
+        if limiters:
+            attribute["limiters"] = limiters
+            
+        # Add limiter counts if any
+        if self.limiter_counts:
+            attribute["limiter_counts"] = self.limiter_counts
+        
+        # Preserve the existing ID if editing an existing attribute
+        if hasattr(self, 'existing_attribute_id') and self.existing_attribute_id:
+            attribute["id"] = self.existing_attribute_id
+            
+        return attribute
 
-        elif field_type == "combo_editable":
-            widget = QComboBox()
-            widget.setEditable(True)
-            widget.addItems(options)
-            widget.view().setMinimumHeight(100)
-            widget.lineEdit().setPlaceholderText(desc)
-            widget.currentTextChanged.connect(self.update_cp_cost)
+    def _track_custom_name_edit(self):
+        self._custom_name_edited = True
 
-            if "autocomplete_by_category" in field:
-                self.autocomplete_links.setdefault("category_type", []).append(key)
-                self.autocomplete_data[key] = field["autocomplete_by_category"]
-                widget.lineEdit().installEventFilter(self)
+    def show_power_pack_dialog(self):
+        """Show dialog to select and apply a power pack"""
+        dialog = QDialog(self)
+        dialog.setWindowTitle("Select Power Pack")
+        layout = QVBoxLayout()
+        dialog.setLayout(layout)
 
-        elif field_type in ("text", "string"):
-            widget = QLineEdit()
-            widget.setPlaceholderText(desc)
-            widget.installEventFilter(self)
+        # Add description
+        description = QLabel("Power Packs are pre-defined sets of enhancements and limiters that represent common power sources or themes.")
+        description.setWordWrap(True)
+        layout.addWidget(description)
 
-            if "autocomplete_by_category" in field:
-                self.autocomplete_links.setdefault("category_type", []).append(key)
-                self.autocomplete_data[key] = field["autocomplete_by_category"]
-                widget.installEventFilter(self)
+        # Create combo box for power pack selection
+        pack_combo = QComboBox()
+        pack_combo.addItems([pack["name"] for pack in self.power_packs])
+        layout.addWidget(pack_combo)
 
-        elif field_type == "list":
-            widget = QTextEdit()
-            widget.setPlaceholderText(desc)
-            widget.setFixedHeight(80)
+        # Add description text area
+        pack_description = QTextEdit()
+        pack_description.setReadOnly(True)
+        pack_description.setFixedHeight(100)
+        layout.addWidget(pack_description)
 
-            if "autocomplete_options" in field:
-                tooltip = "Suggested: " + ", ".join(field["autocomplete_options"])
-                widget.setToolTip(tooltip)
+        # Update description when selection changes
+        def update_description():
+            selected_pack = self.power_packs[pack_combo.currentIndex()]
+            pack_description.setText(selected_pack["description"])
+        
+        pack_combo.currentIndexChanged.connect(update_description)
+        update_description()  # Initial update
 
-        # If a widget was created, add it to the form and tracking
-        if widget:
-            self.custom_input_widgets[key] = widget
-            self.custom_field_form.addRow(label + ":", widget)
+        # Add buttons
+        button_box = QHBoxLayout()
+        apply_button = QPushButton("Apply")
+        cancel_button = QPushButton("Cancel")
+        button_box.addWidget(apply_button)
+        button_box.addWidget(cancel_button)
+        layout.addLayout(button_box)
 
-        if not self._custom_name_edited:
-            if isinstance(widget, QLineEdit):
-                widget.textChanged.connect(lambda _: self._set_dynamic_custom_name(self.attr_dropdown.currentText()))
-            elif isinstance(widget, QComboBox):
-                widget.currentTextChanged.connect(lambda _: self._set_dynamic_custom_name(self.attr_dropdown.currentText()))
+        # Connect buttons
+        def apply_with_show_all():
+            self.apply_power_pack(self.power_packs[pack_combo.currentIndex()])
+            dialog.accept()
+            
+        apply_button.clicked.connect(apply_with_show_all)
+        cancel_button.clicked.connect(dialog.reject)
 
-    def eventFilter(self, source, event):
-        if event.type() == QEvent.MouseButtonPress:
-            for widget in self.custom_input_widgets.values():
-                if isinstance(widget, QComboBox) and widget.isEditable():
-                    if widget.lineEdit() is source:
-                        widget.showPopup()
-        return super().eventFilter(source, event)
-    
-    def _set_dynamic_custom_name_wrapper(self, attr_name):
-        print(f"[DYNAMIC NAME] Setting name for {attr_name}")
-        return lambda _: self._set_dynamic_custom_name(attr_name)
+        dialog.exec_()
 
-    def _update_skill_group_name(self):
-        if self._custom_name_edited:
-            return  # don't overwrite user input
-
-        cat_widget = self.custom_input_widgets.get("category")
-        name_widget = self.custom_input_widgets.get("skill_group_name")
-
-        if cat_widget and name_widget:
-            category = cat_widget.currentText()
-            group_name = name_widget.currentText()
-            if category and group_name:
-                self.custom_name_input.setText(f"Skill Group: {group_name} ({category})")
-
-    def _set_dynamic_custom_name(self, attr_name):
-        # Fallback
-        fallback_name = attr_name
-
-        def get(key):
-            w = self.custom_input_widgets.get(key)
-            return w.currentText() if isinstance(w, QComboBox) else (w.text() if isinstance(w, QLineEdit) else "")
-
-        if attr_name == "Skill Group":
-            category = get("category")
-            group_name = get("skill_group_name")
-            if category and group_name:
-                name = f"Skill Group: {group_name} ({category})"
-                self.custom_name_input.setText(name)
-                return
-
-        elif attr_name == "Enemy Attack":
-            enemy = get("enemy_type")
-            if enemy:
-                self.custom_name_input.setText(f"Enemy Attack vs. {enemy}")
-                return
-
-        elif attr_name == "Enemy Defence":
-            enemy = get("enemy_type")
-            if enemy:
-                self.custom_name_input.setText(f"Enemy Defence vs. {enemy}")
-                return
-
-        elif attr_name == "Melee Attack":
-            weapon = get("weapon_class")
-            if weapon:
-                self.custom_name_input.setText(f"Melee Attack [{weapon}]")
-                return
-
-        elif attr_name == "Melee Defence":
-            weapon = get("weapon_class")
-            if weapon:
-                self.custom_name_input.setText(f"Melee Defence [{weapon}]")
-                return
-
-        elif attr_name == "Ranged Attack":
-            weapon = get("weapon_class")
-            if weapon:
-                self.custom_name_input.setText(f"Ranged Attack [{weapon}]")
-                return
-
-        elif attr_name == "Power Flux":
-            category = get("flux_category")
-            if category:
-                self.custom_name_input.setText(f"Power Flux: {category}")
-                return
-
-        elif attr_name == "Dynamic Powers":
-            category_type = get("category_type")
-            controlled = get("controlled_category")
-            if category_type and controlled:
-                self.custom_name_input.setText(f"Dynamic Powers: {controlled} ({category_type})")
-                return
-
-        elif attr_name == "Metamorphosis":
-            name = get("template_name")
-            cp = get("template_cp_value")
-            if name and cp:
-                self.custom_name_input.setText(f"Metamorphosis: {name} ({cp} CP)")
-                return
-
-        # Default fallback
-        self.custom_name_input.setText(fallback_name)
+    def apply_power_pack(self, power_pack):
+        """Apply the selected power pack's enhancements and limiters"""
+        # Clear current selections
+        self.enhancement_counts = {}
+        self.limiter_counts = {}
+        
+        # Apply enhancements
+        for enhancement in power_pack.get("enhancements", []):
+            name = enhancement["name"]
+            count = enhancement["count"]
+            self.enhancement_counts[name] = count
+        
+        # Apply limiters
+        for limiter in power_pack.get("limiters", []):
+            name = limiter["name"]
+            count = limiter["count"]
+            self.limiter_counts[name] = count
+        
+        # Update the UI
+        self.update_selected_enhancements_display()
+        self.update_selected_limiters_display()
+        self.update_cp_cost()
+        
+        # Show confirmation with details
+        message = f"Applied {power_pack['name']} Power Pack:\n\n"
+        
+        if power_pack.get("enhancements"):
+            message += "Enhancements:\n"
+            for enhancement in power_pack.get("enhancements", []):
+                message += f"- {enhancement['name']} (×{enhancement['count']})\n"
+            message += "\n"
+        
+        if power_pack.get("limiters"):
+            message += "Limiters:\n"
+            for limiter in power_pack.get("limiters", []):
+                message += f"- {limiter['name']} (×{limiter['count']})\n"
+        
+        QMessageBox.information(self, "Power Pack Applied", message)

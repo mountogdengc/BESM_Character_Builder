@@ -2,7 +2,7 @@
 import json
 from PyQt5.QtWidgets import QWidget, QLabel, QVBoxLayout, QTableWidgetItem
 from PyQt5.QtCore import pyqtSignal, Qt
-from PyQt5.QtGui import QColor
+from PyQt5.QtGui import QColor, QCursor
 from PyQt5.QtWidgets import QGraphicsDropShadowEffect
 from tools.widgets import ClickableCard
 
@@ -10,83 +10,89 @@ def create_card_widget(title="", lines=None, on_click=None, on_remove=None, card
     from PyQt5.QtWidgets import QWidget, QVBoxLayout, QHBoxLayout, QLabel, QPushButton, QSizePolicy
     from PyQt5.QtCore import Qt
 
-    # Outer ClickableCard (invisible wrapper)
+    # Create all widgets before adding them to layouts
     card = ClickableCard()
-    card.setMinimumHeight(80)  # Minimum height for aesthetics
+    container = QWidget()
+    title_label = QLabel(title)
+    button_layout = QHBoxLayout()
+    card_layout = QVBoxLayout(card)
+    layout = QVBoxLayout(container)
     
-    # Set size policy to allow the card to grow vertically
+    # Configure the card
+    card.setMinimumHeight(80)
     card.setSizePolicy(QSizePolicy.Preferred, QSizePolicy.MinimumExpanding)
-
-    # Shadow effect
     apply_text_shadow(card)
 
-    # Inner container — the actual visible card
-    container = QWidget()
-    container.setObjectName("alternateFormCard")  # ✅ Apply the style here
-    container.setMinimumHeight(80)  # Also set minimum height on container
+    # Configure the container
+    if card_type == "alternate_form":
+        container.setObjectName("alternateFormCard")
+    elif card_type == "attribute":
+        container.setObjectName("attributeCard")
+    elif card_type == "defect":
+        container.setObjectName("defectCard")
+    else:
+        container.setObjectName("defaultCard")
+    
+    # Set cursor for clickable cards
+    if on_click or on_remove:
+        container.setCursor(QCursor(Qt.PointingHandCursor))
+    
+    container.setMinimumHeight(80)
     container.setSizePolicy(QSizePolicy.Preferred, QSizePolicy.MinimumExpanding)
 
-    layout = QVBoxLayout(container)
+    # Configure layouts
     layout.setContentsMargins(6, 6, 6, 10)
     layout.setSpacing(2)
+    button_layout.setContentsMargins(0, 0, 0, 0)
+    button_layout.addStretch()
+    card_layout.setContentsMargins(0, 0, 0, 0)
+    card_layout.setSpacing(0)
 
-    # Title
-    title_label = QLabel(title)
+    # Configure title
     title_label.setObjectName("cardTitle")
     layout.addWidget(title_label)
 
-    # Lines (summary)
+    # Add content if provided
     if lines:
         content_label = QLabel("\n".join(lines))
         content_label.setObjectName("cardLabel")
         content_label.setWordWrap(True)
-        content_label.setTextInteractionFlags(Qt.TextSelectableByMouse)  # Allow text selection
-        content_label.setSizePolicy(QSizePolicy.Preferred, QSizePolicy.MinimumExpanding)  # Allow vertical expansion
-        # Don't set a minimum height, let it be determined by content
-        # Adjust alignment to top to prevent extra space at bottom
+        content_label.setTextInteractionFlags(Qt.TextSelectableByMouse)
+        content_label.setSizePolicy(QSizePolicy.Preferred, QSizePolicy.MinimumExpanding)
         content_label.setAlignment(Qt.AlignTop | Qt.AlignLeft)
         layout.addWidget(content_label)
     
-    # Add buttons layout
-    button_layout = QHBoxLayout()
-    button_layout.setContentsMargins(0, 0, 0, 0)
-    button_layout.addStretch()
-    
-    # Add edit button for alternate form cards
-    if card_type == "alternate_form" or on_click:
+    # Add edit button if needed
+    if card_type == "alternate_form" or (card_type == "attribute" and on_click):
         edit_button = QPushButton("Edit")
         edit_button.setObjectName("editButton")
         edit_button.setToolTip("Edit")
         edit_button.clicked.connect(on_click)
+        edit_button.setCursor(QCursor(Qt.PointingHandCursor))
         button_layout.addWidget(edit_button)
     
-    # Add remove button if requested (only for attribute and defect cards, not for special tabs)
+    # Add remove button if needed
     if on_remove and card_type in ["attribute", "defect"]:
         remove_button = QPushButton("×")
         remove_button.setObjectName("removeButton")
-        remove_button.setFixedSize(20, 20)
+        remove_button.setFixedSize(24, 24)
         remove_button.setToolTip("Remove")
         remove_button.clicked.connect(on_remove)
+        remove_button.setCursor(QCursor(Qt.PointingHandCursor))
         button_layout.addWidget(remove_button)
     
-    # Only add the button layout if we have any buttons
+    # Add button layout if it has buttons
     if not button_layout.isEmpty():
         layout.addLayout(button_layout)
 
-    # Mount the styled container into the outer card
-    card_layout = QVBoxLayout(card)
-    card_layout.setContentsMargins(0, 0, 0, 0)
-    card_layout.setSpacing(0)  # Remove spacing
+    # Assemble the final widget
     card_layout.addWidget(container)
-    card_layout.setSizeConstraint(QVBoxLayout.SetMinimumSize)  # Make layout only as big as needed
+    card_layout.setSizeConstraint(QVBoxLayout.SetMinimumSize)
 
-    # Make the entire card clickable
-    if on_click:
+    # Make card clickable if needed
+    if on_click and card_type in ["defect", "attribute"]:
         card.clicked.connect(on_click)
-        # Also make the container clickable to ensure the entire card responds to clicks
         container.mousePressEvent = lambda event: card.clicked.emit()
-
-    print("Card uses container with objectName:", container.objectName())
 
     return card
 

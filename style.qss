@@ -200,6 +200,38 @@ QWidget#alternateFormCard:hover {
 }
 
 /* ---------------------------------------------------
+   ATTRIBUTE CARDS
+--------------------------------------------------- */
+QWidget#attributeCard {
+    background-color: #2a2a2a;
+    border: 1px solid #3a3a3a;
+    border-radius: 4px;
+    padding: 8px;
+    margin: 4px;
+}
+
+QWidget#attributeCard:hover {
+    background-color: #3a3a3a;
+    border-color: #4a4a4a;
+}
+
+/* ---------------------------------------------------
+   DEFECT CARDS
+--------------------------------------------------- */
+QWidget#defectCard {
+    background-color: #2a2a2a;
+    border: 1px solid #3a3a3a;
+    border-radius: 4px;
+    padding: 8px;
+    margin: 4px;
+}
+
+QWidget#defectCard:hover {
+    background-color: #3a3a3a;
+    border-color: #4a4a4a;
+}
+
+/* ---------------------------------------------------
    MISC CUSTOM WIDGETS
 --------------------------------------------------- */
 #spentCpDisplay, #unspentCpDisplay {
@@ -218,17 +250,39 @@ QWidget#alternateFormCard:hover {
 /* ---------------------------------------------------
    REMOVE BUTTON
 --------------------------------------------------- */
-#removeButton {
-    background-color: #ff5a5a;
+QPushButton#removeButton {
+    background-color: #ff4444;
     color: white;
-    border-radius: 10px;
-    font-size: 14px;
+    border: none;
+    border-radius: 12px;
+    font-size: 16px;
     font-weight: bold;
-    padding: 0px;
-    margin: 0px;
+    padding: 4px;
+    margin: 4px;
+    min-width: 24px;
+    min-height: 24px;
     text-align: center;
 }
 
-#removeButton:hover {
-    background-color: #ff0000;
+QPushButton#removeButton:hover {
+    background-color: #ff6666;
+}
+
+/* ---------------------------------------------------
+   EDIT BUTTON
+--------------------------------------------------- */
+QPushButton#editButton {
+    background-color: #5acdff;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 4px 8px;
+    margin: 4px;
+    text-align: center;
+}
+
+QPushButton#editButton:hover {
+    background-color: #7ae5ff;
 }
