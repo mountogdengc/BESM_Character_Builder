@@ -1922,13 +1922,19 @@ class BESMCharacterApp(QMainWindow):
                 export_data["skills"] = []
             
             # Export the character to PDF
+            ui.QMessageBox.information(
+                self,
+                "Exporting to PDF",
+                "Creating PDF export with improved text wrapping. This may take a moment..."
+            )
+            
             output_path = export_character_to_pdf(export_data, file_path)
             
             # Show success message
             ui.QMessageBox.information(
                 self,
                 "Export Successful",
-                f"Character exported to:\n{output_path}"
+                f"Character exported to:\n{output_path}\n\nText in tables will now properly wrap to fit columns."
             )
             
         except Exception as e:

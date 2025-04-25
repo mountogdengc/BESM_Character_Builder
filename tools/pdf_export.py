@@ -72,6 +72,37 @@ def export_character_to_pdf(character_data, output_path=None):
         parent=styles['Normal'],
         leftIndent=20
     ))
+    styles.add(ParagraphStyle(
+        name='TableCell',
+        parent=styles['Normal'],
+        fontSize=9,
+        leading=11,
+        wordWrap='CJK'
+    ))
+    
+    # Helper function to wrap table cell text in Paragraphs
+    def wrap_text_in_cell(text):
+        if not text:
+            return Paragraph("", styles['TableCell'])
+        return Paragraph(str(text), styles['TableCell'])
+    
+    # Helper function to convert a data table to use Paragraphs
+    def create_wrapped_table(data, col_widths, style=None):
+        # Convert all cells to Paragraphs, preserving header row styling
+        wrapped_data = []
+        for i, row in enumerate(data):
+            wrapped_row = []
+            for cell in row:
+                if i == 0:  # Header row
+                    wrapped_row.append(Paragraph("<b>" + str(cell) + "</b>", styles['TableCell']))
+                else:
+                    wrapped_row.append(wrap_text_in_cell(cell))
+            wrapped_data.append(wrapped_row)
+            
+        table = Table(wrapped_data, colWidths=col_widths)
+        if style:
+            table.setStyle(style)
+        return table
     
     # Story (content elements)
     story = []
@@ -98,13 +129,13 @@ def export_character_to_pdf(character_data, output_path=None):
     if description:
         basic_info.append(["Description:", description])
     
-    # Create table for basic info
-    basic_table = Table(basic_info, colWidths=[2.5*inch, 4*inch])
-    basic_table.setStyle(TableStyle([
+    # Create table for basic info with wrapped text
+    basic_table_style = TableStyle([
         ('GRID', (0, 0), (-1, -1), 0.5, colors.grey),
         ('BACKGROUND', (0, 0), (0, -1), colors.lightgrey),
         ('VALIGN', (0, 0), (-1, -1), 'TOP'),
-    ]))
+    ])
+    basic_table = create_wrapped_table(basic_info, [2.5*inch, 4*inch], basic_table_style)
     story.append(basic_table)
     story.append(Spacer(1, 0.2*inch))
     
@@ -141,14 +172,14 @@ def export_character_to_pdf(character_data, output_path=None):
     # Add combat values
     stats_data.append(["Combat Values", "", f"Combat Value: {cv}, Attack CV: {acv}, Defense CV: {dcv}, Damage Multiplier: {dm}"])
     
-    stats_table = Table(stats_data, colWidths=[2*inch, 1.5*inch, 3.5*inch])
-    stats_table.setStyle(TableStyle([
+    stats_table_style = TableStyle([
         ('GRID', (0, 0), (-1, -1), 0.5, colors.grey),
         ('BACKGROUND', (0, 0), (-1, 0), colors.lightgrey),
         ('BACKGROUND', (0, 1), (0, -1), colors.lightgrey),
         ('VALIGN', (0, 0), (-1, -1), 'MIDDLE'),
         ('ALIGN', (0, 0), (-1, -1), 'CENTER'),
-    ]))
+    ])
+    stats_table = create_wrapped_table(stats_data, [2*inch, 1.5*inch, 3.5*inch], stats_table_style)
     story.append(stats_table)
     story.append(Spacer(1, 0.2*inch))
     
@@ -167,15 +198,15 @@ def export_character_to_pdf(character_data, output_path=None):
                 attr.get("name", ""),
                 str(attr.get("level", 0)),
                 str(attr.get("cost", 0)),
-                attr.get("user_description", attr.get("description", ""))[:100] + "..." if len(attr.get("user_description", attr.get("description", ""))) > 100 else attr.get("user_description", attr.get("description", ""))
+                attr.get("user_description", attr.get("description", ""))
             ])
         
-        attr_table = Table(attr_data, colWidths=[2*inch, 0.75*inch, 0.75*inch, 3.5*inch])
-        attr_table.setStyle(TableStyle([
+        attr_table_style = TableStyle([
             ('GRID', (0, 0), (-1, -1), 0.5, colors.grey),
             ('BACKGROUND', (0, 0), (-1, 0), colors.lightgrey),
             ('VALIGN', (0, 0), (-1, -1), 'TOP'),
-        ]))
+        ])
+        attr_table = create_wrapped_table(attr_data, [1.5*inch, 0.75*inch, 0.75*inch, 4*inch], attr_table_style)
         story.append(attr_table)
     else:
         story.append(Paragraph("No attributes selected.", styles['Normal']))
@@ -197,15 +228,15 @@ def export_character_to_pdf(character_data, output_path=None):
                 defect.get("name", ""),
                 str(defect.get("rank", 0)),
                 str(defect.get("cost", 0)),
-                defect.get("description", "")[:100] + "..." if len(defect.get("description", "")) > 100 else defect.get("description", "")
+                defect.get("description", "")
             ])
         
-        defect_table = Table(defect_data, colWidths=[2*inch, 0.75*inch, 0.75*inch, 3.5*inch])
-        defect_table.setStyle(TableStyle([
+        defect_table_style = TableStyle([
             ('GRID', (0, 0), (-1, -1), 0.5, colors.grey),
             ('BACKGROUND', (0, 0), (-1, 0), colors.lightgrey),
             ('VALIGN', (0, 0), (-1, -1), 'TOP'),
-        ]))
+        ])
+        defect_table = create_wrapped_table(defect_data, [1.5*inch, 0.75*inch, 0.75*inch, 4*inch], defect_table_style)
         story.append(defect_table)
     else:
         story.append(Paragraph("No defects selected.", styles['Normal']))
@@ -227,15 +258,15 @@ def export_character_to_pdf(character_data, output_path=None):
                 skill.get("name", ""),
                 str(skill.get("level", 0)),
                 skill.get("relevant_stat", ""),
-                skill.get("description", "")[:100] + "..." if len(skill.get("description", "")) > 100 else skill.get("description", "")
+                skill.get("description", "")
             ])
         
-        skill_table = Table(skill_data, colWidths=[2*inch, 0.75*inch, 1.25*inch, 3*inch])
-        skill_table.setStyle(TableStyle([
+        skill_table_style = TableStyle([
             ('GRID', (0, 0), (-1, -1), 0.5, colors.grey),
             ('BACKGROUND', (0, 0), (-1, 0), colors.lightgrey),
             ('VALIGN', (0, 0), (-1, -1), 'TOP'),
-        ]))
+        ])
+        skill_table = create_wrapped_table(skill_data, [1.5*inch, 0.75*inch, 1*inch, 3.75*inch], skill_table_style)
         story.append(skill_table)
     else:
         story.append(Paragraph("No skills selected.", styles['Normal']))
@@ -286,14 +317,14 @@ def export_character_to_pdf(character_data, output_path=None):
                     if "count" in item:
                         details.append(["Count", str(item.get("count", 0))])
                 
-                # Create table for item details
+                # Create table for item details with wrapped text
                 if details:
-                    detail_table = Table(details, colWidths=[2.5*inch, 4.5*inch])
-                    detail_table.setStyle(TableStyle([
+                    detail_table_style = TableStyle([
                         ('GRID', (0, 0), (-1, -1), 0.5, colors.grey),
                         ('BACKGROUND', (0, 0), (0, -1), colors.lightgrey),
                         ('VALIGN', (0, 0), (-1, -1), 'TOP'),
-                    ]))
+                    ])
+                    detail_table = create_wrapped_table(details, [2.5*inch, 4.5*inch], detail_table_style)
                     story.append(detail_table)
                 
                 # Add attributes and defects if they exist
@@ -306,12 +337,12 @@ def export_character_to_pdf(character_data, output_path=None):
                             str(attr.get("level", 0)),
                             str(attr.get("cost", 0))
                         ])
-                    attr_table = Table(attr_data, colWidths=[3.5*inch, 1.5*inch, 2*inch])
-                    attr_table.setStyle(TableStyle([
+                    attr_table_style = TableStyle([
                         ('GRID', (0, 0), (-1, -1), 0.5, colors.grey),
                         ('BACKGROUND', (0, 0), (-1, 0), colors.lightgrey),
                         ('VALIGN', (0, 0), (-1, -1), 'TOP'),
-                    ]))
+                    ])
+                    attr_table = create_wrapped_table(attr_data, [3.5*inch, 1.5*inch, 2*inch], attr_table_style)
                     story.append(attr_table)
                 
                 if "defects" in item and item["defects"]:
@@ -323,12 +354,12 @@ def export_character_to_pdf(character_data, output_path=None):
                             str(defect.get("rank", 0)),
                             str(defect.get("cost", 0))
                         ])
-                    defect_table = Table(defect_data, colWidths=[3.5*inch, 1.5*inch, 2*inch])
-                    defect_table.setStyle(TableStyle([
+                    defect_table_style = TableStyle([
                         ('GRID', (0, 0), (-1, -1), 0.5, colors.grey),
                         ('BACKGROUND', (0, 0), (-1, 0), colors.lightgrey),
                         ('VALIGN', (0, 0), (-1, -1), 'TOP'),
-                    ]))
+                    ])
+                    defect_table = create_wrapped_table(defect_data, [3.5*inch, 1.5*inch, 2*inch], defect_table_style)
                     story.append(defect_table)
                 
                 story.append(Spacer(1, 0.2*inch))
@@ -367,14 +398,14 @@ def export_character_to_pdf(character_data, output_path=None):
     
     stats_breakdown.append(["Stats Subtotal", "", "", str(stat_cp)])
     
-    stats_table = Table(stats_breakdown, colWidths=[2*inch, 1*inch, 1.5*inch, 1.5*inch])
-    stats_table.setStyle(TableStyle([
+    stats_table_style = TableStyle([
         ('GRID', (0, 0), (-1, -1), 0.5, colors.grey),
         ('BACKGROUND', (0, 0), (-1, 0), colors.lightgrey),
         ('BACKGROUND', (0, -1), (-1, -1), colors.lightgrey),
         ('ALIGN', (1, 0), (-1, -1), 'CENTER'),
         ('VALIGN', (0, 0), (-1, -1), 'MIDDLE'),
-    ]))
+    ])
+    stats_table = create_wrapped_table(stats_breakdown, [2*inch, 1*inch, 1.5*inch, 1.5*inch], stats_table_style)
     story.append(stats_table)
     story.append(Spacer(1, 0.2*inch))
     
@@ -434,14 +465,14 @@ def export_character_to_pdf(character_data, output_path=None):
         
         attr_breakdown.append(["Attributes Subtotal", "", "", "", str(attr_cp)])
         
-        attr_table = Table(attr_breakdown, colWidths=[2*inch, 0.75*inch, 1*inch, 2*inch, 1.25*inch])
-        attr_table.setStyle(TableStyle([
+        attr_table_style = TableStyle([
             ('GRID', (0, 0), (-1, -1), 0.5, colors.grey),
             ('BACKGROUND', (0, 0), (-1, 0), colors.lightgrey),
             ('BACKGROUND', (0, -1), (-1, -1), colors.lightgrey),
             ('ALIGN', (1, 0), (-1, -1), 'CENTER'),
             ('VALIGN', (0, 0), (-1, -1), 'MIDDLE'),
-        ]))
+        ])
+        attr_table = create_wrapped_table(attr_breakdown, [1.5*inch, 0.75*inch, 1*inch, 2.5*inch, 1.25*inch], attr_table_style)
         story.append(attr_table)
         story.append(Spacer(1, 0.2*inch))
     
@@ -479,14 +510,14 @@ def export_character_to_pdf(character_data, output_path=None):
         
         defect_breakdown.append(["Defects Subtotal", "", "", str(defect_cp)])
         
-        defect_table = Table(defect_breakdown, colWidths=[3*inch, 1*inch, 1.5*inch, 1.5*inch])
-        defect_table.setStyle(TableStyle([
+        defect_table_style = TableStyle([
             ('GRID', (0, 0), (-1, -1), 0.5, colors.grey),
             ('BACKGROUND', (0, 0), (-1, 0), colors.lightgrey),
             ('BACKGROUND', (0, -1), (-1, -1), colors.lightgrey),
             ('ALIGN', (1, 0), (-1, -1), 'CENTER'),
             ('VALIGN', (0, 0), (-1, -1), 'MIDDLE'),
-        ]))
+        ])
+        defect_table = create_wrapped_table(defect_breakdown, [3*inch, 1*inch, 1.5*inch, 1.5*inch], defect_table_style)
         story.append(defect_table)
         story.append(Spacer(1, 0.2*inch))
     
@@ -524,14 +555,14 @@ def export_character_to_pdf(character_data, output_path=None):
         
         skill_breakdown.append(["Skills Subtotal", "", "", str(skill_cp)])
         
-        skill_table = Table(skill_breakdown, colWidths=[3*inch, 1*inch, 1.5*inch, 1.5*inch])
-        skill_table.setStyle(TableStyle([
+        skill_table_style = TableStyle([
             ('GRID', (0, 0), (-1, -1), 0.5, colors.grey),
             ('BACKGROUND', (0, 0), (-1, 0), colors.lightgrey),
             ('BACKGROUND', (0, -1), (-1, -1), colors.lightgrey),
             ('ALIGN', (1, 0), (-1, -1), 'CENTER'),
             ('VALIGN', (0, 0), (-1, -1), 'MIDDLE'),
-        ]))
+        ])
+        skill_table = create_wrapped_table(skill_breakdown, [3*inch, 1*inch, 1.5*inch, 1.5*inch], skill_table_style)
         story.append(skill_table)
         story.append(Spacer(1, 0.2*inch))
     
@@ -555,14 +586,14 @@ def export_character_to_pdf(character_data, output_path=None):
     summary.append(["Starting CP", str(starting_cp)])
     summary.append(["Remaining CP", str(starting_cp - total_cp)])
     
-    summary_table = Table(summary, colWidths=[4*inch, 3*inch])
-    summary_table.setStyle(TableStyle([
+    summary_table_style = TableStyle([
         ('GRID', (0, 0), (-1, -1), 0.5, colors.grey),
         ('BACKGROUND', (0, 0), (-1, 0), colors.lightgrey),
         ('BACKGROUND', (0, -1), (-1, -1), colors.lightgrey),
         ('ALIGN', (1, 0), (1, -1), 'CENTER'),
         ('VALIGN', (0, 0), (-1, -1), 'MIDDLE'),
-    ]))
+    ])
+    summary_table = create_wrapped_table(summary, [4*inch, 3*inch], summary_table_style)
     story.append(summary_table)
     
     # CP breakdown is now complete
@@ -571,3 +602,83 @@ def export_character_to_pdf(character_data, output_path=None):
     doc.build(story)
     
     return output_path
+
+# Test function for PDF export
+if __name__ == "__main__":
+    import sys
+    import os
+    
+    print("Testing PDF export with text wrapping...")
+    
+    # Create a sample character with long descriptions to test wrapping
+    test_character = {
+        "name": "Test Character with Wrapping",
+        "player": "Test Player",
+        "campaign": "Test Campaign",
+        "description": "This is a test character with a very long description that should wrap properly in the PDF export. " * 3,
+        "stats": {
+            "Body": 5,
+            "Mind": 6,
+            "Soul": 4
+        },
+        "attributes": [
+            {
+                "name": "Armour",
+                "level": 6,
+                "cost": 12,
+                "description": "Provides damage reduction of 5 per level against physical attacks. " * 3
+            },
+            {
+                "name": "Combat Technique",
+                "level": 2,
+                "cost": 2,
+                "description": "Each level grants the character a special combat technique (e.g. Blind Fighting, Mounted Combat). " * 2
+            },
+            {
+                "name": "Mind Control",
+                "level": 2,
+                "cost": 10,
+                "description": "Mentally dominate a target through touch. Unwilling targets resist with a Soul Stat roll. " * 3
+            }
+        ],
+        "defects": [
+            {
+                "name": "Marked",
+                "rank": 2,
+                "cost": -2,
+                "description": "Character has an obvious physical feature that makes them easily recognizable. " * 2
+            },
+            {
+                "name": "Owned",
+                "rank": 3,
+                "cost": -3,
+                "description": "Character is owned by another entity and must follow their commands. " * 3
+            }
+        ],
+        "skills": [
+            {
+                "name": "Acrobatics",
+                "level": 3,
+                "relevant_stat": "Body",
+                "cost": 3,
+                "description": "Allows character to perform gymnastic feats and reduce damage from falls. " * 2
+            }
+        ],
+        "totalPoints": 100,
+        "pointsSpent": 60
+    }
+    
+    # Create a test output directory if it doesn't exist
+    output_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "test_output")
+    os.makedirs(output_dir, exist_ok=True)
+    
+    # Output path
+    output_path = os.path.join(output_dir, "test_character_with_wrapping.pdf")
+    if len(sys.argv) > 1:
+        output_path = sys.argv[1]
+    
+    # Export the test character
+    result_path = export_character_to_pdf(test_character, output_path)
+    
+    print(f"PDF exported to: {result_path}")
+    print("Test complete.")
