@@ -1,0 +1,966 @@
+{
+    "version": "1.0",
+    "name": "",
+    "player": "",
+    "gm": "",
+    "race": "ARCHFIEND",
+    "class": "ARTIFICER",
+    "homeworld": "",
+    "size": "",
+    "background": {
+        "origin": "",
+        "faction": "",
+        "goals": "",
+        "personality": "",
+        "history": ""
+    },
+    "stats": {
+        "Body": 4,
+        "Mind": 4,
+        "Soul": 4
+    },
+    "derived": {
+        "CV": 4,
+        "ACV": 4,
+        "DCV": 4,
+        "HP": 40,
+        "EP": 40,
+        "DM": 4,
+        "SV": 8,
+        "SP": 40,
+        "SCV": 4,
+        "SOP": 40
+    },
+    "drama_points": {
+        "current": 3,
+        "max": 5
+    },
+    "attributes": [],
+    "defects": [],
+    "skills": [],
+    "weapons": [],
+    "armor": [],
+    "items": [
+        {
+            "id": "7b32404e-5082-4c89-b1c3-038d78a07ef7",
+            "name": "New Item",
+            "description": "",
+            "cost": 0,
+            "attributes": [],
+            "defects": [],
+            "total_cp": 0,
+            "parent_attribute_id": "61a7124e-58bd-40d3-bd34-e761a199f9c3"
+        }
+    ],
+    "techniques": [],
+    "templates": [],
+    "alternate_forms": [],
+    "metamorphosis": [],
+    "companions": [],
+    "minions": [],
+    "relationships": [],
+    "notes": "",
+    "custom_fields": {},
+    "custom_rules": [],
+    "saved_loadouts": [],
+    "benchmark": null,
+    "totalPoints": 24,
+    "applied_templates": [
+        {
+            "id": "c06c1c3b-fe8e-48bd-8565-b3b80c416c67",
+            "type": "class",
+            "name": "Unnamed Template",
+            "changes": [
+                {
+                    "field": "class",
+                    "old_value": "",
+                    "new_value": "ARTIFICER"
+                },
+                {
+                    "field": "size_template_applied",
+                    "size_name": "Medium",
+                    "applied_by": "Unnamed Template"
+                },
+                {
+                    "field": "attribute_add",
+                    "attribute_id": "2035ae59-d586-406c-944d-27a4301c2a6f",
+                    "attribute_data": {
+                        "name": "Augmented",
+                        "cost_per_level": 2,
+                        "relevant_stat": null,
+                        "is_human_attribute": false,
+                        "description": "Boosts a chosen Stat (Body, Mind, or Soul) by +1 per level. Used to show the stat is derived from an external source.",
+                        "source": "BESM4e",
+                        "levels": {
+                            "1": "+1 to selected stat",
+                            "2": "+2 to selected stat",
+                            "3": "+3 to selected stat",
+                            "4": "+4 to selected stat",
+                            "5": "+5 to selected stat",
+                            "6": "+6 to selected stat"
+                        },
+                        "user_input_required": [
+                            {
+                                "label": "Stat Affected",
+                                "key": "stat_target",
+                                "field_type": "dropdown",
+                                "options": [
+                                    "Body",
+                                    "Mind",
+                                    "Soul"
+                                ],
+                                "required": true
+                            }
+                        ],
+                        "modifiers": [
+                            {
+                                "target": "stat",
+                                "target_key_from_field": "stat_target",
+                                "modifier_type": "add_per_level",
+                                "value_per_level": 1
+                            }
+                        ],
+                        "stat_mods": {
+                            "dynamic": true,
+                            "base": {
+                                "stat_target": 1
+                            }
+                        },
+                        "key": "augmented",
+                        "id": "2035ae59-d586-406c-944d-27a4301c2a6f",
+                        "level": 1,
+                        "user_description": "(Body: tech enhancement)",
+                        "options_source": "Class Template",
+                        "cost": 2,
+                        "sources": [
+                            "c06c1c3b-fe8e-48bd-8565-b3b80c416c67"
+                        ]
+                    }
+                },
+                {
+                    "field": "attribute_add",
+                    "attribute_id": "61a7124e-58bd-40d3-bd34-e761a199f9c3",
+                    "attribute_data": {
+                        "id": "61a7124e-58bd-40d3-bd34-e761a199f9c3",
+                        "name": "Item",
+                        "key": "item",
+                        "level": 10,
+                        "user_description": "(Multi-Gadget; 20 Points)",
+                        "options_source": "Class Template",
+                        "cost": 0,
+                        "sources": [
+                            "c06c1c3b-fe8e-48bd-8565-b3b80c416c67"
+                        ]
+                    }
+                },
+                {
+                    "field": "attribute_add",
+                    "attribute_id": "0c1bd767-3c4c-403b-af50-dc950e1c1467",
+                    "attribute_data": {
+                        "name": "Power Flux",
+                        "cost_per_level": 10,
+                        "relevant_stat": "Variable",
+                        "source": "BESM4e",
+                        "description": "Grants the user a pool of Flux Points to dynamically assign to thematic Attributes once per minute or dramatic scene. Attributes must be aligned to a user-defined concept.",
+                        "levels": {
+                            "1": "Reassign up to 5 Flux Points each minute",
+                            "2": "Reassign up to 10 Flux Points each minute",
+                            "3": "Reassign up to 15 Flux Points each minute",
+                            "4": "Reassign up to 20 Flux Points each minute",
+                            "5": "Reassign up to 25 Flux Points each minute",
+                            "6": "Reassign up to 30 Flux Points each minute"
+                        },
+                        "user_input_required": [
+                            {
+                                "label": "Flux Category",
+                                "key": "flux_category",
+                                "field_type": "text",
+                                "description": "Enter the thematic category (e.g., cats, fire, lust, gravity) that all Flux powers must align with."
+                            }
+                        ],
+                        "key": "power_flux",
+                        "is_human_attribute": false,
+                        "id": "0c1bd767-3c4c-403b-af50-dc950e1c1467",
+                        "level": 2,
+                        "user_description": "(Major: Item Gadgeteer -1; Equipment: Multi-Gadget +1)",
+                        "options_source": "Class Template",
+                        "cost": 20,
+                        "sources": [
+                            "c06c1c3b-fe8e-48bd-8565-b3b80c416c67"
+                        ]
+                    }
+                },
+                {
+                    "field": "attribute_add",
+                    "attribute_id": "3870edac-04a1-4413-be34-3cbbd66c3f0d",
+                    "attribute_data": {
+                        "name": "Skill Group",
+                        "source": "BESM4e",
+                        "description": "Represents training or natural talent in a broad skill field. Skill Groups are divided into Background, Field, and Action categories, each with a different cost per level. Each Skill Group is treated as a separate Attribute.",
+                        "relevant_stat": "Body, Mind, or Soul",
+                        "user_input_required": [
+                            {
+                                "field_type": "dropdown",
+                                "label": "Skill Group Category",
+                                "key": "category",
+                                "options": [
+                                    "Background",
+                                    "Field",
+                                    "Action"
+                                ]
+                            },
+                            {
+                                "field_type": "dropdown",
+                                "label": "Skill Group Name",
+                                "key": "skill_group_name",
+                                "options": [
+                                    "Academic",
+                                    "Artistic",
+                                    "Domestic",
+                                    "Occupation",
+                                    "Business",
+                                    "Social",
+                                    "Street",
+                                    "Technical",
+                                    "Adventuring",
+                                    "Detective",
+                                    "Military",
+                                    "Scientific"
+                                ]
+                            }
+                        ],
+                        "dynamic_cost": {
+                            "Background": 1,
+                            "Field": 2,
+                            "Action": 3
+                        },
+                        "levels": {
+                            "1": "Developing - Gaining proficiency through regular application",
+                            "2": "Trained - Moderate training and practice",
+                            "3": "Expert - Significant training and practice",
+                            "4": "Veteran - Extensive training and practice",
+                            "5": "Master - Exhaustive training and practice",
+                            "6": "Grand Master - Unparalleled ability and knowledge"
+                        },
+                        "key": "skill_group",
+                        "is_human_attribute": false,
+                        "id": "3870edac-04a1-4413-be34-3cbbd66c3f0d",
+                        "level": 2,
+                        "user_description": "(Artistic)",
+                        "options_source": "Class Template",
+                        "cost": 0,
+                        "sources": [
+                            "c06c1c3b-fe8e-48bd-8565-b3b80c416c67"
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": "39fab793-64d1-48d6-9109-d0a884a2da17",
+            "type": "race",
+            "name": "Unnamed Template",
+            "changes": [
+                {
+                    "field": "race",
+                    "old_value": "",
+                    "new_value": "ARCHFIEND"
+                },
+                {
+                    "field": "attribute_add",
+                    "attribute_id": "0764912a-db0c-4474-9d62-a0f5867daeba",
+                    "attribute_data": {
+                        "name": "Armour",
+                        "cost_per_level": 2,
+                        "relevant_stat": null,
+                        "is_human_attribute": false,
+                        "description": "Provides damage reduction of 5 per level against physical attacks. Can be enhanced/limited by damage type.",
+                        "source": "BESM4e",
+                        "levels": {
+                            "1": "Armour Rating = 5",
+                            "2": "Armour Rating = 10",
+                            "3": "Armour Rating = 15",
+                            "4": "Armour Rating = 20",
+                            "5": "Armour Rating = 25",
+                            "6": "Armour Rating = 30"
+                        },
+                        "stat_mods": {
+                            "derived": {
+                                "Armour Rating": 5
+                            }
+                        },
+                        "key": "armour",
+                        "id": "0764912a-db0c-4474-9d62-a0f5867daeba",
+                        "level": 6,
+                        "options_source": "Race Template",
+                        "cost": 12,
+                        "sources": [
+                            "39fab793-64d1-48d6-9109-d0a884a2da17"
+                        ]
+                    }
+                },
+                {
+                    "field": "attribute_add",
+                    "attribute_id": "dbe2c4cd-a165-4907-bf76-45ba5c3b2cbc",
+                    "attribute_data": {
+                        "name": "Combat Technique",
+                        "cost_per_level": 1,
+                        "relevant_stat": null,
+                        "is_human_attribute": true,
+                        "description": "Each level grants the character a special combat technique (e.g. Blind Fighting, Brutal, Reflection). Can be taken multiple times.",
+                        "source": "BESM4e",
+                        "levels": {
+                            "1": "One combat technique",
+                            "2": "Two combat techniques",
+                            "3": "Three combat techniques",
+                            "4": "Four combat techniques",
+                            "5": "Five combat techniques",
+                            "6": "Six combat techniques"
+                        },
+                        "user_input_required": [
+                            {
+                                "label": "Technique Description",
+                                "key": "technique_description",
+                                "field_type": "list",
+                                "description": "Enter one combat technique per line.",
+                                "autocomplete_options": [
+                                    "Blind Fighting",
+                                    "Blind Shooting",
+                                    "Brutal",
+                                    "Concealment",
+                                    "Deflection",
+                                    "Extended Range",
+                                    "Judge Opponent",
+                                    "Lethal Blow",
+                                    "Lightning Reflexes",
+                                    "Portable Armoury",
+                                    "Reflection",
+                                    "Tournament Encyclopaedia",
+                                    "Weapons Encyclopaedia"
+                                ]
+                            }
+                        ],
+                        "key": "combat_technique",
+                        "id": "dbe2c4cd-a165-4907-bf76-45ba5c3b2cbc",
+                        "level": 2,
+                        "options": [
+                            "Brutal, Lethal Blow"
+                        ],
+                        "options_source": "Race Template",
+                        "cost": 2,
+                        "sources": [
+                            "39fab793-64d1-48d6-9109-d0a884a2da17"
+                        ]
+                    }
+                },
+                {
+                    "field": "attribute_add",
+                    "attribute_id": "5f894e08-67f6-4f81-9c87-34794efecc5a",
+                    "attribute_data": {
+                        "name": "Conversion",
+                        "cost_per_level": 3,
+                        "relevant_stat": "Body",
+                        "is_human_attribute": false,
+                        "description": "Grants temporary Character Points when damaged. CP can temporarily enhance existing Attributes. Cannot convert damage already blocked or absorbed.",
+                        "source": "BESM4e",
+                        "levels": {
+                            "1": "1 temporary CP per 10 damage",
+                            "2": "2 temporary CP per 10 damage",
+                            "3": "3 temporary CP per 10 damage",
+                            "4": "4 temporary CP per 10 damage",
+                            "5": "5 temporary CP per 10 damage",
+                            "6": "6 temporary CP per 10 damage"
+                        },
+                        "key": "conversion",
+                        "id": "5f894e08-67f6-4f81-9c87-34794efecc5a",
+                        "level": 2,
+                        "options_source": "Race Template",
+                        "cost": 6,
+                        "sources": [
+                            "39fab793-64d1-48d6-9109-d0a884a2da17"
+                        ]
+                    }
+                },
+                {
+                    "field": "attribute_add",
+                    "attribute_id": "690e7190-317c-4de1-8881-fc4cb562ea91",
+                    "attribute_data": {
+                        "name": "Melee Attack: Swords",
+                        "cost_per_level": 1,
+                        "relevant_stat": null,
+                        "description": "Adds +2 ACV per level when using a specific fighting technique.",
+                        "source": "BESM4e",
+                        "levels": {
+                            "1": "Attack Combat Value increases by 2 when using a specific fighting technique",
+                            "2": "Attack Combat Value increases by 4 when using a specific fighting technique",
+                            "3": "Attack Combat Value increases by 6 when using a specific fighting technique",
+                            "4": "Attack Combat Value increases by 8 when using a specific fighting technique",
+                            "5": "Attack Combat Value increases by 10 when using a specific fighting technique",
+                            "6": "Attack Combat Value increases by 12 when using a specific fighting technique"
+                        },
+                        "user_input_required": [
+                            {
+                                "label": "Weapon Class or Technique",
+                                "key": "weapon_class",
+                                "field_type": "text",
+                                "description": "Enter the class of weapon or specific fighting style this bonus applies to."
+                            }
+                        ],
+                        "key": "melee_attack",
+                        "is_human_attribute": false,
+                        "id": "690e7190-317c-4de1-8881-fc4cb562ea91",
+                        "level": 3,
+                        "options_source": "Race Template",
+                        "cost": 3,
+                        "sources": [
+                            "39fab793-64d1-48d6-9109-d0a884a2da17"
+                        ]
+                    }
+                },
+                {
+                    "field": "attribute_add",
+                    "attribute_id": "5608882e-6279-45ed-8754-728e1d9534ee",
+                    "attribute_data": {
+                        "name": "Melee Defence: Swords",
+                        "cost_per_level": 1,
+                        "relevant_stat": null,
+                        "description": "Adds +2 DCV per level when using a specific fighting technique.",
+                        "source": "BESM4e",
+                        "levels": {
+                            "1": "Defence Combat Value increases by 2 when using a specific technique",
+                            "2": "Defence Combat Value increases by 4 when using a specific technique",
+                            "3": "Defence Combat Value increases by 6 when using a specific technique",
+                            "4": "Defence Combat Value increases by 8 when using a specific technique",
+                            "5": "Defence Combat Value increases by 10 when using a specific technique",
+                            "6": "Defence Combat Value increases by 12 when using a specific technique"
+                        },
+                        "user_input_required": [
+                            {
+                                "label": "Weapon Class or Technique",
+                                "key": "weapon_class",
+                                "field_type": "text",
+                                "description": "Enter the class of weapon or specific fighting style this bonus applies to."
+                            }
+                        ],
+                        "key": "melee_defence",
+                        "is_human_attribute": false,
+                        "id": "5608882e-6279-45ed-8754-728e1d9534ee",
+                        "level": 2,
+                        "options_source": "Race Template",
+                        "cost": 2,
+                        "sources": [
+                            "39fab793-64d1-48d6-9109-d0a884a2da17"
+                        ]
+                    }
+                },
+                {
+                    "field": "attribute_add",
+                    "attribute_id": "1658c034-4e5e-403d-bd16-305bf0054fb1",
+                    "attribute_data": {
+                        "name": "Mind Control",
+                        "cost_per_level": 5,
+                        "relevant_stat": "Mind",
+                        "description": "Mentally dominate a target through touch. Unwilling targets resist with an opposed Mind roll. Duration is typically one minute or a dramatic scene.",
+                        "source": "BESM4e",
+                        "levels": {
+                            "1": "Basic commands like 'turn around'",
+                            "2": "Simple commands like 'go make me a sandwich'",
+                            "3": "Complex commands like 'use a fake ID to smuggle an item'",
+                            "4": "Can issue aggressive commands (e.g., attacking)",
+                            "5": "Can erase brief memories",
+                            "6": "Can erase or alter complex memories"
+                        },
+                        "key": "mind_control",
+                        "is_human_attribute": false,
+                        "id": "1658c034-4e5e-403d-bd16-305bf0054fb1",
+                        "level": 2,
+                        "options_source": "Race Template",
+                        "cost": 10,
+                        "sources": [
+                            "39fab793-64d1-48d6-9109-d0a884a2da17"
+                        ]
+                    }
+                },
+                {
+                    "field": "attribute_add",
+                    "attribute_id": "f97d11d0-586c-425a-bf9b-8d1c3e2e6d7c",
+                    "attribute_data": {
+                        "name": "Special Movement",
+                        "cost_per_level": 1,
+                        "relevant_stat": "Body",
+                        "description": "Grants unique movement types such as Wall-Crawling, Zen Direction, Swinging, or Water-Walking. Some types count as two abilities due to enhanced utility.",
+                        "source": "BESM4e",
+                        "levels": {
+                            "1": "1 Special Movement ability",
+                            "2": "2 Special Movement abilities",
+                            "3": "3 Special Movement abilities",
+                            "4": "4 Special Movement abilities",
+                            "5": "5 Special Movement abilities",
+                            "6": "6 Special Movement abilities"
+                        },
+                        "user_input_required": [
+                            {
+                                "label": "Movement Types",
+                                "key": "movement_types",
+                                "field_type": "list",
+                                "description": "List the Special Movement abilities the character possesses.",
+                                "autocomplete_options": [
+                                    "Balance",
+                                    "Cat-Like",
+                                    "Fast",
+                                    "Light-Footed",
+                                    "Slithering",
+                                    "Swinging",
+                                    "Untrackable",
+                                    "Wall-Bouncing",
+                                    "Wall-Crawling",
+                                    "Water-Walking",
+                                    "Zen Direction"
+                                ]
+                            }
+                        ],
+                        "key": "special_movement",
+                        "is_human_attribute": false,
+                        "id": "f97d11d0-586c-425a-bf9b-8d1c3e2e6d7c",
+                        "level": 3,
+                        "options": [
+                            "Fast"
+                        ],
+                        "options_source": "Race Template",
+                        "cost": 3,
+                        "sources": [
+                            "39fab793-64d1-48d6-9109-d0a884a2da17"
+                        ]
+                    }
+                },
+                {
+                    "field": "attribute_add",
+                    "attribute_id": "dc89b5fc-26d7-4ebf-a37a-737c1d150fbd",
+                    "attribute_data": {
+                        "name": "Summon Creatures",
+                        "cost_per_level": 2,
+                        "relevant_stat": "Mind",
+                        "description": "Summon and command natural animals within 1 km for a dramatic scene. Animals must physically reach the summoner and perform simple tasks. Does not work on humans or sentient beings.",
+                        "source": "BESM4e",
+                        "levels": {
+                            "1": "Summon up to 1 animal",
+                            "2": "Summon up to 2 animals",
+                            "3": "Summon up to 4 animals",
+                            "4": "Summon up to 8 animals",
+                            "5": "Summon up to 16 animals",
+                            "6": "Summon up to 32 animals"
+                        },
+                        "key": "summon_creatures",
+                        "is_human_attribute": false,
+                        "id": "dc89b5fc-26d7-4ebf-a37a-737c1d150fbd",
+                        "level": 4,
+                        "user_description": "Dimensional -2; Narrow: Demons +2",
+                        "options_source": "Race Template",
+                        "cost": 8,
+                        "sources": [
+                            "39fab793-64d1-48d6-9109-d0a884a2da17"
+                        ]
+                    }
+                },
+                {
+                    "field": "attribute_add",
+                    "attribute_id": "493764d7-da9f-4a9c-b0da-be9d341444be",
+                    "attribute_data": {
+                        "name": "Superstrength",
+                        "cost_per_level": 4,
+                        "relevant_stat": "Body",
+                        "description": "Allows lifting and carrying massive weights beyond normal strength. Adds +5 damage to unarmed attacks and +1 Damage Multiplier to melee/thrown weapons per level. Works independently of the Body Stat.",
+                        "source": "BESM4e",
+                        "levels": {
+                            "1": "Lift up to 250 kg (e.g., motorcycle)",
+                            "2": "Lift up to 500 kg (e.g., horse)",
+                            "3": "Lift up to 1 tonne (e.g., small car)",
+                            "4": "Lift up to 2 tonnes (e.g., truck)",
+                            "5": "Lift up to 5 tonnes (e.g., elephant)",
+                            "6": "Lift up to 10 tonnes (e.g., yacht)"
+                        },
+                        "key": "superstrength",
+                        "is_human_attribute": false,
+                        "id": "493764d7-da9f-4a9c-b0da-be9d341444be",
+                        "level": 6,
+                        "options_source": "Race Template",
+                        "cost": 24,
+                        "sources": [
+                            "39fab793-64d1-48d6-9109-d0a884a2da17"
+                        ]
+                    }
+                },
+                {
+                    "field": "attribute_add",
+                    "attribute_id": "60332d51-c80c-42b8-aec5-0b7459dbdfc4",
+                    "attribute_data": {
+                        "name": "Tough",
+                        "cost_per_level": 1,
+                        "relevant_stat": null,
+                        "description": "Increases Health Points by 10 per level. Represents enhanced durability or size. Often used for large, dense, or extremely healthy characters or items.",
+                        "source": "BESM4e",
+                        "levels": {
+                            "1": "+10 Health Points",
+                            "2": "+20 Health Points",
+                            "3": "+30 Health Points",
+                            "4": "+40 Health Points",
+                            "5": "+50 Health Points",
+                            "6": "+60 Health Points"
+                        },
+                        "key": "tough",
+                        "is_human_attribute": false,
+                        "id": "60332d51-c80c-42b8-aec5-0b7459dbdfc4",
+                        "level": 4,
+                        "options_source": "Race Template",
+                        "cost": 4,
+                        "sources": [
+                            "39fab793-64d1-48d6-9109-d0a884a2da17"
+                        ]
+                    }
+                },
+                {
+                    "field": "attribute_add",
+                    "attribute_id": "9b4868b8-592e-4c59-b023-6e30f0514922",
+                    "attribute_data": {
+                        "name": "Tunnelling",
+                        "cost_per_level": 1,
+                        "relevant_stat": "Body",
+                        "description": "The Tunnelling Attribute allows a character to move through earth and burrow underground. Tunnelling assumes that the character is going through sand or packed earth. Burrowing through extremely dense or rocky ground is one Level slower and boring through solid rock is two Level slower.",
+                        "source": "BESM4e",
+                        "levels": {
+                            "1": "Tunnel up to 10 metres per hour",
+                            "2": "Tunnel up to 30 metres per hour",
+                            "3": "Tunnel up to 100 metres per hour",
+                            "4": "Tunnel up to 300 metres per hour",
+                            "5": "Tunnel up to 1 kph",
+                            "6": "Tunnel up to 3 kph"
+                        },
+                        "key": "tunnelling",
+                        "is_human_attribute": false,
+                        "id": "9b4868b8-592e-4c59-b023-6e30f0514922",
+                        "level": 1,
+                        "options_source": "Race Template",
+                        "cost": 1,
+                        "sources": [
+                            "39fab793-64d1-48d6-9109-d0a884a2da17"
+                        ]
+                    }
+                },
+                {
+                    "field": "attribute_add",
+                    "attribute_id": "e2cca563-d091-4a3c-9098-67e178403690",
+                    "attribute_data": {
+                        "name": "x8 Thrown Weapon Distance",
+                        "cost_per_level": null,
+                        "relevant_stat": "Variable",
+                        "description": "Covers any power not described elsewhere. Requires GM discussion. Effect and cost per level vary from 1\u00e2\u20ac\u201c10 CP depending on usefulness.",
+                        "source": "BESM4e",
+                        "levels": {
+                            "1": "Basic aptitude",
+                            "2": "Minor aptitude",
+                            "3": "Moderate aptitude",
+                            "4": "Significant aptitude",
+                            "5": "Major aptitude",
+                            "6": "Extreme aptitude"
+                        },
+                        "user_input_required": [
+                            {
+                                "label": "Custom Description",
+                                "key": "custom_description",
+                                "field_type": "textarea",
+                                "description": "Describe what this Unique Attribute does and its game effects."
+                            },
+                            {
+                                "label": "Point Cost Per Level",
+                                "key": "custom_cp_cost",
+                                "field_type": "number",
+                                "description": "Assign the CP cost per level (1\u00e2\u20ac\u201c10).",
+                                "required": true
+                            }
+                        ],
+                        "key": "unique_attribute",
+                        "is_human_attribute": false,
+                        "id": "e2cca563-d091-4a3c-9098-67e178403690",
+                        "level": 3,
+                        "options_source": "Race Template",
+                        "cost": 0,
+                        "sources": [
+                            "39fab793-64d1-48d6-9109-d0a884a2da17"
+                        ]
+                    }
+                },
+                {
+                    "field": "attribute_add",
+                    "attribute_id": "a14216ae-d728-4d33-bce2-4533d6ba6951",
+                    "attribute_data": {
+                        "name": "Weapon: Soul Sword",
+                        "cost_per_level": 2,
+                        "relevant_stat": "None",
+                        "source": "BESM4e",
+                        "description": "Many anime characters wield powerful offensive energies, such as electric zaps, magical fireballs, ki-powered martial arts strikes, or energy swords.",
+                        "levels": {
+                            "-1": "The attack doesn\u00e2\u20ac\u2122t inflict regular damage",
+                            "0": "The Weapon\u00e2\u20ac\u2122s Base Damage is 0 and thus the final damage is only equal to the character\u00e2\u20ac\u2122s Attack Combat Value",
+                            "1": "The Weapon\u00e2\u20ac\u2122s Base Damage is equal to 1 times the character\u00e2\u20ac\u2122s Damage Multiplier",
+                            "2": "The Weapon\u00e2\u20ac\u2122s Base Damage is equal to 2 times the character\u00e2\u20ac\u2122s Damage Multiplier",
+                            "3": "The Weapon\u00e2\u20ac\u2122s Base Damage is equal to 3 times the character\u00e2\u20ac\u2122s Damage Multiplier",
+                            "4": "The Weapon\u00e2\u20ac\u2122s Base Damage is equal to 4 times the character\u00e2\u20ac\u2122s Damage Multiplier",
+                            "5": "The Weapon\u00e2\u20ac\u2122s Base Damage is equal to 5 times the character\u00e2\u20ac\u2122s Damage Multiplier",
+                            "6": "The Weapon\u00e2\u20ac\u2122s Base Damage is equal to 6 times the character\u00e2\u20ac\u2122s Damage Multiplier"
+                        },
+                        "user_input_required": [
+                            {
+                                "label": "Weapon",
+                                "field_type": "list",
+                                "placeholder": "e.g., martial arts, magic, lightning, energy sword, etc."
+                            }
+                        ],
+                        "key": "weapon",
+                        "is_human_attribute": false,
+                        "id": "a14216ae-d728-4d33-bce2-4533d6ba6951",
+                        "level": 7,
+                        "enhancements": [
+                            "multidimensional",
+                            "muscle",
+                            "penetrating",
+                            "piercing"
+                        ],
+                        "options_source": "Race Template",
+                        "cost": 14,
+                        "sources": [
+                            "39fab793-64d1-48d6-9109-d0a884a2da17"
+                        ]
+                    }
+                },
+                {
+                    "field": "defect_add",
+                    "defect_id": "49235b8b-386a-43c0-a25b-d3f58f20fd4d",
+                    "defect_data": {
+                        "custom_name": "Inept Ranged Attack",
+                        "enhancements": [],
+                        "key": "inept_attack",
+                        "limiters": [],
+                        "options": [],
+                        "options_source": "Race Template",
+                        "rank": 3,
+                        "user_description": null,
+                        "user_input": null,
+                        "valid": true,
+                        "id": "49235b8b-386a-43c0-a25b-d3f58f20fd4d",
+                        "name": "Inept Ranged Attack",
+                        "cost": -3,
+                        "sources": [
+                            "39fab793-64d1-48d6-9109-d0a884a2da17"
+                        ]
+                    }
+                },
+                {
+                    "field": "defect_add",
+                    "defect_id": "3016d7e2-d317-47a0-bf66-a3fa9c87e055",
+                    "defect_data": {
+                        "custom_name": "Inept Ranged Defence",
+                        "enhancements": [],
+                        "key": "inept_defence",
+                        "limiters": [],
+                        "options": [],
+                        "options_source": "Race Template",
+                        "rank": 3,
+                        "user_description": null,
+                        "user_input": null,
+                        "valid": true,
+                        "id": "3016d7e2-d317-47a0-bf66-a3fa9c87e055",
+                        "name": "Inept Ranged Defence",
+                        "cost": -3,
+                        "sources": [
+                            "39fab793-64d1-48d6-9109-d0a884a2da17"
+                        ]
+                    }
+                },
+                {
+                    "field": "defect_add",
+                    "defect_id": "a7305ca5-e306-4153-87d4-82c6c636456b",
+                    "defect_data": {
+                        "custom_name": "Big, Heavy, and Obvious",
+                        "enhancements": [],
+                        "key": "unique_defect",
+                        "limiters": [],
+                        "options": [],
+                        "options_source": "Race Template",
+                        "rank": 3,
+                        "user_description": null,
+                        "user_input": null,
+                        "valid": true,
+                        "id": "a7305ca5-e306-4153-87d4-82c6c636456b",
+                        "name": "Big, Heavy, and Obvious",
+                        "cost": -3,
+                        "sources": [
+                            "39fab793-64d1-48d6-9109-d0a884a2da17",
+                            "8674f351-a312-40fa-be50-6835524091c3"
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": "8674f351-a312-40fa-be50-6835524091c3",
+            "type": "size",
+            "name": "Speck",
+            "changes": [
+                {
+                    "field": "size",
+                    "old_value": "Medium",
+                    "new_value": "Speck"
+                },
+                {
+                    "field": "attribute_add",
+                    "attribute_id": "ef2ad57a-709b-43c0-aff8-eb696cb1edb3",
+                    "attribute_data": {
+                        "name": "Ranged Attack",
+                        "cost_per_level": 1,
+                        "source": "BESM4e",
+                        "description": "Allows the character to perform precise ranged attacks with a specific weapon class.",
+                        "levels": {
+                            "1": {
+                                "acv_bonus": 2
+                            },
+                            "2": {
+                                "acv_bonus": 4
+                            },
+                            "3": {
+                                "acv_bonus": 6
+                            },
+                            "4": {
+                                "acv_bonus": 8
+                            },
+                            "5": {
+                                "acv_bonus": 10
+                            },
+                            "6": {
+                                "acv_bonus": 12
+                            }
+                        },
+                        "modifiers": [
+                            {
+                                "type": "derived",
+                                "target": "ACV",
+                                "value_per_level": 2,
+                                "condition": "only when using selected weapon class"
+                            }
+                        ],
+                        "user_input_required": [
+                            {
+                                "label": "Weapon Class",
+                                "key": "weapon_class",
+                                "field_type": "combo_editable",
+                                "description": "Enter a custom category of weapons this Ranged Attack applies to (e.g. Long Gun, Spell, Throwing).",
+                                "options": [
+                                    "Biotech Projectiles",
+                                    "Bows",
+                                    "Crossbows",
+                                    "Elemental Blasts",
+                                    "Energy Weapons",
+                                    "Explosives",
+                                    "Firearms",
+                                    "Guns (General)",
+                                    "Laser Pistols",
+                                    "Magic Spells",
+                                    "Thrown Weapons"
+                                ]
+                            }
+                        ],
+                        "key": "ranged_attack",
+                        "is_human_attribute": false,
+                        "id": "ef2ad57a-709b-43c0-aff8-eb696cb1edb3",
+                        "level": 8,
+                        "options_source": "Size Template",
+                        "cost": 8,
+                        "sources": [
+                            "8674f351-a312-40fa-be50-6835524091c3"
+                        ]
+                    }
+                },
+                {
+                    "field": "attribute_add",
+                    "attribute_id": "acc6bca8-d238-40bd-a81b-1eb5e430b74b",
+                    "attribute_data": {
+                        "name": "Ranged Defence",
+                        "cost_per_level": 1,
+                        "relevant_stat": null,
+                        "source": "BESM4e",
+                        "description": "Boosts Defence Combat Value when avoiding ranged attacks under a specific condition, such as while on foot or piloting a vehicle.",
+                        "levels": {
+                            "1": "+2 DCV against ranged attacks under a specific condition",
+                            "2": "+4 DCV against ranged attacks under a specific condition",
+                            "3": "+6 DCV against ranged attacks under a specific condition",
+                            "4": "+8 DCV against ranged attacks under a specific condition",
+                            "5": "+10 DCV against ranged attacks under a specific condition",
+                            "6": "+12 DCV against ranged attacks under a specific condition"
+                        },
+                        "user_input_required": [
+                            {
+                                "label": "Condition",
+                                "field_type": "dropdown",
+                                "options": [
+                                    "Personal",
+                                    "Movement"
+                                ]
+                            }
+                        ],
+                        "key": "ranged_defence",
+                        "is_human_attribute": false,
+                        "id": "acc6bca8-d238-40bd-a81b-1eb5e430b74b",
+                        "level": 8,
+                        "options_source": "Size Template",
+                        "cost": 8,
+                        "sources": [
+                            "8674f351-a312-40fa-be50-6835524091c3"
+                        ]
+                    }
+                },
+                {
+                    "field": "attribute_add",
+                    "attribute_id": "92ad051b-3ec3-42ee-af17-628d2c6ec508",
+                    "attribute_data": {
+                        "name": "Small, Light, and Unobtrusive",
+                        "cost_per_level": null,
+                        "relevant_stat": "Variable",
+                        "description": "Covers any power not described elsewhere. Requires GM discussion. Effect and cost per level vary from 1\u00e2\u20ac\u201c10 CP depending on usefulness.",
+                        "source": "BESM4e",
+                        "levels": {
+                            "1": "Basic aptitude",
+                            "2": "Minor aptitude",
+                            "3": "Moderate aptitude",
+                            "4": "Significant aptitude",
+                            "5": "Major aptitude",
+                            "6": "Extreme aptitude"
+                        },
+                        "user_input_required": [
+                            {
+                                "label": "Custom Description",
+                                "key": "custom_description",
+                                "field_type": "textarea",
+                                "description": "Describe what this Unique Attribute does and its game effects."
+                            },
+                            {
+                                "label": "Point Cost Per Level",
+                                "key": "custom_cp_cost",
+                                "field_type": "number",
+                                "description": "Assign the CP cost per level (1\u00e2\u20ac\u201c10).",
+                                "required": true
+                            }
+                        ],
+                        "key": "unique_attribute",
+                        "is_human_attribute": false,
+                        "id": "92ad051b-3ec3-42ee-af17-628d2c6ec508",
+                        "level": 8,
+                        "options_source": "Size Template",
+                        "cost": 0,
+                        "sources": [
+                            "8674f351-a312-40fa-be50-6835524091c3"
+                        ]
+                    }
+                }
+            ]
+        }
+    ]
+}

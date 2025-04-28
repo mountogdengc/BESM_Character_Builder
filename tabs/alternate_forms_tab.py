@@ -51,8 +51,14 @@ def sync_alternate_forms_from_attributes(self):
             form_data = {
                 "id": attr["id"],
                 "name": attr["name"],
+                "level": attr.get("level", 1),
+                "cp_budget": attr.get("level", 1) * 5,
                 "description": attr.get("description", ""),
-                "cp": attr["cost"]
+                "cp": attr["cost"],
+                "stats": self.character_data["stats"].copy() if hasattr(self, "character_data") and "stats" in self.character_data else {},
+                "derived": self.character_data["derived"].copy() if hasattr(self, "character_data") and "derived" in self.character_data else {},
+                "attributes": [],
+                "defects": []
             }
             self.character_data["alternate_forms"].append(form_data)
 
@@ -74,10 +80,10 @@ def populate_alternate_form_ui(self):
     # Add new cards
     for form in self.character_data["alternate_forms"]:
         card = create_card_widget(
-            title=form["name"],
+            title=form.get("name", "Unnamed Form"),
             lines=[
-                f"Description: {form['description']}",
-                f"Cost: {form['cp']} CP"
+                f"Description: {form.get('description', 'No description')}",
+                f"Cost: {form.get('cp', 0)} CP"
             ],
             on_remove=lambda uid=form["id"]: self.remove_alternate_form(uid),
             on_click=lambda uid=form["id"]: self.edit_alternate_form(uid),

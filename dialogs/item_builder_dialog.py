@@ -2,129 +2,122 @@
 
 import uuid
 import math
-from PyQt5.QtWidgets import (
-    QDialog, QVBoxLayout, QHBoxLayout, QLabel, QLineEdit, QSpinBox,
-    QPushButton, QTabWidget, QWidget, QListWidget, QListWidgetItem,
-    QFormLayout, QMessageBox, QScrollArea, QGridLayout, QSizePolicy,
-    QTextEdit, QComboBox, QCheckBox
-)
-from PyQt5.QtCore import Qt
+import PyQt5.QtWidgets as QtWidgets
+import PyQt5.QtCore as QtCore
 from tools.utils import create_card_widget, format_attribute_display
 from dialogs.attribute_builder_dialog import AttributeBuilderDialog
 from dialogs.defect_builder_dialog import DefectBuilderDialog
 
-class ItemBuilderDialog(QDialog):
+class ItemBuilderDialog(QtWidgets.QDialog):
     def __init__(self, parent=None, item_data=None):
         super().__init__(parent)
-        self.setWindowTitle("Edit Item")
+        self.parent = parent
+        self.setWindowTitle("Item Builder")
         self.setMinimumWidth(800)
         self.setMinimumHeight(600)
-        self.parent = parent
-
-        self.item_data = item_data or {}
+        
+        self.item_data = item_data or {"attributes": [], "defects": []}
         self.original_id = item_data.get("id") if item_data else None
         
-        # Ensure attributes and defects are lists
-        if "attributes" not in self.item_data:
-            self.item_data["attributes"] = []
-        if "defects" not in self.item_data:
-            self.item_data["defects"] = []
-        
-        # Calculate total CP spent and cost
         self.total_cp_spent = 0
-        self.item_cost = 0  # This will be half of total_cp_spent (rounded down)
+        self.item_cost = 0
 
-        layout = QVBoxLayout()
-        self.setLayout(layout)
-
-        # --- Header with name, type, and CP info ---
-        header_layout = QHBoxLayout()
+        main_layout = QtWidgets.QVBoxLayout(self)
         
-        # Left side - Item name and type
-        form_layout = QFormLayout()
+        # Header with name, type inputs and CP cost info
+        header_layout = QtWidgets.QHBoxLayout()
         
-        self.name_input = QLineEdit()
+        # Left side - Basic info
+        form_layout = QtWidgets.QFormLayout()
+        
+        self.name_input = QtWidgets.QLineEdit()
         self.name_input.setText(self.item_data.get("name", ""))
-        form_layout.addRow("Item Name:", self.name_input)
-
-        self.item_type_input = QComboBox()
-        item_types = ["Weapon", "Armor", "Vehicle", "Tool", "Magical Item", "Tech Device", "Other"]
-        self.item_type_input.addItems(item_types)
-        current_type = self.item_data.get("type", "Other")
-        if current_type in item_types:
-            self.item_type_input.setCurrentText(current_type)
+        form_layout.addRow("Name:", self.name_input)
+        
+        self.item_type_input = QtWidgets.QComboBox()
+        self.item_type_input.addItems([
+            "Weapon", "Armor", "Equipment", "Vehicle", "Facility", "Magical Item", 
+            "Divine Item", "Cybernetic", "Bioware", "Other"
+        ])
+        if "type" in self.item_data:
+            index = self.item_type_input.findText(self.item_data["type"])
+            if index >= 0:
+                self.item_type_input.setCurrentIndex(index)
         form_layout.addRow("Item Type:", self.item_type_input)
         
         header_layout.addLayout(form_layout)
         header_layout.addStretch()
         
         # Right side - CP info
-        cp_layout = QFormLayout()
+        cp_layout = QtWidgets.QFormLayout()
         
-        self.cp_spent_label = QLabel()
+        self.cp_spent_label = QtWidgets.QLabel("0 CP")
         cp_layout.addRow("Total CP Value:", self.cp_spent_label)
         
-        self.item_cost_label = QLabel()
-        cp_layout.addRow("Item Cost (1/2 CP):", self.item_cost_label)
+        self.item_cost_label = QtWidgets.QLabel("0 CP")
+        cp_layout.addRow("Item Cost:", self.item_cost_label)
         
         header_layout.addLayout(cp_layout)
         
-        layout.addLayout(header_layout)
+        main_layout.addLayout(header_layout)
         
-        # Add description
-        description = QLabel("Items are devices that enhance a character or serve as useful tools, vehicles, bases, or weapons. " +
-                            "The cost of an item is half the total CP value of its attributes and defects (rounded down).")
-        description.setWordWrap(True)
-        layout.addWidget(description)
-
-        # --- Tabs for Attributes / Defects / Description / Examples ---
-        self.tabs = QTabWidget()
-        layout.addWidget(self.tabs)
-
+        # Tabs
+        self.tabs = QtWidgets.QTabWidget()
         self.init_attributes_tab()
         self.init_defects_tab()
         self.init_description_tab()
         self.init_examples_tab()
         
-        # Update CP labels
+        main_layout.addWidget(self.tabs)
+        
+        # Bottom buttons
+        button_layout = QtWidgets.QHBoxLayout()
+        self.save_to_library_btn = QtWidgets.QPushButton("Save to Library")
+        self.save_to_library_btn.clicked.connect(self.save_to_library)
+        
+        self.ok_button = QtWidgets.QPushButton("OK")
+        self.ok_button.clicked.connect(self.accept)
+        self.cancel_button = QtWidgets.QPushButton("Cancel")
+        self.cancel_button.clicked.connect(self.reject)
+        
+        button_layout.addWidget(self.save_to_library_btn)
+        button_layout.addStretch()
+        button_layout.addWidget(self.cancel_button)
+        button_layout.addWidget(self.ok_button)
+        
+        main_layout.addLayout(button_layout)
+        
+        # Calculate initial CP totals
         self.calculate_cp_totals()
-
-        # --- Buttons ---
-        btn_layout = QHBoxLayout()
-        self.save_btn = QPushButton("Save")
-        self.cancel_btn = QPushButton("Cancel")
-        self.save_btn.clicked.connect(self.accept)
-        self.cancel_btn.clicked.connect(self.reject)
-        btn_layout.addStretch()
-        btn_layout.addWidget(self.cancel_btn)
-        btn_layout.addWidget(self.save_btn)
-
-        layout.addLayout(btn_layout)
+        
+        # Populate attribute and defect lists
+        self.populate_attributes()
+        self.populate_defects()
 
     def init_attributes_tab(self):
-        tab = QWidget()
-        layout = QVBoxLayout()
+        tab = QtWidgets.QWidget()
+        layout = QtWidgets.QVBoxLayout()
         
         # Description
-        description = QLabel("Attributes represent your item's special abilities and features. " +
+        description = QtWidgets.QLabel("Attributes represent your item's special abilities and features. " +
                             "Add attributes to your item to give it special powers or capabilities.")
         description.setWordWrap(True)
         layout.addWidget(description)
         
         # Button to add new attribute
-        add_btn = QPushButton("Add Attribute")
+        add_btn = QtWidgets.QPushButton("Add Attribute")
         add_btn.clicked.connect(self.add_attribute)
         layout.addWidget(add_btn)
         
         # Scroll area for attribute cards
-        scroll = QScrollArea()
+        scroll = QtWidgets.QScrollArea()
         scroll.setWidgetResizable(True)
         
-        self.attr_card_container = QWidget()
-        self.attr_layout = QVBoxLayout(self.attr_card_container)
+        self.attr_card_container = QtWidgets.QWidget()
+        self.attr_layout = QtWidgets.QVBoxLayout(self.attr_card_container)
         self.attr_layout.setContentsMargins(8, 8, 8, 8)
         self.attr_layout.setSpacing(6)
-        self.attr_layout.setAlignment(Qt.AlignTop)
+        self.attr_layout.setAlignment(QtCore.Qt.AlignTop)
         
         scroll.setWidget(self.attr_card_container)
         layout.addWidget(scroll)
@@ -136,29 +129,29 @@ class ItemBuilderDialog(QDialog):
         self.tabs.addTab(tab, "Attributes")
 
     def init_defects_tab(self):
-        tab = QWidget()
-        layout = QVBoxLayout()
+        tab = QtWidgets.QWidget()
+        layout = QtWidgets.QVBoxLayout()
         
         # Description
-        description = QLabel("Defects represent your item's weaknesses or limitations. " +
+        description = QtWidgets.QLabel("Defects represent your item's weaknesses or limitations. " +
                             "Add defects to your item to reduce its cost or represent design flaws.")
         description.setWordWrap(True)
         layout.addWidget(description)
         
         # Button to add new defect
-        add_btn = QPushButton("Add Defect")
+        add_btn = QtWidgets.QPushButton("Add Defect")
         add_btn.clicked.connect(self.add_defect)
         layout.addWidget(add_btn)
         
         # Scroll area for defect cards
-        scroll = QScrollArea()
+        scroll = QtWidgets.QScrollArea()
         scroll.setWidgetResizable(True)
         
-        self.defect_card_container = QWidget()
-        self.defect_layout = QVBoxLayout(self.defect_card_container)
+        self.defect_card_container = QtWidgets.QWidget()
+        self.defect_layout = QtWidgets.QVBoxLayout(self.defect_card_container)
         self.defect_layout.setContentsMargins(8, 8, 8, 8)
         self.defect_layout.setSpacing(6)
-        self.defect_layout.setAlignment(Qt.AlignTop)
+        self.defect_layout.setAlignment(QtCore.Qt.AlignTop)
         
         scroll.setWidget(self.defect_card_container)
         layout.addWidget(scroll)
@@ -170,14 +163,14 @@ class ItemBuilderDialog(QDialog):
         self.tabs.addTab(tab, "Defects")
 
     def init_description_tab(self):
-        tab = QWidget()
-        layout = QVBoxLayout()
+        tab = QtWidgets.QWidget()
+        layout = QtWidgets.QVBoxLayout()
         
         # Description input
-        description_label = QLabel("Item Description:")
+        description_label = QtWidgets.QLabel("Item Description:")
         layout.addWidget(description_label)
         
-        self.description_input = QTextEdit()
+        self.description_input = QtWidgets.QTextEdit()
         self.description_input.setText(self.item_data.get("description", ""))
         layout.addWidget(self.description_input)
         
@@ -185,26 +178,26 @@ class ItemBuilderDialog(QDialog):
         self.tabs.addTab(tab, "Description")
 
     def init_examples_tab(self):
-        tab = QWidget()
-        layout = QVBoxLayout()
+        tab = QtWidgets.QWidget()
+        layout = QtWidgets.QVBoxLayout()
         
         # Description
-        description = QLabel("Here are some example items from the BESM 4e rulebook for reference:")
+        description = QtWidgets.QLabel("Here are some example items from the BESM 4e rulebook for reference:")
         description.setWordWrap(True)
         layout.addWidget(description)
         
         # Scroll area for examples
-        scroll = QScrollArea()
+        scroll = QtWidgets.QScrollArea()
         scroll.setWidgetResizable(True)
         
-        examples_container = QWidget()
-        examples_layout = QVBoxLayout(examples_container)
+        examples_container = QtWidgets.QWidget()
+        examples_layout = QtWidgets.QVBoxLayout(examples_container)
         
         # Example 1: Modern Melee Weapons
-        weapons_label = QLabel("<b>Modern Melee Weapons</b>")
+        weapons_label = QtWidgets.QLabel("<b>Modern Melee Weapons</b>")
         examples_layout.addWidget(weapons_label)
         
-        weapons_example = QLabel("Knife: Damage Level 1: 1 Point, Item Cost: 0\n" +
+        weapons_example = QtWidgets.QLabel("Knife: Damage Level 1: 1 Point, Item Cost: 0\n" +
                                 "Baseball Bat: Damage Level 2: 2 Points, Item Cost: 1\n" +
                                 "Sword: Damage Level 3: 3 Points, Item Cost: 1\n" +
                                 "Chainsaw: Damage Level 4: 4 Points, Item Cost: 2")
@@ -212,10 +205,10 @@ class ItemBuilderDialog(QDialog):
         examples_layout.addWidget(weapons_example)
         
         # Example 2: Archaic Armor
-        armor_label = QLabel("<b>Archaic Armor</b>")
+        armor_label = QtWidgets.QLabel("<b>Archaic Armor</b>")
         examples_layout.addWidget(armor_label)
         
-        armor_example = QLabel("Leather Armor: Armor Level 1: 1 Point, Item Cost: 0\n" +
+        armor_example = QtWidgets.QLabel("Leather Armor: Armor Level 1: 1 Point, Item Cost: 0\n" +
                               "Chain Mail: Armor Level 2: 2 Points, Item Cost: 1\n" +
                               "Plate Mail: Armor Level 3: 3 Points, Item Cost: 1\n" +
                               "Full Plate: Armor Level 4: 4 Points, Item Cost: 2")
@@ -223,10 +216,10 @@ class ItemBuilderDialog(QDialog):
         examples_layout.addWidget(armor_example)
         
         # Example 3: HAZMAT Suit
-        hazmat_label = QLabel("<b>HAZMAT Suit</b>")
+        hazmat_label = QtWidgets.QLabel("<b>HAZMAT Suit</b>")
         examples_layout.addWidget(hazmat_label)
         
-        hazmat_example = QLabel("Armor Level 2: 2 Points\n" +
+        hazmat_example = QtWidgets.QLabel("Armor Level 2: 2 Points\n" +
                                 "Environmental Control Level 2: 2 Points\n" +
                                 "Resilient Level 4 (Lack of Air, Radiation; All Complete -2): 8 Points\n" +
                                 "Total: 12 Points, Item Cost: 6")
@@ -279,7 +272,7 @@ class ItemBuilderDialog(QDialog):
     
     def add_attribute(self):
         dialog = AttributeBuilderDialog(self.parent)
-        if dialog.exec_() == QDialog.Accepted:
+        if dialog.exec_() == QtWidgets.QDialog.Accepted:
             attr = dialog.get_attribute_data()
             # Add ID if not present
             if "id" not in attr:
@@ -290,7 +283,7 @@ class ItemBuilderDialog(QDialog):
     
     def add_defect(self):
         dialog = DefectBuilderDialog(self.parent)
-        if dialog.exec_() == QDialog.Accepted:
+        if dialog.exec_() == QtWidgets.QDialog.Accepted:
             defect = dialog.get_defect_data()
             # Add ID if not present
             if "id" not in defect:
@@ -370,3 +363,94 @@ class ItemBuilderDialog(QDialog):
             "attributes": self.item_data["attributes"],
             "defects": self.item_data["defects"]
         }
+
+    def save_to_library(self):
+        """Save the current item to the library"""
+        try:
+            # Get item data to save
+            item_data = self.get_item_data()
+            
+            # Load the libraries data
+            import os
+            import json
+            import uuid
+            from PyQt5.QtWidgets import QMessageBox, QInputDialog
+            
+            base_path = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+            file_path = os.path.join(base_path, "data", "libraries.json")
+            
+            try:
+                if os.path.exists(file_path):
+                    with open(file_path, 'r', encoding='utf-8') as f:
+                        libraries_data = json.load(f)
+                else:
+                    libraries_data = {
+                        "version": "1.0",
+                        "libraries": {
+                            "items": [],
+                            "companions": [],
+                            "minions": [],
+                            "metamorphosis": [],
+                            "alternate_forms": []
+                        }
+                    }
+            except Exception as e:
+                QMessageBox.warning(self, "Error", f"Failed to load libraries data: {str(e)}")
+                return
+                
+            # Prompt for a name if not set
+            if not item_data.get("name"):
+                name, ok = QInputDialog.getText(
+                    self,
+                    "Save to Library",
+                    "Enter a name for this item:"
+                )
+                if not ok or not name:
+                    return
+                item_data["name"] = name
+                
+            # Ensure the data has an ID
+            if "id" not in item_data:
+                item_data["id"] = str(uuid.uuid4())
+                
+            # Check if this item already exists in the library
+            existing_index = -1
+            for i, obj in enumerate(libraries_data["libraries"]["items"]):
+                if obj.get("id") == item_data.get("id"):
+                    existing_index = i
+                    break
+                    
+            # Ask for confirmation to overwrite if it exists
+            if existing_index >= 0:
+                reply = QMessageBox.question(
+                    self,
+                    "Overwrite Existing",
+                    f"An item with this ID already exists in the library. Overwrite it?",
+                    QMessageBox.Yes | QMessageBox.No,
+                    QMessageBox.No
+                )
+                
+                if reply == QMessageBox.No:
+                    return
+                    
+                # Update the existing item
+                libraries_data["libraries"]["items"][existing_index] = item_data
+            else:
+                # Add as a new item
+                libraries_data["libraries"]["items"].append(item_data)
+                
+            # Save the updated library data
+            try:
+                with open(file_path, 'w', encoding='utf-8') as f:
+                    json.dump(libraries_data, f, indent=2)
+                    
+                QMessageBox.information(
+                    self,
+                    "Success",
+                    f"Successfully saved to the items library."
+                )
+            except Exception as e:
+                QMessageBox.warning(self, "Error", f"Failed to save to library: {str(e)}")
+                
+        except Exception as e:
+            QMessageBox.warning(self, "Error", f"An error occurred: {str(e)}")

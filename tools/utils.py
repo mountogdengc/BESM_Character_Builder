@@ -48,9 +48,45 @@ def create_card_widget(title="", lines=None, on_click=None, on_remove=None, card
     card_layout.setContentsMargins(0, 0, 0, 0)
     card_layout.setSpacing(0)
 
-    # Configure title
+    # Create top row with title and remove button
+    title_row = QHBoxLayout()
+    title_row.setContentsMargins(0, 0, 0, 0)
+    title_row.setSpacing(4)
+    
+    # Add title to the left of the title row
     title_label.setObjectName("cardTitle")
-    layout.addWidget(title_label)
+    title_row.addWidget(title_label, 1)  # Give it stretch
+    
+    # Add remove button to the right of the title row if needed
+    if on_remove and card_type in ["attribute", "defect"]:
+        remove_button = QPushButton("×")
+        remove_button.setObjectName("removeButton")
+        remove_button.setFixedSize(24, 24)
+        remove_button.setToolTip("Remove")
+        remove_button.clicked.connect(on_remove)
+        remove_button.setCursor(QCursor(Qt.PointingHandCursor))
+        remove_button.setStyleSheet("""
+            QPushButton {
+                background-color: #ff4444;
+                color: white;
+                border: none;
+                border-radius: 12px;
+                font-size: 16px;
+                font-weight: bold;
+                padding: 0;
+                margin: 0;
+                min-width: 24px;
+                min-height: 24px;
+                text-align: center;
+            }
+            QPushButton:hover {
+                background-color: #ff6666;
+            }
+        """)
+        title_row.addWidget(remove_button)
+    
+    # Add the title row to the main layout
+    layout.addLayout(title_row)
 
     # Add content if provided
     if lines:
@@ -62,7 +98,7 @@ def create_card_widget(title="", lines=None, on_click=None, on_remove=None, card
         content_label.setAlignment(Qt.AlignTop | Qt.AlignLeft)
         layout.addWidget(content_label)
     
-    # Add edit button if needed
+    # Add edit button if needed in the button layout
     if card_type == "alternate_form" or (card_type == "attribute" and on_click):
         edit_button = QPushButton("Edit")
         edit_button.setObjectName("editButton")
@@ -71,17 +107,7 @@ def create_card_widget(title="", lines=None, on_click=None, on_remove=None, card
         edit_button.setCursor(QCursor(Qt.PointingHandCursor))
         button_layout.addWidget(edit_button)
     
-    # Add remove button if needed
-    if on_remove and card_type in ["attribute", "defect"]:
-        remove_button = QPushButton("×")
-        remove_button.setObjectName("removeButton")
-        remove_button.setFixedSize(24, 24)
-        remove_button.setToolTip("Remove")
-        remove_button.clicked.connect(on_remove)
-        remove_button.setCursor(QCursor(Qt.PointingHandCursor))
-        button_layout.addWidget(remove_button)
-    
-    # Add button layout if it has buttons
+    # Add button layout if it's not empty
     if not button_layout.isEmpty():
         layout.addLayout(button_layout)
 
@@ -90,7 +116,7 @@ def create_card_widget(title="", lines=None, on_click=None, on_remove=None, card
     card_layout.setSizeConstraint(QVBoxLayout.SetMinimumSize)
 
     # Make card clickable if needed
-    if on_click and card_type in ["defect", "attribute"]:
+    if on_click and card_type in ["defect", "attribute", "alternate_form"]:
         card.clicked.connect(on_click)
         container.mousePressEvent = lambda event: card.clicked.emit()
 

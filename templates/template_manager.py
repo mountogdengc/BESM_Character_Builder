@@ -93,9 +93,14 @@ class TemplateDialog(QDialog):
                         with open(template_file_path, 'r') as f:
                             template_data = json.load(f)
                             
-                            # Extract name based on template type
+                            # For size templates, ensure we're getting the proper name
+                            # The name field should be properly capitalized
                             if self.template_type == "size":
-                                name = template_data.get("name", "Unknown Size")
+                                # If there's a specific name field, use it; otherwise use capitalized key
+                                name = template_data.get("name")
+                                if not name:
+                                    # Fallback to capitalizing the filename/key
+                                    name = template_name.capitalize()
                                 category = "Sizes"
                             elif self.template_type == "race":
                                 name = template_data.get("race_name", template_data.get("name", "Unknown Race"))
@@ -106,6 +111,9 @@ class TemplateDialog(QDialog):
                             else:
                                 name = template_data.get("name", "Unknown Template")
                                 category = "Templates"
+                            
+                            # Debug print to check names
+                            print(f"[DEBUG] Added template: {name} (from file {template_name}.json)")
                             
                             loaded_templates.append({
                                 "name": name,
@@ -202,7 +210,17 @@ class TemplateDialog(QDialog):
             
             # Add templates to list
             for template in templates:
-                item = QListWidgetItem(template.get("name", "Unnamed Template"))
+                # Get the name, ensuring it's properly displayed
+                template_name = template.get("name", "Unnamed Template")
+                if self.template_type == "size" and not template_name:
+                    # If the name is empty, try to get it from the data
+                    template_data = template.get("data", {})
+                    template_name = template_data.get("name", "Unknown Size")
+                
+                # Make sure the name is visible in the dialog
+                print(f"[DEBUG] Adding template to list: {template_name}")
+                
+                item = QListWidgetItem(template_name)
                 item.setData(Qt.UserRole, template)
                 list_widget.addItem(item)
             
@@ -219,7 +237,14 @@ class TemplateDialog(QDialog):
             all_list.itemClicked.connect(self.on_template_selected)
             
             for template in type_templates:
-                item = QListWidgetItem(template.get("name", "Unnamed Template"))
+                # Get the name, ensuring it's properly displayed
+                template_name = template.get("name", "Unnamed Template")
+                if self.template_type == "size" and not template_name:
+                    # If the name is empty, try to get it from the data
+                    template_data = template.get("data", {})
+                    template_name = template_data.get("name", "Unknown Size")
+                
+                item = QListWidgetItem(template_name)
                 item.setData(Qt.UserRole, template)
                 all_list.addItem(item)
             
@@ -245,6 +270,14 @@ class TemplateDialog(QDialog):
         """Apply the selected template to the character"""
         if not self.selected_template:
             return
+        
+        # Print debug info for the selected template
+        template_data = self.selected_template.get("data", {})
+        if self.template_type == "size":
+            print(f"[DEBUG] Applying size template: {self.selected_template.get('name', 'Unknown Size')}")
+            # Make sure the size name is correctly stored in the template data
+            if "name" not in template_data and "name" in self.selected_template:
+                template_data["name"] = self.selected_template["name"]
         
         # Accept the dialog, returning the selected template
         self.accept()
@@ -317,15 +350,28 @@ def apply_template_to_character(app, template_data, template_type):
 
 def apply_size_template(app, template_data, template_changes):
     """Apply a size template to the character"""
-    # Update size field
-    if "name" in template_data:
+    # Debug print to check template data
+    print(f"[DEBUG] Applying size template: {template_data.get('name', 'NO NAME FOUND')}")
+    print(f"[DEBUG] Template data keys: {list(template_data.keys())}")
+    
+    # Update size field - try different ways to get the name
+    size_name = template_data.get("name")
+    if not size_name and "key" in template_data:
+        # Try to get the name from the key by capitalizing it
+        size_name = template_data["key"].capitalize()
+    
+    if size_name:
         old_size = app.size_input.text()
-        app.size_input.setText(template_data["name"])
+        app.size_input.setText(size_name)
+        app.character_data["size"] = size_name
+        print(f"[DEBUG] Updated size field to: {size_name}")
         template_changes["changes"].append({
             "field": "size",
             "old_value": old_size,
-            "new_value": template_data["name"]
+            "new_value": size_name
         })
+    else:
+        print(f"[ERROR] Could not find size name in template data")
     
     # Apply stat changes by adding to existing stats
     if "stats" in template_data:
@@ -494,6 +540,17 @@ def apply_attributes(app, template_data, template_changes):
         import copy
         import uuid
         template_id = template_changes.get("id") or template_changes.get("template_id") or template_changes.get("name")
+        
+        # Track which special attribute tabs need updating
+        needs_update = {
+            "attributes": False,
+            "alternate_forms": False,
+            "companions": False,
+            "items": False,
+            "metamorphosis": False,
+            "minions": False
+        }
+        
         for attr in template_data["attributes"]:
             # Use the attribute name and level from the template
             # Support both old format (name) and new format (custom_name + key)
@@ -554,24 +611,45 @@ def apply_attributes(app, template_data, template_changes):
                     "attribute_id": new_attr["id"],
                     "attribute_data": new_attr
                 })
-            # Sync special attributes if needed
+                
+                # Mark which special tabs need updating based on attribute type
+                needs_update["attributes"] = True
+                base_name = new_attr.get("base_name", new_attr["name"])
+                needs_update["alternate_forms"] = True  # Always update alternate forms
+                
+                if base_name in ["Companion", "Companions"]:
+                    needs_update["companions"] = True
+                elif base_name in ["Item", "Items"]:
+                    needs_update["items"] = True
+                elif base_name == "Metamorphosis":
+                    needs_update["metamorphosis"] = True
+                elif base_name == "Minions":
+                    needs_update["minions"] = True
+        
+        # Update all necessary tabs once, after the loop
+        if needs_update["attributes"]:
             from tabs.attributes_tab import sync_attributes
             sync_attributes(app)
-            base_name = new_attr.get("base_name", new_attr["name"])
+            
+        if needs_update["alternate_forms"]:
             from tabs.alternate_forms_tab import sync_alternate_forms_from_attributes
             sync_alternate_forms_from_attributes(app)
-            if base_name in ["Companion", "Companions"]:
-                from tabs.companions_tab import sync_companions_from_attributes
-                sync_companions_from_attributes(app)
-            elif base_name in ["Item", "Items"]:
-                from tabs.items_tab import sync_items_from_attributes
-                sync_items_from_attributes(app)
-            elif base_name == "Metamorphosis":
-                from tabs.metamorphosis_tab import sync_metamorphosis_from_attributes
-                sync_metamorphosis_from_attributes(app)
-            elif base_name == "Minions":
-                from tabs.minions_tab import sync_minions_from_attributes
-                sync_minions_from_attributes(app)
+            
+        if needs_update["companions"]:
+            from tabs.companions_tab import sync_companions_from_attributes
+            sync_companions_from_attributes(app)
+            
+        if needs_update["items"]:
+            from tabs.items_tab import sync_items_from_attributes
+            sync_items_from_attributes(app)
+            
+        if needs_update["metamorphosis"]:
+            from tabs.metamorphosis_tab import sync_metamorphosis_from_attributes
+            sync_metamorphosis_from_attributes(app)
+            
+        if needs_update["minions"]:
+            from tabs.minions_tab import sync_minions_from_attributes
+            sync_minions_from_attributes(app)
 
 
 def apply_defects(app, template_data, template_changes):
@@ -581,6 +659,10 @@ def apply_defects(app, template_data, template_changes):
         import uuid
         template_id = template_changes.get("id") or template_changes.get("template_id") or template_changes.get("name")
         print(f"[DEBUG] Applying defects from template: {template_id}")
+        
+        # Track if any defects were added
+        defects_added = False
+        
         for defect in template_data["defects"]:
             # Support both old format (name) and new format (custom_name + key)
             defect_name = defect.get("custom_name", defect.get("name", ""))
@@ -651,23 +733,35 @@ def apply_defects(app, template_data, template_changes):
             
             print(f"[DEBUG] Defect deduplication key: {dedup_key}, name: {dedup_name}, desc: {dedup_desc}")
             found = False
-            for defect_existing in app.character_data.get("defects", []):
-                # Try to match by key first, then by name+description
-                existing_key = defect_existing.get("key", "").strip().lower()
-                existing_name = defect_existing.get("name", "").strip().lower()
-                existing_desc = str(defect_existing.get("user_description", defect_existing.get("details", ""))).strip().lower()
-                
-                print(f"[DEBUG] Comparing against existing: key: {existing_key}, name: {existing_name}, desc: {existing_desc}")
-                # Match by key if both have keys, otherwise match by name and description
-                if (dedup_key and existing_key and dedup_key == existing_key) or \
-                   (dedup_name == existing_name and dedup_desc == existing_desc):
-                    print(f"[DEBUG] Found existing defect, updating sources")
-                    if "sources" not in defect_existing:
-                        defect_existing["sources"] = []
-                    if template_id not in defect_existing["sources"]:
-                        defect_existing["sources"].append(template_id)
-                    found = True
-                    break
+            if dedup_key:
+                for defect_existing in app.character_data.get("defects", []):
+                    if dedup_key == defect_existing.get("key", "").strip().lower():
+                        print(f"[DEBUG] Found existing defect with matching key: {dedup_key}")
+                        if "sources" not in defect_existing:
+                            defect_existing["sources"] = []
+                        if template_id not in defect_existing["sources"]:
+                            defect_existing["sources"].append(template_id)
+                        found = True
+                        break
+            
+            # If no match by key, try name+desc
+            if not found:
+                dedup_key = (dedup_name, dedup_desc)
+                for defect_existing in app.character_data.get("defects", []):
+                    key_existing = (
+                        defect_existing.get("name", "").strip().lower(),
+                        str(defect_existing.get("user_description", defect_existing.get("details", ""))).strip().lower()
+                    )
+                    print(f"[DEBUG] Comparing against existing: {key_existing}")
+                    if dedup_key == key_existing:
+                        print(f"[DEBUG] Found existing defect, updating sources for: {key_existing}")
+                        if "sources" not in defect_existing:
+                            defect_existing["sources"] = []
+                        if template_id not in defect_existing["sources"]:
+                            defect_existing["sources"].append(template_id)
+                        found = True
+                        break
+            
             if not found:
                 print(f"[DEBUG] Adding new defect: {dedup_key} with sources [{template_id}]")
                 new_defect["sources"] = [template_id]
@@ -677,12 +771,17 @@ def apply_defects(app, template_data, template_changes):
                     "defect_id": new_defect["id"],
                     "defect_data": new_defect
                 })
+                defects_added = True
+                
+        # Print debug info about defects
         print(f"[DEBUG] Defects in character after processing:")
         for i, d in enumerate(app.character_data["defects"], 1):
             print(f"[DEBUG] Defect {i}: {d.get('name', '')} (Rank: {d.get('rank', d.get('level', '?'))}), details: {d.get('details', '')}, sources: {d.get('sources', [])}")
+        
         # Only sync defects once after all are processed
-        from tabs.defects_tab import sync_defects
-        sync_defects(app)
+        if defects_added:
+            from tabs.defects_tab import sync_defects
+            sync_defects(app)
 
 
 def apply_size_from_template(app, size_info, template_changes):

@@ -163,11 +163,17 @@ class AttributeBuilderDialog(QDialog):
 
         # Buttons for Ok/Cancel
         button_box = QHBoxLayout()
+        self.save_to_library_btn = QPushButton("Save to Library")
+        self.save_to_library_btn.clicked.connect(self.save_to_library)
+        self.save_to_library_btn.setVisible(False)  # Only show for special types
+        
         self.ok_button = QPushButton("OK")
         self.ok_button.clicked.connect(self.accept)
         cancel_button = QPushButton("Cancel")
         cancel_button.clicked.connect(self.reject)
         
+        button_box.addWidget(self.save_to_library_btn)
+        button_box.addStretch()
         button_box.addWidget(self.ok_button)
         button_box.addWidget(cancel_button)
         
@@ -325,31 +331,47 @@ class AttributeBuilderDialog(QDialog):
         self.update_cp_cost()
 
     def update_attribute_info(self):
-        """Update UI for the selected attribute"""
-        attribute_name = self.attr_dropdown.currentText()
-        if not attribute_name:
+        """Update attribute info based on the selected attribute"""
+        attr_name = self.attr_dropdown.currentText()
+        attr_data = self.attributes.get(attr_name, {})
+        
+        # Show/hide save to library button based on attribute type
+        base_name = attr_data.get("base_name", attr_name)
+        special_types = ["Item", "Companion", "Companions", "Minions", "Metamorphosis", "Alternate Form"]
+        self.save_to_library_btn.setVisible(base_name in special_types)
+        
+        # Skip for the blank first item
+        if not attr_name:
             return
             
-        # Get attribute data
-        attribute = self.attributes.get(attribute_name, {})
-        
-        # Update description
-        description = attribute.get("description", "No description available.")
+        # If custom name hasn't been edited, update it to match the attribute
+        if not self._custom_name_edited:
+            self.custom_name_input.setText(attr_name)
+            
+        # Set the description
+        description = attr_data.get("description", "No description available.")
         self.description.setPlainText(description)
         
-        # Update custom name if not already edited
-        if not self._custom_name_edited:
-            self.custom_name_input.setText(attribute_name)
+        # Get the max level if specified
+        max_level = attr_data.get("max_level", 10)
+        self.level_spin.setMaximum(max_level)
         
-        # Clear existing custom fields
+        # Update cost per level
+        self.attribute_cost_per_level = attr_data.get("cost_per_level", 1)
+        
+        # Clear and recreate custom fields
         self.clear_custom_fields()
         
-        # Add user input fields
-        user_fields = attribute.get("user_input_required", [])
-        for field in user_fields:
-            self.add_custom_field_widget(field)
-            
-        # Update CP cost
+        # Add custom fields if any
+        if "custom_fields" in attr_data and isinstance(attr_data["custom_fields"], list):
+            for field in attr_data["custom_fields"]:
+                self.add_custom_field_widget(field)
+                
+        # Show/hide the custom fields group
+        has_custom_fields = "custom_fields" in attr_data and len(attr_data["custom_fields"]) > 0
+        self.custom_field_group.setVisible(has_custom_fields)
+        
+        # Update the CP cost
         self.update_cp_cost()
 
     def clear_custom_fields(self):
@@ -612,3 +634,118 @@ class AttributeBuilderDialog(QDialog):
                 message += f"- {limiter['name']} (×{limiter['count']})\n"
         
         QMessageBox.information(self, "Power Pack Applied", message)
+
+    def save_to_library(self):
+        """Save the current attribute to the library for reuse"""
+        try:
+            # Get attribute data to save
+            attr_data = self.get_attribute_data()
+            if not attr_data:
+                return
+                
+            # Only specific types can be saved to library
+            base_name = attr_data.get("base_name", "")
+            library_type = None
+            
+            if base_name == "Item":
+                library_type = "items"
+            elif base_name in ["Companion", "Companions"]:
+                library_type = "companions"
+            elif base_name == "Minions":
+                library_type = "minions"
+            elif base_name == "Metamorphosis":
+                library_type = "metamorphosis"
+            elif base_name == "Alternate Form":
+                library_type = "alternate_forms"
+                
+            if not library_type:
+                QMessageBox.information(
+                    self,
+                    "Cannot Save",
+                    f"Only special attribute types can be saved to the library."
+                )
+                return
+                
+            # Load the libraries data
+            import os
+            import json
+            
+            base_path = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+            file_path = os.path.join(base_path, "data", "libraries.json")
+            
+            try:
+                if os.path.exists(file_path):
+                    with open(file_path, 'r', encoding='utf-8') as f:
+                        libraries_data = json.load(f)
+                else:
+                    libraries_data = {
+                        "version": "1.0",
+                        "libraries": {
+                            "items": [],
+                            "companions": [],
+                            "minions": [],
+                            "metamorphosis": [],
+                            "alternate_forms": []
+                        }
+                    }
+            except Exception as e:
+                QMessageBox.warning(self, "Error", f"Failed to load libraries data: {str(e)}")
+                return
+                
+            # Prompt for a name if not set
+            if not attr_data.get("name"):
+                from PyQt5.QtWidgets import QInputDialog
+                name, ok = QInputDialog.getText(
+                    self,
+                    "Save to Library",
+                    "Enter a name for this item:"
+                )
+                if not ok or not name:
+                    return
+                attr_data["name"] = name
+                
+            # Ensure the data has an ID
+            if "id" not in attr_data:
+                attr_data["id"] = str(uuid.uuid4())
+                
+            # Check if this item already exists in the library
+            existing_index = -1
+            for i, obj in enumerate(libraries_data["libraries"][library_type]):
+                if obj.get("id") == attr_data.get("id"):
+                    existing_index = i
+                    break
+                    
+            # Ask for confirmation to overwrite if it exists
+            if existing_index >= 0:
+                reply = QMessageBox.question(
+                    self,
+                    "Overwrite Existing",
+                    f"An item with this ID already exists in the library. Overwrite it?",
+                    QMessageBox.Yes | QMessageBox.No,
+                    QMessageBox.No
+                )
+                
+                if reply == QMessageBox.No:
+                    return
+                    
+                # Update the existing item
+                libraries_data["libraries"][library_type][existing_index] = attr_data
+            else:
+                # Add as a new item
+                libraries_data["libraries"][library_type].append(attr_data)
+                
+            # Save the updated library data
+            try:
+                with open(file_path, 'w', encoding='utf-8') as f:
+                    json.dump(libraries_data, f, indent=2)
+                    
+                QMessageBox.information(
+                    self,
+                    "Success",
+                    f"Successfully saved to the {library_type.rstrip('s')} library."
+                )
+            except Exception as e:
+                QMessageBox.warning(self, "Error", f"Failed to save to library: {str(e)}")
+                
+        except Exception as e:
+            QMessageBox.warning(self, "Error", f"An error occurred: {str(e)}")

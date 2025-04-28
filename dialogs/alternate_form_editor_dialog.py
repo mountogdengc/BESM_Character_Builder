@@ -4,7 +4,8 @@ import uuid
 from PyQt5.QtWidgets import (
     QDialog, QVBoxLayout, QHBoxLayout, QLabel, QLineEdit, QSpinBox,
     QPushButton, QTabWidget, QWidget, QListWidget, QListWidgetItem,
-    QFormLayout, QMessageBox, QScrollArea, QGridLayout, QSizePolicy, QTextEdit
+    QFormLayout, QMessageBox, QScrollArea, QGridLayout, QSizePolicy, QTextEdit,
+    QInputDialog
 )
 from PyQt5.QtCore import Qt, QFile, QTextStream
 from tools.utils import create_card_widget, format_attribute_display
@@ -90,10 +91,13 @@ class AlternateFormEditorDialog(QDialog):
 
         # --- Buttons ---
         btn_layout = QHBoxLayout()
+        self.save_to_lib_btn = QPushButton("Save to Library")
+        self.save_to_lib_btn.clicked.connect(self.save_to_library)
         self.save_btn = QPushButton("Save")
         self.cancel_btn = QPushButton("Cancel")
         self.save_btn.clicked.connect(self.accept)
         self.cancel_btn.clicked.connect(self.reject)
+        btn_layout.addWidget(self.save_to_lib_btn)
         btn_layout.addStretch()
         btn_layout.addWidget(self.cancel_btn)
         btn_layout.addWidget(self.save_btn)
@@ -429,3 +433,94 @@ class AlternateFormEditorDialog(QDialog):
             "attributes": self.form_data["attributes"],
             "defects": self.form_data["defects"]
         }
+
+    def save_to_library(self):
+        """Save the current alternate form to the library"""
+        try:
+            # Get form data to save
+            form_data = self.get_form_data()
+            
+            # Load the libraries data
+            import os
+            import json
+            import uuid
+            from PyQt5.QtWidgets import QMessageBox, QInputDialog
+            
+            base_path = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+            file_path = os.path.join(base_path, "data", "libraries.json")
+            
+            try:
+                if os.path.exists(file_path):
+                    with open(file_path, 'r', encoding='utf-8') as f:
+                        libraries_data = json.load(f)
+                else:
+                    libraries_data = {
+                        "version": "1.0",
+                        "libraries": {
+                            "items": [],
+                            "companions": [],
+                            "minions": [],
+                            "metamorphosis": [],
+                            "alternate_forms": []
+                        }
+                    }
+            except Exception as e:
+                QMessageBox.warning(self, "Error", f"Failed to load libraries data: {str(e)}")
+                return
+                
+            # Prompt for a name if not set
+            if not form_data.get("name"):
+                name, ok = QInputDialog.getText(
+                    self,
+                    "Save to Library",
+                    "Enter a name for this alternate form:"
+                )
+                if not ok or not name:
+                    return
+                form_data["name"] = name
+                
+            # Ensure the data has an ID
+            if "id" not in form_data:
+                form_data["id"] = str(uuid.uuid4())
+                
+            # Check if this item already exists in the library
+            existing_index = -1
+            for i, obj in enumerate(libraries_data["libraries"]["alternate_forms"]):
+                if obj.get("id") == form_data.get("id"):
+                    existing_index = i
+                    break
+                    
+            # Ask for confirmation to overwrite if it exists
+            if existing_index >= 0:
+                reply = QMessageBox.question(
+                    self,
+                    "Overwrite Existing",
+                    f"An alternate form with this ID already exists in the library. Overwrite it?",
+                    QMessageBox.Yes | QMessageBox.No,
+                    QMessageBox.No
+                )
+                
+                if reply == QMessageBox.No:
+                    return
+                    
+                # Update the existing item
+                libraries_data["libraries"]["alternate_forms"][existing_index] = form_data
+            else:
+                # Add as a new item
+                libraries_data["libraries"]["alternate_forms"].append(form_data)
+                
+            # Save the updated library data
+            try:
+                with open(file_path, 'w', encoding='utf-8') as f:
+                    json.dump(libraries_data, f, indent=2)
+                    
+                QMessageBox.information(
+                    self,
+                    "Success",
+                    f"Successfully saved to the alternate forms library."
+                )
+            except Exception as e:
+                QMessageBox.warning(self, "Error", f"Failed to save to library: {str(e)}")
+                
+        except Exception as e:
+            QMessageBox.warning(self, "Error", f"An error occurred: {str(e)}")

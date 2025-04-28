@@ -193,15 +193,17 @@ class BESMCharacterApp(QMainWindow):
         btn_race_template = ui.QPushButton("Race Templates")
         btn_class_template = ui.QPushButton("Class Templates")
         btn_manage_templates = ui.QPushButton("Manage Templates")
+        btn_library_manager = ui.QPushButton("Library Manager")
         
         # Connect template buttons
         btn_size_template.clicked.connect(lambda: self.open_template_dialog("size"))
         btn_race_template.clicked.connect(lambda: self.open_template_dialog("race"))
         btn_class_template.clicked.connect(lambda: self.open_template_dialog("class"))
         btn_manage_templates.clicked.connect(self.manage_templates)
+        btn_library_manager.clicked.connect(self.open_library_manager)
         
         # Style template buttons
-        for btn in [btn_size_template, btn_race_template, btn_class_template, btn_manage_templates]:
+        for btn in [btn_size_template, btn_race_template, btn_class_template, btn_manage_templates, btn_library_manager]:
             btn.setSizePolicy(ui.QSizePolicy.Expanding, ui.QSizePolicy.Fixed)
             btn.setStyleSheet("""
                 QPushButton {
@@ -586,47 +588,208 @@ class BESMCharacterApp(QMainWindow):
             attr = dialog.get_attribute_data()
             print(f"Attribute data: {attr}")
             
-            # Ensure attributes list exists
-            if "attributes" not in self.character_data:
-                self.character_data["attributes"] = []
-                
-            # Add a unique ID to the attribute if it doesn't have one
-            if "id" not in attr:
-                attr["id"] = str(uuid.uuid4())
-                
-            # Add the attribute to character data
-            self.character_data["attributes"].append(attr)
-            print(f"Attributes in character data: {len(self.character_data['attributes'])}")
+            # Check if this is a special type that should use the library
+            base_name = attr.get("base_name", attr.get("name", ""))
             
-            # Update the attributes tab UI
-            from tabs.attributes_tab import sync_attributes
-            sync_attributes(self)
-            
-            # Sync all special attribute tabs based on the attribute type
-            base_name = attr.get("base_name", attr["name"])
-            
-            # Always sync alternate forms
-            sync_alternate_forms_from_attributes(self)
-            
-            # Sync specific tabs based on attribute type
-            if base_name in ["Companion", "Companions"]:
-                from tabs.companions_tab import sync_companions_from_attributes
-                sync_companions_from_attributes(self)
-            elif base_name in ["Item", "Items"]:
-                from tabs.items_tab import sync_items_from_attributes
-                sync_items_from_attributes(self)
-            elif base_name == "Metamorphosis":
-                from tabs.metamorphosis_tab import sync_metamorphosis_from_attributes
-                sync_metamorphosis_from_attributes(self)
+            # For special types, show selector dialog first
+            library_type = None
+            if base_name == "Item":
+                library_type = "items"
+            elif base_name in ["Companion", "Companions"]:
+                library_type = "companions"
             elif base_name == "Minions":
-                from tabs.minions_tab import sync_minions_from_attributes
-                sync_minions_from_attributes(self)
+                library_type = "minions"
+            elif base_name == "Metamorphosis":
+                library_type = "metamorphosis"
+            elif base_name == "Alternate Form":
+                library_type = "alternate_forms"
                 
-            # Update dynamic tabs visibility
-            self.update_dynamic_tabs_visibility()
+            # If this is a special attribute type, show the library selector
+            if library_type:
+                self.handle_special_attribute(attr, library_type)
+            else:
+                # Regular attribute - add directly
+                self._add_attribute_to_character(attr)
+    
+    def handle_special_attribute(self, attr, library_type):
+        """Handle special attribute types that can use the library"""
+        from dialogs.library_selector_dialog import LibrarySelectorDialog
+        
+        # Ask if they want to use the library
+        reply = ui.QMessageBox.question(
+            self, 
+            "Use Library",
+            f"Would you like to select a pre-made {library_type.rstrip('s')} from the library?",
+            ui.QMessageBox.Yes | ui.QMessageBox.No | ui.QMessageBox.Cancel,
+            ui.QMessageBox.Yes
+        )
+        
+        if reply == ui.QMessageBox.Cancel:
+            return
             
-
-
+        if reply == ui.QMessageBox.Yes:
+            # Show library selector
+            selector = LibrarySelectorDialog(self, library_type)
+            if selector.exec_() == ui.QDialog.Accepted:
+                selected_obj = selector.get_selected_object()
+                
+                if selected_obj == "CREATE_NEW":
+                    # User wants to create a new object
+                    self._add_attribute_to_character(attr)
+                    
+                    # Now open the appropriate editor for this type
+                    self._open_special_editor_for_new_attribute(attr, library_type)
+                else:
+                    # User selected an existing object
+                    # First add the attribute
+                    self._add_attribute_to_character(attr)
+                    
+                    # Now associate the selected object with this attribute
+                    self._associate_library_object_with_attribute(attr, selected_obj, library_type)
+            else:
+                # User canceled selection
+                return
+        else:
+            # User chose not to use library
+            self._add_attribute_to_character(attr)
+            
+            # Directly open the editor for the new attribute
+            self._open_special_editor_for_new_attribute(attr, library_type)
+    
+    def _add_attribute_to_character(self, attr):
+        """Add an attribute to the character data"""
+        # Ensure attributes list exists
+        if "attributes" not in self.character_data:
+            self.character_data["attributes"] = []
+            
+        # Add a unique ID to the attribute if it doesn't have one
+        if "id" not in attr:
+            attr["id"] = str(uuid.uuid4())
+            
+        # Add the attribute to character data
+        self.character_data["attributes"].append(attr)
+        print(f"Attributes in character data: {len(self.character_data['attributes'])}")
+        
+        # Update the attributes tab UI
+        from tabs.attributes_tab import sync_attributes
+        sync_attributes(self)
+        
+        # Sync all special attribute tabs based on the attribute type
+        base_name = attr.get("base_name", attr["name"])
+        
+        # Always sync alternate forms
+        sync_alternate_forms_from_attributes(self)
+        
+        # Sync specific tabs based on attribute type
+        if base_name in ["Companion", "Companions"]:
+            from tabs.companions_tab import sync_companions_from_attributes
+            sync_companions_from_attributes(self)
+        elif base_name in ["Item", "Items"]:
+            from tabs.items_tab import sync_items_from_attributes
+            sync_items_from_attributes(self)
+        elif base_name == "Metamorphosis":
+            from tabs.metamorphosis_tab import sync_metamorphosis_from_attributes
+            sync_metamorphosis_from_attributes(self)
+        elif base_name == "Minions":
+            from tabs.minions_tab import sync_minions_from_attributes
+            sync_minions_from_attributes(self)
+            
+        # Update dynamic tabs visibility
+        self.update_dynamic_tabs_visibility()
+    
+    def _open_special_editor_for_new_attribute(self, attr, library_type):
+        """Open the appropriate editor for the newly created special attribute"""
+        attr_id = attr.get("id")
+        if not attr_id:
+            return
+            
+        if library_type == "items":
+            self.edit_item(attr_id)
+        elif library_type == "companions":
+            self.edit_companion(attr_id)
+        elif library_type == "minions":
+            self.edit_minion(attr_id)
+        elif library_type == "metamorphosis":
+            self.edit_metamorphosis(attr_id)
+        elif library_type == "alternate_forms":
+            self.edit_alternate_form(attr_id)
+    
+    def _associate_library_object_with_attribute(self, attr, library_obj, library_type):
+        """Associate a library object with a newly created attribute"""
+        # Find the attribute in character data
+        attr_id = attr.get("id")
+        if not attr_id:
+            return
+            
+        for i, a in enumerate(self.character_data["attributes"]):
+            if a.get("id") == attr_id:
+                # Update attribute properties based on library object
+                a["name"] = library_obj.get("name", a["name"])
+                if "level" in library_obj:
+                    a["level"] = library_obj["level"]
+                if "cost" in library_obj:
+                    a["cost"] = library_obj["cost"]
+                if "description" in library_obj:
+                    a["description"] = library_obj["description"]
+                    
+                # Save reference to library object
+                a["library_ref"] = {
+                    "type": library_type,
+                    "id": library_obj.get("id")
+                }
+                
+                # Update UI and associated special data
+                if library_type == "items":
+                    # Add item to character's items
+                    if "id" not in library_obj:
+                        library_obj["id"] = attr_id
+                    self.character_data["items"].append(library_obj)
+                    from tabs.items_tab import sync_items_from_attributes
+                    sync_items_from_attributes(self)
+                    
+                elif library_type == "companions":
+                    # Add companion to character's companions
+                    if "id" not in library_obj:
+                        library_obj["id"] = attr_id
+                    self.character_data["companions"].append(library_obj)
+                    from tabs.companions_tab import sync_companions_from_attributes
+                    sync_companions_from_attributes(self)
+                    
+                elif library_type == "minions":
+                    # Add minion to character's minions
+                    if "id" not in library_obj:
+                        library_obj["id"] = attr_id
+                    self.character_data["minions"].append(library_obj)
+                    from tabs.minions_tab import sync_minions_from_attributes
+                    sync_minions_from_attributes(self)
+                    
+                elif library_type == "metamorphosis":
+                    # Add metamorphosis to character's metamorphosis
+                    if "id" not in library_obj:
+                        library_obj["id"] = attr_id
+                    self.character_data["metamorphosis"].append(library_obj)
+                    from tabs.metamorphosis_tab import sync_metamorphosis_from_attributes
+                    sync_metamorphosis_from_attributes(self)
+                    
+                elif library_type == "alternate_forms":
+                    # Add alternate form to character's alternate forms
+                    if "id" not in library_obj:
+                        library_obj["id"] = attr_id
+                    self.character_data["alternate_forms"].append(library_obj)
+                    sync_alternate_forms_from_attributes(self)
+                
+                # Update UI
+                from tabs.attributes_tab import sync_attributes
+                sync_attributes(self)
+                
+                # Update dynamic tabs visibility
+                self.update_dynamic_tabs_visibility()
+                
+                # Update point totals
+                self.update_point_total()
+                
+                break
+    
     def load_benchmarks(self, file_path):
         """
         Load benchmark data from a JSON file
@@ -1647,6 +1810,30 @@ class BESMCharacterApp(QMainWindow):
         QtCore.QTimer.singleShot(20, self.update_dynamic_tabs_visibility)
         QtCore.QTimer.singleShot(30, self.update_point_total)
     
+    def remove_defect_by_id(self, defect_id):
+        """Remove a defect by its ID and update the UI"""
+        # Find the defect with the given ID
+        removed_defect = None
+        
+        # Find and remove the defect from the character data
+        for i, defect in enumerate(self.character_data.get("defects", [])):
+            if defect.get("id") == defect_id:
+                removed_defect = self.character_data["defects"].pop(i)
+                print(f"[DEBUG] Removed defect: {removed_defect.get('name', 'Unknown')}")
+                break
+        
+        # If we didn't find the defect, nothing to do
+        if removed_defect is None:
+            print(f"[DEBUG] Defect with ID {defect_id} not found")
+            return
+        
+        # Update the UI
+        from tabs.defects_tab import sync_defects
+        sync_defects(self)
+        
+        # Update point total
+        self.update_point_total()
+    
     def _safe_refresh_attributes_ui(self):
         """Safely refresh the attributes UI by completely rebuilding it."""
         try:
@@ -1777,8 +1964,24 @@ class BESMCharacterApp(QMainWindow):
                 if existing.get("id") == uid:
                     self.character_data["alternate_forms"][i] = updated_form
                     break
+            
+            # Update the corresponding attribute to match the form's level
+            for attr in self.character_data["attributes"]:
+                if attr.get("id") == uid:
+                    # Update the attribute level and cost
+                    attr["level"] = updated_form["level"]
+                    attr["cost"] = attr["level"] * attr.get("cost_per_level", 4)
+                    # Update the attribute name if it changed
+                    if attr["name"] != updated_form["name"]:
+                        attr["name"] = updated_form["name"]
+                    break
 
+            # Update the UI
+            from tabs.attributes_tab import sync_attributes
+            sync_attributes(self)
+            from tabs.alternate_forms_tab import sync_alternate_forms_from_attributes, populate_alternate_form_ui
             populate_alternate_form_ui(self)
+            
             self.update_point_total()
 
     def get_alternate_form_by_id(self, uid):
@@ -1787,22 +1990,37 @@ class BESMCharacterApp(QMainWindow):
                 return form
         return None
     
-    def edit_alternate_form_by_id(self, uid):
-        form = next((f for f in self.character_data["alternate_forms"] if f.get("id") == uid), None)
-        if not form:
-            ui.QMessageBox.warning(self, "Error", f"No alternate form found with ID {uid}")
-            return
-
-        ui.QMessageBox.information(self, "Edit Form", f"Editing: {form['name']}\n(Not yet implemented)")
-        
     def edit_item(self, uid):
-        item = next((i for i in self.character_data["items"] if i.get("id") == uid), None)
-        if not item:
-            ui.QMessageBox.warning(self, "Error", f"No item found with ID {uid}")
-            return
-
-        ui.QMessageBox.information(self, "Edit Item", f"Editing: {item['name']}\n(Not yet implemented)")
+        from dialogs.item_builder_dialog import ItemBuilderDialog
+        from tabs.items_tab import populate_items_ui
         
+        # Find the item data by ID
+        item_data = None
+        for item in self.character_data["items"]:
+            if item["id"] == uid:
+                item_data = item
+                break
+        
+        if not item_data:
+            ui.QMessageBox.warning(self, "Error", "Item not found.")
+            return
+        
+        # Open the item builder dialog
+        dialog = ItemBuilderDialog(self, item_data)
+        if dialog.exec_():
+            # Get updated item data
+            updated_data = dialog.get_item_data()
+            
+            # Update the item in character data
+            for i, item in enumerate(self.character_data["items"]):
+                if item["id"] == uid:
+                    self.character_data["items"][i] = updated_data
+                    break
+            
+            # Refresh the UI
+            populate_items_ui(self)
+            self.update_point_total()
+
     def edit_metamorphosis(self, uid):
         meta = next((m for m in self.character_data["metamorphosis"] if m.get("id") == uid), None)
         if not meta:
@@ -2013,6 +2231,13 @@ class BESMCharacterApp(QMainWindow):
             "Version: 1.0\n"
             "Created by: LegendMasters"
         )
+
+    def open_library_manager(self):
+        """Open the Library Manager dialog"""
+        from dialogs.library_manager_dialog import LibraryManagerDialog
+        
+        dialog = LibraryManagerDialog(self)
+        dialog.exec_()
 
 if __name__ == "__main__":
     app = ui.QApplication(sys.argv)

@@ -1,0 +1,1987 @@
+{
+    "version": "1.0",
+    "name": "",
+    "player": "",
+    "gm": "",
+    "race": "",
+    "class": "",
+    "homeworld": "",
+    "size": "Minute",
+    "background": {
+        "origin": "",
+        "faction": "",
+        "goals": "",
+        "personality": "",
+        "history": ""
+    },
+    "stats": {
+        "Body": 4,
+        "Mind": 4,
+        "Soul": 4
+    },
+    "derived": {
+        "CV": 4,
+        "ACV": 4,
+        "DCV": 4,
+        "HP": 40,
+        "EP": 40,
+        "DM": 4,
+        "SV": 8,
+        "SP": 40,
+        "SCV": 4,
+        "SOP": 40
+    },
+    "drama_points": {
+        "current": 3,
+        "max": 5
+    },
+    "attributes": [],
+    "defects": [],
+    "skills": [],
+    "weapons": [],
+    "armor": [],
+    "items": [],
+    "techniques": [],
+    "templates": [],
+    "alternate_forms": [],
+    "metamorphosis": [],
+    "companions": [],
+    "minions": [],
+    "relationships": [],
+    "notes": "",
+    "custom_fields": {},
+    "custom_rules": [],
+    "saved_loadouts": [],
+    "benchmark": null,
+    "totalPoints": 24,
+    "applied_templates": [
+        {
+            "id": "116b6b17-766b-400a-8156-a7cab17ece86",
+            "type": "size",
+            "name": "Wee",
+            "changes": [
+                {
+                    "field": "size",
+                    "old_value": "",
+                    "new_value": "Wee"
+                }
+            ]
+        },
+        {
+            "id": "25538832-d85a-4d3b-888d-1ca235293f35",
+            "type": "size",
+            "name": "Colossal",
+            "changes": [
+                {
+                    "field": "size",
+                    "old_value": "Wee",
+                    "new_value": "Colossal"
+                },
+                {
+                    "field": "attribute_add",
+                    "attribute_id": "3e5f7908-4b95-4c89-8a5f-c8bad43d835e",
+                    "attribute_data": {
+                        "name": "Superstrength",
+                        "cost_per_level": 4,
+                        "relevant_stat": "Body",
+                        "description": "Allows lifting and carrying massive weights beyond normal strength. Adds +5 damage to unarmed attacks and +1 Damage Multiplier to melee/thrown weapons per level. Works independently of the Body Stat.",
+                        "source": "BESM4e",
+                        "levels": {
+                            "1": "Lift up to 250 kg (e.g., motorcycle)",
+                            "2": "Lift up to 500 kg (e.g., horse)",
+                            "3": "Lift up to 1 tonne (e.g., small car)",
+                            "4": "Lift up to 2 tonnes (e.g., truck)",
+                            "5": "Lift up to 5 tonnes (e.g., elephant)",
+                            "6": "Lift up to 10 tonnes (e.g., yacht)"
+                        },
+                        "key": "superstrength",
+                        "is_human_attribute": false,
+                        "id": "3e5f7908-4b95-4c89-8a5f-c8bad43d835e",
+                        "level": 12,
+                        "options_source": "Size Template",
+                        "cost": 48,
+                        "sources": [
+                            "25538832-d85a-4d3b-888d-1ca235293f35"
+                        ]
+                    }
+                },
+                {
+                    "field": "attribute_add",
+                    "attribute_id": "9b944898-5921-48e1-849b-07a23c00057d",
+                    "attribute_data": {
+                        "name": "Armour",
+                        "cost_per_level": 2,
+                        "relevant_stat": null,
+                        "is_human_attribute": false,
+                        "description": "Provides damage reduction of 5 per level against physical attacks. Can be enhanced/limited by damage type.",
+                        "source": "BESM4e",
+                        "levels": {
+                            "1": "Armour Rating = 5",
+                            "2": "Armour Rating = 10",
+                            "3": "Armour Rating = 15",
+                            "4": "Armour Rating = 20",
+                            "5": "Armour Rating = 25",
+                            "6": "Armour Rating = 30"
+                        },
+                        "stat_mods": {
+                            "derived": {
+                                "Armour Rating": 5
+                            }
+                        },
+                        "key": "armour",
+                        "id": "9b944898-5921-48e1-849b-07a23c00057d",
+                        "level": 12,
+                        "options_source": "Size Template",
+                        "cost": 24,
+                        "sources": [
+                            "25538832-d85a-4d3b-888d-1ca235293f35"
+                        ]
+                    }
+                },
+                {
+                    "field": "attribute_add",
+                    "attribute_id": "0f3d8300-68c1-4c74-b3de-25618445d814",
+                    "attribute_data": {
+                        "name": "Special Movement",
+                        "cost_per_level": 1,
+                        "relevant_stat": "Body",
+                        "description": "Grants unique movement types such as Wall-Crawling, Zen Direction, Swinging, or Water-Walking. Some types count as two abilities due to enhanced utility.",
+                        "source": "BESM4e",
+                        "levels": {
+                            "1": "1 Special Movement ability",
+                            "2": "2 Special Movement abilities",
+                            "3": "3 Special Movement abilities",
+                            "4": "4 Special Movement abilities",
+                            "5": "5 Special Movement abilities",
+                            "6": "6 Special Movement abilities"
+                        },
+                        "user_input_required": [
+                            {
+                                "label": "Movement Types",
+                                "key": "movement_types",
+                                "field_type": "list",
+                                "description": "List the Special Movement abilities the character possesses.",
+                                "autocomplete_options": [
+                                    "Balance",
+                                    "Cat-Like",
+                                    "Fast",
+                                    "Light-Footed",
+                                    "Slithering",
+                                    "Swinging",
+                                    "Untrackable",
+                                    "Wall-Bouncing",
+                                    "Wall-Crawling",
+                                    "Water-Walking",
+                                    "Zen Direction"
+                                ]
+                            }
+                        ],
+                        "key": "special_movement",
+                        "is_human_attribute": false,
+                        "id": "0f3d8300-68c1-4c74-b3de-25618445d814",
+                        "level": 6,
+                        "options_source": "Size Template",
+                        "cost": 6,
+                        "sources": [
+                            "25538832-d85a-4d3b-888d-1ca235293f35"
+                        ]
+                    }
+                },
+                {
+                    "field": "attribute_add",
+                    "attribute_id": "81f3fafb-2461-4eb1-87a8-835d287d7527",
+                    "attribute_data": {
+                        "name": "x2 Thrown Weapon Distance",
+                        "cost_per_level": null,
+                        "relevant_stat": "Variable",
+                        "description": "Covers any power not described elsewhere. Requires GM discussion. Effect and cost per level vary from 1\u00e2\u20ac\u201c10 CP depending on usefulness.",
+                        "source": "BESM4e",
+                        "levels": {
+                            "1": "Basic aptitude",
+                            "2": "Minor aptitude",
+                            "3": "Moderate aptitude",
+                            "4": "Significant aptitude",
+                            "5": "Major aptitude",
+                            "6": "Extreme aptitude"
+                        },
+                        "user_input_required": [
+                            {
+                                "label": "Custom Description",
+                                "key": "custom_description",
+                                "field_type": "textarea",
+                                "description": "Describe what this Unique Attribute does and its game effects."
+                            },
+                            {
+                                "label": "Point Cost Per Level",
+                                "key": "custom_cp_cost",
+                                "field_type": "number",
+                                "description": "Assign the CP cost per level (1\u00e2\u20ac\u201c10).",
+                                "required": true
+                            }
+                        ],
+                        "key": "unique_attribute",
+                        "is_human_attribute": false,
+                        "id": "81f3fafb-2461-4eb1-87a8-835d287d7527",
+                        "level": 6,
+                        "options_source": "Size Template",
+                        "cost": 0,
+                        "sources": [
+                            "25538832-d85a-4d3b-888d-1ca235293f35"
+                        ]
+                    }
+                },
+                {
+                    "field": "defect_add",
+                    "defect_id": "3a441ae8-1f6a-4eb5-8ed9-1afd4a34c4bb",
+                    "defect_data": {
+                        "custom_name": "Big, Heavy, and Obvious",
+                        "enhancements": [],
+                        "key": "unique_defect",
+                        "limiters": [],
+                        "options": [],
+                        "options_source": "Size Template",
+                        "rank": 6,
+                        "user_description": null,
+                        "user_input": null,
+                        "valid": true,
+                        "id": "3a441ae8-1f6a-4eb5-8ed9-1afd4a34c4bb",
+                        "name": "Big, Heavy, and Obvious",
+                        "cost": -6,
+                        "sources": [
+                            "25538832-d85a-4d3b-888d-1ca235293f35"
+                        ]
+                    }
+                },
+                {
+                    "field": "defect_add",
+                    "defect_id": "9a634527-ea06-4963-9dcb-7e7f787ec79e",
+                    "defect_data": {
+                        "name": "Inept Attack",
+                        "key": "inept_attack",
+                        "rank_type": "Lesser",
+                        "cp_refund": 1,
+                        "max_rank": 3,
+                        "description": "Character is poor at offensive combat. They suffer reduced accuracy, either generally or in certain types of attacks (melee, ranged, etc.).",
+                        "source": "BESM4e",
+                        "ranks": [
+                            {
+                                "rank": "1",
+                                "description": "Slight consequences"
+                            },
+                            {
+                                "rank": "2",
+                                "description": "Moderate consequences"
+                            },
+                            {
+                                "rank": "3",
+                                "description": "Severe consequences"
+                            }
+                        ],
+                        "id": "9a634527-ea06-4963-9dcb-7e7f787ec79e",
+                        "rank": 6,
+                        "options_source": "Size Template",
+                        "cost": -1,
+                        "sources": [
+                            "25538832-d85a-4d3b-888d-1ca235293f35"
+                        ]
+                    }
+                },
+                {
+                    "field": "defect_add",
+                    "defect_id": "eb4ca290-6074-4679-b307-d833836ec6b6",
+                    "defect_data": {
+                        "name": "Inept Defence",
+                        "key": "inept_defence",
+                        "rank_type": "Lesser",
+                        "cp_refund": 1,
+                        "max_rank": 3,
+                        "description": "Character is ineffective at defending. They suffer a reduced ability to dodge or block, either generally or in specific types of combat.",
+                        "source": "BESM4e",
+                        "ranks": [
+                            {
+                                "rank": "1",
+                                "description": "Slight consequences"
+                            },
+                            {
+                                "rank": "2",
+                                "description": "Moderate consequences"
+                            },
+                            {
+                                "rank": "3",
+                                "description": "Severe consequences"
+                            }
+                        ],
+                        "id": "eb4ca290-6074-4679-b307-d833836ec6b6",
+                        "rank": 6,
+                        "options_source": "Size Template",
+                        "cost": -1,
+                        "sources": [
+                            "25538832-d85a-4d3b-888d-1ca235293f35"
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": "8f8c97de-1e16-4694-b99c-a4dfd8a750ca",
+            "type": "size",
+            "name": "Point",
+            "changes": [
+                {
+                    "field": "size",
+                    "old_value": "",
+                    "new_value": "Point"
+                },
+                {
+                    "field": "attribute_add",
+                    "attribute_id": "fc96d8c0-93a6-40c5-a8f7-e87931d0e8d7",
+                    "attribute_data": {
+                        "name": "Ranged Attack",
+                        "cost_per_level": 1,
+                        "source": "BESM4e",
+                        "description": "Allows the character to perform precise ranged attacks with a specific weapon class.",
+                        "levels": {
+                            "1": {
+                                "acv_bonus": 2
+                            },
+                            "2": {
+                                "acv_bonus": 4
+                            },
+                            "3": {
+                                "acv_bonus": 6
+                            },
+                            "4": {
+                                "acv_bonus": 8
+                            },
+                            "5": {
+                                "acv_bonus": 10
+                            },
+                            "6": {
+                                "acv_bonus": 12
+                            }
+                        },
+                        "modifiers": [
+                            {
+                                "type": "derived",
+                                "target": "ACV",
+                                "value_per_level": 2,
+                                "condition": "only when using selected weapon class"
+                            }
+                        ],
+                        "user_input_required": [
+                            {
+                                "label": "Weapon Class",
+                                "key": "weapon_class",
+                                "field_type": "combo_editable",
+                                "description": "Enter a custom category of weapons this Ranged Attack applies to (e.g. Long Gun, Spell, Throwing).",
+                                "options": [
+                                    "Biotech Projectiles",
+                                    "Bows",
+                                    "Crossbows",
+                                    "Elemental Blasts",
+                                    "Energy Weapons",
+                                    "Explosives",
+                                    "Firearms",
+                                    "Guns (General)",
+                                    "Laser Pistols",
+                                    "Magic Spells",
+                                    "Thrown Weapons"
+                                ]
+                            }
+                        ],
+                        "key": "ranged_attack",
+                        "is_human_attribute": false,
+                        "id": "fc96d8c0-93a6-40c5-a8f7-e87931d0e8d7",
+                        "level": 10,
+                        "options_source": "Size Template",
+                        "cost": 10,
+                        "sources": [
+                            "8f8c97de-1e16-4694-b99c-a4dfd8a750ca"
+                        ]
+                    }
+                },
+                {
+                    "field": "attribute_add",
+                    "attribute_id": "6e2fef2f-9c9a-4517-872e-d4c067bc9d8e",
+                    "attribute_data": {
+                        "name": "Ranged Defence",
+                        "cost_per_level": 1,
+                        "relevant_stat": null,
+                        "source": "BESM4e",
+                        "description": "Boosts Defence Combat Value when avoiding ranged attacks under a specific condition, such as while on foot or piloting a vehicle.",
+                        "levels": {
+                            "1": "+2 DCV against ranged attacks under a specific condition",
+                            "2": "+4 DCV against ranged attacks under a specific condition",
+                            "3": "+6 DCV against ranged attacks under a specific condition",
+                            "4": "+8 DCV against ranged attacks under a specific condition",
+                            "5": "+10 DCV against ranged attacks under a specific condition",
+                            "6": "+12 DCV against ranged attacks under a specific condition"
+                        },
+                        "user_input_required": [
+                            {
+                                "label": "Condition",
+                                "field_type": "dropdown",
+                                "options": [
+                                    "Personal",
+                                    "Movement"
+                                ]
+                            }
+                        ],
+                        "key": "ranged_defence",
+                        "is_human_attribute": false,
+                        "id": "6e2fef2f-9c9a-4517-872e-d4c067bc9d8e",
+                        "level": 10,
+                        "options_source": "Size Template",
+                        "cost": 10,
+                        "sources": [
+                            "8f8c97de-1e16-4694-b99c-a4dfd8a750ca"
+                        ]
+                    }
+                },
+                {
+                    "field": "attribute_add",
+                    "attribute_id": "cd0b394a-9adc-4ae1-bedd-2814b981e64e",
+                    "attribute_data": {
+                        "name": "Small, Light, and Unobtrusive",
+                        "cost_per_level": null,
+                        "relevant_stat": "Variable",
+                        "description": "Covers any power not described elsewhere. Requires GM discussion. Effect and cost per level vary from 1\u00e2\u20ac\u201c10 CP depending on usefulness.",
+                        "source": "BESM4e",
+                        "levels": {
+                            "1": "Basic aptitude",
+                            "2": "Minor aptitude",
+                            "3": "Moderate aptitude",
+                            "4": "Significant aptitude",
+                            "5": "Major aptitude",
+                            "6": "Extreme aptitude"
+                        },
+                        "user_input_required": [
+                            {
+                                "label": "Custom Description",
+                                "key": "custom_description",
+                                "field_type": "textarea",
+                                "description": "Describe what this Unique Attribute does and its game effects."
+                            },
+                            {
+                                "label": "Point Cost Per Level",
+                                "key": "custom_cp_cost",
+                                "field_type": "number",
+                                "description": "Assign the CP cost per level (1\u00e2\u20ac\u201c10).",
+                                "required": true
+                            }
+                        ],
+                        "key": "unique_attribute",
+                        "is_human_attribute": false,
+                        "id": "cd0b394a-9adc-4ae1-bedd-2814b981e64e",
+                        "level": 10,
+                        "options_source": "Size Template",
+                        "cost": 0,
+                        "sources": [
+                            "8f8c97de-1e16-4694-b99c-a4dfd8a750ca"
+                        ]
+                    }
+                },
+                {
+                    "field": "defect_add",
+                    "defect_id": "1182be1e-bd46-4b0f-949a-392d36a0a37b",
+                    "defect_data": {
+                        "custom_name": "Lifting Capacity",
+                        "enhancements": [],
+                        "key": "unique_defect",
+                        "limiters": [],
+                        "options": [],
+                        "options_source": "Size Template",
+                        "rank": 10,
+                        "user_description": null,
+                        "user_input": null,
+                        "valid": true,
+                        "id": "1182be1e-bd46-4b0f-949a-392d36a0a37b",
+                        "name": "Lifting Capacity",
+                        "cost": -10,
+                        "sources": [
+                            "8f8c97de-1e16-4694-b99c-a4dfd8a750ca"
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": "c55d57fb-a305-4e6a-8955-99f7d047d79b",
+            "type": "size",
+            "name": "Mote",
+            "changes": [
+                {
+                    "field": "size",
+                    "old_value": "",
+                    "new_value": "Mote"
+                },
+                {
+                    "field": "attribute_add",
+                    "attribute_id": "85d6a36c-e553-44fb-8ec2-cb9a95aeb415",
+                    "attribute_data": {
+                        "name": "Ranged Attack",
+                        "cost_per_level": 1,
+                        "source": "BESM4e",
+                        "description": "Allows the character to perform precise ranged attacks with a specific weapon class.",
+                        "levels": {
+                            "1": {
+                                "acv_bonus": 2
+                            },
+                            "2": {
+                                "acv_bonus": 4
+                            },
+                            "3": {
+                                "acv_bonus": 6
+                            },
+                            "4": {
+                                "acv_bonus": 8
+                            },
+                            "5": {
+                                "acv_bonus": 10
+                            },
+                            "6": {
+                                "acv_bonus": 12
+                            }
+                        },
+                        "modifiers": [
+                            {
+                                "type": "derived",
+                                "target": "ACV",
+                                "value_per_level": 2,
+                                "condition": "only when using selected weapon class"
+                            }
+                        ],
+                        "user_input_required": [
+                            {
+                                "label": "Weapon Class",
+                                "key": "weapon_class",
+                                "field_type": "combo_editable",
+                                "description": "Enter a custom category of weapons this Ranged Attack applies to (e.g. Long Gun, Spell, Throwing).",
+                                "options": [
+                                    "Biotech Projectiles",
+                                    "Bows",
+                                    "Crossbows",
+                                    "Elemental Blasts",
+                                    "Energy Weapons",
+                                    "Explosives",
+                                    "Firearms",
+                                    "Guns (General)",
+                                    "Laser Pistols",
+                                    "Magic Spells",
+                                    "Thrown Weapons"
+                                ]
+                            }
+                        ],
+                        "key": "ranged_attack",
+                        "is_human_attribute": false,
+                        "id": "85d6a36c-e553-44fb-8ec2-cb9a95aeb415",
+                        "level": 9,
+                        "options_source": "Size Template",
+                        "cost": 9,
+                        "sources": [
+                            "c55d57fb-a305-4e6a-8955-99f7d047d79b"
+                        ]
+                    }
+                },
+                {
+                    "field": "attribute_add",
+                    "attribute_id": "efb64b9d-5152-433e-b5a4-772b51100fe6",
+                    "attribute_data": {
+                        "name": "Ranged Defence",
+                        "cost_per_level": 1,
+                        "relevant_stat": null,
+                        "source": "BESM4e",
+                        "description": "Boosts Defence Combat Value when avoiding ranged attacks under a specific condition, such as while on foot or piloting a vehicle.",
+                        "levels": {
+                            "1": "+2 DCV against ranged attacks under a specific condition",
+                            "2": "+4 DCV against ranged attacks under a specific condition",
+                            "3": "+6 DCV against ranged attacks under a specific condition",
+                            "4": "+8 DCV against ranged attacks under a specific condition",
+                            "5": "+10 DCV against ranged attacks under a specific condition",
+                            "6": "+12 DCV against ranged attacks under a specific condition"
+                        },
+                        "user_input_required": [
+                            {
+                                "label": "Condition",
+                                "field_type": "dropdown",
+                                "options": [
+                                    "Personal",
+                                    "Movement"
+                                ]
+                            }
+                        ],
+                        "key": "ranged_defence",
+                        "is_human_attribute": false,
+                        "id": "efb64b9d-5152-433e-b5a4-772b51100fe6",
+                        "level": 9,
+                        "options_source": "Size Template",
+                        "cost": 9,
+                        "sources": [
+                            "c55d57fb-a305-4e6a-8955-99f7d047d79b"
+                        ]
+                    }
+                },
+                {
+                    "field": "attribute_add",
+                    "attribute_id": "f43271a2-ba8f-451e-977c-639f1b7a2046",
+                    "attribute_data": {
+                        "name": "Small, Light, and Unobtrusive",
+                        "cost_per_level": null,
+                        "relevant_stat": "Variable",
+                        "description": "Covers any power not described elsewhere. Requires GM discussion. Effect and cost per level vary from 1\u00e2\u20ac\u201c10 CP depending on usefulness.",
+                        "source": "BESM4e",
+                        "levels": {
+                            "1": "Basic aptitude",
+                            "2": "Minor aptitude",
+                            "3": "Moderate aptitude",
+                            "4": "Significant aptitude",
+                            "5": "Major aptitude",
+                            "6": "Extreme aptitude"
+                        },
+                        "user_input_required": [
+                            {
+                                "label": "Custom Description",
+                                "key": "custom_description",
+                                "field_type": "textarea",
+                                "description": "Describe what this Unique Attribute does and its game effects."
+                            },
+                            {
+                                "label": "Point Cost Per Level",
+                                "key": "custom_cp_cost",
+                                "field_type": "number",
+                                "description": "Assign the CP cost per level (1\u00e2\u20ac\u201c10).",
+                                "required": true
+                            }
+                        ],
+                        "key": "unique_attribute",
+                        "is_human_attribute": false,
+                        "id": "f43271a2-ba8f-451e-977c-639f1b7a2046",
+                        "level": 9,
+                        "options_source": "Size Template",
+                        "cost": 0,
+                        "sources": [
+                            "c55d57fb-a305-4e6a-8955-99f7d047d79b"
+                        ]
+                    }
+                },
+                {
+                    "field": "defect_add",
+                    "defect_id": "8b097300-20d0-4cd4-9042-5b377530f8a7",
+                    "defect_data": {
+                        "custom_name": "Lifting Capacity",
+                        "enhancements": [],
+                        "key": "unique_defect",
+                        "limiters": [],
+                        "options": [],
+                        "options_source": "Size Template",
+                        "rank": 9,
+                        "user_description": null,
+                        "user_input": null,
+                        "valid": true,
+                        "id": "8b097300-20d0-4cd4-9042-5b377530f8a7",
+                        "name": "Lifting Capacity",
+                        "cost": -9,
+                        "sources": [
+                            "c55d57fb-a305-4e6a-8955-99f7d047d79b"
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": "ad13fcdf-c423-4856-ae65-cb837f2fad64",
+            "type": "size",
+            "name": "Speck",
+            "changes": [
+                {
+                    "field": "size",
+                    "old_value": "",
+                    "new_value": "Speck"
+                },
+                {
+                    "field": "attribute_add",
+                    "attribute_id": "f9640bcf-a873-4547-99c4-6b0cee40d01d",
+                    "attribute_data": {
+                        "name": "Ranged Attack",
+                        "cost_per_level": 1,
+                        "source": "BESM4e",
+                        "description": "Allows the character to perform precise ranged attacks with a specific weapon class.",
+                        "levels": {
+                            "1": {
+                                "acv_bonus": 2
+                            },
+                            "2": {
+                                "acv_bonus": 4
+                            },
+                            "3": {
+                                "acv_bonus": 6
+                            },
+                            "4": {
+                                "acv_bonus": 8
+                            },
+                            "5": {
+                                "acv_bonus": 10
+                            },
+                            "6": {
+                                "acv_bonus": 12
+                            }
+                        },
+                        "modifiers": [
+                            {
+                                "type": "derived",
+                                "target": "ACV",
+                                "value_per_level": 2,
+                                "condition": "only when using selected weapon class"
+                            }
+                        ],
+                        "user_input_required": [
+                            {
+                                "label": "Weapon Class",
+                                "key": "weapon_class",
+                                "field_type": "combo_editable",
+                                "description": "Enter a custom category of weapons this Ranged Attack applies to (e.g. Long Gun, Spell, Throwing).",
+                                "options": [
+                                    "Biotech Projectiles",
+                                    "Bows",
+                                    "Crossbows",
+                                    "Elemental Blasts",
+                                    "Energy Weapons",
+                                    "Explosives",
+                                    "Firearms",
+                                    "Guns (General)",
+                                    "Laser Pistols",
+                                    "Magic Spells",
+                                    "Thrown Weapons"
+                                ]
+                            }
+                        ],
+                        "key": "ranged_attack",
+                        "is_human_attribute": false,
+                        "id": "f9640bcf-a873-4547-99c4-6b0cee40d01d",
+                        "level": 8,
+                        "options_source": "Size Template",
+                        "cost": 8,
+                        "sources": [
+                            "ad13fcdf-c423-4856-ae65-cb837f2fad64"
+                        ]
+                    }
+                },
+                {
+                    "field": "attribute_add",
+                    "attribute_id": "f3c74c50-b75a-476b-9c50-6a7d46e86347",
+                    "attribute_data": {
+                        "name": "Ranged Defence",
+                        "cost_per_level": 1,
+                        "relevant_stat": null,
+                        "source": "BESM4e",
+                        "description": "Boosts Defence Combat Value when avoiding ranged attacks under a specific condition, such as while on foot or piloting a vehicle.",
+                        "levels": {
+                            "1": "+2 DCV against ranged attacks under a specific condition",
+                            "2": "+4 DCV against ranged attacks under a specific condition",
+                            "3": "+6 DCV against ranged attacks under a specific condition",
+                            "4": "+8 DCV against ranged attacks under a specific condition",
+                            "5": "+10 DCV against ranged attacks under a specific condition",
+                            "6": "+12 DCV against ranged attacks under a specific condition"
+                        },
+                        "user_input_required": [
+                            {
+                                "label": "Condition",
+                                "field_type": "dropdown",
+                                "options": [
+                                    "Personal",
+                                    "Movement"
+                                ]
+                            }
+                        ],
+                        "key": "ranged_defence",
+                        "is_human_attribute": false,
+                        "id": "f3c74c50-b75a-476b-9c50-6a7d46e86347",
+                        "level": 8,
+                        "options_source": "Size Template",
+                        "cost": 8,
+                        "sources": [
+                            "ad13fcdf-c423-4856-ae65-cb837f2fad64"
+                        ]
+                    }
+                },
+                {
+                    "field": "attribute_add",
+                    "attribute_id": "bdff0500-4dec-416e-ab6c-49bb93fc63f9",
+                    "attribute_data": {
+                        "name": "Small, Light, and Unobtrusive",
+                        "cost_per_level": null,
+                        "relevant_stat": "Variable",
+                        "description": "Covers any power not described elsewhere. Requires GM discussion. Effect and cost per level vary from 1\u00e2\u20ac\u201c10 CP depending on usefulness.",
+                        "source": "BESM4e",
+                        "levels": {
+                            "1": "Basic aptitude",
+                            "2": "Minor aptitude",
+                            "3": "Moderate aptitude",
+                            "4": "Significant aptitude",
+                            "5": "Major aptitude",
+                            "6": "Extreme aptitude"
+                        },
+                        "user_input_required": [
+                            {
+                                "label": "Custom Description",
+                                "key": "custom_description",
+                                "field_type": "textarea",
+                                "description": "Describe what this Unique Attribute does and its game effects."
+                            },
+                            {
+                                "label": "Point Cost Per Level",
+                                "key": "custom_cp_cost",
+                                "field_type": "number",
+                                "description": "Assign the CP cost per level (1\u00e2\u20ac\u201c10).",
+                                "required": true
+                            }
+                        ],
+                        "key": "unique_attribute",
+                        "is_human_attribute": false,
+                        "id": "bdff0500-4dec-416e-ab6c-49bb93fc63f9",
+                        "level": 8,
+                        "options_source": "Size Template",
+                        "cost": 0,
+                        "sources": [
+                            "ad13fcdf-c423-4856-ae65-cb837f2fad64"
+                        ]
+                    }
+                },
+                {
+                    "field": "defect_add",
+                    "defect_id": "429503ad-fd83-4994-8bb6-0f8b43fd333d",
+                    "defect_data": {
+                        "custom_name": "Lifting Capacity",
+                        "enhancements": [],
+                        "key": "unique_defect",
+                        "limiters": [],
+                        "options": [],
+                        "options_source": "Size Template",
+                        "rank": 8,
+                        "user_description": null,
+                        "user_input": null,
+                        "valid": true,
+                        "id": "429503ad-fd83-4994-8bb6-0f8b43fd333d",
+                        "name": "Lifting Capacity",
+                        "cost": -8,
+                        "sources": [
+                            "ad13fcdf-c423-4856-ae65-cb837f2fad64"
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": "85ea0600-41fd-440a-b431-0d0d605ce662",
+            "type": "size",
+            "name": "Minute",
+            "changes": [
+                {
+                    "field": "size",
+                    "old_value": "",
+                    "new_value": "Minute"
+                },
+                {
+                    "field": "attribute_add",
+                    "attribute_id": "58947895-63b6-4a91-92f8-8564af86f8fb",
+                    "attribute_data": {
+                        "name": "Ranged Attack",
+                        "cost_per_level": 1,
+                        "source": "BESM4e",
+                        "description": "Allows the character to perform precise ranged attacks with a specific weapon class.",
+                        "levels": {
+                            "1": {
+                                "acv_bonus": 2
+                            },
+                            "2": {
+                                "acv_bonus": 4
+                            },
+                            "3": {
+                                "acv_bonus": 6
+                            },
+                            "4": {
+                                "acv_bonus": 8
+                            },
+                            "5": {
+                                "acv_bonus": 10
+                            },
+                            "6": {
+                                "acv_bonus": 12
+                            }
+                        },
+                        "modifiers": [
+                            {
+                                "type": "derived",
+                                "target": "ACV",
+                                "value_per_level": 2,
+                                "condition": "only when using selected weapon class"
+                            }
+                        ],
+                        "user_input_required": [
+                            {
+                                "label": "Weapon Class",
+                                "key": "weapon_class",
+                                "field_type": "combo_editable",
+                                "description": "Enter a custom category of weapons this Ranged Attack applies to (e.g. Long Gun, Spell, Throwing).",
+                                "options": [
+                                    "Biotech Projectiles",
+                                    "Bows",
+                                    "Crossbows",
+                                    "Elemental Blasts",
+                                    "Energy Weapons",
+                                    "Explosives",
+                                    "Firearms",
+                                    "Guns (General)",
+                                    "Laser Pistols",
+                                    "Magic Spells",
+                                    "Thrown Weapons"
+                                ]
+                            }
+                        ],
+                        "key": "ranged_attack",
+                        "is_human_attribute": false,
+                        "id": "58947895-63b6-4a91-92f8-8564af86f8fb",
+                        "level": 7,
+                        "options_source": "Size Template",
+                        "cost": 7,
+                        "sources": [
+                            "85ea0600-41fd-440a-b431-0d0d605ce662"
+                        ]
+                    }
+                },
+                {
+                    "field": "attribute_add",
+                    "attribute_id": "a692b85f-cbe7-48c2-adcb-5945f7335031",
+                    "attribute_data": {
+                        "name": "Ranged Defence",
+                        "cost_per_level": 1,
+                        "relevant_stat": null,
+                        "source": "BESM4e",
+                        "description": "Boosts Defence Combat Value when avoiding ranged attacks under a specific condition, such as while on foot or piloting a vehicle.",
+                        "levels": {
+                            "1": "+2 DCV against ranged attacks under a specific condition",
+                            "2": "+4 DCV against ranged attacks under a specific condition",
+                            "3": "+6 DCV against ranged attacks under a specific condition",
+                            "4": "+8 DCV against ranged attacks under a specific condition",
+                            "5": "+10 DCV against ranged attacks under a specific condition",
+                            "6": "+12 DCV against ranged attacks under a specific condition"
+                        },
+                        "user_input_required": [
+                            {
+                                "label": "Condition",
+                                "field_type": "dropdown",
+                                "options": [
+                                    "Personal",
+                                    "Movement"
+                                ]
+                            }
+                        ],
+                        "key": "ranged_defence",
+                        "is_human_attribute": false,
+                        "id": "a692b85f-cbe7-48c2-adcb-5945f7335031",
+                        "level": 7,
+                        "options_source": "Size Template",
+                        "cost": 7,
+                        "sources": [
+                            "85ea0600-41fd-440a-b431-0d0d605ce662"
+                        ]
+                    }
+                },
+                {
+                    "field": "attribute_add",
+                    "attribute_id": "9f2d9562-ad52-43b2-b98c-3ca3ba2a0c22",
+                    "attribute_data": {
+                        "name": "Small, Light, and Unobtrusive",
+                        "cost_per_level": null,
+                        "relevant_stat": "Variable",
+                        "description": "Covers any power not described elsewhere. Requires GM discussion. Effect and cost per level vary from 1\u00e2\u20ac\u201c10 CP depending on usefulness.",
+                        "source": "BESM4e",
+                        "levels": {
+                            "1": "Basic aptitude",
+                            "2": "Minor aptitude",
+                            "3": "Moderate aptitude",
+                            "4": "Significant aptitude",
+                            "5": "Major aptitude",
+                            "6": "Extreme aptitude"
+                        },
+                        "user_input_required": [
+                            {
+                                "label": "Custom Description",
+                                "key": "custom_description",
+                                "field_type": "textarea",
+                                "description": "Describe what this Unique Attribute does and its game effects."
+                            },
+                            {
+                                "label": "Point Cost Per Level",
+                                "key": "custom_cp_cost",
+                                "field_type": "number",
+                                "description": "Assign the CP cost per level (1\u00e2\u20ac\u201c10).",
+                                "required": true
+                            }
+                        ],
+                        "key": "unique_attribute",
+                        "is_human_attribute": false,
+                        "id": "9f2d9562-ad52-43b2-b98c-3ca3ba2a0c22",
+                        "level": 7,
+                        "options_source": "Size Template",
+                        "cost": 0,
+                        "sources": [
+                            "85ea0600-41fd-440a-b431-0d0d605ce662"
+                        ]
+                    }
+                },
+                {
+                    "field": "defect_add",
+                    "defect_id": "ff5d4490-eac8-4342-89a4-fcc230d987fb",
+                    "defect_data": {
+                        "custom_name": "Lifting Capacity",
+                        "enhancements": [],
+                        "key": "unique_defect",
+                        "limiters": [],
+                        "options": [],
+                        "options_source": "Size Template",
+                        "rank": 7,
+                        "user_description": null,
+                        "user_input": null,
+                        "valid": true,
+                        "id": "ff5d4490-eac8-4342-89a4-fcc230d987fb",
+                        "name": "Lifting Capacity",
+                        "cost": -7,
+                        "sources": [
+                            "85ea0600-41fd-440a-b431-0d0d605ce662"
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": "007333c5-3be0-494a-8efa-bcd1f1d8ae6e",
+            "type": "size",
+            "name": "Wee",
+            "changes": [
+                {
+                    "field": "size",
+                    "old_value": "",
+                    "new_value": "Wee"
+                }
+            ]
+        },
+        {
+            "id": "a0237a20-8bd4-4fb6-932d-0a03a1fa1ba9",
+            "type": "size",
+            "name": "Tiny",
+            "changes": [
+                {
+                    "field": "size",
+                    "old_value": "Wee",
+                    "new_value": "Tiny"
+                },
+                {
+                    "field": "attribute_add",
+                    "attribute_id": "a016be48-3484-410f-89b9-d10350b862d1",
+                    "attribute_data": {
+                        "name": "Ranged Attack",
+                        "cost_per_level": 1,
+                        "source": "BESM4e",
+                        "description": "Allows the character to perform precise ranged attacks with a specific weapon class.",
+                        "levels": {
+                            "1": {
+                                "acv_bonus": 2
+                            },
+                            "2": {
+                                "acv_bonus": 4
+                            },
+                            "3": {
+                                "acv_bonus": 6
+                            },
+                            "4": {
+                                "acv_bonus": 8
+                            },
+                            "5": {
+                                "acv_bonus": 10
+                            },
+                            "6": {
+                                "acv_bonus": 12
+                            }
+                        },
+                        "modifiers": [
+                            {
+                                "type": "derived",
+                                "target": "ACV",
+                                "value_per_level": 2,
+                                "condition": "only when using selected weapon class"
+                            }
+                        ],
+                        "user_input_required": [
+                            {
+                                "label": "Weapon Class",
+                                "key": "weapon_class",
+                                "field_type": "combo_editable",
+                                "description": "Enter a custom category of weapons this Ranged Attack applies to (e.g. Long Gun, Spell, Throwing).",
+                                "options": [
+                                    "Biotech Projectiles",
+                                    "Bows",
+                                    "Crossbows",
+                                    "Elemental Blasts",
+                                    "Energy Weapons",
+                                    "Explosives",
+                                    "Firearms",
+                                    "Guns (General)",
+                                    "Laser Pistols",
+                                    "Magic Spells",
+                                    "Thrown Weapons"
+                                ]
+                            }
+                        ],
+                        "key": "ranged_attack",
+                        "is_human_attribute": false,
+                        "id": "a016be48-3484-410f-89b9-d10350b862d1",
+                        "level": 2,
+                        "user_description": "All",
+                        "options_source": "Size Template",
+                        "cost": 2,
+                        "sources": [
+                            "a0237a20-8bd4-4fb6-932d-0a03a1fa1ba9"
+                        ]
+                    }
+                },
+                {
+                    "field": "attribute_add",
+                    "attribute_id": "9ada32fe-5c31-432e-be10-f97d2a0a9422",
+                    "attribute_data": {
+                        "name": "Ranged Defence",
+                        "cost_per_level": 1,
+                        "relevant_stat": null,
+                        "source": "BESM4e",
+                        "description": "Boosts Defence Combat Value when avoiding ranged attacks under a specific condition, such as while on foot or piloting a vehicle.",
+                        "levels": {
+                            "1": "+2 DCV against ranged attacks under a specific condition",
+                            "2": "+4 DCV against ranged attacks under a specific condition",
+                            "3": "+6 DCV against ranged attacks under a specific condition",
+                            "4": "+8 DCV against ranged attacks under a specific condition",
+                            "5": "+10 DCV against ranged attacks under a specific condition",
+                            "6": "+12 DCV against ranged attacks under a specific condition"
+                        },
+                        "user_input_required": [
+                            {
+                                "label": "Condition",
+                                "field_type": "dropdown",
+                                "options": [
+                                    "Personal",
+                                    "Movement"
+                                ]
+                            }
+                        ],
+                        "key": "ranged_defence",
+                        "is_human_attribute": false,
+                        "id": "9ada32fe-5c31-432e-be10-f97d2a0a9422",
+                        "level": 2,
+                        "user_description": "All",
+                        "options_source": "Size Template",
+                        "cost": 2,
+                        "sources": [
+                            "a0237a20-8bd4-4fb6-932d-0a03a1fa1ba9"
+                        ]
+                    }
+                },
+                {
+                    "field": "attribute_add",
+                    "attribute_id": "9c11ebfd-3534-48c5-8b4f-c368d1b6add5",
+                    "attribute_data": {
+                        "name": "Small, Light, and Unobtrusive",
+                        "cost_per_level": null,
+                        "relevant_stat": "Variable",
+                        "description": "Covers any power not described elsewhere. Requires GM discussion. Effect and cost per level vary from 1\u00e2\u20ac\u201c10 CP depending on usefulness.",
+                        "source": "BESM4e",
+                        "levels": {
+                            "1": "Basic aptitude",
+                            "2": "Minor aptitude",
+                            "3": "Moderate aptitude",
+                            "4": "Significant aptitude",
+                            "5": "Major aptitude",
+                            "6": "Extreme aptitude"
+                        },
+                        "user_input_required": [
+                            {
+                                "label": "Custom Description",
+                                "key": "custom_description",
+                                "field_type": "textarea",
+                                "description": "Describe what this Unique Attribute does and its game effects."
+                            },
+                            {
+                                "label": "Point Cost Per Level",
+                                "key": "custom_cp_cost",
+                                "field_type": "number",
+                                "description": "Assign the CP cost per level (1\u00e2\u20ac\u201c10).",
+                                "required": true
+                            }
+                        ],
+                        "key": "unique_attribute",
+                        "is_human_attribute": false,
+                        "id": "9c11ebfd-3534-48c5-8b4f-c368d1b6add5",
+                        "level": 2,
+                        "options_source": "Size Template",
+                        "cost": 0,
+                        "sources": [
+                            "a0237a20-8bd4-4fb6-932d-0a03a1fa1ba9"
+                        ]
+                    }
+                },
+                {
+                    "field": "defect_add",
+                    "defect_id": "329940bf-f595-406d-aca2-6f8576ad8f7f",
+                    "defect_data": {
+                        "custom_name": "Lifting Capacity",
+                        "enhancements": [],
+                        "key": "unique_defect",
+                        "limiters": [],
+                        "options": [],
+                        "options_source": "Size Template",
+                        "rank": 2,
+                        "user_description": "Lifting Capacity \u00f725",
+                        "user_input": null,
+                        "valid": true,
+                        "id": "329940bf-f595-406d-aca2-6f8576ad8f7f",
+                        "name": "Lifting Capacity",
+                        "cost": -2,
+                        "sources": [
+                            "a0237a20-8bd4-4fb6-932d-0a03a1fa1ba9"
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": "61b4c238-850b-460e-84c3-c052e08d7f13",
+            "type": "size",
+            "name": "Mote",
+            "changes": [
+                {
+                    "field": "size",
+                    "old_value": "",
+                    "new_value": "Mote"
+                },
+                {
+                    "field": "attribute_add",
+                    "attribute_id": "c2a46ad9-7f67-486b-af7e-b08ce2aa623f",
+                    "attribute_data": {
+                        "name": "Ranged Attack",
+                        "cost_per_level": 1,
+                        "source": "BESM4e",
+                        "description": "Allows the character to perform precise ranged attacks with a specific weapon class.",
+                        "levels": {
+                            "1": {
+                                "acv_bonus": 2
+                            },
+                            "2": {
+                                "acv_bonus": 4
+                            },
+                            "3": {
+                                "acv_bonus": 6
+                            },
+                            "4": {
+                                "acv_bonus": 8
+                            },
+                            "5": {
+                                "acv_bonus": 10
+                            },
+                            "6": {
+                                "acv_bonus": 12
+                            }
+                        },
+                        "modifiers": [
+                            {
+                                "type": "derived",
+                                "target": "ACV",
+                                "value_per_level": 2,
+                                "condition": "only when using selected weapon class"
+                            }
+                        ],
+                        "user_input_required": [
+                            {
+                                "label": "Weapon Class",
+                                "key": "weapon_class",
+                                "field_type": "combo_editable",
+                                "description": "Enter a custom category of weapons this Ranged Attack applies to (e.g. Long Gun, Spell, Throwing).",
+                                "options": [
+                                    "Biotech Projectiles",
+                                    "Bows",
+                                    "Crossbows",
+                                    "Elemental Blasts",
+                                    "Energy Weapons",
+                                    "Explosives",
+                                    "Firearms",
+                                    "Guns (General)",
+                                    "Laser Pistols",
+                                    "Magic Spells",
+                                    "Thrown Weapons"
+                                ]
+                            }
+                        ],
+                        "key": "ranged_attack",
+                        "is_human_attribute": false,
+                        "id": "c2a46ad9-7f67-486b-af7e-b08ce2aa623f",
+                        "level": 9,
+                        "options_source": "Size Template",
+                        "cost": 9,
+                        "sources": [
+                            "61b4c238-850b-460e-84c3-c052e08d7f13"
+                        ]
+                    }
+                },
+                {
+                    "field": "attribute_add",
+                    "attribute_id": "68030d18-22bf-4966-a997-f5a9f8302559",
+                    "attribute_data": {
+                        "name": "Ranged Defence",
+                        "cost_per_level": 1,
+                        "relevant_stat": null,
+                        "source": "BESM4e",
+                        "description": "Boosts Defence Combat Value when avoiding ranged attacks under a specific condition, such as while on foot or piloting a vehicle.",
+                        "levels": {
+                            "1": "+2 DCV against ranged attacks under a specific condition",
+                            "2": "+4 DCV against ranged attacks under a specific condition",
+                            "3": "+6 DCV against ranged attacks under a specific condition",
+                            "4": "+8 DCV against ranged attacks under a specific condition",
+                            "5": "+10 DCV against ranged attacks under a specific condition",
+                            "6": "+12 DCV against ranged attacks under a specific condition"
+                        },
+                        "user_input_required": [
+                            {
+                                "label": "Condition",
+                                "field_type": "dropdown",
+                                "options": [
+                                    "Personal",
+                                    "Movement"
+                                ]
+                            }
+                        ],
+                        "key": "ranged_defence",
+                        "is_human_attribute": false,
+                        "id": "68030d18-22bf-4966-a997-f5a9f8302559",
+                        "level": 9,
+                        "options_source": "Size Template",
+                        "cost": 9,
+                        "sources": [
+                            "61b4c238-850b-460e-84c3-c052e08d7f13"
+                        ]
+                    }
+                },
+                {
+                    "field": "attribute_add",
+                    "attribute_id": "0fb7e393-9b12-4464-8cad-0580adf6d93f",
+                    "attribute_data": {
+                        "name": "Small, Light, and Unobtrusive",
+                        "cost_per_level": null,
+                        "relevant_stat": "Variable",
+                        "description": "Covers any power not described elsewhere. Requires GM discussion. Effect and cost per level vary from 1\u00e2\u20ac\u201c10 CP depending on usefulness.",
+                        "source": "BESM4e",
+                        "levels": {
+                            "1": "Basic aptitude",
+                            "2": "Minor aptitude",
+                            "3": "Moderate aptitude",
+                            "4": "Significant aptitude",
+                            "5": "Major aptitude",
+                            "6": "Extreme aptitude"
+                        },
+                        "user_input_required": [
+                            {
+                                "label": "Custom Description",
+                                "key": "custom_description",
+                                "field_type": "textarea",
+                                "description": "Describe what this Unique Attribute does and its game effects."
+                            },
+                            {
+                                "label": "Point Cost Per Level",
+                                "key": "custom_cp_cost",
+                                "field_type": "number",
+                                "description": "Assign the CP cost per level (1\u00e2\u20ac\u201c10).",
+                                "required": true
+                            }
+                        ],
+                        "key": "unique_attribute",
+                        "is_human_attribute": false,
+                        "id": "0fb7e393-9b12-4464-8cad-0580adf6d93f",
+                        "level": 9,
+                        "options_source": "Size Template",
+                        "cost": 0,
+                        "sources": [
+                            "61b4c238-850b-460e-84c3-c052e08d7f13"
+                        ]
+                    }
+                },
+                {
+                    "field": "defect_add",
+                    "defect_id": "a21a5715-a15f-48bd-a3e1-e0987ae9a163",
+                    "defect_data": {
+                        "custom_name": "Lifting Capacity",
+                        "enhancements": [],
+                        "key": "unique_defect",
+                        "limiters": [],
+                        "options": [],
+                        "options_source": "Size Template",
+                        "rank": 9,
+                        "user_description": null,
+                        "user_input": null,
+                        "valid": true,
+                        "id": "a21a5715-a15f-48bd-a3e1-e0987ae9a163",
+                        "name": "Lifting Capacity",
+                        "cost": -9,
+                        "sources": [
+                            "61b4c238-850b-460e-84c3-c052e08d7f13"
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": "ca5f8d51-c12f-4dec-ad82-3837b70cfa71",
+            "type": "size",
+            "name": "Mote",
+            "changes": [
+                {
+                    "field": "size",
+                    "old_value": "",
+                    "new_value": "Mote"
+                },
+                {
+                    "field": "attribute_add",
+                    "attribute_id": "e2039edc-940b-4bbc-8636-c18b670854a1",
+                    "attribute_data": {
+                        "name": "Ranged Attack",
+                        "cost_per_level": 1,
+                        "source": "BESM4e",
+                        "description": "Allows the character to perform precise ranged attacks with a specific weapon class.",
+                        "levels": {
+                            "1": {
+                                "acv_bonus": 2
+                            },
+                            "2": {
+                                "acv_bonus": 4
+                            },
+                            "3": {
+                                "acv_bonus": 6
+                            },
+                            "4": {
+                                "acv_bonus": 8
+                            },
+                            "5": {
+                                "acv_bonus": 10
+                            },
+                            "6": {
+                                "acv_bonus": 12
+                            }
+                        },
+                        "modifiers": [
+                            {
+                                "type": "derived",
+                                "target": "ACV",
+                                "value_per_level": 2,
+                                "condition": "only when using selected weapon class"
+                            }
+                        ],
+                        "user_input_required": [
+                            {
+                                "label": "Weapon Class",
+                                "key": "weapon_class",
+                                "field_type": "combo_editable",
+                                "description": "Enter a custom category of weapons this Ranged Attack applies to (e.g. Long Gun, Spell, Throwing).",
+                                "options": [
+                                    "Biotech Projectiles",
+                                    "Bows",
+                                    "Crossbows",
+                                    "Elemental Blasts",
+                                    "Energy Weapons",
+                                    "Explosives",
+                                    "Firearms",
+                                    "Guns (General)",
+                                    "Laser Pistols",
+                                    "Magic Spells",
+                                    "Thrown Weapons"
+                                ]
+                            }
+                        ],
+                        "key": "ranged_attack",
+                        "is_human_attribute": false,
+                        "id": "e2039edc-940b-4bbc-8636-c18b670854a1",
+                        "level": 9,
+                        "options_source": "Size Template",
+                        "cost": 9,
+                        "sources": [
+                            "ca5f8d51-c12f-4dec-ad82-3837b70cfa71"
+                        ]
+                    }
+                },
+                {
+                    "field": "attribute_add",
+                    "attribute_id": "67af1034-f548-4473-b68a-7708597d35b5",
+                    "attribute_data": {
+                        "name": "Ranged Defence",
+                        "cost_per_level": 1,
+                        "relevant_stat": null,
+                        "source": "BESM4e",
+                        "description": "Boosts Defence Combat Value when avoiding ranged attacks under a specific condition, such as while on foot or piloting a vehicle.",
+                        "levels": {
+                            "1": "+2 DCV against ranged attacks under a specific condition",
+                            "2": "+4 DCV against ranged attacks under a specific condition",
+                            "3": "+6 DCV against ranged attacks under a specific condition",
+                            "4": "+8 DCV against ranged attacks under a specific condition",
+                            "5": "+10 DCV against ranged attacks under a specific condition",
+                            "6": "+12 DCV against ranged attacks under a specific condition"
+                        },
+                        "user_input_required": [
+                            {
+                                "label": "Condition",
+                                "field_type": "dropdown",
+                                "options": [
+                                    "Personal",
+                                    "Movement"
+                                ]
+                            }
+                        ],
+                        "key": "ranged_defence",
+                        "is_human_attribute": false,
+                        "id": "67af1034-f548-4473-b68a-7708597d35b5",
+                        "level": 9,
+                        "options_source": "Size Template",
+                        "cost": 9,
+                        "sources": [
+                            "ca5f8d51-c12f-4dec-ad82-3837b70cfa71"
+                        ]
+                    }
+                },
+                {
+                    "field": "attribute_add",
+                    "attribute_id": "49a03631-cfdc-415c-8cad-12b9f775de4a",
+                    "attribute_data": {
+                        "name": "Small, Light, and Unobtrusive",
+                        "cost_per_level": null,
+                        "relevant_stat": "Variable",
+                        "description": "Covers any power not described elsewhere. Requires GM discussion. Effect and cost per level vary from 1\u00e2\u20ac\u201c10 CP depending on usefulness.",
+                        "source": "BESM4e",
+                        "levels": {
+                            "1": "Basic aptitude",
+                            "2": "Minor aptitude",
+                            "3": "Moderate aptitude",
+                            "4": "Significant aptitude",
+                            "5": "Major aptitude",
+                            "6": "Extreme aptitude"
+                        },
+                        "user_input_required": [
+                            {
+                                "label": "Custom Description",
+                                "key": "custom_description",
+                                "field_type": "textarea",
+                                "description": "Describe what this Unique Attribute does and its game effects."
+                            },
+                            {
+                                "label": "Point Cost Per Level",
+                                "key": "custom_cp_cost",
+                                "field_type": "number",
+                                "description": "Assign the CP cost per level (1\u00e2\u20ac\u201c10).",
+                                "required": true
+                            }
+                        ],
+                        "key": "unique_attribute",
+                        "is_human_attribute": false,
+                        "id": "49a03631-cfdc-415c-8cad-12b9f775de4a",
+                        "level": 9,
+                        "options_source": "Size Template",
+                        "cost": 0,
+                        "sources": [
+                            "ca5f8d51-c12f-4dec-ad82-3837b70cfa71"
+                        ]
+                    }
+                },
+                {
+                    "field": "defect_add",
+                    "defect_id": "5b6e5077-f2d8-412d-a7b2-a07da4238e27",
+                    "defect_data": {
+                        "custom_name": "Lifting Capacity",
+                        "enhancements": [],
+                        "key": "unique_defect",
+                        "limiters": [],
+                        "options": [],
+                        "options_source": "Size Template",
+                        "rank": 9,
+                        "user_description": null,
+                        "user_input": null,
+                        "valid": true,
+                        "id": "5b6e5077-f2d8-412d-a7b2-a07da4238e27",
+                        "name": "Lifting Capacity",
+                        "cost": -9,
+                        "sources": [
+                            "ca5f8d51-c12f-4dec-ad82-3837b70cfa71"
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": "1c8b428f-3526-488e-bc90-c26fd2941e16",
+            "type": "size",
+            "name": "Speck",
+            "changes": [
+                {
+                    "field": "size",
+                    "old_value": "",
+                    "new_value": "Speck"
+                },
+                {
+                    "field": "attribute_add",
+                    "attribute_id": "379b3c7d-2098-4d2f-87f3-6ae2ca237540",
+                    "attribute_data": {
+                        "name": "Ranged Attack",
+                        "cost_per_level": 1,
+                        "source": "BESM4e",
+                        "description": "Allows the character to perform precise ranged attacks with a specific weapon class.",
+                        "levels": {
+                            "1": {
+                                "acv_bonus": 2
+                            },
+                            "2": {
+                                "acv_bonus": 4
+                            },
+                            "3": {
+                                "acv_bonus": 6
+                            },
+                            "4": {
+                                "acv_bonus": 8
+                            },
+                            "5": {
+                                "acv_bonus": 10
+                            },
+                            "6": {
+                                "acv_bonus": 12
+                            }
+                        },
+                        "modifiers": [
+                            {
+                                "type": "derived",
+                                "target": "ACV",
+                                "value_per_level": 2,
+                                "condition": "only when using selected weapon class"
+                            }
+                        ],
+                        "user_input_required": [
+                            {
+                                "label": "Weapon Class",
+                                "key": "weapon_class",
+                                "field_type": "combo_editable",
+                                "description": "Enter a custom category of weapons this Ranged Attack applies to (e.g. Long Gun, Spell, Throwing).",
+                                "options": [
+                                    "Biotech Projectiles",
+                                    "Bows",
+                                    "Crossbows",
+                                    "Elemental Blasts",
+                                    "Energy Weapons",
+                                    "Explosives",
+                                    "Firearms",
+                                    "Guns (General)",
+                                    "Laser Pistols",
+                                    "Magic Spells",
+                                    "Thrown Weapons"
+                                ]
+                            }
+                        ],
+                        "key": "ranged_attack",
+                        "is_human_attribute": false,
+                        "id": "379b3c7d-2098-4d2f-87f3-6ae2ca237540",
+                        "level": 8,
+                        "options_source": "Size Template",
+                        "cost": 8,
+                        "sources": [
+                            "1c8b428f-3526-488e-bc90-c26fd2941e16"
+                        ]
+                    }
+                },
+                {
+                    "field": "attribute_add",
+                    "attribute_id": "91647a20-2310-40d4-ad35-bd671e1080d7",
+                    "attribute_data": {
+                        "name": "Ranged Defence",
+                        "cost_per_level": 1,
+                        "relevant_stat": null,
+                        "source": "BESM4e",
+                        "description": "Boosts Defence Combat Value when avoiding ranged attacks under a specific condition, such as while on foot or piloting a vehicle.",
+                        "levels": {
+                            "1": "+2 DCV against ranged attacks under a specific condition",
+                            "2": "+4 DCV against ranged attacks under a specific condition",
+                            "3": "+6 DCV against ranged attacks under a specific condition",
+                            "4": "+8 DCV against ranged attacks under a specific condition",
+                            "5": "+10 DCV against ranged attacks under a specific condition",
+                            "6": "+12 DCV against ranged attacks under a specific condition"
+                        },
+                        "user_input_required": [
+                            {
+                                "label": "Condition",
+                                "field_type": "dropdown",
+                                "options": [
+                                    "Personal",
+                                    "Movement"
+                                ]
+                            }
+                        ],
+                        "key": "ranged_defence",
+                        "is_human_attribute": false,
+                        "id": "91647a20-2310-40d4-ad35-bd671e1080d7",
+                        "level": 8,
+                        "options_source": "Size Template",
+                        "cost": 8,
+                        "sources": [
+                            "1c8b428f-3526-488e-bc90-c26fd2941e16"
+                        ]
+                    }
+                },
+                {
+                    "field": "attribute_add",
+                    "attribute_id": "0ec39ead-48f5-448a-98a7-f391f075dddd",
+                    "attribute_data": {
+                        "name": "Small, Light, and Unobtrusive",
+                        "cost_per_level": null,
+                        "relevant_stat": "Variable",
+                        "description": "Covers any power not described elsewhere. Requires GM discussion. Effect and cost per level vary from 1\u00e2\u20ac\u201c10 CP depending on usefulness.",
+                        "source": "BESM4e",
+                        "levels": {
+                            "1": "Basic aptitude",
+                            "2": "Minor aptitude",
+                            "3": "Moderate aptitude",
+                            "4": "Significant aptitude",
+                            "5": "Major aptitude",
+                            "6": "Extreme aptitude"
+                        },
+                        "user_input_required": [
+                            {
+                                "label": "Custom Description",
+                                "key": "custom_description",
+                                "field_type": "textarea",
+                                "description": "Describe what this Unique Attribute does and its game effects."
+                            },
+                            {
+                                "label": "Point Cost Per Level",
+                                "key": "custom_cp_cost",
+                                "field_type": "number",
+                                "description": "Assign the CP cost per level (1\u00e2\u20ac\u201c10).",
+                                "required": true
+                            }
+                        ],
+                        "key": "unique_attribute",
+                        "is_human_attribute": false,
+                        "id": "0ec39ead-48f5-448a-98a7-f391f075dddd",
+                        "level": 8,
+                        "options_source": "Size Template",
+                        "cost": 0,
+                        "sources": [
+                            "1c8b428f-3526-488e-bc90-c26fd2941e16"
+                        ]
+                    }
+                },
+                {
+                    "field": "defect_add",
+                    "defect_id": "f90b4678-7496-4c17-b154-4ce6be211182",
+                    "defect_data": {
+                        "custom_name": "Lifting Capacity",
+                        "enhancements": [],
+                        "key": "unique_defect",
+                        "limiters": [],
+                        "options": [],
+                        "options_source": "Size Template",
+                        "rank": 8,
+                        "user_description": null,
+                        "user_input": null,
+                        "valid": true,
+                        "id": "f90b4678-7496-4c17-b154-4ce6be211182",
+                        "name": "Lifting Capacity",
+                        "cost": -8,
+                        "sources": [
+                            "1c8b428f-3526-488e-bc90-c26fd2941e16"
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": "d2811f83-add8-4fe7-a09b-65b671d5aa8d",
+            "type": "size",
+            "name": "Minute",
+            "changes": [
+                {
+                    "field": "size",
+                    "old_value": "",
+                    "new_value": "Minute"
+                },
+                {
+                    "field": "attribute_add",
+                    "attribute_id": "189ba68d-ef8f-4e23-8c14-10057070f4c6",
+                    "attribute_data": {
+                        "name": "Ranged Attack",
+                        "cost_per_level": 1,
+                        "source": "BESM4e",
+                        "description": "Allows the character to perform precise ranged attacks with a specific weapon class.",
+                        "levels": {
+                            "1": {
+                                "acv_bonus": 2
+                            },
+                            "2": {
+                                "acv_bonus": 4
+                            },
+                            "3": {
+                                "acv_bonus": 6
+                            },
+                            "4": {
+                                "acv_bonus": 8
+                            },
+                            "5": {
+                                "acv_bonus": 10
+                            },
+                            "6": {
+                                "acv_bonus": 12
+                            }
+                        },
+                        "modifiers": [
+                            {
+                                "type": "derived",
+                                "target": "ACV",
+                                "value_per_level": 2,
+                                "condition": "only when using selected weapon class"
+                            }
+                        ],
+                        "user_input_required": [
+                            {
+                                "label": "Weapon Class",
+                                "key": "weapon_class",
+                                "field_type": "combo_editable",
+                                "description": "Enter a custom category of weapons this Ranged Attack applies to (e.g. Long Gun, Spell, Throwing).",
+                                "options": [
+                                    "Biotech Projectiles",
+                                    "Bows",
+                                    "Crossbows",
+                                    "Elemental Blasts",
+                                    "Energy Weapons",
+                                    "Explosives",
+                                    "Firearms",
+                                    "Guns (General)",
+                                    "Laser Pistols",
+                                    "Magic Spells",
+                                    "Thrown Weapons"
+                                ]
+                            }
+                        ],
+                        "key": "ranged_attack",
+                        "is_human_attribute": false,
+                        "id": "189ba68d-ef8f-4e23-8c14-10057070f4c6",
+                        "level": 7,
+                        "options_source": "Size Template",
+                        "cost": 7,
+                        "sources": [
+                            "d2811f83-add8-4fe7-a09b-65b671d5aa8d"
+                        ]
+                    }
+                },
+                {
+                    "field": "attribute_add",
+                    "attribute_id": "393b6c96-891a-4ae4-9389-f3665d61c1a0",
+                    "attribute_data": {
+                        "name": "Ranged Defence",
+                        "cost_per_level": 1,
+                        "relevant_stat": null,
+                        "source": "BESM4e",
+                        "description": "Boosts Defence Combat Value when avoiding ranged attacks under a specific condition, such as while on foot or piloting a vehicle.",
+                        "levels": {
+                            "1": "+2 DCV against ranged attacks under a specific condition",
+                            "2": "+4 DCV against ranged attacks under a specific condition",
+                            "3": "+6 DCV against ranged attacks under a specific condition",
+                            "4": "+8 DCV against ranged attacks under a specific condition",
+                            "5": "+10 DCV against ranged attacks under a specific condition",
+                            "6": "+12 DCV against ranged attacks under a specific condition"
+                        },
+                        "user_input_required": [
+                            {
+                                "label": "Condition",
+                                "field_type": "dropdown",
+                                "options": [
+                                    "Personal",
+                                    "Movement"
+                                ]
+                            }
+                        ],
+                        "key": "ranged_defence",
+                        "is_human_attribute": false,
+                        "id": "393b6c96-891a-4ae4-9389-f3665d61c1a0",
+                        "level": 7,
+                        "options_source": "Size Template",
+                        "cost": 7,
+                        "sources": [
+                            "d2811f83-add8-4fe7-a09b-65b671d5aa8d"
+                        ]
+                    }
+                },
+                {
+                    "field": "attribute_add",
+                    "attribute_id": "d19aa38b-d44b-4bdb-bf9a-e933f03eda06",
+                    "attribute_data": {
+                        "name": "Small, Light, and Unobtrusive",
+                        "cost_per_level": null,
+                        "relevant_stat": "Variable",
+                        "description": "Covers any power not described elsewhere. Requires GM discussion. Effect and cost per level vary from 1\u00e2\u20ac\u201c10 CP depending on usefulness.",
+                        "source": "BESM4e",
+                        "levels": {
+                            "1": "Basic aptitude",
+                            "2": "Minor aptitude",
+                            "3": "Moderate aptitude",
+                            "4": "Significant aptitude",
+                            "5": "Major aptitude",
+                            "6": "Extreme aptitude"
+                        },
+                        "user_input_required": [
+                            {
+                                "label": "Custom Description",
+                                "key": "custom_description",
+                                "field_type": "textarea",
+                                "description": "Describe what this Unique Attribute does and its game effects."
+                            },
+                            {
+                                "label": "Point Cost Per Level",
+                                "key": "custom_cp_cost",
+                                "field_type": "number",
+                                "description": "Assign the CP cost per level (1\u00e2\u20ac\u201c10).",
+                                "required": true
+                            }
+                        ],
+                        "key": "unique_attribute",
+                        "is_human_attribute": false,
+                        "id": "d19aa38b-d44b-4bdb-bf9a-e933f03eda06",
+                        "level": 7,
+                        "options_source": "Size Template",
+                        "cost": 0,
+                        "sources": [
+                            "d2811f83-add8-4fe7-a09b-65b671d5aa8d"
+                        ]
+                    }
+                },
+                {
+                    "field": "defect_add",
+                    "defect_id": "35755180-fbbd-4da4-b89d-8b21e78af1eb",
+                    "defect_data": {
+                        "custom_name": "Lifting Capacity",
+                        "enhancements": [],
+                        "key": "unique_defect",
+                        "limiters": [],
+                        "options": [],
+                        "options_source": "Size Template",
+                        "rank": 7,
+                        "user_description": null,
+                        "user_input": null,
+                        "valid": true,
+                        "id": "35755180-fbbd-4da4-b89d-8b21e78af1eb",
+                        "name": "Lifting Capacity",
+                        "cost": -7,
+                        "sources": [
+                            "d2811f83-add8-4fe7-a09b-65b671d5aa8d"
+                        ]
+                    }
+                }
+            ]
+        }
+    ]
+}

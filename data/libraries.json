@@ -1,0 +1,32 @@
+{
+  "version": "1.0",
+  "libraries": {
+    "items": [
+      {
+        "id": "fbc043cb-3473-4639-a651-4527ef219f1b",
+        "name": "Sword",
+        "type": "Weapon",
+        "description": "",
+        "total_cp": 6,
+        "cost": 3,
+        "attributes": [
+          {
+            "name": "Weapon",
+            "base_name": "Weapon",
+            "level": 3,
+            "cost": 6,
+            "user_description": "",
+            "description": "Many anime characters wield powerful offensive energies, such as electric zaps, magical fireballs, ki-powered martial arts strikes, or energy swords.",
+            "key": "weapon",
+            "id": "1bb913e1-dc58-47f2-8479-d9bd8f21485b"
+          }
+        ],
+        "defects": []
+      }
+    ],
+    "companions": [],
+    "minions": [],
+    "metamorphosis": [],
+    "alternate_forms": []
+  }
+}

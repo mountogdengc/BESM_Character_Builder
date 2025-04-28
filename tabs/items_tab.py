@@ -89,8 +89,6 @@ def clear_items_ui(self):
         self.items_card_container.deleteLater()
 
     # Create a new container and layout
-    from PyQt5.QtWidgets import QWidget, QVBoxLayout
-
     self.items_card_container = QWidget()
     self.items_layout = QVBoxLayout(self.items_card_container)
     self.items_layout.setContentsMargins(8, 8, 8, 8)
@@ -121,10 +119,17 @@ def populate_items_ui(self):
         if defect_names:
             lines.append("Defects: " + ", ".join(defect_names))
 
+        # Create a function for this specific item to avoid lambda capture issues
+        def make_edit_handler(uid):
+            def edit_handler():
+                self.edit_item(uid)
+            return edit_handler
+
         card = create_card_widget(
             title=item["name"],
             lines=lines,
-            on_click=lambda uid=item["id"]: self.edit_item(uid)
+            on_click=make_edit_handler(item["id"]),
+            card_type="attribute"  # Use attribute styling for consistent black background
         )
         self.items_layout.insertWidget(0, card)
 
