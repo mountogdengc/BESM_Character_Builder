@@ -4,6 +4,8 @@ import uuid
 import math
 import PyQt5.QtWidgets as QtWidgets
 import PyQt5.QtCore as QtCore
+import PyQt5.QtGui as QtGui
+from PyQt5.QtWidgets import QMessageBox, QInputDialog
 from tools.utils import create_card_widget, format_attribute_display
 from dialogs.attribute_builder_dialog import AttributeBuilderDialog
 from dialogs.defect_builder_dialog import DefectBuilderDialog
@@ -75,12 +77,16 @@ class ItemBuilderDialog(QtWidgets.QDialog):
         self.save_to_library_btn = QtWidgets.QPushButton("Save to Library")
         self.save_to_library_btn.clicked.connect(self.save_to_library)
         
+        self.import_from_library_btn = QtWidgets.QPushButton("Import from Library")
+        self.import_from_library_btn.clicked.connect(self.import_from_library)
+        
         self.ok_button = QtWidgets.QPushButton("OK")
         self.ok_button.clicked.connect(self.accept)
         self.cancel_button = QtWidgets.QPushButton("Cancel")
         self.cancel_button.clicked.connect(self.reject)
         
         button_layout.addWidget(self.save_to_library_btn)
+        button_layout.addWidget(self.import_from_library_btn)
         button_layout.addStretch()
         button_layout.addWidget(self.cancel_button)
         button_layout.addWidget(self.ok_button)
@@ -454,3 +460,40 @@ class ItemBuilderDialog(QtWidgets.QDialog):
                 
         except Exception as e:
             QMessageBox.warning(self, "Error", f"An error occurred: {str(e)}")
+
+    def import_from_library(self):
+        """Import an item from the library"""
+        from dialogs.library_selector_dialog import LibrarySelectorDialog
+        
+        # Create and show the library selector dialog
+        selector = LibrarySelectorDialog(self, library_type="items")
+        if selector.exec_():
+            # Get the selected item data
+            selected_item = selector.selected_object
+            if selected_item:
+                # Update the current item data
+                self.item_data = selected_item
+                
+                # Update UI elements
+                self.name_input.setText(selected_item.get("name", ""))
+                
+                if "type" in selected_item:
+                    index = self.item_type_input.findText(selected_item["type"])
+                    if index >= 0:
+                        self.item_type_input.setCurrentIndex(index)
+                
+                # Clear existing attributes and defects
+                self.item_data["attributes"] = selected_item.get("attributes", [])
+                self.item_data["defects"] = selected_item.get("defects", [])
+                
+                # Repopulate lists and recalculate CP
+                self.populate_attributes()
+                self.populate_defects()
+                self.calculate_cp_totals()
+                
+                # Show success message
+                QtWidgets.QMessageBox.information(
+                    self,
+                    "Import Successful",
+                    f"Successfully imported '{selected_item.get('name', 'Unnamed')}' from the library."
+                )

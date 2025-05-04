@@ -29,9 +29,13 @@ class AlternateFormEditorDialog(QDialog):
         if "defects" not in self.form_data:
             self.form_data["defects"] = []
         
+        # Initialize level and CP budget
+        self.form_data["level"] = self.form_data.get("level", 1)
+        self.form_data["cp_budget"] = self.form_data.get("cp_budget", self.form_data["level"] * 5)
+        
         # Calculate total CP spent and remaining
         self.total_cp_spent = 0
-        self.remaining_cp = self.form_data.get("cp_budget", 5)
+        self.remaining_cp = self.form_data["cp_budget"]
 
         layout = QVBoxLayout()
         self.setLayout(layout)
@@ -91,17 +95,19 @@ class AlternateFormEditorDialog(QDialog):
 
         # --- Buttons ---
         btn_layout = QHBoxLayout()
-        self.save_to_lib_btn = QPushButton("Save to Library")
-        self.save_to_lib_btn.clicked.connect(self.save_to_library)
+        self.save_to_library_btn = QPushButton("Save to Library")
+        self.import_from_library_btn = QPushButton("Import from Library")
         self.save_btn = QPushButton("Save")
         self.cancel_btn = QPushButton("Cancel")
         self.save_btn.clicked.connect(self.accept)
         self.cancel_btn.clicked.connect(self.reject)
-        btn_layout.addWidget(self.save_to_lib_btn)
+        self.save_to_library_btn.clicked.connect(self.save_to_library)
+        self.import_from_library_btn.clicked.connect(self.import_from_library)
+        btn_layout.addWidget(self.save_to_library_btn)
+        btn_layout.addWidget(self.import_from_library_btn)
         btn_layout.addStretch()
         btn_layout.addWidget(self.cancel_btn)
         btn_layout.addWidget(self.save_btn)
-
         layout.addLayout(btn_layout)
 
     def init_stats_tab(self):
@@ -405,6 +411,10 @@ class AlternateFormEditorDialog(QDialog):
         # Update stats from inputs
         stats = {stat: spin.value() for stat, spin in self.stat_inputs.items()}
         
+        # Get current level and calculate CP budget
+        level = self.level_input.value()
+        cp_budget = level * 5  # 5 CP per level for alternate forms
+        
         # Update derived values based on stats
         body = stats["Body"]
         mind = stats["Mind"]
@@ -422,12 +432,11 @@ class AlternateFormEditorDialog(QDialog):
             "SOP": mind * 10
         }
         
-        level = self.level_input.value()
         return {
             "id": self.original_id or str(uuid.uuid4()),
             "name": self.name_input.text(),
             "level": level,
-            "cp_budget": level * 5,
+            "cp_budget": cp_budget,  # Always set CP budget based on current level
             "stats": stats,
             "derived": derived,
             "attributes": self.form_data["attributes"],
@@ -524,3 +533,22 @@ class AlternateFormEditorDialog(QDialog):
                 
         except Exception as e:
             QMessageBox.warning(self, "Error", f"An error occurred: {str(e)}")
+
+    def import_from_library(self):
+        from dialogs.library_selector_dialog import LibrarySelectorDialog
+        selector = LibrarySelectorDialog(self, "alternate_forms")
+        if selector.exec_() == QDialog.Accepted:
+            selected_obj = selector.get_selected_object()
+            if selected_obj and selected_obj != "CREATE_NEW":
+                self.populate_from_library(selected_obj)
+
+    def populate_from_library(self, data):
+        self.name_input.setText(data.get("name", ""))
+        self.level_input.setValue(data.get("level", 1))
+        stats = data.get("stats", {})
+        for stat, spin in self.stat_inputs.items():
+            spin.setValue(stats.get(stat, 4))
+        self.form_data.update(data)
+        self.update_derived_values()
+        self.populate_attributes()
+        self.populate_defects()

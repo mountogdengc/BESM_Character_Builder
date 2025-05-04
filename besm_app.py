@@ -3,6 +3,16 @@ import os
 import json
 import math
 import uuid
+
+# --- Resource path helper for PyInstaller ---
+def resource_path(relative_path):
+    """ Get absolute path to resource, works for dev and for PyInstaller """
+    try:
+        base_path = sys._MEIPASS
+    except Exception:
+        base_path = os.path.abspath(".")
+    return os.path.join(base_path, relative_path)
+
 from tools.utils import (
     ClickableCard, create_card_widget, generate_auto_name,
     apply_text_shadow, cell, load_json_file
@@ -36,7 +46,7 @@ from tabs.items_tab import init_items_tab
 from PyQt5.QtWidgets import (
     QScrollArea, QVBoxLayout, QHBoxLayout, QLabel, QLineEdit, QTextEdit,
     QComboBox, QSpinBox, QPushButton, QToolButton, QTabWidget, QWidget, QGridLayout,
-    QMainWindow, QMessageBox, QFileDialog, QStatusBar
+    QMainWindow, QMessageBox, QFileDialog, QStatusBar, QDialog
 )
 from PyQt5.QtCore import QSettings, Qt
 
@@ -138,7 +148,7 @@ class BESMCharacterApp(QMainWindow):
 
         # Add logo (optional)
         logo = ui.QLabel()
-        logo.setPixmap(ui.QPixmap("project-logo.jpg").scaledToWidth(150, ui.Qt.SmoothTransformation))
+        logo.setPixmap(ui.QPixmap(resource_path("project-logo.jpg")).scaledToWidth(150, ui.Qt.SmoothTransformation))
         logo.setAlignment(ui.Qt.AlignCenter)
         sidebar.addWidget(logo)
 
@@ -613,48 +623,9 @@ class BESMCharacterApp(QMainWindow):
     
     def handle_special_attribute(self, attr, library_type):
         """Handle special attribute types that can use the library"""
-        from dialogs.library_selector_dialog import LibrarySelectorDialog
-        
-        # Ask if they want to use the library
-        reply = ui.QMessageBox.question(
-            self, 
-            "Use Library",
-            f"Would you like to select a pre-made {library_type.rstrip('s')} from the library?",
-            ui.QMessageBox.Yes | ui.QMessageBox.No | ui.QMessageBox.Cancel,
-            ui.QMessageBox.Yes
-        )
-        
-        if reply == ui.QMessageBox.Cancel:
-            return
-            
-        if reply == ui.QMessageBox.Yes:
-            # Show library selector
-            selector = LibrarySelectorDialog(self, library_type)
-            if selector.exec_() == ui.QDialog.Accepted:
-                selected_obj = selector.get_selected_object()
-                
-                if selected_obj == "CREATE_NEW":
-                    # User wants to create a new object
-                    self._add_attribute_to_character(attr)
-                    
-                    # Now open the appropriate editor for this type
-                    self._open_special_editor_for_new_attribute(attr, library_type)
-                else:
-                    # User selected an existing object
-                    # First add the attribute
-                    self._add_attribute_to_character(attr)
-                    
-                    # Now associate the selected object with this attribute
-                    self._associate_library_object_with_attribute(attr, selected_obj, library_type)
-            else:
-                # User canceled selection
-                return
-        else:
-            # User chose not to use library
-            self._add_attribute_to_character(attr)
-            
-            # Directly open the editor for the new attribute
-            self._open_special_editor_for_new_attribute(attr, library_type)
+        # Remove the popup and always open the builder dialog directly
+        self._add_attribute_to_character(attr)
+        self._open_special_editor_for_new_attribute(attr, library_type)
     
     def _add_attribute_to_character(self, attr):
         """Add an attribute to the character data"""
@@ -2032,18 +2003,77 @@ class BESMCharacterApp(QMainWindow):
     def edit_companion(self, uid):
         companion = next((c for c in self.character_data["companions"] if c.get("id") == uid), None)
         if not companion:
-            ui.QMessageBox.warning(self, "Error", f"No companion found with ID {uid}")
+            QMessageBox.warning(self, "Error", f"No companion found with ID {uid}")
             return
 
-        ui.QMessageBox.information(self, "Edit Companion", f"Editing: {companion['name']}\n(Not yet implemented)")
-        
+        from dialogs.companion_builder_dialog import CompanionBuilderDialog
+        dialog = CompanionBuilderDialog(self, companion)
+        if dialog.exec_() == QDialog.Accepted:
+            updated_companion = dialog.get_companion_data()
+            for i, c in enumerate(self.character_data["companions"]):
+                if c.get("id") == uid:
+                    self.character_data["companions"][i] = updated_companion
+                    break
+            for attr in self.character_data["attributes"]:
+                if attr.get("id") == uid:
+                    attr["level"] = updated_companion["level"]
+                    attr["cost"] = attr["level"] * attr.get("cost_per_level", 10)
+                    break
+            from tabs.companions_tab import populate_companions_ui
+            populate_companions_ui(self)
+            from tabs.attributes_tab import sync_attributes
+            sync_attributes(self)
+            self.update_point_total()
+    
     def edit_minion(self, uid):
         minion = next((m for m in self.character_data["minions"] if m.get("id") == uid), None)
         if not minion:
-            ui.QMessageBox.warning(self, "Error", f"No minion found with ID {uid}")
+            QMessageBox.warning(self, "Error", f"No minion found with ID {uid}")
             return
 
-        ui.QMessageBox.information(self, "Edit Minion", f"Editing: {minion['name']}\n(Not yet implemented)")
+        from dialogs.minion_builder_dialog import MinionBuilderDialog
+        dialog = MinionBuilderDialog(self, minion)
+        if dialog.exec_() == QDialog.Accepted:
+            updated_minion = dialog.get_minion_data()
+            for i, m in enumerate(self.character_data["minions"]):
+                if m.get("id") == uid:
+                    self.character_data["minions"][i] = updated_minion
+                    break
+            for attr in self.character_data["attributes"]:
+                if attr.get("id") == uid:
+                    attr["level"] = updated_minion["level"]
+                    attr["cost"] = attr["level"] * attr.get("cost_per_level", 10)
+                    break
+            from tabs.minions_tab import populate_minions_ui
+            populate_minions_ui(self)
+            from tabs.attributes_tab import sync_attributes
+            sync_attributes(self)
+            self.update_point_total()
+
+    def edit_metamorphosis(self, uid):
+        meta = next((m for m in self.character_data["metamorphosis"] if m.get("id") == uid), None)
+        if not meta:
+            QMessageBox.warning(self, "Error", f"No metamorphosis found with ID {uid}")
+            return
+
+        from dialogs.metamorphosis_editor_dialog import MetamorphosisEditorDialog
+        dialog = MetamorphosisEditorDialog(self, metamorphosis_data=meta)
+        if dialog.exec_() == QDialog.Accepted:
+            updated_meta = dialog.get_metamorphosis_data()
+            for i, m in enumerate(self.character_data["metamorphosis"]):
+                if m.get("id") == uid:
+                    self.character_data["metamorphosis"][i] = updated_meta
+                    break
+            for attr in self.character_data["attributes"]:
+                if attr.get("id") == uid:
+                    attr["level"] = updated_meta["level"]
+                    attr["cost"] = attr["level"] * attr.get("cost_per_level", 10)
+                    break
+            from tabs.metamorphosis_tab import populate_metamorphosis_ui
+            populate_metamorphosis_ui(self)
+            from tabs.attributes_tab import sync_attributes
+            sync_attributes(self)
+            self.update_point_total()
 
     def open_template_dialog(self, template_type):
         """Open a dialog to select a template"""
@@ -2243,7 +2273,7 @@ if __name__ == "__main__":
     app = ui.QApplication(sys.argv)
 
     try:
-        with open("style.qss", "r") as f:
+        with open(resource_path("style.qss"), "r") as f:
             app.setStyleSheet(f.read())
     except Exception as e:
         print(f"Failed to load stylesheet: {e}")

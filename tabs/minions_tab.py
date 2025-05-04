@@ -26,12 +26,6 @@ def init_minions_tab(self):
 
     self.minions_scroll_area.setWidget(self.minions_card_container)
 
-    # Add button
-    add_button = QPushButton("Add Minions")
-    add_button.clicked.connect(self.add_minions)
-    add_button.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Fixed)
-    outer_layout.addWidget(add_button)
-
     self.minions_tab = tab
     self.tabs.addTab(tab, "Minions")
 
@@ -41,7 +35,6 @@ def sync_minions_from_attributes(self):
 
     for attr in self.character_data["attributes"]:
         if attr.get("base_name", attr["name"]) == "Minions":
-            minion_id = str(uuid4())
             # Calculate the number of minions based on level
             num_minions = 5  # Default for level 1
             level = attr.get("level", 1)
@@ -58,7 +51,7 @@ def sync_minions_from_attributes(self):
                 num_minions = 200
                 
             minion_data = {
-                "id": minion_id,
+                "id": attr["id"],  # Use the attribute's ID
                 "name": attr.get("custom_fields", {}).get("minion_type", "Unnamed Minions"),
                 "level": attr["level"],
                 "description": f"Group of {num_minions} minions",
@@ -112,7 +105,8 @@ def populate_minions_ui(self):
         card = create_card_widget(
             title=minion["name"],
             lines=lines,
-            on_click=lambda uid=minion["id"]: self.edit_minion(uid)
+            on_click=lambda uid=minion["id"]: self.edit_minion(uid),
+            card_type="attribute"
         )
         self.minions_layout.insertWidget(0, card)
 

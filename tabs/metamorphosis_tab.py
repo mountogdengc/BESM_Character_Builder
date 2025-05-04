@@ -38,9 +38,8 @@ def sync_metamorphosis_from_attributes(self):
 
     for attr in self.character_data["attributes"]:
         if attr.get("base_name", attr["name"]) == "Metamorphosis":
-            meta_id = str(uuid4())
             meta_data = {
-                "id": meta_id,
+                "id": attr["id"],  # Use the attribute's ID
                 "name": attr.get("custom_fields", {}).get("template_name", "Unnamed Form"),
                 "level": attr["level"],
                 "description": f"Transforms into a new form with {attr['level'] * 5} CP of changes",
@@ -93,7 +92,8 @@ def populate_metamorphosis_ui(self):
         card = create_card_widget(
             title=meta["name"],
             lines=lines,
-            on_click=lambda meta_id=meta["id"]: edit_metamorphosis(self, meta_id)
+            on_click=lambda meta_id=meta["id"]: edit_metamorphosis(self, meta_id),
+            card_type="attribute"  # Make it styled and clickable like attribute cards
         )
         self.metamorphosis_layout.insertWidget(0, card)
 

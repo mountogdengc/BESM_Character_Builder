@@ -42,9 +42,9 @@ def sync_companions_from_attributes(self):
         
         if base_name in ["Companion", "Companions"]:
             print(f"[DEBUG] Found Companion attribute with level {attr['level']}")
-            companion_id = str(uuid4())
+            # Use the attribute's ID instead of generating a new one
             companion_data = {
-                "id": companion_id,
+                "id": attr["id"],  # Use the attribute's ID
                 "name": f"Companion ({attr['level']} CP)",
                 "level": attr["level"],
                 "cp_budget": attr["level"] * 10,  # Companion gets 10 CP per level
@@ -54,7 +54,7 @@ def sync_companions_from_attributes(self):
                 "defects": []
             }
             self.character_data["companions"].append(companion_data)
-            print(f"[DEBUG] Added companion: {companion_data['name']}")
+            print(f"[DEBUG] Added companion with ID {companion_data['id']}")
 
     print(f"[DEBUG] Total companions: {len(self.character_data['companions'])}")
     populate_companions_ui(self)
@@ -116,7 +116,8 @@ def populate_companions_ui(self):
         card = create_card_widget(
             title=companion["name"],
             lines=lines,
-            on_click=make_click_handler(companion["id"])
+            on_click=make_click_handler(companion["id"]),
+            card_type="attribute"  # Make it styled and clickable like attribute cards
         )
         print(f"[DEBUG] Card created, adding to layout")
         self.companions_layout.insertWidget(0, card)

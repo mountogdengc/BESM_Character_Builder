@@ -106,23 +106,94 @@ def create_attribute_card(self, attr):
     # Create the edit function for this specific attribute
     def make_edit_handler(attr_id):
         def edit_handler():
-            self.edit_attribute_by_id(attr_id)
+            base_name = attr.get("base_name", attr["name"])
+            if base_name in ["Item", "Items"]:
+                self.edit_item(attr_id)
+            elif base_name in ["Companion", "Companions"]:
+                self.edit_companion(attr_id)
+            elif base_name == "Minions":
+                self.edit_minion(attr_id)
+            elif base_name == "Metamorphosis":
+                self.edit_metamorphosis(attr_id)
+            elif base_name == "Alternate Form":
+                self.edit_alternate_form(attr_id)
+            else:
+                self.edit_attribute_by_id(attr_id)
         return edit_handler
     
     # Format the display lines based on attribute type
-    if attr.get("base_name", attr["name"]) in ["Item", "Items"]:
-        # For Items, don't show level, show total cost from all items
-        items = attr.get("custom_fields", {}).get("items", [])
-        total_item_cost = sum(item.get("cost", 0) for item in items)
-        
-        # Get list of item names
+    base_name = attr.get("base_name", attr["name"])
+    
+    if base_name in ["Item", "Items"]:
+        # For Items, show total cost and list of items
+        items = [item for item in self.character_data.get("items", []) 
+                if item.get("id") == attr.get("id")]
         item_names = [item.get("name", "Unnamed Item") for item in items]
         item_list = ", ".join(item_names) if item_names else "None"
         
         lines = [
-            f"Cost: {total_item_cost} CP",
+            f"Level: {attr.get('level', 0)}",
+            f"Cost: {attr.get('cost', 0)} CP",
             f"Items: {item_list}"
         ]
+    elif base_name in ["Companion", "Companions"]:
+        # For Companions, show companion details
+        companions = [comp for comp in self.character_data.get("companions", []) 
+                     if comp.get("id") == attr.get("id")]
+        if companions:
+            comp = companions[0]
+            stats = comp.get("stats", {})
+            lines = [
+                f"Level: {attr.get('level', 0)}",
+                f"Cost: {attr.get('cost', 0)} CP",
+                f"Stats: Body {stats.get('Body', 0)}, Mind {stats.get('Mind', 0)}, Soul {stats.get('Soul', 0)}"
+            ]
+        else:
+            lines = [
+                f"Level: {attr.get('level', 0)}",
+                f"Cost: {attr.get('cost', 0)} CP"
+            ]
+    elif base_name == "Minions":
+        # For Minions, show minion details
+        minions = [minion for minion in self.character_data.get("minions", []) 
+                  if minion.get("id") == attr.get("id")]
+        minion_names = [minion.get("name", "Unnamed Minion") for minion in minions]
+        minion_list = ", ".join(minion_names) if minion_names else "None"
+        
+        lines = [
+            f"Level: {attr.get('level', 0)}",
+            f"Cost: {attr.get('cost', 0)} CP",
+            f"Minions: {minion_list}"
+        ]
+    elif base_name == "Metamorphosis":
+        # For Metamorphosis, show metamorphosis details
+        meta_forms = [form for form in self.character_data.get("metamorphosis", []) 
+                     if form.get("id") == attr.get("id")]
+        form_names = [form.get("name", "Unnamed Form") for form in meta_forms]
+        form_list = ", ".join(form_names) if form_names else "None"
+        
+        lines = [
+            f"Level: {attr.get('level', 0)}",
+            f"Cost: {attr.get('cost', 0)} CP",
+            f"Forms: {form_list}"
+        ]
+    elif base_name == "Alternate Form":
+        # For Alternate Forms, show form details
+        forms = [form for form in self.character_data.get("alternate_forms", []) 
+                if form.get("id") == attr.get("id")]
+        if forms:
+            form = forms[0]
+            stats = form.get("stats", {})
+            lines = [
+                f"Level: {attr.get('level', 0)}",
+                f"Cost: {attr.get('cost', 0)} CP",
+                f"Stats: Body {stats.get('Body', 0)}, Mind {stats.get('Mind', 0)}, Soul {stats.get('Soul', 0)}"
+            ]
+        else:
+            lines = [
+                f"Level: {attr.get('level', 0)}",
+                f"Cost: {attr.get('cost', 0)} CP"
+            ]
     else:
         # For all other attributes, show normal display
         lines = [

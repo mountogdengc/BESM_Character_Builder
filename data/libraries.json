@@ -24,7 +24,18 @@
         "defects": []
       }
     ],
-    "companions": [],
+    "companions": [
+      {
+        "name": "Companion",
+        "base_name": "Companion",
+        "level": 1,
+        "cost": 4,
+        "user_description": "",
+        "description": "Grants a loyal NPC Companion built with 10 CP per level. Examples: familiars, pets, bodyguards, sentient items, etc.",
+        "key": "companion",
+        "id": "3ca98443-e17a-4ec8-9a61-bb288d94a4fb"
+      }
+    ],
     "minions": [],
     "metamorphosis": [],
     "alternate_forms": []

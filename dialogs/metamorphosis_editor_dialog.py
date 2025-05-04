@@ -134,14 +134,21 @@ class MetamorphosisEditorDialog(QDialog):
         main_layout.addWidget(self.tabs)
         
         # Buttons
-        button_layout = QHBoxLayout()
-        self.save_button = QPushButton("Save")
-        self.save_button.clicked.connect(self.accept)
-        cancel_button = QPushButton("Cancel")
-        cancel_button.clicked.connect(self.reject)
-        button_layout.addWidget(self.save_button)
-        button_layout.addWidget(cancel_button)
-        main_layout.addLayout(button_layout)
+        btn_layout = QHBoxLayout()
+        self.save_to_library_btn = QPushButton("Save to Library")
+        self.import_from_library_btn = QPushButton("Import from Library")
+        self.save_btn = QPushButton("Save")
+        self.cancel_btn = QPushButton("Cancel")
+        self.save_btn.clicked.connect(self.accept)
+        self.cancel_btn.clicked.connect(self.reject)
+        self.save_to_library_btn.clicked.connect(self.save_to_library)
+        self.import_from_library_btn.clicked.connect(self.import_from_library)
+        btn_layout.addWidget(self.save_to_library_btn)
+        btn_layout.addWidget(self.import_from_library_btn)
+        btn_layout.addStretch()
+        btn_layout.addWidget(self.cancel_btn)
+        btn_layout.addWidget(self.save_btn)
+        main_layout.addLayout(btn_layout)
         
         # Populate existing attributes and defects
         self.populate_attributes()
@@ -376,13 +383,13 @@ class MetamorphosisEditorDialog(QDialog):
         cp_budget = self.metamorphosis_data.get("cp", 5)
         if self.total_cp_used > cp_budget:
             self.cp_used_display.setStyleSheet("color: red;")
-            self.save_button.setEnabled(False)
+            self.save_btn.setEnabled(False)
         elif self.total_cp_used < -cp_budget:  # Check if we're under minimum budget
             self.cp_used_display.setStyleSheet("color: orange;")
-            self.save_button.setEnabled(False)
+            self.save_btn.setEnabled(False)
         else:
             self.cp_used_display.setStyleSheet("")
-            self.save_button.setEnabled(True)
+            self.save_btn.setEnabled(True)
     
     def get_metamorphosis_data(self):
         # Update the data with the current UI values
@@ -391,3 +398,22 @@ class MetamorphosisEditorDialog(QDialog):
         
         # Return the updated data
         return self.metamorphosis_data
+
+    def save_to_library(self):
+        QMessageBox.information(self, "Save to Library", "Feature not yet implemented.")
+
+    def import_from_library(self):
+        from dialogs.library_selector_dialog import LibrarySelectorDialog
+        selector = LibrarySelectorDialog(self, "metamorphosis")
+        if selector.exec_() == QDialog.Accepted:
+            selected_obj = selector.get_selected_object()
+            if selected_obj and selected_obj != "CREATE_NEW":
+                self.populate_from_library(selected_obj)
+
+    def populate_from_library(self, data):
+        self.name_input.setText(data.get("name", ""))
+        self.level_display.setText(str(data.get("level", 1)))
+        self.metamorphosis_data.update(data)
+        self.update_cp_display()
+        self.populate_attributes()
+        self.populate_defects()

@@ -24,7 +24,7 @@ class LibraryManagerDialog(QDialog):
         super().__init__(parent)
         self.parent = parent
         self.setWindowTitle("Library Manager")
-        self.setMinimumWidth(900)
+        self.setMinimumWidth(1200)
         self.setMinimumHeight(600)
         
         # Load libraries data
@@ -334,6 +334,7 @@ class LibraryManagerDialog(QDialog):
     def add_library_object(self, library_type, list_widget, dialog_class):
         """Add a new object to the library"""
         try:
+            print(f"[DEBUG] Creating new {library_type} object")
             # Create a new object of the appropriate type
             dialog = None
             
@@ -347,19 +348,34 @@ class LibraryManagerDialog(QDialog):
                 dialog = dialog_class(self.parent)
             elif library_type == "alternate_forms":
                 dialog = dialog_class(self.parent)
+                print("[DEBUG] Created AlternateFormEditorDialog")
                 
             if dialog and dialog.exec_():
+                print("[DEBUG] Dialog accepted")
                 # Get the created object data
                 if library_type == "items":
                     obj_data = dialog.get_item_data()
                 elif library_type == "companions":
                     obj_data = dialog.get_companion_data()
+                    print(f"[DEBUG] Companion data before CP budget: {obj_data}")
+                    # Ensure CP budget is set for new companions
+                    if "cp_budget" not in obj_data:
+                        obj_data["cp_budget"] = obj_data.get("level", 1) * 10
+                    print(f"[DEBUG] Companion data after CP budget: {obj_data}")
                 elif library_type == "minions":
                     obj_data = dialog.get_minion_data()
                 elif library_type == "metamorphosis":
                     obj_data = dialog.get_metamorphosis_data()
                 elif library_type == "alternate_forms":
+                    print("[DEBUG] Getting form data from dialog")
                     obj_data = dialog.get_form_data()
+                    print(f"[DEBUG] Alternate form data before CP budget: {obj_data}")
+                    # Ensure CP budget is set for new alternate forms
+                    if "cp_budget" not in obj_data:
+                        obj_data["cp_budget"] = obj_data.get("level", 1) * 5
+                    print(f"[DEBUG] Alternate form data after CP budget: {obj_data}")
+                
+                print(f"[DEBUG] Final object data: {obj_data}")
                 
                 # Ensure the object has a unique ID
                 if "id" not in obj_data:
@@ -378,6 +394,9 @@ class LibraryManagerDialog(QDialog):
                 self.save_libraries_data()
                 
         except Exception as e:
+            import traceback
+            print(f"[DEBUG] Error adding object: {str(e)}")
+            print(f"[DEBUG] Traceback: {traceback.format_exc()}")
             QMessageBox.warning(self, "Error", f"Failed to add object: {str(e)}")
             
     def edit_library_object(self, library_type, list_widget, dialog_class):

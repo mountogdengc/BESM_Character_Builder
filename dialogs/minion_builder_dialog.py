@@ -102,14 +102,19 @@ class MinionBuilderDialog(QDialog):
 
         # --- Buttons ---
         btn_layout = QHBoxLayout()
+        self.save_to_library_btn = QPushButton("Save to Library")
+        self.import_from_library_btn = QPushButton("Import from Library")
         self.save_btn = QPushButton("Save")
         self.cancel_btn = QPushButton("Cancel")
         self.save_btn.clicked.connect(self.accept)
         self.cancel_btn.clicked.connect(self.reject)
+        self.save_to_library_btn.clicked.connect(self.save_to_library)
+        self.import_from_library_btn.clicked.connect(self.import_from_library)
+        btn_layout.addWidget(self.save_to_library_btn)
+        btn_layout.addWidget(self.import_from_library_btn)
         btn_layout.addStretch()
         btn_layout.addWidget(self.cancel_btn)
         btn_layout.addWidget(self.save_btn)
-
         layout.addLayout(btn_layout)
 
     def init_stats_tab(self):
@@ -506,3 +511,26 @@ class MinionBuilderDialog(QDialog):
         temp_data["derived"] = derived
         
         return temp_data
+
+    def save_to_library(self):
+        QMessageBox.information(self, "Save to Library", "Feature not yet implemented.")
+
+    def import_from_library(self):
+        from dialogs.library_selector_dialog import LibrarySelectorDialog
+        selector = LibrarySelectorDialog(self, "minions")
+        if selector.exec_() == QDialog.Accepted:
+            selected_obj = selector.get_selected_object()
+            if selected_obj and selected_obj != "CREATE_NEW":
+                self.populate_from_library(selected_obj)
+
+    def populate_from_library(self, data):
+        self.name_input.setText(data.get("name", ""))
+        self.level_input.setValue(data.get("level", 1))
+        stats = data.get("stats", {})
+        for stat, spin in self.stat_inputs.items():
+            spin.setValue(stats.get(stat, 4))
+        self.minion_data.update(data)
+        self.calculate_cp_totals()
+        self.update_derived_values()
+        self.populate_attributes()
+        self.populate_defects()

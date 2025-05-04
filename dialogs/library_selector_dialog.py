@@ -3,7 +3,7 @@ import json
 from PyQt5.QtWidgets import (
     QDialog, QVBoxLayout, QHBoxLayout, QLabel, QLineEdit, 
     QPushButton, QListWidget, QListWidgetItem,
-    QMessageBox, QFormLayout, QScrollArea
+    QMessageBox, QFormLayout, QScrollArea, QWidget
 )
 from PyQt5.QtCore import Qt
 
