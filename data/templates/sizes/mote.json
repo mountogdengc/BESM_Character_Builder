@@ -1,0 +1,119 @@
+{
+  "size_name": "Mote",
+  "key": "mote",
+  "size_rank": -9,
+  "typicalHeight": "500-900 \u00b5m",
+  "typicalMass": "50-500 \u00b5g",
+  "stats": {
+    "body_adj": 0,
+    "mind_adj": 0,
+    "soul_adj": 0
+  },
+  "modifiers": {
+    "liftingCapacity": "\u00f7 1 M",
+    "strengthDamage": "-90",
+    "armourEffect": "+90 damage",
+    "rangedModifier": "+18",
+    "speedRangeMultiplier": "\u00f7 500"
+  },
+  "attributes": [
+    {
+      "custom_name": "Ranged Attack",
+      "key": "ranged_attack",
+      "level": 9,
+      "user_description": null,
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Size Template",
+      "valid": true
+    },
+    {
+      "custom_name": "Ranged Defence",
+      "key": "ranged_defence",
+      "level": 9,
+      "user_description": null,
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Size Template",
+      "valid": true
+    },
+    {
+      "custom_name": "Small, Light, and Unobtrusive",
+      "key": "unique_attribute",
+      "level": 9,
+      "user_description": null,
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Size Template",
+      "valid": true
+    }
+  ],
+  "defects": [
+    {
+      "custom_name": "Lifting Capacity",
+      "key": "unique_defect",
+      "rank": 9,
+      "user_description": null,
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Size Template",
+      "valid": true
+    },
+    {
+      "custom_name": "Running Speed",
+      "key": "unique_defect",
+      "rank": 9,
+      "user_description": null,
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Size Template",
+      "valid": true
+    },
+    {
+      "custom_name": "Strength Damage",
+      "key": "unique_defect",
+      "rank": 9,
+      "user_description": null,
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Size Template",
+      "valid": true
+    },
+    {
+      "custom_name": "Vulnerable",
+      "key": "unique_defect",
+      "rank": 9,
+      "user_description": null,
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Size Template",
+      "valid": true
+    },
+    {
+      "custom_name": "Weak Throw",
+      "key": "unique_defect",
+      "rank": 9,
+      "user_description": null,
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Size Template",
+      "valid": true
+    }
+  ]
+}

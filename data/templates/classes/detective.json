@@ -1,0 +1,142 @@
+{
+  "class_name": "DETECTIVE",
+  "baseSize": {
+    "rank": 0,
+    "name": "Medium",
+    "options_source": "Class Template"
+  },
+  "stats": {
+    "body_adj": 1,
+    "mind_adj": 0,
+    "soul_adj": 0
+  },
+  "attributes": [
+    {
+      "custom_name": "Combat Technique",
+      "key": "combat_technique",
+      "level": 1,
+      "user_description": null,
+      "enhancements": [],
+      "limiters": [],
+      "options": [
+        "Judge Opponent"
+      ],
+      "user_input": null,
+      "options_source": "Class Template"
+    },
+    {
+      "custom_name": "Postcognition",
+      "key": "cognition",
+      "level": 5,
+      "user_description": null,
+      "enhancements": [],
+      "limiters": [
+        "equipment"
+      ],
+      "options": [],
+      "user_input": null,
+      "options_source": "Class Template"
+    },
+    {
+      "custom_name": "Features",
+      "key": "features",
+      "level": 2,
+      "user_description": null,
+      "enhancements": [],
+      "limiters": [],
+      "options": [
+        "Contacts"
+      ],
+      "user_input": null,
+      "options_source": "Class Template"
+    },
+    {
+      "custom_name": "Heightened Awareness",
+      "key": "heightened_awareness",
+      "level": 2,
+      "user_description": null,
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Class Template"
+    },
+    {
+      "custom_name": "Organisational Ties",
+      "key": "organisational_ties",
+      "level": 2,
+      "user_description": null,
+      "enhancements": [],
+      "limiters": [],
+      "options": [
+        "Contacts"
+      ],
+      "user_input": null,
+      "options_source": "Class Template"
+    },
+    {
+      "custom_name": "Skill Group",
+      "key": "skill_group",
+      "level": 1,
+      "user_description": null,
+      "enhancements": [],
+      "limiters": [],
+      "options": [
+        "Adventuring"
+      ],
+      "user_input": null,
+      "options_source": "Class Template"
+    },
+    {
+      "custom_name": "Skill Group",
+      "key": "skill_group",
+      "level": 1,
+      "user_description": null,
+      "enhancements": [],
+      "limiters": [],
+      "options": [
+        "Social"
+      ],
+      "user_input": null,
+      "options_source": "Class Template"
+    },
+    {
+      "custom_name": "Skill Group",
+      "key": "skill_group",
+      "level": 2,
+      "user_description": null,
+      "enhancements": [],
+      "limiters": [],
+      "options": [
+        "Street"
+      ],
+      "user_input": null,
+      "options_source": "Class Template"
+    },
+    {
+      "custom_name": "Skill Group",
+      "key": "skill_group",
+      "level": 1,
+      "user_description": null,
+      "enhancements": [],
+      "limiters": [],
+      "options": [
+        "Technical"
+      ],
+      "user_input": null,
+      "options_source": "Class Template"
+    },
+    {
+      "custom_name": "Wealth",
+      "key": "wealth",
+      "level": 1,
+      "user_description": null,
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Class Template"
+    }
+  ],
+  "defects": []
+}

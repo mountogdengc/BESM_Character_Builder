@@ -1,0 +1,43 @@
+{
+  "race_name": "SHAPECHANGER",
+  "baseSize": {
+    "size_rank": 0,
+    "size_name": "Medium",
+    "options_source": "Race Template"
+  },
+  "stats": {
+    "body_adj": 0,
+    "mind_adj": 0,
+    "soul_adj": 0
+  },
+  "attributes": [
+    {
+      "custom_name": "Dynamic Powers",
+      "key": "dynamic_powers",
+      "level": 2,
+      "user_description": "(Major: Shapeshifting -1)",
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Race Template",
+      "valid": true,
+      "name": "Dynamic Powers"
+    },
+    {
+      "custom_name": "Immutable",
+      "key": "immutable",
+      "level": 5,
+      "user_description": null,
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Race Template",
+      "valid": true,
+      "name": "Immutable"
+    }
+  ],
+  "defects": [],
+  "key": "shapechanger"
+}

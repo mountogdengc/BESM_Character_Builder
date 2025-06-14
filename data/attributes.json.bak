@@ -1,0 +1,2119 @@
+{
+    "attributes": [
+        {
+            "name": "Absorption",
+            "cost_per_level": 5,
+            "relevant_stat": "Body",
+            "is_human_attribute": false,
+            "description": "Absorbs physical damage and converts it into HP or EP, up to 5 per level. Cannot stack with Armor or Conversion. Not effective against non-physical attacks or certain enhancements.",
+            "source": "BESM4e",
+            "levels": {
+                "1": "Absorbs 5 damage",
+                "2": "Absorbs 10 damage",
+                "3": "Absorbs 15 damage",
+                "4": "Absorbs 20 damage",
+                "5": "Absorbs 25 damage",
+                "6": "Absorbs 30 damage"
+            },
+            "key": "absorption"
+        },
+        {
+            "name": "Alternate Form",
+            "cost_per_level": 4,
+            "relevant_stat": "Body",
+            "is_human_attribute": false,
+            "description": "Allows the character to transform into a different form with different Attributes and Defects. The form is built from 5 CP per level and stacks with existing Attributes. Reductions refund additional points.",
+            "source": "BESM4e",
+            "levels": {
+                "1": "5 CP for alternate form",
+                "2": "6\u00e2\u20ac\u201c10 CP for alternate form",
+                "3": "11\u00e2\u20ac\u201c15 CP for alternate form",
+                "4": "16\u00e2\u20ac\u201c20 CP for alternate form",
+                "5": "21\u00e2\u20ac\u201c25 CP for alternate form",
+                "6": "26\u00e2\u20ac\u201c30 CP for alternate form"
+            },
+            "key": "alternate_form"
+        },
+        {
+            "name": "Alternate Identity",
+            "cost_per_level": 1,
+            "relevant_stat": "Body",
+            "is_human_attribute": true,
+            "description": "Provides different identities without changing Attributes. Cosmetic only. Examples include different physical appearances, clothing, social identity, etc.",
+            "source": "BESM4e",
+            "levels": {
+                "1": "One alternate identity",
+                "2": "Two alternate identities",
+                "3": "Three alternate identities",
+                "4": "Four alternate identities",
+                "5": "Five alternate identities",
+                "6": "Six alternate identities"
+            },
+            "key": "alternate_identity"
+        },
+        {
+            "name": "Armour",
+            "cost_per_level": 2,
+            "relevant_stat": null,
+            "is_human_attribute": false,
+            "description": "Provides damage reduction of 5 per level against physical attacks. Can be enhanced/limited by damage type.",
+            "source": "BESM4e",
+            "levels": {
+                "1": "Armour Rating = 5",
+                "2": "Armour Rating = 10",
+                "3": "Armour Rating = 15",
+                "4": "Armour Rating = 20",
+                "5": "Armour Rating = 25",
+                "6": "Armour Rating = 30"
+            },
+            "stat_mods": {
+                "derived": {
+                    "Armour Rating": 5
+                }
+            },
+            "key": "armour"
+        },
+        {
+            "name": "Attack Mastery",
+            "cost_per_level": 1,
+            "relevant_stat": null,
+            "is_human_attribute": true,
+            "description": "Increases Attack Combat Value (ACV) by +1 per level regardless of weapon or unarmed status.",
+            "source": "BESM4e",
+            "levels": {
+                "1": "+1 ACV",
+                "2": "+2 ACV",
+                "3": "+3 ACV",
+                "4": "+4 ACV",
+                "5": "+5 ACV",
+                "6": "+6 ACV"
+            },
+            "stat_mods": {
+                "derived": {
+                    "ACV": 1
+                }
+            },
+            "key": "attack_mastery"
+        },
+        {
+            "name": "Augmented",
+            "cost_per_level": 2,
+            "relevant_stat": null,
+            "is_human_attribute": false,
+            "description": "Boosts a chosen Stat (Body, Mind, or Soul) by +1 per level. Used to show the stat is derived from an external source.",
+            "source": "BESM4e",
+            "levels": {
+                "1": "+1 to selected stat",
+                "2": "+2 to selected stat",
+                "3": "+3 to selected stat",
+                "4": "+4 to selected stat",
+                "5": "+5 to selected stat",
+                "6": "+6 to selected stat"
+            },
+            "user_input_required": [
+                {
+                    "label": "Stat Affected",
+                    "key": "stat_target",
+                    "field_type": "dropdown",
+                    "options": [
+                        "Body",
+                        "Mind",
+                        "Soul"
+                    ],
+                    "required": true
+                }
+            ],
+            "modifiers": [
+                {
+                    "target": "stat",
+                    "target_key_from_field": "stat_target",
+                    "modifier_type": "add_per_level",
+                    "value_per_level": 1
+                }
+            ],
+            "stat_mods": {
+                "dynamic": true,
+                "base": {
+                    "stat_target": 1
+                }
+            },
+            "key": "augmented"
+        },
+        {
+            "name": "Capacity",
+            "cost_per_level": 1,
+            "relevant_stat": null,
+            "is_human_attribute": false,
+            "description": "Allows a character or item to carry more passengers or cargo internally. Common for vehicles or large characters.",
+            "source": "BESM4e",
+            "levels": {
+                "1": "1 person / 200 kg",
+                "2": "2 people / 500 kg",
+                "3": "5 people / 1 tonne",
+                "4": "10 people / 2 tonnes",
+                "5": "25 people / 5 tonnes",
+                "6": "50 people / 10 tonnes",
+                "7": "100 people / 25 tonnes",
+                "8": "250 people / 50 tonnes",
+                "9": "500 people / 100 tonnes",
+                "10": "1,000 people / 200 tonnes",
+                "11": "Double capacity of previous level"
+            },
+            "key": "capacity"
+        },
+        {
+            "name": "Change State",
+            "cost_per_level": 3,
+            "relevant_stat": "Body",
+            "is_human_attribute": false,
+            "description": "Allows transformation into a different state of matter (liquid, gaseous, incorporeal, or energy) for varying durations. Useful for characters like spirits, elementals, or wizards.",
+            "source": "BESM4e",
+            "levels": {
+                "1": "Liquid state, short duration",
+                "2": "Liquid state, long duration",
+                "3": "Gaseous state, short duration",
+                "4": "Gaseous state, long duration",
+                "5": "Incorporeal state, short duration",
+                "6": "Incorporeal state, long duration",
+                "7": "Energy state, short duration",
+                "8": "Energy state, long duration"
+            },
+            "user_input_required": [
+                {
+                    "label": "State Type",
+                    "key": "state_type",
+                    "field_type": "dropdown",
+                    "options": [
+                        "Liquid",
+                        "Gaseous",
+                        "Incorporeal",
+                        "Energy"
+                    ],
+                    "required": true
+                }
+            ],
+            "key": "change_state"
+        },
+        {
+            "name": "Cognition",
+            "cost_per_level": 2,
+            "relevant_stat": "Mind",
+            "is_human_attribute": false,
+            "description": "Grants either Precognition (future visions) or Postcognition (visions of the past). Chosen at creation. Scope is limited by the GM.",
+            "source": "BESM4e",
+            "levels": {
+                "1": "See a few seconds ahead / 1 minute past",
+                "2": "See 1 minute ahead / 1 hour past",
+                "3": "See 10 minutes ahead / 1 day past",
+                "4": "See 1 hour ahead / 1 week past",
+                "5": "See 1 day ahead / 1 month past",
+                "6": "See 1 week ahead / 1 year past"
+            },
+            "key": "cognition"
+        },
+        {
+            "name": "Combat Technique",
+            "cost_per_level": 1,
+            "relevant_stat": null,
+            "is_human_attribute": true,
+            "description": "Each level grants the character a special combat technique (e.g. Blind Fighting, Brutal, Reflection). Can be taken multiple times.",
+            "source": "BESM4e",
+            "levels": {
+                "1": "One combat technique",
+                "2": "Two combat techniques",
+                "3": "Three combat techniques",
+                "4": "Four combat techniques",
+                "5": "Five combat techniques",
+                "6": "Six combat techniques"
+            },
+            "user_input_required": [
+                {
+                    "label": "Technique Description",
+                    "key": "technique_description",
+                    "field_type": "list",
+                    "description": "Enter one combat technique per line.",
+                    "autocomplete_options": [
+                        "Blind Fighting",
+                        "Blind Shooting",
+                        "Brutal",
+                        "Concealment",
+                        "Deflection",
+                        "Extended Range",
+                        "Judge Opponent",
+                        "Lethal Blow",
+                        "Lightning Reflexes",
+                        "Portable Armoury",
+                        "Reflection",
+                        "Tournament Encyclopaedia",
+                        "Weapons Encyclopaedia"
+                    ]
+                }
+            ],
+            "key": "combat_technique"
+        },
+        {
+            "name": "Companion",
+            "cost_per_level": 4,
+            "relevant_stat": null,
+            "is_human_attribute": false,
+            "description": "Grants a loyal NPC Companion built with 10 CP per level. Examples: familiars, pets, bodyguards, sentient items, etc.",
+            "source": "BESM4e",
+            "levels": {
+                "1": "10 CP Companion",
+                "2": "11 - 20 CP Companion",
+                "3": "21 - 30 CP Companion",
+                "4": "31 - 40 CP Companion",
+                "5": "41 - 50 CP Companion",
+                "6": "51 - 60 CP Companion"
+            },
+            "key": "companion"
+        },
+        {
+            "name": "Connected",
+            "cost_per_level": 1,
+            "relevant_stat": "Soul",
+            "is_human_attribute": true,
+            "description": "Character has ties to a powerful organization (corporation, government, crime syndicate, etc.) and can access resources and privileges.",
+            "source": "BESM4e",
+            "levels": {
+                "1": "Associated (e.g. student rep, police officer)",
+                "2": "Respected (e.g. sergeant, small biz owner)",
+                "3": "Modest Authority (e.g. lieutenant, mayor)",
+                "4": "Local Authority (e.g. captain, knight with land)",
+                "5": "Regional Authority (e.g. colonel, baron)",
+                "6": "Provincial Authority (e.g. senator, VP)",
+                "7": "National Authority (e.g. king, cabinet official)",
+                "8": "International Authority (e.g. president, pope)",
+                "9": "Planetary Authority (e.g. world ruler)",
+                "10": "Extraplanetary Authority (e.g. galactic emperor)"
+            },
+            "user_input_required": [
+                {
+                    "label": "Organization or Individual Connected To",
+                    "key": "connection_target",
+                    "field_type": "text",
+                    "description": "Name the organization, faction, or individual the character is connected to."
+                }
+            ],
+            "key": "connected"
+        },
+        {
+            "name": "Control Environment",
+            "cost_per_level": 1,
+            "relevant_stat": "Soul",
+            "is_human_attribute": true,
+            "description": "Allows minor influence over environmental conditions (e.g., light, sound, temperature) in a 10-metre radius for 1 minute or dramatic scene.",
+            "source": "BESM4e",
+            "levels": {
+                "1": "Influence over one environment",
+                "2": "Influence over two environments",
+                "3": "Influence over three environments",
+                "4": "Influence over four environments",
+                "5": "Influence over five environments",
+                "6": "Influence over six environments"
+            },
+            "user_input_required": [
+                {
+                    "label": "Controlled Environments",
+                    "key": "controlled_environments",
+                    "field_type": "combo_editable",
+                    "description": "List the types of environments the character can influence.",
+                    "options": [
+                        "Air Pressure",
+                        "Barometric Pressure",
+                        "Cold",
+                        "Color Saturation",
+                        "Darkness",
+                        "Dust",
+                        "Fog",
+                        "Gravity",
+                        "Heat",
+                        "Humidity",
+                        "Light",
+                        "Lightning",
+                        "Magnetism",
+                        "Mist",
+                        "Pollen",
+                        "Pollution",
+                        "Radiation",
+                        "Rain",
+                        "Shadow",
+                        "Silence",
+                        "Smell",
+                        "Snow",
+                        "Sound",
+                        "Static Electricity",
+                        "Thunder",
+                        "Vibration",
+                        "Visibility",
+                        "Wind"
+                    ]
+                }
+            ],
+            "key": "control_environment"
+        },
+        {
+            "name": "Conversion",
+            "cost_per_level": 3,
+            "relevant_stat": "Body",
+            "is_human_attribute": false,
+            "description": "Grants temporary Character Points when damaged. CP can temporarily enhance existing Attributes. Cannot convert damage already blocked or absorbed.",
+            "source": "BESM4e",
+            "levels": {
+                "1": "1 temporary CP per 10 damage",
+                "2": "2 temporary CP per 10 damage",
+                "3": "3 temporary CP per 10 damage",
+                "4": "4 temporary CP per 10 damage",
+                "5": "5 temporary CP per 10 damage",
+                "6": "6 temporary CP per 10 damage"
+            },
+            "key": "conversion"
+        },
+        {
+            "name": "Data Access",
+            "cost_per_level": 2,
+            "relevant_stat": "Mind",
+            "is_human_attribute": false,
+            "description": "Enables access and understanding of nearby computer systems. Radius increases with level. Can be repurposed for organic data in alternate settings.",
+            "source": "BESM4e",
+            "levels": {
+                "1": "Access tech in 10 cm radius",
+                "2": "Access tech in 1 m radius",
+                "3": "Access tech in 10 m radius",
+                "4": "Access tech in 100 m radius",
+                "5": "Access tech in 1 km radius",
+                "6": "Access tech in 10 km radius"
+            },
+            "key": "data_access"
+        },
+        {
+            "name": "Defence Mastery",
+            "cost_per_level": 1,
+            "relevant_stat": null,
+            "is_human_attribute": true,
+            "description": "Increases Defence Combat Value across all combat styles and weapons. Represents general defensive skill or instinct.",
+            "source": "BESM4e",
+            "levels": {
+                "1": "+1 to Defence CV",
+                "2": "+2 to Defence CV",
+                "3": "+3 to Defence CV",
+                "4": "+4 to Defence CV",
+                "5": "+5 to Defence CV",
+                "6": "+6 to Defence CV"
+            },
+            "key": "defence_mastery"
+        },
+        {
+            "name": "Dimension Walk",
+            "cost_per_level": 5,
+            "relevant_stat": "Soul",
+            "is_human_attribute": false,
+            "description": "Allows travel to adjacent dimensions with varying degrees of difference from current reality, based on Attribute level.",
+            "source": "BESM4e",
+            "levels": {
+                "1": "Insignificant changes",
+                "2": "Specific changes",
+                "3": "Minor changes",
+                "4": "Moderate changes",
+                "5": "Significant changes",
+                "6": "Major changes"
+            },
+            "key": "dimension_walk"
+        },
+        {
+            "name": "Dynamic Powers",
+            "cost_per_level": 10,
+            "relevant_stat": "Variable",
+            "is_human_attribute": false,
+            "description": "Gives story-driven power over a specific concept, natural force, or influence. Choose a category type and define what your character controls. Must be discussed with the GM.",
+            "source": "BESM4e",
+            "levels": {
+                "1": "Minimal control over area",
+                "2": "Minor control over area",
+                "3": "Moderate control over area",
+                "4": "Good control over area",
+                "5": "Significant control over area",
+                "6": "Major control over area"
+            },
+            "user_input_required": [
+                {
+                    "label": "Category Type",
+                    "key": "category_type",
+                    "field_type": "select",
+                    "description": "Select the scope of influence your character has.",
+                    "options": [
+                        "Minor",
+                        "Major",
+                        "Primal"
+                    ]
+                },
+                {
+                    "label": "Controlled Category",
+                    "key": "controlled_category",
+                    "field_type": "combo_editable",
+                    "description": "Enter the specific category your character controls.",
+                    "autocomplete_by_category": {
+                        "Minor": [
+                            "Always Being On Time",
+                            "Always Dressed for the Occasion",
+                            "Cats",
+                            "Charm",
+                            "Earth",
+                            "Fashion",
+                            "Fire",
+                            "Friction",
+                            "Having the Right Amount of Money",
+                            "Insects",
+                            "Keys",
+                            "Lust",
+                            "Making People Laugh",
+                            "Nutrition",
+                            "Pride",
+                            "Protection",
+                            "Shadow",
+                            "Silence",
+                            "Sunlight",
+                            "Temperature",
+                            "Water",
+                            "Wind",
+                            "Writing"
+                        ],
+                        "Major": [
+                            "Animals",
+                            "Cities",
+                            "Communication",
+                            "Computer Data",
+                            "Drugs",
+                            "Electricity",
+                            "Fertility",
+                            "Gravity",
+                            "Health",
+                            "Love",
+                            "Magnetism",
+                            "Manufacturing",
+                            "Necromancy",
+                            "Shapeshifting",
+                            "Strength",
+                            "Travel",
+                            "Truth",
+                            "Weapons",
+                            "Weather"
+                        ],
+                        "Primal": [
+                            "Chaos",
+                            "Death",
+                            "Dimensions",
+                            "Dreams",
+                            "Earth (as a cosmic force)",
+                            "Force",
+                            "Heaven",
+                            "Hell",
+                            "Law",
+                            "Life",
+                            "Magic",
+                            "Math",
+                            "Self",
+                            "Stars",
+                            "Thought",
+                            "Time",
+                            "War"
+                        ]
+                    }
+                }
+            ],
+            "key": "dynamic_powers"
+        },
+        {
+            "name": "Enemy Attack",
+            "cost_per_level": 1,
+            "relevant_stat": null,
+            "description": "Grants +2 ACV per level against specific opponent types. Bonus applies when attacking these enemies and stacks with other ACV bonuses.",
+            "source": "BESM4e",
+            "levels": {
+                "1": "+2 ACV vs. chosen enemy",
+                "2": "+4 ACV vs. chosen enemy",
+                "3": "+6 ACV vs. chosen enemy",
+                "4": "+8 ACV vs. chosen enemy",
+                "5": "+10 ACV vs. chosen enemy",
+                "6": "+12 ACV vs. chosen enemy"
+            },
+            "user_input_required": [
+                {
+                    "label": "Enemy Type",
+                    "key": "enemy_type",
+                    "field_type": "combo_editable",
+                    "description": "Enter or select the type of enemy this bonus applies to.",
+                    "options": [
+                        "A Specific Nemesis",
+                        "A Specific Organization",
+                        "Aliens",
+                        "Animals",
+                        "Angels",
+                        "Bandits",
+                        "Blood Relatives",
+                        "Cultists",
+                        "Demons",
+                        "Dragons",
+                        "Extra-Dimensional Beings",
+                        "Ghosts",
+                        "Giants",
+                        "Goblins",
+                        "Insects",
+                        "Nobility",
+                        "Orcs",
+                        "Robots",
+                        "Trolls",
+                        "Undead",
+                        "Vampires",
+                        "Werewolves",
+                        "Zombies"
+                    ]
+                }
+            ],
+            "key": "enemy_attack",
+            "is_human_attribute": false
+        },
+        {
+            "name": "Enemy Defence",
+            "cost_per_level": 1,
+            "relevant_stat": null,
+            "description": "Grants +2 DCV per level against specific opponent types. Bonus applies when defending against these enemies and stacks with other DCV bonuses.",
+            "source": "BESM4e",
+            "levels": {
+                "1": "+2 DCV vs. chosen enemy",
+                "2": "+4 DCV vs. chosen enemy",
+                "3": "+6 DCV vs. chosen enemy",
+                "4": "+8 DCV vs. chosen enemy",
+                "5": "+10 DCV vs. chosen enemy",
+                "6": "+12 DCV vs. chosen enemy"
+            },
+            "user_input_required": [
+                {
+                    "label": "Enemy Type",
+                    "key": "enemy_type",
+                    "field_type": "combo_editable",
+                    "description": "Enter or select the type of enemy this bonus applies to.",
+                    "options": [
+                        "A Specific Nemesis",
+                        "A Specific Organization",
+                        "Aliens",
+                        "Animals",
+                        "Angels",
+                        "Bandits",
+                        "Blood Relatives",
+                        "Cultists",
+                        "Demons",
+                        "Dragons",
+                        "Extra-Dimensional Beings",
+                        "Ghosts",
+                        "Giants",
+                        "Goblins",
+                        "Insects",
+                        "Nobility",
+                        "Orcs",
+                        "Robots",
+                        "Trolls",
+                        "Undead",
+                        "Vampires",
+                        "Werewolves",
+                        "Zombies"
+                    ]
+                }
+            ],
+            "key": "enemy_defence",
+            "is_human_attribute": false
+        },
+        {
+            "name": "Energised",
+            "cost_per_level": 1,
+            "relevant_stat": null,
+            "description": "Increases total Energy Points (EP) by 10 per level. Can be modified with Limiters to create a secondary conditional EP pool.",
+            "source": "BESM4e",
+            "levels": {
+                "1": "+10 EP",
+                "2": "+20 EP",
+                "3": "+30 EP",
+                "4": "+40 EP",
+                "5": "+50 EP",
+                "6": "+60 EP"
+            },
+            "key": "energised",
+            "is_human_attribute": false
+        },
+        {
+            "name": "Exorcism",
+            "cost_per_level": 1,
+            "relevant_stat": "Soul",
+            "description": "Allows a character to attempt freeing others from supernatural control through a Soul + Exorcism roll. Can counter Mind Control and Soul-based Metamorphosis.",
+            "source": "BESM4e",
+            "levels": {
+                "1": "+2 to Exorcism checks",
+                "2": "+4 to Exorcism checks",
+                "3": "+6 to Exorcism checks",
+                "4": "+8 to Exorcism checks",
+                "5": "+10 to Exorcism checks",
+                "6": "+12 to Exorcism checks"
+            },
+            "key": "exorcism",
+            "is_human_attribute": false
+        },
+        {
+            "name": "Extra Actions",
+            "cost_per_level": 4,
+            "relevant_stat": null,
+            "description": "Grants additional actions per round equal to level. Useful for fast characters or tech-enhanced initiative.",
+            "source": "BESM4e",
+            "levels": {
+                "1": "+1 action per round",
+                "2": "+2 actions per round",
+                "3": "+3 actions per round",
+                "4": "+4 actions per round",
+                "5": "+5 actions per round",
+                "6": "+6 actions per round"
+            },
+            "key": "extra_actions",
+            "is_human_attribute": false
+        },
+        {
+            "name": "Extra Arms",
+            "cost_per_level": 1,
+            "relevant_stat": null,
+            "description": "Grants additional limbs usable for manipulation or holding items. Does not grant extra attacks.",
+            "source": "BESM4e",
+            "levels": {
+                "1": "1 extra arm",
+                "2": "2 extra arms",
+                "3": "3 - 5 extra arms",
+                "4": "6 - 10 extra arms",
+                "5": "11 - 25 extra arms",
+                "6": "26 - 50 extra arms"
+            },
+            "key": "extra_arms",
+            "is_human_attribute": false
+        },
+        {
+            "name": "Features",
+            "cost_per_level": 1,
+            "relevant_stat": "Variable",
+            "is_human_attribute": true,
+            "description": "The character possesses various minor abilities or qualities that grant useful but secondary advantages. Can be personal, racial, or technological in nature. These are typically flavor or small utility traits.",
+            "source": "BESM4e",
+            "levels": {
+                "1": "1-2 Features",
+                "2": "3-5 Features",
+                "3": "6-10 Features",
+                "4": "11-25 Features",
+                "5": "26-50 Features",
+                "6": "51-100 Features"
+            },
+            "user_input_required": [
+                {
+                    "label": "Feature Type",
+                    "key": "feature_type",
+                    "field_type": "select",
+                    "description": "Select the general type of feature.",
+                    "options": [
+                        "Personal",
+                        "Racial",
+                        "Technological"
+                    ]
+                },
+                {
+                    "label": "Features List",
+                    "key": "features_list",
+                    "field_type": "combo_editable",
+                    "description": "Enter one or more features (select from suggestions or write your own).",
+                    "options": [
+                        "Ambidexterity",
+                        "Animal Empathy",
+                        "Appearance",
+                        "Auditory Discrimination",
+                        "Breath/Heartbeat Control",
+                        "Depth Awareness",
+                        "Direction Sense",
+                        "Eidetic Memory",
+                        "Famous (Beneficial)",
+                        "Foreign Language",
+                        "Hypermobility (Double-Jointed)",
+                        "Light Sleeper",
+                        "Lightning Calculator",
+                        "Mimic Sound",
+                        "Perfect Pitch",
+                        "Range Sense",
+                        "Spatial Sense",
+                        "Speed Reading",
+                        "Time Sense",
+                        "Weather Sense",
+                        "360-Degree Vision",
+                        "Camouflage",
+                        "Fluid Squirting",
+                        "Gills",
+                        "Heat Regulation",
+                        "Homing Instinct",
+                        "Light Armour (AR 1-4)",
+                        "Light Weaponry (5 Damage)",
+                        "Long Tongue",
+                        "Longevity",
+                        "Low-Light Vision",
+                        "Multiple Hearts",
+                        "Nictitating Membrane",
+                        "Pouch",
+                        "Retractable Claws",
+                        "Scent Glands",
+                        "Scentless",
+                        "Sexual Duality",
+                        "Ultrasonic Communication",
+                        "Webbed Feet/Hands/Paws",
+                        "Alarm System",
+                        "Basic AI (0 Stats)",
+                        "Camera",
+                        "Comms Suite",
+                        "Data Backup Auto System",
+                        "Ejection Seat",
+                        "Emergency Lights/Siren",
+                        "Fast Acceleration",
+                        "GPS",
+                        "Gyrocompass",
+                        "Highly Maneuverable",
+                        "Identity Verifier",
+                        "Life Monitoring Systems",
+                        "Luxurious Decor",
+                        "Modern Vehicle Tech Suite",
+                        "Naked Enhancement",
+                        "Radar Detector",
+                        "Revolving License Plate",
+                        "Smartphone",
+                        "Tool Kit",
+                        "Medical Kit"
+                    ]
+                }
+            ],
+            "key": "features"
+        },
+        {
+            "name": "Flight",
+            "cost_per_level": 3,
+            "relevant_stat": "Body",
+            "description": "Allows the character to fly through an atmosphere using any method such as wings, magic, or anti-gravity.",
+            "source": "BESM4e",
+            "levels": {
+                "1": "Fly at speeds up to 10 kph",
+                "2": "Fly at speeds up to 30 kph",
+                "3": "Fly at speeds up to 100 kph",
+                "4": "Fly at speeds up to 300 kph",
+                "5": "Fly at speeds up to 1,000 kph",
+                "6": "Fly at speeds up to 3,000 kph"
+            },
+            "key": "flight",
+            "is_human_attribute": false
+        },
+        {
+            "name": "Force Field",
+            "cost_per_level": 4,
+            "relevant_stat": "Body",
+            "description": "An energy shield that protects the user from damage, often magical or technological in nature.",
+            "source": "BESM4e",
+            "levels": {
+                "1": "Armour Rating = 10",
+                "2": "Armour Rating = 20",
+                "3": "Armour Rating = 30",
+                "4": "Armour Rating = 40",
+                "5": "Armour Rating = 50",
+                "6": "Armour Rating = 60"
+            },
+            "key": "force_field",
+            "is_human_attribute": false
+        },
+        {
+            "name": "Gear",
+            "cost_per_level": 1,
+            "relevant_stat": null,
+            "description": "Represents a character's access to useful but non-powerful equipment suitable for the campaign setting.",
+            "source": "BESM4e",
+            "levels": {
+                "1": "A couple pieces of Gear (1-2)",
+                "2": "A few pieces of Gear (3-5)",
+                "3": "Several pieces of Gear (6-10)",
+                "4": "Many pieces of Gear (11-25)",
+                "5": "Large amount of Gear (26-50)",
+                "6": "Huge amount of Gear (51-100)"
+            },
+            "key": "gear",
+            "is_human_attribute": true
+        },
+        {
+            "name": "Ground Speed",
+            "cost_per_level": 1,
+            "relevant_stat": "Body",
+            "description": "Allows the character or item to move quickly on the ground using various movement techniques.",
+            "levels": {
+                "1": "Ground speed up to 10 kph",
+                "2": "Ground speed up to 25 kph",
+                "3": "Ground speed up to 50 kph",
+                "4": "Ground speed up to 100 kph",
+                "5": "Ground speed up to 250 kph",
+                "6": "Ground speed up to 500 kph"
+            },
+            "key": "ground_speed",
+            "is_human_attribute": false
+        },
+        {
+            "name": "Healing",
+            "cost_per_level": 1,
+            "relevant_stat": "Soul",
+            "description": "Allows the character to heal physical injuries through touch, including some severe trauma.",
+            "source": "BESM4e",
+            "levels": {
+                "1": "Heals 5 Health Points",
+                "2": "Heals 10 Health Points",
+                "3": "Heals 15 Health Points",
+                "4": "Heals 20 Health Points",
+                "5": "Heals 25 Health Points",
+                "6": "Heals 30 Health Points"
+            },
+            "key": "healing",
+            "is_human_attribute": false
+        },
+        {
+            "name": "Heightened Awareness",
+            "cost_per_level": 1,
+            "relevant_stat": "Body or Mind",
+            "description": "Grants a bonus on rolls to notice nearby hidden objects or ambushes.",
+            "source": "BESM4e",
+            "levels": {
+                "1": "+2 Stat roll awareness bonus",
+                "2": "+4 Stat roll awareness bonus",
+                "3": "+6 Stat roll awareness bonus",
+                "4": "+8 Stat roll awareness bonus",
+                "5": "+10 Stat roll awareness bonus",
+                "6": "+12 Stat roll awareness bonus"
+            },
+            "key": "heightened_awareness",
+            "is_human_attribute": false
+        },
+        {
+            "name": "Heightened Senses",
+            "cost_per_level": 1,
+            "relevant_stat": "Body or Mind",
+            "description": "Enhances one or more of the character's physical senses to superhuman levels.",
+            "source": "BESM4e",
+            "levels": {
+                "1": "One enhanced sense",
+                "2": "Two enhanced senses",
+                "3": "Three enhanced senses",
+                "4": "Four enhanced senses",
+                "5": "Five enhanced senses"
+            },
+            "user_input_required": [
+                {
+                    "label": "Enhanced Senses",
+                    "key": "enhanced_senses",
+                    "field_type": "list",
+                    "description": "List the senses enhanced by this attribute.",
+                    "autocomplete_options": [
+                        "Sight",
+                        "Hearing",
+                        "Smell",
+                        "Taste",
+                        "Touch"
+                    ]
+                }
+            ],
+            "key": "heightened_senses",
+            "is_human_attribute": false
+        },
+        {
+            "name": "Illusion",
+            "cost_per_level": 1,
+            "relevant_stat": "Body or Mind",
+            "description": "Allows the character to create mental hallucinations that appear real to targeted observers. Illusions can vary in complexity based on enhancements and require concentration to maintain. Each level increases the maximum size of the illusion.",
+            "source": "BESM4e",
+            "levels": {
+                "1": "Tiny-sized Illusions (10 cm)",
+                "2": "Small-sized Illusions (1 m)",
+                "3": "Moderate-sized Illusions (10 m)",
+                "4": "Building-sized Illusions (100 m)",
+                "5": "Neighbourhood-sized Illusions (1 km)",
+                "6": "City-sized Illusions (10 km)"
+            },
+            "key": "illusion",
+            "is_human_attribute": false
+        },
+        {
+            "name": "Immunity",
+            "cost_per_level": 3,
+            "relevant_stat": "Body",
+            "description": "The character is completely immune to attack damage and adverse effects from a particular weapon, element, or condition. Higher levels reflect broader or more impactful immunities.",
+            "source": "BESM4e",
+            "levels": {
+                "1": "Rare role in game (e.g., sacred wood weapons, specific nemesis)",
+                "2": "Small role in game (e.g., silver weapons, specific group)",
+                "3": "Moderate role in game (e.g., iron weapons, demons, night)",
+                "4": "Large role in game (e.g., electricity, cold, weapon types)",
+                "5": "Major role in game (e.g., fire/heat, broad weapon types)",
+                "6": "Extreme role in game (e.g., gunfire, explosives, unarmed attacks)"
+            },
+            "user_input_required": [
+                {
+                    "label": "Immunity Target",
+                    "key": "immune_to",
+                    "field_type": "text",
+                    "description": "Describe what the character is immune to (e.g., fire, cold, silver weapons)."
+                }
+            ],
+            "key": "immunity",
+            "is_human_attribute": false
+        },
+        {
+            "name": "Immutable",
+            "cost_per_level": 1,
+            "relevant_stat": "Body or Soul",
+            "description": "Protects the character from transformation, displacement, or nullification effects. Grants a bonus to resist certain abilities and includes minor armor protection against insidious attacks.",
+            "source": "BESM4e",
+            "levels": {
+                "1": "+2 Stat roll bonus when resisting effects",
+                "2": "+4 Stat roll bonus when resisting effects",
+                "3": "+6 Stat roll bonus when resisting effects",
+                "4": "+8 Stat roll bonus when resisting effects",
+                "5": "+10 Stat roll bonus when resisting effects",
+                "6": "+12 Stat roll bonus when resisting effects"
+            },
+            "key": "immutable",
+            "is_human_attribute": false
+        },
+        {
+            "name": "Inspire",
+            "cost_per_level": 1,
+            "relevant_stat": "Soul",
+            "description": "The character can uplift allies and instill courage, strength, or resolve through charisma, magic, or leadership. Requires a successful Soul or Skill Group roll. Allies gain a bonus to relevant rolls and recover Energy Points more quickly.",
+            "source": "BESM4e",
+            "levels": {
+                "1": "+1 bonus to appropriate Stat/Skill Group rolls",
+                "2": "+2 bonus to appropriate Stat/Skill Group rolls",
+                "3": "+3 bonus to appropriate Stat/Skill Group rolls",
+                "4": "+4 bonus to appropriate Stat/Skill Group rolls",
+                "5": "+5 bonus to appropriate Stat/Skill Group rolls",
+                "6": "+6 bonus to appropriate Stat/Skill Group rolls"
+            },
+            "key": "inspire",
+            "is_human_attribute": false
+        },
+        {
+            "name": "Items",
+            "cost_per_level": 1,
+            "relevant_stat": null,
+            "description": "Items are devices that enhance a character in some way or that serve as a useful tool, vehicle, base, or weapon.",
+            "source": "BESM4e",
+            "levels": {
+                "1": "+1 bonus to appropriate Stat/Skill Group rolls",
+                "2": "+2 bonus to appropriate Stat/Skill Group rolls",
+                "3": "+3 bonus to appropriate Stat/Skill Group rolls",
+                "4": "+4 bonus to appropriate Stat/Skill Group rolls",
+                "5": "+5 bonus to appropriate Stat/Skill Group rolls",
+                "6": "+6 bonus to appropriate Stat/Skill Group rolls"
+            },
+            "key": "items",
+            "is_human_attribute": false
+        },
+        {
+            "name": "Jumping",
+            "cost_per_level": 1,
+            "relevant_stat": "Body",
+            "description": "Allows a character to jump great distances and land without injury.",
+            "source": "BESM4e",
+            "levels": {
+                "1": "Jump up to 3 times normal distance",
+                "2": "Jump up to 10 times normal distance",
+                "3": "Jump up to 30 times normal distance",
+                "4": "Jump up to 100 times normal distance",
+                "5": "Jump up to 300 times normal distance",
+                "6": "Jump up to 1,000 times normal distance"
+            },
+            "key": "jumping",
+            "is_human_attribute": false
+        },
+        {
+            "name": "Massive Damage",
+            "cost_per_level": 3,
+            "relevant_stat": null,
+            "description": "Increases damage multiplier by striking at weaknesses.",
+            "source": "BESM4e",
+            "levels": {
+                "1": "Damage Multiplier increases by 1",
+                "2": "Damage Multiplier increases by 2",
+                "3": "Damage Multiplier increases by 3",
+                "4": "Damage Multiplier increases by 4",
+                "5": "Damage Multiplier increases by 5",
+                "6": "Damage Multiplier increases by 6"
+            },
+            "key": "massive_damage",
+            "is_human_attribute": false
+        },
+        {
+            "name": "Melee Attack",
+            "cost_per_level": 1,
+            "relevant_stat": null,
+            "description": "Adds +2 ACV per level when using a specific fighting technique.",
+            "source": "BESM4e",
+            "levels": {
+                "1": "Attack Combat Value increases by 2 when using a specific fighting technique",
+                "2": "Attack Combat Value increases by 4 when using a specific fighting technique",
+                "3": "Attack Combat Value increases by 6 when using a specific fighting technique",
+                "4": "Attack Combat Value increases by 8 when using a specific fighting technique",
+                "5": "Attack Combat Value increases by 10 when using a specific fighting technique",
+                "6": "Attack Combat Value increases by 12 when using a specific fighting technique"
+            },
+            "user_input_required": [
+                {
+                    "label": "Weapon Class or Technique",
+                    "key": "weapon_class",
+                    "field_type": "text",
+                    "description": "Enter the class of weapon or specific fighting style this bonus applies to."
+                }
+            ],
+            "key": "melee_attack",
+            "is_human_attribute": false
+        },
+        {
+            "name": "Melee Defence",
+            "cost_per_level": 1,
+            "relevant_stat": null,
+            "description": "Adds +2 DCV per level when using a specific fighting technique.",
+            "source": "BESM4e",
+            "levels": {
+                "1": "Defence Combat Value increases by 2 when using a specific technique",
+                "2": "Defence Combat Value increases by 4 when using a specific technique",
+                "3": "Defence Combat Value increases by 6 when using a specific technique",
+                "4": "Defence Combat Value increases by 8 when using a specific technique",
+                "5": "Defence Combat Value increases by 10 when using a specific technique",
+                "6": "Defence Combat Value increases by 12 when using a specific technique"
+            },
+            "user_input_required": [
+                {
+                    "label": "Weapon Class or Technique",
+                    "key": "weapon_class",
+                    "field_type": "text",
+                    "description": "Enter the class of weapon or specific fighting style this bonus applies to."
+                }
+            ],
+            "key": "melee_defence",
+            "is_human_attribute": false
+        },
+        {
+            "name": "Merge",
+            "cost_per_level": 4,
+            "relevant_stat": null,
+            "source": "BESM4e",
+            "description": "Allows multiple items or characters to merge into a more powerful form.",
+            "levels": {
+                "1": "Merged Item is created with up to 10 Points for each combining Item",
+                "2": "Merged Item is created with 11-20 Points for each combining Item",
+                "3": "Merged Item is created with 21-30 Points for each combining Item",
+                "4": "Merged Item is created with 31-40 Points for each combining Item",
+                "5": "Merged Item is created with 41-50 Points for each combining Item",
+                "6": "Merged Item is created with 51-60 Points for each combining Item"
+            },
+            "key": "merge",
+            "is_human_attribute": false
+        },
+        {
+            "name": "Metamorphosis",
+            "cost_per_level": 2,
+            "relevant_stat": "Mind or Soul",
+            "description": "Allows the character to transform themselves or others into a new species or form for a limited duration. This change replaces the subject\u00e2\u20ac\u2122s current Race Template with a new one of equivalent Character Point value, determined by the level of this Attribute.",
+            "source": "BESM4e",
+            "levels": {
+                "1": "Race Template is created with up to +/- 5 Character Points",
+                "2": "Race Template is created with up to +/- 10 Character Points",
+                "3": "Race Template is created with up to +/- 15 Character Points",
+                "4": "Race Template is created with up to +/- 20 Character Points",
+                "5": "Race Template is created with up to +/- 25 Character Points",
+                "6": "Race Template is created with up to +/- 30 Character Points"
+            },
+            "user_input_required": [
+                {
+                    "label": "Template Name",
+                    "key": "template_name",
+                    "field_type": "text",
+                    "description": "Enter the name of the Race Template this attribute transforms into. The template should be pre-approved by the GM or selected from the template list."
+                },
+                {
+                    "label": "Template Cost (in Character Points)",
+                    "key": "template_cp_value",
+                    "field_type": "text",
+                    "description": "Enter the point value of the Race Template (e.g., +15 or -10)."
+                }
+            ],
+            "key": "metamorphosis",
+            "is_human_attribute": false
+        },
+        {
+            "name": "Mind Control",
+            "cost_per_level": 5,
+            "relevant_stat": "Mind",
+            "description": "Mentally dominate a target through touch. Unwilling targets resist with an opposed Mind roll. Duration is typically one minute or a dramatic scene.",
+            "source": "BESM4e",
+            "levels": {
+                "1": "Basic commands like 'turn around'",
+                "2": "Simple commands like 'go make me a sandwich'",
+                "3": "Complex commands like 'use a fake ID to smuggle an item'",
+                "4": "Can issue aggressive commands (e.g., attacking)",
+                "5": "Can erase brief memories",
+                "6": "Can erase or alter complex memories"
+            },
+            "key": "mind_control",
+            "is_human_attribute": false
+        },
+        {
+            "name": "Mind Shield",
+            "cost_per_level": 1,
+            "relevant_stat": "Mind",
+            "source": "BESM4e",
+            "description": "Protects against psychic intrusion and attacks with the Psychic Weapon Enhancement. Provides a roll bonus and mental armor.",
+            "levels": {
+                "1": "+2 bonus and 5 mental armor",
+                "2": "+4 bonus and 10 mental armor",
+                "3": "+6 bonus and 15 mental armor",
+                "4": "+8 bonus and 20 mental armor",
+                "5": "+10 bonus and 25 mental armor",
+                "6": "+12 bonus and 30 mental armor"
+            },
+            "key": "mind_shield",
+            "is_human_attribute": false
+        },
+        {
+            "name": "Minions",
+            "cost_per_level": 2,
+            "relevant_stat": "Soul",
+            "source": "BESM4e",
+            "description": "Character commands loyal followers. Each minion can be created with up to 1/5 of the character's total points.",
+            "levels": {
+                "1": "Up to 5 Minions",
+                "2": "6-10 Minions",
+                "3": "11-25 Minions",
+                "4": "26-50 Minions",
+                "5": "51-100 Minions",
+                "6": "101-200 Minions"
+            },
+            "key": "minions",
+            "is_human_attribute": false
+        },
+        {
+            "name": "Mulligan",
+            "cost_per_level": 1,
+            "relevant_stat": "Soul",
+            "source": "BESM4e",
+            "description": "Allows a character to reroll all dice for an action. You may choose from any result (original or rerolled).",
+            "levels": {
+                "1": "2 rerolls per session",
+                "2": "4 rerolls per session",
+                "3": "6 rerolls per session",
+                "4": "8 rerolls per session",
+                "5": "10 rerolls per session",
+                "6": "12 rerolls per session"
+            },
+            "key": "mulligan",
+            "is_human_attribute": false
+        },
+        {
+            "name": "Nullify",
+            "cost_per_level": 5,
+            "relevant_stat": "Body or Soul",
+            "source": "BESM4e",
+            "description": "Temporarily nullify Attributes based on their source (e.g., magic, tech). Requires touch and a successful attack action.",
+            "levels": {
+                "1": "Nullify 1 Level of an Attribute",
+                "2": "Nullify 2 Levels",
+                "3": "Nullify 3 Levels",
+                "4": "Nullify 4 Levels",
+                "5": "Nullify 5 Levels",
+                "6": "Nullify 6 Levels"
+            },
+            "user_input_required": [
+                {
+                    "label": "Attribute Source",
+                    "key": "nullify_source",
+                    "field_type": "text",
+                    "description": "Enter the power source this attribute nullifies (e.g., magic, technology, supernatural)."
+                }
+            ],
+            "key": "nullify",
+            "is_human_attribute": false
+        },
+        {
+            "name": "Plant Control",
+            "cost_per_level": 1,
+            "relevant_stat": "Mind",
+            "source": "BESM4e",
+            "description": "Control plant growth and movement in a given area. Plants return to normal after the effect ends.",
+            "levels": {
+                "1": "10 cm radius; plants grow x3",
+                "2": "1 m radius; plants grow x10",
+                "3": "10 m radius; plants grow x30",
+                "4": "100 m radius; plants grow x100",
+                "5": "1 km radius; plants grow x300",
+                "6": "10 km radius; plants grow x1000"
+            },
+            "key": "plant_control",
+            "is_human_attribute": false
+        },
+        {
+            "name": "Pocket Dimension",
+            "cost_per_level": 1,
+            "relevant_stat": null,
+            "source": "BESM4e",
+            "description": "Grants the user control over a small extra-dimensional space for storage, habitation, or narrative purposes. Typically requires Dimension Walk or Portal unless granted via an accessible item.",
+            "levels": {
+                "1": "Tiny dimension (10 cm radius)",
+                "2": "Small dimension (1 m radius)",
+                "3": "Moderately sized dimension (10 m radius)",
+                "4": "Building-sized dimension (100 m radius)",
+                "5": "Neighbourhood-sized dimension (1 km radius)",
+                "6": "City-sized dimension (10 km radius)"
+            },
+            "key": "pocket_dimension",
+            "is_human_attribute": false
+        },
+        {
+            "name": "Portal",
+            "cost_per_level": 2,
+            "relevant_stat": "Soul",
+            "source": "BESM4e",
+            "description": "Creates a one-way dimensional gate to another defined plane of existence or dimension.",
+            "levels": {
+                "1": "Create a one-way Portal to 1 defined dimension",
+                "2": "Create a one-way Portal to 2 defined dimensions",
+                "3": "Create a one-way Portal to 3 defined dimensions",
+                "4": "Create a one-way Portal to 4 defined dimensions",
+                "5": "Create a one-way Portal to 5 defined dimensions",
+                "6": "Create a one-way Portal to 6 defined dimensions"
+            },
+            "key": "portal",
+            "is_human_attribute": false
+        },
+        {
+            "name": "Power Flux",
+            "cost_per_level": 10,
+            "relevant_stat": "Variable",
+            "source": "BESM4e",
+            "description": "Grants the user a pool of Flux Points to dynamically assign to thematic Attributes once per minute or dramatic scene. Attributes must be aligned to a user-defined concept.",
+            "levels": {
+                "1": "Reassign up to 5 Flux Points each minute",
+                "2": "Reassign up to 10 Flux Points each minute",
+                "3": "Reassign up to 15 Flux Points each minute",
+                "4": "Reassign up to 20 Flux Points each minute",
+                "5": "Reassign up to 25 Flux Points each minute",
+                "6": "Reassign up to 30 Flux Points each minute"
+            },
+            "user_input_required": [
+                {
+                    "label": "Flux Category",
+                    "key": "flux_category",
+                    "field_type": "text",
+                    "description": "Enter the thematic category (e.g., cats, fire, lust, gravity) that all Flux powers must align with."
+                }
+            ],
+            "key": "power_flux",
+            "is_human_attribute": false
+        },
+        {
+            "name": "Power Variation",
+            "cost_per_level": 4,
+            "relevant_stat": "Variable",
+            "source": "BESM4e",
+            "description": "Allows redistribution of CPs between a fixed set of Attributes. Ideal for characters with adjustable power sets or shifting forms.",
+            "levels": {
+                "1": "Reassign Character Points between 2 Attributes each minute",
+                "2": "Reassign Character Points between 3 Attributes each minute",
+                "3": "Reassign Character Points between 4 Attributes each minute",
+                "4": "Reassign Character Points between 5 Attributes each minute",
+                "5": "Reassign Character Points between 6 Attributes each minute",
+                "6": "Reassign Character Points between 7 Attributes each minute"
+            },
+            "user_input_required": [
+                {
+                    "label": "Variable Attributes",
+                    "key": "variable_attributes",
+                    "field_type": "list",
+                    "description": "List the specific Attributes whose CP values may be varied."
+                }
+            ],
+            "key": "power_variation",
+            "is_human_attribute": false
+        },
+        {
+            "name": "Projection",
+            "cost_per_level": 3,
+            "relevant_stat": "Mind",
+            "source": "BESM4e",
+            "description": "Creates visible or audible images detectable by all, not just mentally targeted illusions. Useful for distraction, deception, or communication.",
+            "levels": {
+                "1": "Tiny projection (10 cm radius)",
+                "2": "Small projection (1 m radius)",
+                "3": "Moderately sized projection (10 m radius)",
+                "4": "Building-size projection (100 m radius)",
+                "5": "Neighbourhood-sized projection (1 km radius)",
+                "6": "City-sized projection (10 km radius)"
+            },
+            "key": "projection",
+            "is_human_attribute": false
+        },
+        {
+            "name": "Ranged Attack",
+            "cost_per_level": 1,
+            "source": "BESM4e",
+            "description": "Allows the character to perform precise ranged attacks with a specific weapon class.",
+            "levels": {
+                "1": {
+                    "acv_bonus": 2
+                },
+                "2": {
+                    "acv_bonus": 4
+                },
+                "3": {
+                    "acv_bonus": 6
+                },
+                "4": {
+                    "acv_bonus": 8
+                },
+                "5": {
+                    "acv_bonus": 10
+                },
+                "6": {
+                    "acv_bonus": 12
+                }
+            },
+            "modifiers": [
+                {
+                    "type": "derived",
+                    "target": "ACV",
+                    "value_per_level": 2,
+                    "condition": "only when using selected weapon class"
+                }
+            ],
+            "user_input_required": [
+                {
+                    "label": "Weapon Class",
+                    "key": "weapon_class",
+                    "field_type": "combo_editable",
+                    "description": "Enter a custom category of weapons this Ranged Attack applies to (e.g. Long Gun, Spell, Throwing).",
+                    "options": [
+                        "Biotech Projectiles",
+                        "Bows",
+                        "Crossbows",
+                        "Elemental Blasts",
+                        "Energy Weapons",
+                        "Explosives",
+                        "Firearms",
+                        "Guns (General)",
+                        "Laser Pistols",
+                        "Magic Spells",
+                        "Thrown Weapons"
+                    ]
+                }
+            ],
+            "key": "ranged_attack",
+            "is_human_attribute": false
+        },
+        {
+            "name": "Ranged Defence",
+            "cost_per_level": 1,
+            "relevant_stat": null,
+            "source": "BESM4e",
+            "description": "Boosts Defence Combat Value when avoiding ranged attacks under a specific condition, such as while on foot or piloting a vehicle.",
+            "levels": {
+                "1": "+2 DCV against ranged attacks under a specific condition",
+                "2": "+4 DCV against ranged attacks under a specific condition",
+                "3": "+6 DCV against ranged attacks under a specific condition",
+                "4": "+8 DCV against ranged attacks under a specific condition",
+                "5": "+10 DCV against ranged attacks under a specific condition",
+                "6": "+12 DCV against ranged attacks under a specific condition"
+            },
+            "user_input_required": [
+                {
+                    "label": "Condition",
+                    "field_type": "dropdown",
+                    "options": [
+                        "Personal",
+                        "Movement"
+                    ]
+                }
+            ],
+            "key": "ranged_defence",
+            "is_human_attribute": false
+        },
+        {
+            "name": "Regeneration",
+            "cost_per_level": 5,
+            "relevant_stat": "Body",
+            "source": "BESM4e",
+            "description": "The character regenerates Health or Energy each round. Must choose one focus when assigned.",
+            "levels": {
+                "1": "Regenerates up to 5 HP or EP per round",
+                "2": "Regenerates up to 10 HP or EP per round",
+                "3": "Regenerates up to 15 HP or EP per round",
+                "4": "Regenerates up to 20 HP or EP per round",
+                "5": "Regenerates up to 25 HP or EP per round",
+                "6": "Regenerates up to 30 HP or EP per round"
+            },
+            "user_input_required": [
+                {
+                    "label": "Regeneration Focus",
+                    "field_type": "dropdown",
+                    "options": [
+                        "Health",
+                        "Energy"
+                    ]
+                }
+            ],
+            "key": "regeneration",
+            "is_human_attribute": false
+        },
+        {
+            "name": "Reincarnation",
+            "cost_per_level": 2,
+            "relevant_stat": "Soul",
+            "source": "BESM4e",
+            "description": "Character returns after death if remnants are preserved. Revival time decreases with level.",
+            "levels": {
+                "1": "Reincarnates in 1 month",
+                "2": "Reincarnates in 1 week",
+                "3": "Reincarnates in 1 day",
+                "4": "Reincarnates in 12 hours",
+                "5": "Reincarnates in 1 hour",
+                "6": "Reincarnates in 1 minute"
+            },
+            "key": "reincarnation",
+            "is_human_attribute": false
+        },
+        {
+            "name": "Resilient",
+            "cost_per_level": 2,
+            "relevant_stat": "Body",
+            "source": "BESM4e",
+            "description": "Survive in hostile environments or conditions. Each level adds protection against one type.",
+            "levels": {
+                "1": "Resilient to 1 environment or condition",
+                "2": "Resilient to 2 environments or conditions",
+                "3": "Resilient to 3 environments or conditions",
+                "4": "Resilient to 4 environments or conditions",
+                "5": "Resilient to 5 environments or conditions",
+                "6": "Resilient to 6 environments or conditions"
+            },
+            "user_input_required": [
+                {
+                    "label": "Resilient Conditions",
+                    "field_type": "list",
+                    "placeholder": "Enter environments or conditions (e.g., vacuum, fire, underwater)"
+                }
+            ],
+            "key": "resilient",
+            "is_human_attribute": false
+        },
+        {
+            "name": "Sensory Block",
+            "cost_per_level": 1,
+            "relevant_stat": "Mind",
+            "source": "BESM4e",
+            "description": "Partially hides character from specific senses or detection techniques in a 3m area.",
+            "levels": {
+                "1": "1 sense/technique blocked",
+                "2": "2 senses/techniques blocked",
+                "3": "3 senses/techniques blocked",
+                "4": "4 senses/techniques blocked",
+                "5": "5 senses/techniques blocked",
+                "6": "6 senses/techniques blocked"
+            },
+            "user_input_required": [
+                {
+                    "label": "Blocked Senses or Techniques",
+                    "field_type": "list",
+                    "placeholder": "e.g., sight, infrared, radar"
+                }
+            ],
+            "key": "sensory_block",
+            "is_human_attribute": false
+        },
+        {
+            "name": "Sixth Sense",
+            "cost_per_level": 1,
+            "relevant_stat": "Soul",
+            "source": "BESM4e",
+            "description": "Allows character to sense phenomena others cannot, such as emotions, magic, danger.",
+            "levels": {
+                "1": "Sense 1 type of phenomenon",
+                "2": "Sense 2 types of phenomena",
+        },
+        "key": "elasticity",
+        "is_human_attribute": false
+    },
+    {
+        "name": "Tunnelling",
+        "cost_per_level": 1,
+        "relevant_stat": "Body",
+        "description": "The Tunnelling Attribute allows a character to move through earth and burrow underground. Tunnelling assumes that the character is going through sand or packed earth. Burrowing through extremely dense or rocky ground is one Level slower and boring through solid rock is two Level slower.",
+        "source": "BESM4e",
+        "levels": {
+            "1": "Tunnel up to 10 metres per hour",
+            "2": "Tunnel up to 30 metres per hour",
+            "3": "Tunnel up to 100 metres per hour",
+            "4": "Tunnel up to 300 metres per hour",
+            "5": "Tunnel up to 1 kph",
+            "6": "Tunnel up to 3 kph"
+            "source": "BESM4e",
+            "description": "The character can temporarily grow or shrink in size. Choose increase or decrease at creation unless the 'Both Ways' enhancement is taken.",
+            "levels": {
+                "1": "Change up to 1 Size Rank",
+                "2": "Change up to 2 Size Ranks",
+                "3": "Change up to 3 Size Ranks",
+                "4": "Change up to 4 Size Ranks",
+                "5": "Change up to 5 Size Ranks",
+                "6": "Change up to 6 Size Ranks"
+            },
+            "user_input_required": [
+                {
+                    "label": "Size Direction",
+                    "field_type": "dropdown",
+                    "options": [
+                        "Increase",
+                        "Decrease"
+                    ]
+                }
+            ],
+            "key": "size_change",
+            "is_human_attribute": false
+        },
+        {
+            "name": "Skill Group",
+            "source": "BESM4e",
+            "description": "Represents training or natural talent in a broad skill field. Skill Groups are divided into Background, Field, and Action categories, each with a different cost per level. Each Skill Group is treated as a separate Attribute.",
+            "relevant_stat": "Body, Mind, or Soul",
+            "user_input_required": [
+                {
+                    "field_type": "dropdown",
+                    "label": "Skill Group Category",
+                    "key": "category",
+                    "options": [
+                        "Background",
+                        "Field",
+                        "Action"
+                    ]
+                },
+                {
+                    "field_type": "dropdown",
+                    "label": "Skill Group Name",
+                    "key": "skill_group_name",
+                    "options": [
+                        "Academic",
+                        "Artistic",
+                        "Domestic",
+                        "Occupation",
+                        "Business",
+                        "Social",
+                        "Street",
+                        "Technical",
+                        "Adventuring",
+                        "Detective",
+                        "Military",
+                        "Scientific"
+                    ]
+                }
+            ],
+            "dynamic_cost": {
+                "Background": 1,
+                "Field": 2,
+                "Action": 3
+            },
+            "levels": {
+                "1": "Developing - Gaining proficiency through regular application",
+                "2": "Trained - Moderate training and practice",
+                "3": "Expert - Significant training and practice",
+                "4": "Veteran - Extensive training and practice",
+                "5": "Master - Exhaustive training and practice",
+                "6": "Grand Master - Unparalleled ability and knowledge"
+            },
+            "key": "skill_group",
+            "is_human_attribute": false
+        },
+        {
+            "name": "Spaceflight",
+            "cost_per_level": 1,
+            "relevant_stat": "Body",
+            "description": "Grants the ability to travel in space (but not in atmosphere). Requires Flight to escape planetary gravity. Typically used for interplanetary or galactic travel.",
+            "source": "BESM4e",
+            "levels": {
+                "1": "Primitive near-planetary travel (up to 10,000 kph); days to moon, years to nearby planets",
+                "2": "Slow interplanetary travel (up to 100,000 kph); hours to moon, month to nearby planets",
+                "3": "Average interplanetary travel; days between nearby planets",
+                "4": "Fast interplanetary travel; hours between nearby planets",
+                "5": "Extrasolar travel; minutes between planets, years between nearby stars",
+                "6": "Slow FTL travel; weeks between star systems"
+            },
+            "key": "spaceflight",
+            "is_human_attribute": false
+        },
+        {
+            "name": "Special Movement",
+            "cost_per_level": 1,
+            "relevant_stat": "Body",
+            "description": "Grants unique movement types such as Wall-Crawling, Zen Direction, Swinging, or Water-Walking. Some types count as two abilities due to enhanced utility.",
+            "source": "BESM4e",
+            "levels": {
+                "1": "1 Special Movement ability",
+                "2": "2 Special Movement abilities",
+                "3": "3 Special Movement abilities",
+                "4": "4 Special Movement abilities",
+                "5": "5 Special Movement abilities",
+                "6": "6 Special Movement abilities"
+            },
+            "user_input_required": [
+                {
+                    "label": "Movement Types",
+                    "key": "movement_types",
+                    "field_type": "list",
+                    "description": "List the Special Movement abilities the character possesses.",
+                    "autocomplete_options": [
+                        "Balance",
+                        "Cat-Like",
+                        "Fast",
+                        "Light-Footed",
+                        "Slithering",
+                        "Swinging",
+                        "Untrackable",
+                        "Wall-Bouncing",
+                        "Wall-Crawling",
+                        "Water-Walking",
+                        "Zen Direction"
+                    ]
+                }
+            ],
+            "key": "special_movement",
+            "is_human_attribute": false
+        },
+        {
+            "name": "Summon Creatures",
+            "cost_per_level": 2,
+            "relevant_stat": "Mind",
+            "description": "Summon and command natural animals within 1 km for a dramatic scene. Animals must physically reach the summoner and perform simple tasks. Does not work on humans or sentient beings.",
+            "source": "BESM4e",
+            "levels": {
+                "1": "Summon up to 1 animal",
+                "2": "Summon up to 2 animals",
+                "3": "Summon up to 4 animals",
+                "4": "Summon up to 8 animals",
+                "5": "Summon up to 16 animals",
+                "6": "Summon up to 32 animals"
+            },
+            "key": "summon_creatures",
+            "is_human_attribute": false
+        },
+        {
+            "name": "Supersense",
+            "cost_per_level": 1,
+            "relevant_stat": "Mind",
+            "description": "Grants a sense that detects beyond normal human capabilities. Examples include echolocation, radar, x-ray vision, etc. Must be line-of-sight unless enhanced.",
+            "source": "BESM4e",
+            "levels": {
+                "1": "10 m range",
+                "2": "100 m range",
+                "3": "1 km range",
+                "4": "10 km range",
+                "5": "100 km range",
+                "6": "1,000 km range"
+            },
+            "user_input_required": [
+                {
+                    "label": "Supersense Type",
+                    "key": "supersense_type",
+                    "field_type": "combo_editable",
+                    "description": "Enter the type of Supersense (e.g., radar, x-ray vision, echolocation).",
+                    "options": [
+                        "Echolocation",
+                        "Infrared Vision",
+                        "Radar",
+                        "Sonar",
+                        "Magnetic Field Detection",
+                        "Microscopic Vision",
+                        "Ultravision",
+                        "Vibration Detection",
+                        "X-Ray Vision"
+                    ]
+                }
+            ],
+            "key": "supersense",
+            "is_human_attribute": false
+        },
+        {
+            "name": "Superspeed",
+            "cost_per_level": 3,
+            "relevant_stat": "Body",
+            "description": "Allows the character to move and perceive the world at extremely fast speeds. This Attribute is supernatural or magical in nature, not suitable for vehicles. Often paired with Extra Actions or Weapon (Superspeed) for full effect.",
+            "source": "BESM4e",
+            "levels": {
+                "1": "Top speed is 100 kph",
+                "2": "Top speed is 300 kph",
+                "3": "Top speed is 1,000 kph",
+                "4": "Top speed is 3,000 kph",
+                "5": "Top speed is 10,000 kph",
+                "6": "Top speed is 30,000 kph"
+            },
+            "key": "superspeed",
+            "is_human_attribute": false
+        },
+        {
+            "name": "Superstrength",
+            "cost_per_level": 4,
+            "relevant_stat": "Body",
+            "description": "Allows lifting and carrying massive weights beyond normal strength. Adds +5 damage to unarmed attacks and +1 Damage Multiplier to melee/thrown weapons per level. Works independently of the Body Stat.",
+            "source": "BESM4e",
+            "levels": {
+                "1": "Lift up to 250 kg (e.g., motorcycle)",
+                "2": "Lift up to 500 kg (e.g., horse)",
+                "3": "Lift up to 1 tonne (e.g., small car)",
+                "4": "Lift up to 2 tonnes (e.g., truck)",
+                "5": "Lift up to 5 tonnes (e.g., elephant)",
+                "6": "Lift up to 10 tonnes (e.g., yacht)"
+            },
+            "key": "superstrength",
+            "is_human_attribute": false
+        },
+        {
+            "name": "Swarm",
+            "cost_per_level": 2,
+            "relevant_stat": "Mind",
+            "description": "Allows the character to dissolve into a swarm of small creatures. The number of creatures equals HP × Level. While in swarm form, the character cannot use normal Attributes and only has Move, Observe, and Attack actions.",
+            "source": "BESM4e",
+            "levels": {
+                "1": "Swarm = HP total × 1",
+                "2": "Swarm = HP total × 2",
+                "3": "Swarm = HP total × 3",
+                "4": "Swarm = HP total × 4",
+                "5": "Swarm = HP total × 5",
+                "6": "Swarm = HP total × 6"
+            },
+            "user_input_required": [
+                {
+                    "label": "Swarm Creature Type",
+                    "key": "swarm_type",
+                    "field_type": "text",
+                    "description": "Describe what the swarm transforms into (e.g., rats, crows, tiny robots)."
+                }
+            ],
+            "key": "swarm",
+            "is_human_attribute": false
+        },
+        {
+            "name": "Telekinesis",
+            "cost_per_level": 4,
+            "relevant_stat": "Mind",
+            "description": "Allows the character to move or manipulate physical objects within 10m using mental power. Can lift, manipulate, or hurl objects. Not usable on energy. Heavy objects can be dropped for non-combat damage or thrown for combat damage.",
+            "source": "BESM4e",
+            "levels": {
+                "1": "Lift/Move up to 1 kg",
+                "2": "Lift/Move up to 5 kg",
+                "3": "Lift/Move up to 10 kg",
+                "4": "Lift/Move up to 50 kg",
+                "5": "Lift/Move up to 100 kg",
+                "6": "Lift/Move up to 500 kg"
+            },
+            "key": "telekinesis",
+            "is_human_attribute": false
+        },
+        {
+            "name": "Telepathy",
+            "cost_per_level": 3,
+            "relevant_stat": "Mind",
+            "description": "Allows mind reading and thought transmission. Higher levels grant sensory link, group communication, and memory alteration. Mental invasions require opposed Mind rolls.",
+            "source": "BESM4e",
+            "levels": {
+                "1": "Sense strong surface thoughts; transmit basic feelings",
+                "2": "Read ordinary surface thoughts; send words/images; converse with other telepaths",
+                "3": "Share sensory input or read thoughts from a group (up to 10); speak to group or send strong image",
+                "4": "Invade mind to extract memories (opposed roll); instinctive touch reading; speak to small group",
+                "5": "Read surface thoughts of anyone nearby; probe repressed memories; speak to crowd (25)",
+                "6": "Automatically read thoughts and sensory input from touch; alter memories; speak to throng (50)"
+            },
+            "key": "telepathy",
+            "is_human_attribute": false
+        },
+        {
+            "name": "Teleport",
+            "cost_per_level": 3,
+            "relevant_stat": "Mind",
+            "description": "Allows instant travel to a visible or previously visited location. Usable on self and carried gear. Not usable if the destination is unknown or obstructed.",
+            "source": "BESM4e",
+            "levels": {
+                "1": "Teleport up to 10 meters",
+                "2": "Teleport up to 100 meters",
+                "3": "Teleport up to 1 kilometer",
+                "4": "Teleport up to 10 kilometers",
+                "5": "Teleport up to 100 kilometers",
+                "6": "Teleport up to 1,000 kilometers"
+            },
+            "key": "teleport",
+            "is_human_attribute": false
+        },
+        {
+            "name": "Tough",
+            "cost_per_level": 1,
+            "relevant_stat": null,
+            "description": "Increases Health Points by 10 per level. Represents enhanced durability or size. Often used for large, dense, or extremely healthy characters or items.",
+            "source": "BESM4e",
+            "levels": {
+                "1": "+10 Health Points",
+                "2": "+20 Health Points",
+                "3": "+30 Health Points",
+                "4": "+40 Health Points",
+                "5": "+50 Health Points",
+                "6": "+60 Health Points"
+            },
+            "key": "tough",
+            "is_human_attribute": false
+        },
+        {
+            "name": "Transfer",
+            "cost_per_level": 3,
+            "relevant_stat": "Soul",
+            "description": "Temporarily grants one of your Attributes to a touched, willing target for 1 minute or dramatic scene. Effectiveness is limited to Transfer level.",
+            "source": "BESM4e",
+            "levels": {
+                "1": "Transfer Attributes up to Level 1",
+                "2": "Transfer Attributes up to Level 2",
+                "3": "Transfer Attributes up to Level 3",
+                "4": "Transfer Attributes up to Level 4",
+                "5": "Transfer Attributes up to Level 5",
+                "6": "Transfer Attributes up to Level 6"
+            },
+            "key": "transfer",
+            "is_human_attribute": false
+        },
+        {
+            "name": "Transmute",
+            "cost_per_level": 3,
+            "relevant_stat": "Mind or Soul",
+            "description": "Transforms one medium solid non-living object into another for 1 minute or a dramatic scene. Cannot create complex or unfamiliar devices without skill. Limits based on CP value of object.",
+            "source": "BESM4e",
+            "levels": {
+                "1": "Transmute objects worth up to 5 CP",
+                "2": "Transmute objects worth up to 10 CP",
+                "3": "Transmute objects worth up to 15 CP",
+                "4": "Transmute objects worth up to 20 CP",
+                "5": "Transmute objects worth up to 25 CP",
+                "6": "Transmute objects worth up to 30 CP"
+            },
+            "key": "transmute",
+            "is_human_attribute": false
+        },
+        {
+            "name": "Unaffected",
+            "cost_per_level": 2,
+            "relevant_stat": "Body",
+            "description": "Reduces the chance of being affected by a specific Attribute from a specific source (e.g., magic, tech). Each instance must define one Attribute and source.",
+            "source": "BESM4e",
+            "levels": {
+                "1": "-2 penalty to attacker using the specific Attribute",
+                "2": "-4 penalty to attacker using the specific Attribute",
+                "3": "-6 penalty to attacker using the specific Attribute",
+                "4": "-8 penalty to attacker using the specific Attribute",
+                "5": "-10 penalty to attacker using the specific Attribute",
+                "6": "-12 penalty to attacker using the specific Attribute"
+            },
+            "user_input_required": [
+                {
+                    "label": "Blocked Attribute",
+                    "key": "blocked_attribute",
+                    "field_type": "text",
+                    "description": "Enter the Attribute this resistance applies to."
+                },
+                {
+                    "label": "Power Source",
+                    "key": "blocked_source",
+                    "field_type": "dropdown",
+                    "options": ["Magic", "Technology", "Supernatural", "Psionics", "Other"],
+                    "required": true
+                }
+            ],
+            "key": "unaffected",
+            "is_human_attribute": false
+        },
+        {
+            "name": "Undetectable",
+            "cost_per_level": 2,
+            "relevant_stat": "Body",
+            "description": "Hides the character from specific senses or detection techniques. Sight and hearing cost 2 slots each. Useful for stealthy or cloaked characters.",
+            "source": "BESM4e",
+            "levels": {
+                "1": "Undetectable to 1 sense or technique",
+                "2": "Undetectable to 2 senses or techniques",
+                "3": "Undetectable to 3 senses or techniques",
+                "4": "Undetectable to 4 senses or techniques",
+                "5": "Undetectable to 5 senses or techniques",
+                "6": "Undetectable to 6 senses or techniques"
+            },
+            "user_input_required": [
+                {
+                    "label": "Concealed Senses/Techniques",
+                    "key": "undetectable_types",
+                    "field_type": "list",
+                    "description": "List the senses or techniques from which the character is hidden.",
+                    "autocomplete_options": [
+                        "Sight",
+                        "Hearing",
+                        "Touch",
+                        "Smell",
+                        "Taste",
+                        "Infrared",
+                        "Ultraviolet",
+                        "Magic",
+                        "Radar",
+                        "Sonar",
+                        "Mental",
+                        "Spiritual",
+                        "Astral",
+                        "Vibration",
+                        "Radiation",
+                        "Ethereal"
+                    ]
+                }
+            ],
+            "key": "undetectable",
+            "is_human_attribute": false
+        },
+        {
+            "name": "Unique Attribute",
+            "cost_per_level": null,
+            "relevant_stat": "Variable",
+            "description": "Covers any power not described elsewhere. Requires GM discussion. Effect and cost per level vary from 1–10 CP depending on usefulness.",
+            "source": "BESM4e",
+            "levels": {
+                "1": "Basic aptitude",
+                "2": "Minor aptitude",
+                "3": "Moderate aptitude",
+                "4": "Significant aptitude",
+                "5": "Major aptitude",
+                "6": "Extreme aptitude"
+            },
+            "user_input_required": [
+                {
+                    "label": "Custom Description",
+                    "key": "custom_description",
+                    "field_type": "textarea",
+                    "description": "Describe what this Unique Attribute does and its game effects."
+                },
+                {
+                    "label": "Point Cost Per Level",
+                    "key": "custom_cp_cost",
+                    "field_type": "number",
+                    "description": "Assign the CP cost per level (1–10).",
+                    "required": true
+                }
+            ],
+            "key": "unique_attribute",
+            "is_human_attribute": false
+        },
+        {
+            "name": "Unknown Power",
+            "cost_per_level": null,
+            "relevant_stat": "Special",
+            "description": "Represents hidden or mysterious abilities not known to the character. The GM allocates Attributes equal to CP spent + 50% bonus, which manifest during play.",
+            "source": "BESM4e",
+            "levels": {},
+            "key": "unknown_power",
+            "is_human_attribute": false
+        },
+        {
+            "name": "Water Speed",
+            "cost_per_level": 1,
+            "relevant_stat": "Body",
+            "description": "Grants enhanced swimming speed. Useful for aquatic or amphibious characters.",
+            "source": "BESM4e",
+            "levels": {
+                "1": "Swim at up to 10 kph",
+                "2": "Swim at up to 30 kph",
+                "3": "Swim at up to 100 kph",
+                "4": "Swim at up to 300 kph",
+                "5": "Swim at up to 1,000 kph",
+                "6": "Swim at up to 3,000 kph"
+            },
+            "key": "water_speed",
+            "is_human_attribute": false
+        },
+        {
+            "name": "Wealth",
+            "cost_per_level": 3,
+            "relevant_stat": null,
+            "description": "Represents disposable income, property, and assets. Used for lifestyle, hiring, and acquiring legal goods. Does not cover rare or restricted items.",
+            "source": "BESM4e",
+            "levels": {
+                "1": "Financially stable ($300k)",
+                "2": "Well off ($1M)",
+                "3": "Moderately rich ($3M)",
+                "4": "Very rich ($10M)",
+                "5": "Extremely rich ($30M)",
+                "6": "Wealthy ($100M)"
+            },
+            "key": "wealth",
+            "is_human_attribute": true
+        },
+        {
+            "name": "Weapon",
+            "cost_per_level": 2,
+            "relevant_stat": "None",
+            "source": "BESM4e",
+            "description": "Many anime characters wield powerful offensive energies, such as electric zaps, magical fireballs, ki-powered martial arts strikes, or energy swords.",
+            "levels": {
+                "-1": "The attack doesn’t inflict regular damage",
+                "0": "The Weapon’s Base Damage is 0 and thus the final damage is only equal to the character’s Attack Combat Value",
+                "1": "The Weapon’s Base Damage is equal to 1 times the character’s Damage Multiplier",
+                "2": "The Weapon’s Base Damage is equal to 2 times the character’s Damage Multiplier",
+                "3": "The Weapon’s Base Damage is equal to 3 times the character’s Damage Multiplier",
+                "4": "The Weapon’s Base Damage is equal to 4 times the character’s Damage Multiplier",
+                "5": "The Weapon’s Base Damage is equal to 5 times the character’s Damage Multiplier",
+                "6": "The Weapon’s Base Damage is equal to 6 times the character’s Damage Multiplier"
+            },
+            "user_input_required": [
+                {
+                    "label": "Weapon",
+                    "field_type": "list",
+                    "placeholder": "e.g., martial arts, magic, lightning, energy sword, etc."
+                }
+            ],
+            "key": "weapon",
+            "is_human_attribute": false
+        },
+        {
+            "name": "Elasticity",
+            "cost_per_level": 1,
+            "relevant_stat": "Body",
+            "description": "The character can stretch or contort their limbs and/or body to a superhuman degree. This is most appropriate for giant robots with telescoping arms, sinuous demons or aliens, and rubbery creatures. While stretched, the character receives a minor edge on unarmed attack rolls.",
+            "source": "BESM4e",
+            "levels": {
+                "1": "Can stretch their body up to 10 cm",
+                "2": "Can stretch their body up to 30 cm",
+                "3": "Can stretch their body up to 1 m",
+                "4": "Can stretch their body up to 3 m",
+                "5": "Can stretch their body up to 10 m",
+                "6": "Can stretch their body up to 30 m"
+            },
+            "key": "elasticity",
+            "is_human_attribute": false
+        },
+        {
+            "name": "Tunnelling",
+            "cost_per_level": 1,
+            "relevant_stat": "Body",
+            "description": "The Tunnelling Attribute allows a character to move through earth and burrow underground. Tunnelling assumes that the character is going through sand or packed earth. Burrowing through extremely dense or rocky ground is one Level slower and boring through solid rock is two Level slower.",
+            "source": "BESM4e",
+            "levels": {
+                "1": "Tunnel up to 10 metres per hour",
+                "2": "Tunnel up to 30 metres per hour",
+                "3": "Tunnel up to 100 metres per hour",
+                "4": "Tunnel up to 300 metres per hour",
+                "5": "Tunnel up to 1 kph",
+                "6": "Tunnel up to 3 kph"
+            },
+            "key": "tunnelling",
+            "is_human_attribute": false
+        }
+    ]
+}

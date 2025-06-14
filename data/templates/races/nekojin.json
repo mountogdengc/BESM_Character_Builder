@@ -1,0 +1,110 @@
+{
+  "race_name": "NEKOJIN",
+  "baseSize": {
+    "size_rank": 0,
+    "size_name": "Medium",
+    "options_source": "Race Template"
+  },
+  "stats": {
+    "body_adj": 0,
+    "mind_adj": 0,
+    "soul_adj": 0
+  },
+  "attributes": [
+    {
+      "custom_name": "Combat Technique",
+      "key": "combat_technique",
+      "level": 2,
+      "user_description": "(Lightning Reflexes 2)",
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Race Template",
+      "valid": true,
+      "name": "Combat Technique"
+    },
+    {
+      "custom_name": "Features",
+      "key": "features",
+      "level": 2,
+      "user_description": "(Appearance: Cute, Low-Light Vision, Retractable Claws)",
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Race Template",
+      "valid": true,
+      "name": "Features"
+    },
+    {
+      "custom_name": "Heightened Senses",
+      "key": "heightened_senses",
+      "level": 1,
+      "user_description": "(Hearing)",
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Race Template",
+      "valid": true,
+      "name": "Heightened Senses"
+    },
+    {
+      "custom_name": "Mulligan",
+      "key": "mulligan",
+      "level": 2,
+      "user_description": null,
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Race Template",
+      "valid": true,
+      "name": "Mulligan"
+    },
+    {
+      "custom_name": "Special Movement",
+      "key": "special_movement",
+      "level": 2,
+      "user_description": "(Cat-Like, Wall Bouncing)",
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Race Template",
+      "valid": true,
+      "name": "Special Movement"
+    },
+    {
+      "custom_name": "Weapon: Claws",
+      "key": "weapon",
+      "level": 1,
+      "user_description": "(Non-Penetrating +1)",
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Race Template",
+      "valid": true,
+      "name": "Weapon: Claws"
+    }
+  ],
+  "defects": [
+    {
+      "custom_name": "Easily Distracted",
+      "key": "easily_distracted",
+      "rank": 1,
+      "user_description": "(Things that Distract Cats)",
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Race Template",
+      "valid": true,
+      "cp_refund": 1,
+      "name": "Easily Distracted"
+    }
+  ],
+  "key": "nekojin"
+}

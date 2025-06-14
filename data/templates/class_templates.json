@@ -1,0 +1,1762 @@
+{
+    "classTemplates": {
+      "description": "Class templates based on BESM Fourth Edition examples.",
+      "classes": [
+        {
+            "name": "ADVENTURER",
+            "baseSize": {
+              "rank": 0,
+              "name": "Medium"
+            },
+            "stats": [],
+            "attributes": [
+              {
+                "level": 1,
+                "points": 1,
+                "name": "Combat Technique",
+                "key": "combat_technique",
+                "details": "(Select 1)"
+              },
+              {
+                "level": 3,
+                "points": 3,
+                "name": "Gear",
+                "key": "gear",
+                "details": "(Adventuring Supplies)"
+              },
+              {
+                "level": 1,
+                "points": 1,
+                "name": "Heightened Awareness",
+                "key": "heightened_awareness",
+                "details": null
+              },
+              {
+                "level": 1,
+                "points": 1,
+                "name": "Melee Attack",
+                "key": "melee_attack",
+                "details": "(Select Weapon Type)"
+              },
+              {
+                "level": 1,
+                "points": 1,
+                "name": "Melee Defence",
+                "key": "melee_defence",
+                "details": "(Select Weapon Type)"
+              },
+              {
+                "level": 3,
+                "points": 9,
+                "name": "Skill Group",
+                "key": "skill_group",
+                "details": "(Adventuring)"
+              },
+              {
+                "level": 1,
+                "points": 2,
+                "name": "Skill Group",
+                "key": "skill_group",
+                "details": "(Social)"
+              },
+              {
+                "level": 1,
+                "points": 2,
+                "name": "Skill Group",
+                "key": "skill_group",
+                "details": "(Street)"
+              }
+            ],
+            "defects": [],
+            "totalPoints": 20
+          },
+          {
+            "name": "ARTIFICER",
+            "baseSize": {
+              "rank": 0,
+              "name": "Medium"
+            },
+            "stats": [
+              {
+                "stat": "Mind",
+                "value": 1,
+                "points": 2
+              }
+            ],
+            "attributes": [
+              {
+                "level": 1,
+                "points": 2,
+                "name": "Augmented",
+                "key": "augmented",
+                "details": "(Body: tech enhancement)"
+              },
+              {
+                "level": 10,
+                "points": 10,
+                "name": "Item",
+                "key": "item",
+                "details": "(Multi-Gadget; 20 Points)"
+              },
+              {
+                "level": 2,
+                "points": 20,
+                "name": "Power Flux",
+                "key": "power_flux",
+                "details": "(Major: Item Gadgeteer -1; Equipment: Multi-Gadget +1)"
+              },
+              {
+                "level": 2,
+                "points": 2,
+                "name": "Skill Group",
+                "key": "skill_group",
+                "details": "(Artistic)"
+              },
+              {
+                "level": 1,
+                "points": 3,
+                "name": "Skill Group",
+                "key": "skill_group",
+                "details": "(Scientific)"
+              },
+              {
+                "level": 3,
+                "points": 6,
+                "name": "Skill Group",
+                "key": "skill_group",
+                "details": "(Technical)"
+              }
+            ],
+            "defects": [],
+            "totalPoints": 45
+          },
+          {
+            "name": "BROKER",
+            "baseSize": {
+              "rank": 0,
+              "name": "Medium"
+            },
+            "stats": [
+              {
+                "stat": "Body",
+                "value": 2,
+                "points": 4
+              },
+              {
+                "stat": "Soul",
+                "value": 1,
+                "points": 2
+              }
+            ],
+            "attributes": [
+              {
+                "level": 4,
+                "baseLevel": 5,
+                "points": 8,
+                "name": "Cognition",
+                "key": "cognition",
+                "details": "(Postcognition; Equipment: Concerning Object History Only +1)"
+              },
+              {
+                "level": 2,
+                "points": 2,
+                "name": "Features",
+                "key": "features",
+                "details": "(Contacts)"
+              },
+              {
+                "level": 1,
+                "points": 1,
+                "name": "Heightened Awareness",
+                "key": "heightened_awareness",
+                "details": null
+              },
+              {
+                "level": 2,
+                "points": 2,
+                "name": "Organisational Ties",
+                "key": "organisational_ties",
+                "details": "(Select One)"
+              },
+              {
+                "level": 3,
+                "points": 9,
+                "name": "Skill Group",
+                "key": "skill_group",
+                "details": "(Business)"
+              },
+              {
+                "level": 2,
+                "points": 4,
+                "name": "Skill Group",
+                "key": "skill_group",
+                "details": "(Social)"
+              },
+              {
+                "level": 2,
+                "points": 4,
+                "name": "Skill Group",
+                "key": "skill_group",
+                "details": "(Street)"
+              },
+              {
+                "level": 2,
+                "points": 4,
+                "name": "Skill Group",
+                "key": "skill_group",
+                "details": "(Technical)"
+              }
+            ],
+            "defects": [],
+            "totalPoints": 50
+          },
+          {
+            "name": "DEMON HUNTER",
+            "baseSize": {
+              "rank": 0,
+              "name": "Medium"
+            },
+            "stats": [
+              {
+                "stat": "Body",
+                "value": 1,
+                "points": 2
+              }
+            ],
+            "attributes": [
+              {
+                "level": 2,
+                "points": 2,
+                "name": "Attack Mastery",
+                "key": "attack_mastery",
+                "details": null
+              },
+              {
+                "level": 5,
+                "points": 5,
+                "name": "Combat Technique",
+                "key": "combat_technique",
+                "details": "(Brutal, Concealment, Judge Opponent, Lightning Reflexes, Reflection)"
+              },
+              {
+                "level": 2,
+                "points": 2,
+                "name": "Features",
+                "key": "features",
+                "details": "(Contacts: Demon Hunters)"
+              },
+              {
+                "level": 1,
+                "points": 1,
+                "name": "Heightened Awareness",
+                "key": "heightened_awareness",
+                "details": null
+              },
+              {
+                "level": 1,
+                "fluxCost": 2,
+                "points": 3,
+                "name": "Massive Damage",
+                "key": "massive_damage",
+                "details": "(Targetted: Demons +1)"
+              },
+              {
+                "level": 2,
+                "points": 2,
+                "name": "Mind Shield",
+                "key": "mind_shield",
+                "details": null
+              },
+              {
+                "level": 1,
+                "points": 3,
+                "name": "Organisational Ties",
+                "key": "organisational_ties",
+                "details": "(Demon Hunters)"
+              },
+              {
+                "level": 1,
+                "points": 1,
+                "name": "Ranged Attack",
+                "key": "ranged_attack",
+                "details": "(Select One)"
+              },
+              {
+                "level": 1,
+                "points": 1,
+                "name": "Ranged Defence",
+                "key": "ranged_defence",
+                "details": "(Personal)"
+              },
+              {
+                "level": 1,
+                "points": 1,
+                "name": "Sixth Sense",
+                "key": "sixth_sense",
+                "details": "(Demons)"
+              },
+              {
+                "level": 1,
+                "points": 3,
+                "name": "Skill Group",
+                "key": "skill_group",
+                "details": "(Adventuring)"
+              },
+              {
+                "level": 1,
+                "points": 3,
+                "name": "Skill Group",
+                "key": "skill_group",
+                "details": "(Military)"
+              },
+              {
+                "level": 1,
+                "points": 2,
+                "name": "Skill Group",
+                "key": "skill_group",
+                "details": "(Street)"
+              }
+            ],
+            "defects": [
+              {
+                "rank": 1,
+                "cp_refund": 1,
+                "name": "Easily Distracted",
+                "key": "easily_distracted",
+                "details": "(Demon Lore)"
+              },
+              {
+                "rank": 1,
+                "cp_refund": 1,
+                "name": "Nightmares",
+                "key": "nightmares",
+                "details": "(Demon Attacks)"
+              }
+            ],
+            "totalPoints": 40
+          },
+          {
+            "name": "DETECTIVE",
+            "baseSize": {
+              "rank": 0,
+              "name": "Medium"
+            },
+            "stats": [
+              {
+                "stat": "Body",
+                "value": 1,
+                "points": 2
+              }
+            ],
+            "attributes": [
+              {
+                "level": 1,
+                "points": 1,
+                "name": "Combat Technique",
+                "key": "combat_technique",
+                "details": "(Judge Opponent)"
+              },
+              {
+                "level": 4,
+                "baseLevel": 5,
+                "points": 8,
+                "name": "Cognition",
+                "key": "cognition",
+                "details": "(Postcognition)",
+                "limiters": ["equipment"]
+              },
+              {
+                "level": 2,
+                "points": 2,
+                "name": "Features",
+                "key": "features",
+                "details": "(Contacts)"
+              },
+              {
+                "level": 2,
+                "points": 2,
+                "name": "Heightened Awareness",
+                "key": "heightened_awareness",
+                "details": null
+              },
+              {
+                "level": 2,
+                "points": 2,
+                "name": "Organisational Ties",
+                "key": "organisational_ties",
+                "details": "(Select One)"
+              },
+              {
+                "level": 1,
+                "points": 3,
+                "name": "Skill Group",
+                "key": "skill_group",
+                "details": "(Adventuring)"
+              },
+              {
+                "level": 1,
+                "points": 2,
+                "name": "Skill Group",
+                "key": "skill_group",
+                "details": "(Social)"
+              },
+              {
+                "level": 2,
+                "points": 4,
+                "name": "Skill Group",
+                "key": "skill_group",
+                "details": "(Street)"
+              },
+              {
+                "level": 1,
+                "points": 2,
+                "name": "Skill Group",
+                "key": "skill_group",
+                "details": "(Technical)"
+              },
+              {
+                "level": 1,
+                "points": 2,
+                "name": "Wealth",
+                "key": "wealth",
+                "details": null
+              }
+            ],
+            "defects": [],
+            "totalPoints": 30
+          },
+          {
+            "name": "MAGICIAN",
+            "baseSize": {
+              "rank": 0,
+              "name": "Medium"
+            },
+            "stats": [
+              {
+                "stat": "Soul",
+                "value": 2,
+                "points": 4
+              }
+            ],
+            "attributes": [
+              {
+                "level": 2,
+                "points": 4,
+                "name": "Alternate Form",
+                "key": "alternate_form",
+                "details": "(Astral Projection)"
+              },
+              {
+                "level": 1,
+                "points": 1,
+                "name": "Combat Technique",
+                "key": "combat_technique",
+                "details": "(Select One)"
+              },
+              {
+                "level": 2,
+                "points": 2,
+                "name": "Features",
+                "key": "features",
+                "details": "(Contacts: Magical)"
+              },
+              {
+                "level": 2,
+                "points": 2,
+                "name": "Heightened Awareness",
+                "key": "heightened_awareness",
+                "details": null
+              },
+              {
+                "level": 1,
+                "points": 2,
+                "name": "Organisational Ties",
+                "key": "organisational_ties",
+                "details": "(Magical)"
+              },
+              {
+                "level": 3,
+                "points": 15,
+                "name": "Power Flux",
+                "key": "power_flux",
+                "details": "(Major: Magic)",
+                "enhancements": ["major"]
+              },
+              {
+                "level": 1,
+                "points": 1,
+                "name": "Sixth Sense",
+                "key": "sixth_sense",
+                "details": "(Select One Aspect)"
+              },
+              {
+                "level": 1,
+                "points": 3,
+                "name": "Skill Group",
+                "key": "skill_group",
+                "details": "(Action: Select One)"
+              },
+              {
+                "level": 6,
+                "baseLevel": 4,
+                "points": 12,
+                "name": "Weapon: Magical Attack",
+                "key": "weapon_magical_attack",
+                "details": "(Drain: 3 Soul)",
+                "enhancements": ["area_1", "drain_3", "range_2", "selective_1", "targets_2"],
+                "limiters": ["Charges +2", "Deplete +2", "Maximum +3"]
+              }
+            ],
+            "defects": [
+              {
+                "rank": 1,
+                "cp_refund": 1,
+                "name": "Easily Distracted",
+                "key": "easily_distracted",
+                "details": "(One Trigger)"
+              },
+              {
+                "rank": 2,
+                "cp_refund": 2,
+                "name": "Nemesis",
+                "key": "nemesis",
+                "details": "(One Enemy)"
+              },
+              {
+                "rank": 2,
+                "cp_refund": 4,
+                "name": "Skeleton in the Closet",
+                "key": "skeleton_in_the_closet",
+                "details": "(Magical Identity)"
+              }
+            ],
+            "totalPoints": 60
+          },
+          {
+            "name": "MARTIAL ARTIST",
+            "baseSize": {
+              "rank": 0,
+              "name": "Medium"
+            },
+            "stats": [
+              {
+                "stat": "Body",
+                "value": 2,
+                "points": 4
+              }
+            ],
+            "attributes": [
+              {
+                "level": 10,
+                "points": 10,
+                "name": "Combat Technique",
+                "details": "(Blind Fighting, Brutal, Concealment, Deflection, Judge Opponent, Lethal Blow, Lightning Reflexes 2, Reflection, Tournament Encyclopaedia: Martial Arts)"
+              },
+              {
+                "level": 1,
+                "points": 4,
+                "name": "Extra Actions",
+                "key": "extra_actions",
+                "details": null
+              },
+              {
+                "level": 2,
+                "points": 2,
+                "name": "Heightened Awareness",
+                "key": "heightened_awareness",
+                "details": null
+              },
+              {
+                "level": 1,
+                "points": 1,
+                "name": "Jumping",
+                "key": "jumping",
+                "details": null
+              },
+              {
+                "level": 2,
+                "baseLevel": 3,
+                "points": 6,
+                "name": "Massive Damage",
+                "key": "massive_damage",
+                "details": "(Focussed: Unarmed +1)"
+              },
+              {
+                "level": 4,
+                "points": 4,
+                "name": "Melee Attack",
+                "key": "melee_attack",
+                "details": "(Unarmed)"
+              },
+              {
+                "level": 4,
+                "points": 4,
+                "name": "Melee Defence",
+                "key": "melee_defence",
+                "details": "(Unarmed)"
+              },
+              {
+                "level": 3,
+                "points": 3,
+                "name": "Ranged Defence",
+                "key": "ranged_defence",
+                "details": "(Personal)"
+              },
+              {
+                "level": 2,
+                "points": 6,
+                "name": "Skill Group",
+                "key": "skill_group",
+                "details": "(Adventuring)"
+              },
+              {
+                "level": 1,
+                "points": 2,
+                "name": "Skill Group",
+                "key": "skill_group",
+                "details": "(Street)"
+              },
+              {
+                "level": 4,
+                "points": 4,
+                "name": "Tough",
+                "key": "tough",
+                "details": null
+              },
+              {
+                "level": 3,
+                "points": 6,
+                "name": "Weapon: Finishing Move",
+                "key": "weapon_finishing_move",
+                "details": null
+              },
+              {
+                "level": 2,
+                "points": 4,
+                "name": "Weapon: Ki Blast",
+                "key": "weapon_ki_blast",
+                "details": "(Drain: Body -1; Enervation -1; Range -1; Backblast +2; Hands +1)"
+              }
+            ],
+            "defects": [],
+            "totalPoints": 60
+          },
+          {
+            "name": "MASTER THIEF",
+            "baseSize": {
+              "rank": 0,
+              "name": "Medium"
+            },
+            "stats": [
+              {
+                "stat": "Body",
+                "value": 1,
+                "points": 2
+              },
+              {
+                "stat": "Mind",
+                "value": 1,
+                "points": 2
+              },
+              {
+                "stat": "Soul",
+                "value": 2,
+                "points": 4
+              }
+            ],
+            "attributes": [
+              {
+                "level": 2,
+                "points": 2,
+                "name": "Features",
+                "key": "features",
+                "details": "(Ambidexterity, Appearance, Eidetic Memory)"
+              },
+              {
+                "level": 3,
+                "points": 3,
+                "name": "Gear",
+                "key": "gear",
+                "details": "(Thieving Supplies)"
+              },
+              {
+                "level": 5,
+                "points": 5,
+                "name": "Heightened Awareness",
+                "key": "heightened_awareness",
+                "details": null
+              },
+              {
+                "level": 3,
+                "points": 3,
+                "name": "Mulligan",
+                "key": "mulligan",
+                "details": null
+              },
+              {
+                "level": 2,
+                "points": 2,
+                "name": "Skill Group",
+                "key": "skill_group",
+                "details": "(Academic)"
+              },
+              {
+                "level": 1,
+                "points": 3,
+                "name": "Skill Group",
+                "key": "skill_group",
+                "details": "(Adventuring)"
+              },
+              {
+                "level": 5,
+                "points": 5,
+                "name": "Skill Group",
+                "key": "skill_group",
+                "details": "(Occupation: Thief)"
+              },
+              {
+                "level": 3,
+                "points": 6,
+                "name": "Skill Group",
+                "key": "skill_group",
+                "details": "(Social)"
+              },
+              {
+                "level": 3,
+                "points": 6,
+                "name": "Skill Group",
+                "key": "skill_group",
+                "details": "(Street)"
+              },
+              {
+                "level": 2,
+                "points": 4,
+                "name": "Skill Group",
+                "key": "skill_group",
+                "details": "(Technical)"
+              },
+              {
+                "level": 3,
+                "points": 9,
+                "name": "Wealth",
+                "key": "wealth",
+                "details": null
+              }
+            ],
+            "defects": [
+              {
+                "rank": 2,
+                "cp_refund": 2,
+                "name": "Nemesis",
+                "key": "nemesis",
+                "details": "(One Enemy)"
+              },
+              {
+                "rank": 2,
+                "cp_refund": 4,
+                "name": "Wanted",
+                "key": "wanted",
+                "details": "(Law Enforcement)"
+              }
+            ],
+            "totalPoints": 50
+          },
+          {
+            "name": "MECHA PILOT",
+            "baseSize": {
+              "rank": 0,
+              "name": "Medium"
+            },
+            "stats": [],
+            "attributes": [
+              {
+                "level": 2,
+                "points": 2,
+                "name": "Attack Mastery",
+                "key": "attack_mastery",
+                "details": null
+              },
+              {
+                "level": 3,
+                "points": 3,
+                "name": "Connected",
+                "key": "connected",
+                "details": "(Select One)"
+              },
+              {
+                "level": 30,
+                "points": 30,
+                "name": "Item",
+                "key": "item",
+                "details": "(Mecha and Equipment; 60 Points)"
+              },
+              {
+                "level": 2,
+                "baseLevel": 3,
+                "points": 6,
+                "name": "Massive Damage",
+                "key": "massive_damage",
+                "details": "(Focussed: Mecha Weapons +1)"
+              },
+              {
+                "level": 2,
+                "points": 2,
+                "name": "Ranged Attack",
+                "key": "ranged_attack",
+                "details": "(Mecha Weapons)"
+              },
+              {
+                "level": 1,
+                "points": 1,
+                "name": "Ranged Defence",
+                "key": "ranged_defence",
+                "details": "(Mecha Movement)"
+              },
+              {
+                "level": 1,
+                "points": 3,
+                "name": "Skill Group",
+                "key": "skill_group",
+                "details": "(Military)"
+              },
+              {
+                "level": 3,
+                "points": 3,
+                "name": "Skill Group",
+                "key": "skill_group",
+                "details": "(Occupation: Mecha Pilot)"
+              }
+            ],
+            "defects": [],
+            "totalPoints": 50
+          },
+          {
+            "name": "MERCENARY",
+            "baseSize": {
+              "rank": 0,
+              "name": "Medium"
+            },
+            "stats": [
+              {
+                "stat": "Body",
+                "value": 1,
+                "points": 2
+              }
+            ],
+            "attributes": [
+              {
+                "level": 3,
+                "points": 3,
+                "name": "Attack Mastery",
+                "key": "attack_mastery",
+                "details": null
+              },
+              {
+                "level": 4,
+                "points": 4,
+                "name": "Combat Technique",
+                "key": "combat_technique",
+                "details": "(Weapons Encyclopaedia + Select 3 Others)"
+              },
+              {
+                "level": 2,
+                "points": 2,
+                "name": "Defence Mastery",
+                "key": "defence_mastery",
+                "details": null
+              },
+              {
+                "level": 3,
+                "points": 3,
+                "name": "Gear",
+                "key": "gear",
+                "details": "(Various Weapons and Equipment)"
+              },
+              {
+                "level": 3,
+                "points": 3,
+                "name": "Heightened Awareness",
+                "key": "heightened_awareness",
+                "details": null
+              },
+              {
+                "level": 2,
+                "points": 6,
+                "name": "Skill Group",
+                "key": "skill_group",
+                "details": "(Adventuring)"
+              },
+              {
+                "level": 1,
+                "points": 2,
+                "name": "Skill Group",
+                "key": "skill_group",
+                "details": "(Business)"
+              },
+              {
+                "level": 1,
+                "points": 3,
+                "name": "Skill Group",
+                "key": "skill_group",
+                "details": "(Military)"
+              },
+              {
+                "level": 1,
+                "points": 2,
+                "name": "Skill Group",
+                "key": "skill_group",
+                "details": "(Social)"
+              },
+              {
+                "level": 2,
+                "points": 4,
+                "name": "Skill Group",
+                "key": "skill_group",
+                "details": "(Street)"
+              },
+              {
+                "level": 1,
+                "points": 2,
+                "name": "Skill Group",
+                "key": "skill_group",
+                "details": "(Technical)"
+              },
+              {
+                "level": 3,
+                "points": 9,
+                "name": "Wealth",
+                "key": "wealth",
+                "details": null
+              }
+            ],
+            "defects": [],
+            "totalPoints": 45
+          },
+          {
+            "name": "NINJA",
+            "baseSize": {
+              "rank": 0,
+              "name": "Medium"
+            },
+            "stats": [
+              {
+                "stat": "Body",
+                "value": 1,
+                "points": 2
+              }
+            ],
+            "attributes": [
+              {
+                "level": 3,
+                "points": 3,
+                "name": "Attack Mastery",
+                "key": "attack_mastery",
+                "details": null
+              },
+              {
+                "level": 8,
+                "points": 8,
+                "name": "Combat Technique",
+                "key": "combat_technique",
+                "details": "(Blind Fighting, Blind Shooting, Brutal, Concealment, Lethal Blow, Lightning Reflexes 2, Portable Armoury)"
+              },
+              {
+                "level": 2,
+                "points": 2,
+                "name": "Defence Mastery",
+                "key": "defence_mastery",
+                "details": null
+              },
+              {
+                "level": 1,
+                "points": 10,
+                "name": "Dynamic Powers",
+                "key": "dynamic_powers",
+                "details": "(Ninja Tricks)"
+              },
+              {
+                "level": 2,
+                "points": 2,
+                "name": "Gear",
+                "key": "gear",
+                "details": "(Ninja Supplies)"
+              },
+              {
+                "level": 2,
+                "points": 2,
+                "name": "Heightened Awareness",
+                "key": "heightened_awareness",
+                "details": null
+              },
+              {
+                "level": 10,
+                "points": 10,
+                "name": "Item",
+                "key": "item",
+                "details": "(Weapons; 20 Points)"
+              },
+              {
+                "level": 2,
+                "points": 2,
+                "name": "Jumping",
+                "key": "jumping",
+                "details": null
+              },
+              {
+                "level": 2,
+                "baseLevel": 3,
+                "points": 6,
+                "name": "Massive Damage",
+                "key": "massive_damage",
+                "details": "(Focussed: Unarmed +1)"
+              },
+              {
+                "level": 3,
+                "points": 9,
+                "name": "Skill Group",
+                "key": "skill_group",
+                "details": "(Adventuring)"
+              },
+              {
+                "level": 2,
+                "points": 2,
+                "name": "Skill Group",
+                "key": "skill_group",
+                "details": "(Artistic)"
+              },
+              {
+                "level": 2,
+                "points": 4,
+                "name": "Skill Group",
+                "key": "skill_group",
+                "details": "(Street)"
+              },
+              {
+                "level": 6,
+                "points": 6,
+                "name": "Special Movement",
+                "key": "special_movement",
+                "details": "(Balance, Cat-Like, Fast, Light-Footed, Untrackable, Wall-Bouncing)"
+              },
+              {
+                "level": 2,
+                "points": 2,
+                "name": "Tough",
+                "key": "tough",
+                "details": null
+              }
+            ],
+            "defects": [],
+            "totalPoints": 70
+          },
+          {
+            "name": "PET MONSTER TRAINER",
+            "baseSize": {
+              "rank": 0,
+              "name": "Medium"
+            },
+            "stats": [
+              {
+                "stat": "Soul",
+                "value": 1,
+                "points": 2
+              }
+            ],
+            "attributes": [
+              {
+                "level": 1,
+                "points": 1,
+                "name": "Combat Technique",
+                "key": "combat_technique",
+                "details": "(Tournament Encyclopaedia: Pet Monster Duels)"
+              },
+              {
+                "level": 2,
+                "points": 8,
+                "name": "Companion",
+                "key": "companion",
+                "details": "(Novice Pet Monster; 20 Points)"
+              },
+              {
+                "level": 4,
+                "points": 16,
+                "name": "Companion",
+                "key": "companion",
+                "details": "(Veteran Pet Monster; 40 Points)"
+              },
+              {
+                "level": 2,
+                "points": 2,
+                "name": "Inspire",
+                "key": "inspire",
+                "details": null
+              },
+              {
+                "level": 2,
+                "points": 2,
+                "name": "Skill Group",
+                "key": "skill_group",
+                "details": "(Occupation: Pet Monster Trainer)"
+              }
+            ],
+            "defects": [
+              {
+                "rank": 1,
+                "cp_refund": 1,
+                "name": "Nemesis",
+                "details": "(One Rival)"
+              }
+            ],
+            "totalPoints": 30
+          },
+          {
+            "name": "PIRATE",
+            "baseSize": {
+              "rank": 0,
+              "name": "Medium"
+            },
+            "stats": [
+              {
+                "stat": "Body",
+                "value": 1,
+                "points": 2
+              }
+            ],
+            "attributes": [
+              {
+                "level": 2,
+                "points": 2,
+                "name": "Attack Mastery",
+                "key": "attack_mastery",
+                "details": null
+              },
+              {
+                "level": 1,
+                "points": 1,
+                "name": "Defence Mastery",
+                "key": "defence_mastery",
+                "details": null
+              },
+              {
+                "level": 1,
+                "points": 1,
+                "name": "Enemy Attack",
+                "key": "enemy_attack",
+                "details": "(Select Enemy)"
+              },
+              {
+                "level": 1,
+                "points": 1,
+                "name": "Features",
+                "key": "features",
+                "details": "(Appearance)"
+              },
+              {
+                "level": 3,
+                "points": 3,
+                "name": "Inspire",
+                "key": "inspire",
+                "details": null
+              },
+              {
+                "level": 5,
+                "points": 5,
+                "name": "Item",
+                "key": "item",
+                "details": "(Various Equipment; 10 Points)"
+              },
+              {
+                "level": 1,
+                "points": 1,
+                "name": "Mulligan",
+                "key": "mulligan",
+                "details": null
+              },
+              {
+                "level": 3,
+                "points": 9,
+                "name": "Skill Group",
+                "key": "skill_group",
+                "details": "(Adventuring)"
+              },
+              {
+                "level": 3,
+                "points": 6,
+                "name": "Skill Group",
+                "key": "skill_group",
+                "details": "(Street)"
+              }
+            ],
+            "defects": [
+              {
+                "rank": 2,
+                "cp_refund": 2,
+                "name": "Easily Distracted",
+                "key": "easily_distracted",
+                "details": "(Select One)"
+              },
+              {
+                "rank": 1,
+                "cp_refund": 1,
+                "name": "Marked",
+                "key": "marked",
+                "details": "(Select One)"
+              },
+              {
+                "rank": 1,
+                "cp_refund": 1,
+                "name": "Nemesis",
+                "key": "nemesis",
+                "details": "(Select One)"
+              },
+              {
+                "rank": 1,
+                "cp_refund": 2,
+                "name": "Wanted",
+                "key": "wanted",
+                "details": "(Law Enforcement)"
+              }
+            ],
+            "totalPoints": 25
+          },
+          {
+            "name": "SAMURAI",
+            "baseSize": {
+              "rank": 0,
+              "name": "Medium"
+            },
+            "stats": [
+              {
+                "stat": "Body",
+                "value": 2,
+                "points": 4
+              }
+            ],
+            "attributes": [
+              {
+                "level": 4,
+                "points": 4,
+                "name": "Combat Technique",
+                "key": "combat_technique",
+                "details": "(Blind Fighting, Judge Opponent, Lethal Blow, Lightning Reflexes)"
+              },
+              {
+                "level": 1,
+                "points": 4,
+                "name": "Extra Actions",
+                "key": "extra_actions",
+                "details": null
+              },
+              {
+                "level": 1,
+                "points": 1,
+                "name": "Gear",
+                "key": "gear",
+                "details": "(Family Heirlooms)"
+              },
+              {
+                "level": 4,
+                "points": 4,
+                "name": "Heightened Awareness",
+                "key": "heightened_awareness",
+                "details": null
+              },
+              {
+                "level": 3,
+                "points": 3,
+                "name": "Inspire",
+                "key": "inspire",
+                "details": null
+              },
+              {
+                "level": 10,
+                "points": 10,
+                "name": "Item",
+                "key": "item",
+                "details": "(Weapons; 20 Points)"
+              },
+              {
+                "level": 3,
+                "baseLevel": 4,
+                "points": 9,
+                "name": "Massive Damage",
+                "key": "massive_damage",
+                "details": "(Focussed: Sword +1)"
+              },
+              {
+                "level": 4,
+                "points": 4,
+                "name": "Melee Attack",
+                "key": "melee_attack",
+                "details": "(Sword)"
+              },
+              {
+                "level": 4,
+                "points": 4,
+                "name": "Melee Defence",
+                "key": "melee_defence",
+                "details": "(Sword)"
+              },
+              {
+                "level": 2,
+                "points": 2,
+                "name": "Ranged Defence",
+                "key": "ranged_defence",
+                "details": "(Personal)"
+              },
+              {
+                "level": 2,
+                "points": 6,
+                "name": "Skill Group",
+                "key": "skill_group",
+                "details": "(Adventuring)"
+              },
+              {
+                "level": 2,
+                "points": 2,
+                "name": "Skill Group",
+                "key": "skill_group",
+                "details": "(Artistic)"
+              },
+              {
+                "level": 2,
+                "points": 2,
+                "name": "Skill Group",
+                "key": "skill_group",
+                "details": "(Domestic)"
+              },
+              {
+                "level": 2,
+                "points": 4,
+                "name": "Skill Group",
+                "key": "skill_group",
+                "details": "(Social)"
+              },
+              {
+                "level": 1,
+                "points": 1,
+                "name": "Special Movement",
+                "key": "special_movement",
+                "details": "(Zen Direction)"
+              },
+              {
+                "level": 2,
+                "points": 2,
+                "name": "Tough",
+                "key": "tough",
+                "details": null
+              }
+            ],
+            "defects": [
+              {
+                "rank": 1,
+                "cp_refund": 1,
+                "name": "Social Fault",
+                "key": "social_fault",
+                "details": "(Bushido Code)"
+              }
+            ],
+            "totalPoints": 65
+          },
+          {
+            "name": "SENTAI MEMBER",
+            "baseSize": {
+              "rank": 0,
+              "name": "Medium"
+            },
+            "stats": [
+              {
+                "stat": "Body",
+                "value": 2,
+                "points": 4
+              }
+            ],
+            "attributes": [
+              {
+                "level": 1,
+                "fluxCost": 2,
+                "points": 1,
+                "name": "Attack Mastery",
+                "key": "attack_mastery",
+                "details": "(Environmental: Near Teammates +1)"
+              },
+              {
+                "level": 1,
+                "fluxCost": 2,
+                "points": 1,
+                "name": "Defence Mastery",
+                "key": "defence_mastery",
+                "details": "(Environmental: Near Teammates +1)"
+              },
+              {
+                "level": 10,
+                "points": 10,
+                "name": "Item",
+                "key": "item",
+                "details": "(Pool of Shared Mecha Equipment; 20 Points)"
+              },
+              {
+                "level": 1,
+                "baseLevel": 3,
+                "points": 3,
+                "name": "Massive Damage",
+                "key": "massive_damage",
+                "details": "(Environmental: Near Teammates +1; Focussed: Choose Weapon +1)"
+              },
+              {
+                "level": 2,
+                "baseLevel": 3,
+                "points": 2,
+                "name": "Mulligan",
+                "key": "mulligan",
+                "details": "(Environmental: Near Teammates +1)"
+              },
+              {
+                "level": 1,
+                "points": 1,
+                "name": "Sixth Sense",
+                "key": "sixth_sense",
+                "details": "(Danger to Teammates)"
+              },
+              {
+                "level": 1,
+                "points": 3,
+                "name": "Skill Group",
+                "key": "skill_group",
+                "details": "(Adventuring)"
+              },
+              {
+                "level": 5,
+                "points": 10,
+                "name": "Weapon: Combined Attack",
+                "key": "weapon",
+                "details": "(Assisted: Teammates",
+                "enhancements": ["piercing", "range_1", "stun_1"],
+                "limiters": ["assisted", "emotional"]
+              }
+            ],
+            "defects": [],
+            "totalPoints": 35
+          },
+          {
+            "name": "SHADOW WARRIOR",
+            "baseSize": {
+              "rank": 0,
+              "name": "Medium"
+            },
+            "stats": [
+              {
+                "stat": "Body",
+                "value": 2,
+                "points": 4
+              }
+            ],
+            "attributes": [
+              {
+                "level": 5,
+                "points": 15,
+                "name": "Change State",
+                "key": "change_state",
+                "details": null
+              },
+              {
+                "level": 1,
+                "points": 1,
+                "name": "Immutable",
+                "key": "immutable",
+                "details": null
+              },
+              {
+                "level": 10,
+                "points": 10,
+                "name": "Item",
+                "key": "item",
+                "details": "(Weapons; 20 Points)"
+              },
+              {
+                "level": 5,
+                "baseLevel": 6,
+                "points": 15,
+                "name": "Massive Damage",
+                "key": "massive_damage",
+                "details": "(Focussed: Sword +1)"
+              },
+              {
+                "level": 6,
+                "points": 6,
+                "name": "Melee Attack",
+                "key": "melee_attack",
+                "details": "(Sword)"
+              },
+              {
+                "level": 6,
+                "points": 6,
+                "name": "Melee Defence",
+                "key": "melee_defence",
+                "details": "(Sword)"
+              },
+              {
+                "level": 2,
+                "points": 10,
+                "name": "Regeneration",
+                "key": "regeneration",
+                "details": null
+              },
+              {
+                "level": 1,
+                "points": 2,
+                "name": "Skill Group",
+                "key": "skill_group",
+                "details": "(Street)"
+              },
+              {
+                "level": 6,
+                "points": 6,
+                "name": "Tough",
+                "key": "tough",
+                "details": null
+              }
+            ],
+            "defects": [],
+            "totalPoints": 75
+          },
+          {
+            "name": "STUDENT",
+            "baseSize": {
+              "rank": 0,
+              "name": "Medium"
+            },
+            "stats": [
+              {
+                "stat": "Soul",
+                "value": 2,
+                "points": 4
+              }
+            ],
+            "attributes": [
+              {
+                "level": 1,
+                "points": 1,
+                "name": "Connected",
+                "key": "connected",
+                "details": "(Select One)"
+              },
+              {
+                "level": 4,
+                "points": 4,
+                "name": "Energised",
+                "key": "energised",
+                "details": null
+              },
+              {
+                "level": 1,
+                "points": 1,
+                "name": "Features",
+                "key": "features",
+                "details": "(Animal Empathy)"
+              },
+              {
+                "level": 1,
+                "points": 1,
+                "name": "Heightened Awareness",
+                "key": "heightened_awareness",
+                "details": null
+              },
+              {
+                "level": 3,
+                "points": 3,
+                "name": "Mulligan",
+                "key": "mulligan",
+                "details": null
+              },
+              {
+                "level": 2,
+                "points": 2,
+                "name": "Skill Group",
+                "key": "skill_group",
+                "details": "(Occupation: Student)"
+              },
+              {
+                "level": 20,
+                "points": 20,
+                "name": "Unknown Power",
+                "key": "unknown_power",
+                "details": "(30 Points)"
+              }
+            ],
+            "defects": [
+              {
+                "rank": 1,
+                "cp_refund": 1,
+                "name": "Magnet",
+                "key": "magnet",
+                "details": null
+              }
+            ],
+            "totalPoints": 35
+          },
+          {
+            "name": "TECH GENIUS",
+            "baseSize": {
+              "rank": 0,
+              "name": "Medium"
+            },
+            "stats": [
+              {
+                "stat": "Mind",
+                "value": 2,
+                "points": 4
+              }
+            ],
+            "attributes": [
+              {
+                "level": 5,
+                "points": 5,
+                "name": "Gear",
+                "key": "gear",
+                "details": "(Various Equipment)"
+              },
+              {
+                "level": 2,
+                "points": 2,
+                "name": "Features",
+                "key": "features",
+                "details": "(Eidetic Memory, Lightning Calculator, Speed Reading)"
+              },
+              {
+                "level": 10,
+                "points": 10,
+                "name": "Item",
+                "key": "item",
+                "details": "(Powerful Gadgets; 20 Points)"
+              },
+              {
+                "level": 2,
+                "baseLevel": 6,
+                "points": 20,
+                "name": "Power Flux",
+                "key": "power_flux",
+                "details": "(Primal: Super Inventor -2; Activation +3; Equipment: Workshop +3)"
+              },
+              {
+                "level": 1,
+                "points": 2,
+                "name": "Skill Group",
+                "key": "skill_group",
+                "details": "(Business)"
+              },
+              {
+                "level": 6,
+                "points": 12,
+                "name": "Skill Group",
+                "key": "skill_group",
+                "details": "(Technical)"
+              }
+            ],
+            "defects": [],
+            "totalPoints": 55
+          },
+          {
+            "name": "WARDER",
+            "baseSize": {
+              "rank": 0,
+              "name": "Medium"
+            },
+            "stats": [],
+            "attributes": [
+              {
+                "level": 2,
+                "points": 10,
+                "name": "Absorption",
+                "key": "absorption",
+                "details": "(Health Points)"
+              },
+              {
+                "level": 1,
+                "points": 2,
+                "name": "Augmented",
+                "key": "augmented",
+                "details": "(Body Stat; Source: Ward Magic)"
+              },
+              {
+                "level": 2,
+                "points": 2,
+                "name": "Combat Technique",
+                "key": "combat_technique",
+                "details": "(Brutal; Lethal Blow)"
+              },
+              {
+                "level": 3,
+                "points": 3,
+                "name": "Heightened Senses",
+                "key": "heightened_senses",
+                "details": "(Hearing, Smell, Vision)"
+              },
+              {
+                "level": 4,
+                "points": 4,
+                "name": "Immutable",
+                "key": "immutable",
+                "details": null
+              },
+              {
+                "level": 3,
+                "points": 3,
+                "name": "Melee Attack",
+                "key": "melee_attack",
+                "details": "(Unarmed)"
+              },
+              {
+                "level": 2,
+                "points": 2,
+                "name": "Melee Defence",
+                "key": "melee_defence",
+                "details": "(Unarmed)"
+              },
+              {
+                "level": 2,
+                "baseLevel": 4,
+                "points": 20,
+                "name": "Power Flux",
+                "key": "power_flux",
+                "details": "(Major: Combat; Activation: Wards; Unique Limiter: No Fluxing Attributes of Wards)",
+                "enhancements": ["major", "duration_3"],
+                "limiters": ["activation_3", "unique_limiter_3"]
+              },
+              {
+                "level": 2,
+                "points": 6,
+                "name": "Skill Group",
+                "key": "skill_group",
+                "details": "(Adventuring)"
+              },
+              {
+                "level": 2,
+                "baseLevel": 4,
+                "points": 6,
+                "name": "Transfer",
+                "key": "transfer",
+                "details": "(Specific Attribute: Power Flux +2)"
+              },
+              {
+                "level": 5,
+                "points": 5,
+                "name": "Tough",
+                "key": "tough",
+                "details": null
+              }
+            ],
+            "defects": [
+              {
+                "rank": 3,
+                "cp_refund": 3,
+                "name": "Marked",
+                "key": "marked",
+                "details": "(Whole Body)"
+              }
+            ],
+            "totalPoints": 60
+          }
+    ]
+  }
+}

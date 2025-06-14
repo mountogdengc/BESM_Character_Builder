@@ -1,0 +1,2547 @@
+{
+    "raceTemplates": {
+      "description": "Race templates based on BESM Fourth Edition examples.",
+      "races": [
+        {
+          "race_name": "ANDROID BATTLE MAID",
+          "baseSize": {
+            "size_rank": 0,
+            "size_name": "Medium"
+          },
+          "stats": [
+            {
+              "body_adj": 2,
+              "mind_adj": null,
+              "soul_adj": null
+            }
+          ],
+          "attributes": [
+            {
+              "custom_name": "Armour",
+              "key": "armour",
+              "level": 3,
+              "user_description": "AR 15",
+              "enhancements": [],
+              "limiters": [],
+              "options": [],
+              "user_input": null
+            },
+            {
+              "custom_name": "Attack Mastery",
+              "key": "attack_mastery",
+              "level": 1,
+              "user_description": null,
+              "enhancements": [],
+              "limiters": [],
+              "options": [],
+              "user_input": null
+            },
+            {
+              "custom_name": "Data Access",
+              "key": "data_access",
+              "level": 2,
+              "user_description": null,
+              "enhancements": [],
+              "limiters": [],
+              "options": [],
+              "user_input": null
+            },
+            {
+              "custom_name": "Defence Mastery",
+              "key": "defence_mastery",
+              "level": 1,
+              "user_description": null,
+              "enhancements": [],
+              "limiters": [],
+              "options": [],
+              "user_input": null
+            },
+            {
+              "custom_name": "Extra Actions",
+              "key": "extra_actions",
+              "level": 1,
+              "user_description": null,
+              "enhancements": [],
+              "limiters": [],
+              "options": [],
+              "user_input": null
+            },
+            {
+              "custom_name": "Heightened Senses",
+              "key": "heightened_senses",
+              "level": 3,
+              "user_description": null,
+              "enhancements": [],
+              "limiters": [],
+              "options": ["Hearing", "Smell", "Vision"],
+              "user_input": null
+            },
+            {
+              "custom_name": "Jumping",
+              "key": "jumping",
+              "level": 2,
+              "user_description": null,
+              "enhancements": [],
+              "limiters": [],
+              "options": [],
+              "user_input": null
+            },
+            {
+              "custom_name": "Power Flux: Skill Flux",
+              "key": "power_flux",
+              "level": 1,
+              "user_description": "Equipment: Programmes +1",
+              "enhancements": [],
+              "limiters": [],
+              "options": [],
+              "user_input":"skills"
+            },
+            {
+              "custom_name": "Resilient",
+              "key": "resilient",
+              "level": 5,
+              "user_description": null,
+              "enhancements": ["complete"],
+              "limiters": [],
+              "options": ["Ageing", "Airborne Toxins", "Disease", "Lack of Air", "Poisons"],
+              "user_input": null
+            },
+            {
+              "level": 3,
+              "custom_name": "Skill Group",
+              "key": "skill_group",
+              "user_description": "(Domestic)",
+              "enhancements": [],
+              "limiters": [],
+              "options": [],
+              "user_input": null
+            },
+            {
+              "custom_name": "Superspeed",
+              "key": "superspeed",
+              "level": 1,
+              "user_description": null,
+              "enhancements": [],
+              "limiters": [],
+              "options": [],
+              "user_input": null
+            },
+            {
+              "custom_name": "Superstrength",
+              "key": "superstrength",
+              "level": 1,
+              "user_description": null,
+              "enhancements": [],
+              "limiters": [],
+              "options": [],
+              "user_input": null
+            },
+            {
+              "level": 5,
+              "custom_name": "Tough",
+              "user_description": null,
+              "enhancements": [],
+              "limiters": [],
+              "options": [],
+              "user_input": null
+            }
+          ],
+          "defects": [
+            {
+              "custom_name": "Ism - Android",
+              "key": "ism",
+              "rank": 1,
+              "user_description": null,
+              "enhancements": [],
+              "limiters": [],
+              "options": [],
+              "user_input": null
+            },
+            {
+              "custom_name": "Production mark in embarrassing spot",
+              "key": "marked",
+              "rank": 1,
+              "user_description": null,
+              "enhancements": [],
+              "limiters": [],
+              "options": [],
+              "user_input": null
+            },
+            {
+              "custom_name": "Obligated to Purchaser",
+              "key": "obligated",
+              "rank": 2,
+              "user_description": null,
+              "enhancements": [],
+              "limiters": [],
+              "options": [],
+              "user_input": null
+            }
+          ]
+        },
+        {
+          "race_name": "ARCHFIEND",
+          "baseSize": {
+            "size_rank": 3,
+            "size_name": "Mammoth"
+          },
+          "stats": [
+            {
+              "body_adj": null,
+              "mind_adj": null,
+              "soul_adj": null
+            }
+          ],
+          "attributes": [
+            {
+              "custom_name": "Armour",
+              "key": "armour",
+              "level": 6,
+              "user_description": null,
+              "enhancements": [],
+              "limiters": [],
+              "options": [],
+              "user_input": null
+            },
+            {
+              "custom_name": "Combat Technique",
+              "key": "combat technique",
+              "level": 2,
+              "user_description": null,
+              "enhancements": [],
+              "limiters": [],
+              "options": ["Brutal, Lethal Blow"],
+              "user_input": null
+            },
+            {
+              "custom_name": "Conversion",
+              "key": "conversion",
+              "level": 2,
+              "user_description": null,
+              "enhancements": [],
+              "limiters": [],
+              "options": [],
+              "user_input": null
+            },
+            {
+              "custom_name": "Melee Attack: Swords",
+              "key": "melee_attack",
+              "level": 3,
+              "user_description": null,
+              "enhancements": [],
+              "limiters": [],
+              "options": [],
+              "user_input": null
+            },
+            {
+              "custom_name": "Melee Defence: Swords",
+              "key": "melee_defence",
+              "level": 2,
+              "user_description": null,
+              "enhancements": [],
+              "limiters": [],
+              "options": [],
+              "user_input": null
+            },
+            {
+              "custom_name": "Mind Control",
+              "key": "mind_control",
+              "level": 2,
+              "user_description": null,
+              "enhancements": [],
+              "limiters": [],
+              "options": [],
+              "user_input": null
+            },
+            {
+              "custom_name": "Special Movement",
+              "key": "special_movement",
+              "level": 3,
+              "user_description": null,
+              "enhancements": [],
+              "limiters": [],
+              "options": ["Fast"],
+              "user_input": null
+            },
+            {
+              "custom_name": "Summon Creatures",
+              "key": "summon creatures",
+              "level": 4,
+              "user_description": "Dimensional -2; Narrow: Demons +2",
+              "enhancements": [],
+              "limiters": [],
+              "options": [],
+              "user_input": null
+            },
+            {
+              "custom_name": "Superstrength",
+              "key": "superstrength",
+              "level": 6,
+              "user_description": null,
+              "enhancements": [],
+              "limiters": [],
+              "options": [],
+              "user_input": null
+            },
+            {
+              "custom_name": "Tough",
+              "key": "tough",
+              "level": 4,
+              "user_description": null,
+              "enhancements": [],
+              "limiters": [],
+              "options": [],
+              "user_input": null
+            },
+            {
+              "custom_name": "Tunnelling",
+              "key": "tunnelling",
+              "level": 1,
+              "user_description": null,
+              "enhancements": [],
+              "limiters": [],
+              "options": [],
+              "user_input": null
+            },
+            {
+              "custom_name": "x8 Thrown Weapon Distance",
+              "key": "unique_attribute",
+              "level": 3,
+              "user_description": null,
+              "enhancements": [],
+              "limiters": [],
+              "options": [],
+              "user_input": null
+            },
+            {
+              "custom_name": "Weapon: Soul Sword",
+              "key": "weapon",
+              "level": 7,
+              "user_description": null,
+              "enhancements": ["multidimensional", "muscle", "penetrating", "piercing"],
+              "limiters": [],
+              "options": [],
+              "user_input": null
+            }
+          ],
+          "defects": [
+             {
+              "custom_name": "Inept Ranged Attack",
+              "key": "inept_attack",
+              "rank": 3,
+              "user_description": null,
+              "enhancements": [],
+              "limiters": [],
+              "options": [],
+              "user_input": null
+            },
+            {
+              "custom_name": "Inept Ranged Defence",
+              "key": "inept_defence",
+              "rank": 3,
+              "user_description": null,
+              "enhancements": [],
+              "limiters": [],
+              "options": [],
+              "user_input": null
+            },
+             {
+              "custom_name": "Big, Heavy, and Obvious",
+              "key": "unique_defect",
+              "rank": 3,
+              "enhancements": [],
+              "limiters": [],
+              "user_description": null
+            }
+          ]
+        },
+        {
+          "name": "ASRAI",
+          "baseSize": {
+            "rank": 0,
+            "name": "Medium"
+          },
+          "stats": [
+            {
+              "stat": "Mind",
+              "value": 1,
+              "points": 2
+            },
+            {
+              "stat": "Soul",
+              "value": 2,
+              "points": 4
+            }
+          ],
+          "attributes": [
+            {
+              "level": 3,
+              "baseLevel": 2,
+              "points": 30,
+              "custom_name": "Dynamic Powers",
+              "user_description": "(Major: Natural Magic -1)"
+            },
+            {
+              "level": 2,
+              "points": 2,
+              "custom_name": "Energised",
+              "user_description": null
+            },
+            {
+              "level": 1,
+              "points": 1,
+              "custom_name": "Features",
+              "user_description": "(Appearance)"
+            },
+            {
+              "level": 1,
+              "points": 3,
+              "custom_name": "Flight",
+              "user_description": null
+            },
+             {
+              "level": 1,
+              "points": 1,
+              "custom_name": "Sixth Sense",
+              "user_description": "(Danger)"
+            },
+             {
+              "level": 1,
+              "points": 1,
+              "custom_name": "Skill Group",
+              "user_description": "(Domestic)"
+            },
+             {
+              "level": 1,
+              "points": 1,
+              "custom_name": "Special Movement",
+              "user_description": "(Zen Direction)"
+            }
+          ],
+          "defects": [],
+          "totalPoints": 45
+        },
+        {
+          "name": "DARK ELF",
+          "baseSize": {
+            "rank": 0,
+            "name": "Medium"
+          },
+          "stats": [
+             {
+              "stat": "Soul",
+              "value": 1,
+              "points": 2
+            }
+          ],
+          "attributes": [
+            {
+              "level": 1,
+              "points": 1,
+              "custom_name": "Control Environment",
+              "user_description": "(Darkness)"
+            },
+            {
+              "level": 1,
+              "points": 1,
+              "custom_name": "Heightened Awareness",
+              "user_description": null
+            },
+             {
+              "level": 3,
+              "points": 3,
+              "custom_name": "Mind Shield",
+              "user_description": null
+            },
+            {
+              "level": 2,
+              "points": 4,
+              "custom_name": "Resilient",
+              "user_description": "(Ageing, Poisons)"
+            },
+            {
+              "level": 2,
+              "points": 2,
+              "custom_name": "Supersense",
+              "user_description": "(Dark Vision, Magic)"
+            },
+            {
+              "level": 5,
+              "baseLevel": 2,
+              "points": 10,
+              "custom_name": "Unaffected",
+              "user_description": "(Source: Magic; All Attributes -3)"
+            }
+          ],
+          "defects": [
+            {
+              "rank": 1,
+              "cp_refund": 3,
+              "custom_name": "Sensory Impairment",
+              "user_description": "(Diminished vision in sunlight)"
+            }
+          ],
+          "totalPoints": 20
+        },
+        {
+          "name": "DWARF",
+          "baseSize": {
+            "rank": 0,
+            "name": "Medium"
+          },
+          "stats": [
+            {
+              "stat": "Body",
+              "value": 1,
+              "points": 2
+            }
+          ],
+          "attributes": [
+            {
+              "level": 2,
+              "points": 2,
+              "custom_name": "Features",
+              "user_description": "(Depth Awareness, Longevity, Low-Light Vision)"
+            },
+            {
+              "level": 4,
+              "points": 4,
+              "custom_name": "Immutable",
+              "user_description": null
+            },
+            {
+              "level": 2,
+              "points": 2,
+              "custom_name": "Mind Shield",
+              "user_description": null
+            },
+             {
+              "level": 2,
+              "points": 4,
+              "custom_name": "Resilient",
+              "user_description": "(Disease, Poison)"
+            },
+             {
+              "level": 1,
+              "points": 1,
+              "custom_name": "Supersense",
+              "user_description": "(Infrared Vision)"
+            },
+            {
+              "level": 2,
+              "points": 2,
+              "custom_name": "Tough",
+              "user_description": null
+            }
+          ],
+          "defects": [
+             {
+              "rank": 1,
+              "cp_refund": -1,
+              "custom_name": "Shortcoming",
+              "user_description": "(Body: Major - Agility)"
+            },
+            {
+              "rank": 1,
+              "cp_refund": -1,
+              "custom_name": "Shortcoming",
+              "user_description": "(Body: Minor - Running Speed)"
+            }
+          ],
+          "totalPoints": 15
+        },
+        {
+          "name": "FAIRY",
+          "baseSize": {
+            "rank": -3,
+            "name": "Diminutive"
+          },
+          "stats": [
+             {
+              "stat": "Body",
+              "value": 1,
+              "points": 2
+            },
+             {
+              "stat": "Mind",
+              "value": 1,
+              "points": 2
+            },
+            {
+              "stat": "Soul",
+              "value": 2,
+              "points": 4
+            }
+          ],
+          "attributes": [
+            {
+              "level": 1,
+              "points": 1,
+              "name": "Control Environment",
+              "user_description": "(Lights)"
+            },
+            {
+              "level": 2,
+              "points": 2,
+              "name": "Features",
+              "user_description": "(Appearance: Cute, Direction Sense, Scentless)"
+            },
+            {
+              "level": 2,
+              "points": 6,
+              "name": "Flight",
+              "user_description": null
+            },
+            {
+              "level": 2,
+              "points": 2,
+              "name": "Heightened Senses",
+              "user_description": "(Smell, Touch)"
+            },
+            {
+              "level": 1,
+              "points": 3,
+              "name": "Projection",
+              "user_description": null
+            },
+            {
+              "level": 3,
+              "points": 3,
+              "name": "Ranged Attack",
+              "user_description": "(All)"
+            },
+            {
+              "level": 3,
+              "points": 3,
+              "name": "Ranged Defence",
+              "user_description": "(All)"
+            },
+            {
+              "level": 3,
+              "points": 6,
+              "name": "Unique Attribute",
+              "user_description": "(Small, Light, and Unobtrusive)"
+            }
+          ],
+          "defects": [
+            {
+              "rank": 2,
+              "cp_refund": 2,
+              "name": "Fragile",
+              "user_description": null
+            },
+            {
+              "rank": 3,
+              "cp_refund": 6,
+              "name": "Unique Defect",
+              "user_description": "(-30 Strength Damage)"
+            },
+            {
+              "rank": 3,
+              "cp_refund": 18,
+              "name": "Unique Defect",
+              "user_description": "(Lifting Capacity ÷100)"
+            },
+            {
+              "rank": 3,
+              "cp_refund": 3,
+              "name": "Unique Defect",
+              "user_description": "(÷8 Running Speed)"
+            },
+            {
+              "rank": 3,
+              "cp_refund": 12,
+              "name": "Unique Defect",
+              "user_description": "(Suffers 30 Extra Damage from all Attacks)"
+            },
+             {
+              "rank": 3,
+              "cp_refund": 3,
+              "name": "Unique Defect",
+              "user_description": "(÷8 Thrown Weapon Distance)"
+            }
+          ],
+          "totalPoints": -10
+        },
+        {
+          "name": "GIANT LIVING ROBOT",
+          "baseSize": {
+            "rank": 2,
+            "name": "Huge"
+          },
+          "stats": [],
+          "attributes": [
+            {
+              "level": 4,
+              "points": 8,
+              "name": "Armour",
+              "user_description": "(AR 20)"
+            },
+            {
+              "level": 2,
+              "points": 2,
+              "name": "Capacity",
+              "user_description": "(Cargo)"
+            },
+            {
+              "level": 2,
+              "points": 2,
+              "name": "Combat Technique",
+              "user_description": "(Brutal, Lethal Blow)"
+            },
+            {
+              "level": 4,
+              "points": 4,
+              "name": "Gear",
+              "user_description": "(Tools and Computers)"
+            },
+            {
+              "level": 3,
+              "points": 3,
+              "name": "Heightened Senses",
+              "user_description": "(Hearing, Smell, Vision)"
+            },
+            {
+              "level": 3,
+              "points": 3,
+              "name": "Jumping",
+              "user_description": null
+            },
+            {
+              "level": 4,
+              "points": 4,
+              "name": "Mind Shield",
+              "user_description": null
+            },
+            {
+              "level": 2,
+              "points": 10,
+              "name": "Regeneration",
+              "user_description": null
+            },
+            {
+              "level": 10,
+              "baseLevel": 5,
+              "points": 20,
+              "name": "Resilient",
+              "user_description": "(Ageing, Airborne Toxins, Disease, Lack of Air, Poisons; All Complete -5)"
+            },
+            {
+              "level": 2,
+              "points": 2,
+              "name": "Special Movement",
+              "user_description": "(Fast 2)"
+            },
+            {
+              "level": 4,
+              "points": 16,
+              "name": "Superstrength",
+              "user_description": null
+            },
+            {
+              "level": 4,
+              "points": 4,
+              "name": "Tough",
+              "user_description": null
+            },
+            {
+              "level": 2,
+              "points": 2,
+              "name": "Unique Attribute",
+              "user_description": "(x4 Thrown Weapon Distance)"
+            }
+          ],
+          "defects": [
+            {
+              "rank": 2,
+              "cp_refund": 2,
+              "name": "Inept Attack",
+              "user_description": "(Ranged)"
+            },
+            {
+              "rank": 2,
+              "cp_refund": 2,
+              "name": "Inept Defence",
+              "user_description": "(Ranged)"
+            },
+            {
+              "rank": 1,
+              "cp_refund": 2,
+              "name": "Ism",
+              "user_description": "(Non-Human)"
+            },
+            {
+              "rank": 2,
+              "cp_refund": 4,
+              "name": "Unique Defect",
+              "user_description": "(Big, Heavy, and Obvious)"
+            }
+          ],
+          "totalPoints": 70
+        },
+        {
+          "name": "GREY",
+          "baseSize": {
+            "rank": 0,
+            "name": "Medium"
+          },
+          "stats": [
+            {
+              "stat": "Mind",
+              "value": 3,
+              "points": 6
+            }
+          ],
+          "attributes": [
+            {
+              "level": 2,
+              "points": 2,
+              "name": "Features",
+              "user_description": "(Ambidexterity, Low-Light Vision, Ultrasonic Communication)"
+            },
+            {
+              "level": 3,
+              "points": 3,
+              "name": "Healing",
+              "user_description": null
+            },
+            {
+              "level": 2,
+              "points": 2,
+              "name": "Heightened Senses",
+              "user_description": "(Hearing, Taste)"
+            },
+            {
+              "level": 3,
+              "baseLevel": 5,
+              "points": 15,
+              "name": "Mind Control",
+              "user_description": "(Broad: Sentient Beings +1; Concentration +1)"
+            },
+            {
+              "level": 4,
+              "points": 4,
+              "name": "Mind Shield",
+              "user_description": null
+            },
+            {
+              "level": 3,
+              "points": 12,
+              "name": "Telekinesis",
+              "user_description": null
+            }
+          ],
+          "defects": [
+            {
+              "rank": 1,
+              "cp_refund": 1,
+              "name": "Easily Distracted",
+              "user_description": "(Technology)"
+            },
+            {
+              "rank": 1,
+              "cp_refund": 1,
+              "name": "Fragile",
+              "user_description": null
+            },
+            {
+              "rank": 1,
+              "cp_refund": 1,
+              "name": "Shortcoming",
+              "user_description": "(Body: Major - Agility)"
+            },
+             {
+              "rank": 1,
+              "cp_refund": 1,
+              "name": "Shortcoming",
+              "user_description": "(Body: Minor - Running Speed)"
+            }
+          ],
+          "totalPoints": 40
+        },
+        {
+          "name": "HALF-DRAGON",
+          "baseSize": {
+            "rank": 0,
+            "name": "Medium"
+          },
+          "stats": [
+            {
+              "stat": "Body",
+              "value": 2,
+              "points": 4
+            }
+          ],
+          "attributes": [
+            {
+              "level": 5,
+              "points": 15,
+              "name": "Immunity",
+              "user_description": "(Heat)"
+            },
+            {
+              "level": 1,
+              "points": 1,
+              "name": "Immutable",
+              "user_description": null
+            },
+            {
+              "level": 2,
+              "points": 6,
+              "name": "Flight",
+              "user_description": null
+            },
+            {
+              "level": 1,
+              "points": 4,
+              "name": "Superstrength",
+              "user_description": null
+            },
+            {
+              "level": 1,
+              "points": 1,
+              "name": "Tough",
+              "user_description": null
+            },
+            {
+              "level": 2,
+              "points": 4,
+              "name": "Weapon: Fire Breath",
+              "user_description": "(Continuing -1; Range -1; Deplete +2)"
+            }
+          ],
+          "defects": [],
+          "totalPoints": 35
+        },
+        {
+          "name": "HALF-ONI",
+          "baseSize": {
+            "rank": 0,
+            "name": "Medium"
+          },
+          "stats": [
+            {
+              "stat": "Body",
+              "value": 1,
+              "points": 2
+            },
+            {
+              "stat": "Soul",
+              "value": 1,
+              "points": 2
+            }
+          ],
+          "attributes": [
+            {
+              "level": 1,
+              "points": 1,
+              "name": "Attack Mastery",
+              "user_description": null
+            },
+            {
+              "level": 3,
+              "points": 3,
+              "name": "Energised",
+              "user_description": null
+            },
+            {
+              "level": 1,
+              "points": 1,
+              "name": "Immutable",
+              "user_description": null
+            },
+            {
+              "level": 1,
+              "points": 4,
+              "name": "Superstrength",
+              "user_description": null
+            },
+            {
+              "level": 1,
+              "points": 1,
+              "name": "Tough",
+              "user_description": null
+            },
+            {
+              "level": 8,
+              "baseLevel": 4,
+              "points": 16,
+              "name": "Weapon: Ogre Blast",
+              "user_description": "(Enervation -2; Insidious -3; Range -1; Stun -1; Deplete +3)"
+            }
+          ],
+          "defects": [],
+          "totalPoints": 30
+        },
+        {
+          "name": "HALF-ORC",
+          "baseSize": {
+            "rank": 1,
+            "name": "Large"
+          },
+          "stats": [],
+          "attributes": [
+            {
+              "level": 2,
+              "points": 4,
+              "name": "Armour",
+              "user_description": "(AR 10)"
+            },
+            {
+              "level": 3,
+              "points": 3,
+              "name": "Combat Technique",
+              "user_description": "(Brutal, Judge Opponent, Lethal Blow)"
+            },
+            {
+              "level": 1,
+              "points": 1,
+              "name": "Special Movement",
+              "user_description": "(Fast)"
+            },
+            {
+              "level": 2,
+              "points": 8,
+              "name": "Superstrength",
+              "user_description": null
+            },
+            {
+              "level": 3,
+              "points": 3,
+              "name": "Tough",
+              "user_description": null
+            },
+            {
+              "level": 1,
+              "points": 1,
+              "name": "Unique Attribute",
+              "user_description": "(x2 Thrown Weapon Distance)"
+            },
+            {
+              "level": 2,
+              "points": 4,
+              "name": "Weapon: Fangs",
+              "user_description": null
+            }
+          ],
+          "defects": [
+            {
+              "rank": 1,
+              "cp_refund": 1,
+              "name": "Inept Attack",
+              "user_description": "(Ranged)"
+            },
+            {
+              "rank": 1,
+              "cp_refund": 1,
+              "name": "Inept Defence",
+              "user_description": "(Ranged)"
+            },
+            {
+              "rank": 1,
+              "cp_refund": 2,
+              "name": "Unique Defect",
+              "user_description": "(Big, Heavy, and Obvious)"
+            }
+          ],
+          "totalPoints": 20
+        },
+        {
+          "name": "HAUD",
+          "baseSize": {
+            "rank": 0,
+            "name": "Medium"
+          },
+          "stats": [
+            {
+              "stat": "Body",
+              "value": 2,
+              "points": 4
+            }
+          ],
+          "attributes": [
+            {
+              "level": 2,
+              "points": 4,
+              "name": "Armour",
+              "user_description": "(AR 10)"
+            },
+            {
+              "level": 3,
+              "points": 3,
+              "name": "Attack Mastery",
+              "user_description": null
+            },
+            {
+              "level": 4,
+              "points": 4,
+              "name": "Combat Technique",
+              "user_description": "(Brutal, Lethal Blow, Lightning Reflexes 2)"
+            },
+            {
+              "level": 2,
+              "points": 2,
+              "name": "Defence Mastery",
+              "user_description": null
+            },
+            {
+              "level": 1,
+              "points": 4,
+              "name": "Extra Actions",
+              "user_description": null
+            },
+            {
+              "level": 2,
+              "points": 2,
+              "name": "Features",
+              "user_description": "(Long Tongue, Longevity, Secondary Eyelids)"
+            },
+            {
+              "level": 3,
+              "points": 3,
+              "name": "Heightened Senses",
+              "user_description": "(Smell, Taste, Vision)"
+            },
+            {
+              "level": 3,
+              "points": 3,
+              "name": "Jumping",
+              "user_description": null
+            },
+            {
+              "level": 1,
+              "points": 5,
+              "name": "Regeneration",
+              "user_description": null
+            },
+            {
+              "level": 6,
+              "baseLevel": 5,
+              "points": 12,
+              "name": "Resilient",
+              "user_description": "(Airborne Toxins, Disease, Lack of Food, Less Sleep, Poisons: Complete -1)"
+            },
+            {
+              "level": 6,
+              "points": 6,
+              "name": "Special Movement",
+              "user_description": "(Balance, Cat-Like, Fast, Slithering, Wall-Crawling 2)"
+            },
+            {
+              "level": 2,
+              "points": 8,
+              "name": "Superstrength",
+              "user_description": null
+            },
+            {
+              "level": 1,
+              "baseLevel": 4,
+              "points": 3,
+              "name": "Telepathy",
+              "user_description": "(Specific: Haud +3)"
+            },
+            {
+              "level": 4,
+              "points": 4,
+              "name": "Tough",
+              "user_description": null
+            },
+            {
+              "level": 1,
+              "points": 2,
+              "name": "Undetectable",
+              "user_description": "(Infrared)"
+            },
+            {
+              "level": 3,
+              "baseLevel": 2,
+              "points": 6,
+              "name": "Weapon: Fangs and Claws",
+              "user_description": "(Penetrating -1)"
+            }
+          ],
+          "defects": [
+            {
+              "rank": 1,
+              "cp_refund": 2,
+              "name": "Achilles Heel",
+              "user_description": "(Cold Attacks)"
+            },
+            {
+              "rank": 1,
+              "cp_refund": 2,
+              "name": "Bane",
+              "user_description": "(Sub-Zero Temperatures)"
+            },
+            {
+              "rank": 1,
+              "cp_refund": 1,
+              "name": "Unappealing",
+              "user_description": null
+            }
+          ],
+          "totalPoints": 70
+        },
+        {
+          "name": "HOMO PSYCHE",
+          "baseSize": {
+            "rank": 0,
+            "name": "Medium"
+          },
+          "stats": [
+            {
+              "stat": "Mind",
+              "value": 1,
+              "points": 2
+            }
+          ],
+          "attributes": [
+            {
+              "level": 2,
+              "points": 2,
+              "name": "Control Environment",
+              "user_description": "(Cold, Heat)"
+            },
+            {
+              "level": 6,
+              "points": 6,
+              "name": "Energised",
+              "user_description": null
+            },
+            {
+              "level": 1,
+              "fluxCost": 2,
+              "points": 3,
+              "name": "Flight",
+              "user_description": "(Potent -1; Concentration +1; Deplete +1)"
+            },
+            {
+              "level": 1,
+              "fluxCost": 2,
+              "points": 1,
+              "name": "Healing",
+              "user_description": "(Potent -1; Concentration +1; Deplete +1)"
+            },
+            {
+              "level": 2,
+              "fluxCost": 3,
+              "points": 2,
+              "name": "Sixth Sense",
+              "user_description": "(Emotions, Psionics; Deplete +1)"
+            },
+            {
+              "level": 1,
+              "fluxCost": 3,
+              "points": 4,
+              "name": "Telekinesis",
+              "user_description": "(Concentration +1; Deplete +1)"
+            },
+            {
+              "level": 1,
+              "fluxCost": 4,
+              "points": 3,
+              "name": "Telepathy",
+              "user_description": "(Concentration +1; Deplete +1; Unpredictable +1)"
+            },
+            {
+              "level": 6,
+              "baseLevel": 4,
+              "points": 12,
+              "name": "Unaffected",
+              "user_description": "(Source: Psionics; All Attributes -3; Deplete +1)"
+            }
+          ],
+          "defects": [],
+          "totalPoints": 35
+        },
+        {
+          "name": "KODAMA",
+          "baseSize": {
+            "rank": -2,
+            "name": "Tiny"
+          },
+          "stats": [
+            {
+              "stat": "Soul",
+              "value": 2,
+              "points": 4
+            }
+          ],
+          "attributes": [
+            {
+              "level": 6,
+              "baseLevel": 5,
+              "points": 18,
+              "name": "Change State",
+              "user_description": "(Quick Change -1)"
+            },
+            {
+              "level": 1,
+              "fluxCost": 2,
+              "points": 2,
+              "name": "Cognition",
+              "user_description": "(Postcognition; Environmental: Nature +1)"
+            },
+            {
+              "level": 2,
+              "points": 4,
+              "name": "Data Access",
+              "user_description": "(Nature)"
+            },
+            {
+              "level": 2,
+              "points": 2,
+              "name": "Exorcism",
+              "user_description": null
+            },
+            {
+              "level": 1,
+              "points": 4,
+              "name": "Force Field",
+              "user_description": null
+            },
+            {
+              "level": 1,
+              "points": 1,
+              "name": "Healing",
+              "user_description": null
+            },
+            {
+              "level": 3,
+              "points": 3,
+              "name": "Plant Control",
+              "user_description": null
+            },
+            {
+              "level": 2,
+              "points": 2,
+              "name": "Ranged Attack",
+              "user_description": null
+            },
+            {
+              "level": 2,
+              "points": 2,
+              "name": "Ranged Defence",
+              "user_description": null
+            },
+            {
+              "level": 2,
+              "points": 4,
+              "name": "Summon Creatures",
+              "user_description": null
+            },
+            {
+              "level": 1,
+              "fluxCost": 2,
+              "points": 3,
+              "name": "Telepathy",
+              "user_description": "(Broad: Non-Sentient Animals +1)"
+            },
+            {
+              "level": 2,
+              "points": 4,
+              "name": "Unique Attribute",
+              "user_description": "(Small, Light, and Unobtrusive)"
+            }
+          ],
+          "defects": [
+            {
+              "rank": 2,
+              "cp_refund": 4,
+              "name": "Unique Defect",
+              "user_description": "(-20 Strength Damage)"
+            },
+            {
+              "rank": 2,
+              "cp_refund": 12,
+              "name": "Unique Defect",
+              "user_description": "(Lifting Capacity ÷25)"
+            },
+            {
+              "rank": 2,
+              "cp_refund": 2,
+              "name": "Unique Defect",
+              "user_description": "(÷4 Running Speed)"
+            },
+            {
+              "rank": 2,
+              "cp_refund": 8,
+              "name": "Unique Defect",
+              "user_description": "(Suffers 20 Extra Damage from all Attacks)"
+            },
+            {
+              "rank": 2,
+              "cp_refund": 2,
+              "name": "Unique Defect",
+              "user_description": "(÷4 Thrown Weapon Distance)"
+            }
+          ],
+          "totalPoints": 25
+        },
+        {
+          "name": "NEKOJIN",
+          "baseSize": {
+            "rank": 0,
+            "name": "Medium"
+          },
+          "stats": [],
+          "attributes": [
+            {
+              "level": 2,
+              "points": 2,
+              "name": "Combat Technique",
+              "user_description": "(Lightning Reflexes 2)"
+            },
+            {
+              "level": 2,
+              "points": 2,
+              "name": "Features",
+              "user_description": "(Appearance: Cute, Low-Light Vision, Retractable Claws)"
+            },
+            {
+              "level": 1,
+              "points": 1,
+              "name": "Heightened Senses",
+              "user_description": "(Hearing)"
+            },
+            {
+              "level": 2,
+              "points": 2,
+              "name": "Mulligan",
+              "user_description": null
+            },
+            {
+              "level": 2,
+              "points": 2,
+              "name": "Special Movement",
+              "user_description": "(Cat-Like, Wall Bouncing)"
+            },
+            {
+              "level": 1,
+              "fluxCost": 2,
+              "points": 2,
+              "name": "Weapon: Claws",
+              "user_description": "(Non-Penetrating +1)"
+            }
+          ],
+          "defects": [
+            {
+              "rank": 1,
+              "cp_refund": 1,
+              "name": "Easily Distracted",
+              "user_description": "(Things that Distract Cats)"
+            }
+          ],
+          "totalPoints": 10
+        },
+        {
+          "name": "PARASITE",
+          "baseSize": {
+            "rank": 0,
+            "name": "Medium"
+          },
+          "stats": [],
+          "attributes": [
+            {
+              "level": 2,
+              "points": 10,
+              "name": "Absorption",
+              "user_description": "(Health Points)"
+            },
+            {
+              "level": 2,
+              "points": 4,
+              "name": "Armour",
+              "user_description": "(AR 10)"
+            },
+            {
+              "level": 3,
+              "points": 3,
+              "name": "Attack Mastery",
+              "user_description": null
+            },
+            {
+              "level": 2,
+              "points": 2,
+              "name": "Combat Technique",
+              "user_description": "(Blind Fighting, Brutal)"
+            },
+            {
+              "level": 3,
+              "points": 3,
+              "name": "Defence Mastery",
+              "user_description": null
+            },
+            {
+              "level": 4,
+              "points": 4,
+              "name": "Elasticity",
+              "user_description": null
+            },
+            {
+              "level": 1,
+              "points": 4,
+              "name": "Extra Actions",
+              "user_description": null
+            },
+            {
+              "level": 1,
+              "points": 1,
+              "name": "Heightened Senses",
+              "user_description": "(Hearing)"
+            },
+            {
+              "level": 4,
+              "points": 12,
+              "name": "Immunity",
+              "user_description": "(Electricity)"
+            },
+            {
+              "level": 3,
+              "points": 9,
+              "name": "Massive Damage",
+              "user_description": null
+            },
+            {
+              "level": 1,
+              "baseLevel": 3,
+              "points": 5,
+              "name": "Mind Control",
+              "user_description": "(Potent -2; Single: Merged Host +4)"
+            },
+            {
+              "level": 1,
+              "fluxCost": 2,
+              "points": 3,
+              "name": "Telepathy",
+              "user_description": "(Potent -2; Specific: Parasites/Hosts +3)"
+            },
+            {
+              "level": 1,
+              "points": 2,
+              "name": "Weapon: Extending Body Blades",
+              "user_description": "(Range -1; Non-Penetrating +1)"
+            }
+          ],
+          "defects": [
+            {
+              "rank": 2,
+              "cp_refund": 4,
+              "name": "Bane",
+              "user_description": "(Loud Sounds)"
+            },
+            {
+              "rank": 1,
+              "cp_refund": 3,
+              "name": "Unique Defect",
+              "user_description": "(Must Bond to Host Body)"
+            }
+          ],
+          "totalPoints": 55
+        },
+        {
+          "name": "SHAPECHANGER",
+          "baseSize": {
+            "rank": 0,
+            "name": "Medium"
+          },
+          "stats": [],
+          "attributes": [
+            {
+              "level": 3,
+              "baseLevel": 2,
+              "points": 30,
+              "name": "Dynamic Powers",
+              "user_description": "(Major: Shapeshifting -1)"
+            },
+            {
+              "level": 5,
+              "points": 5,
+              "name": "Immutable",
+              "user_description": null
+            }
+          ],
+          "defects": [],
+          "totalPoints": 35
+        },
+        {
+          "name": "SKELETON KEY",
+          "baseSize": {
+            "rank": 0,
+            "name": "Medium"
+          },
+          "stats": [
+            {
+              "stat": "Soul",
+              "value": 5,
+              "points": 10
+            }
+          ],
+          "attributes": [
+            {
+              "level": 1,
+              "points": 10,
+              "name": "Dynamic Powers",
+              "user_description": "(Minor: Keys and Gates)"
+            },
+            {
+              "level": 5,
+              "points": 5,
+              "name": "Energised",
+              "user_description": null
+            },
+            {
+              "level": 3,
+              "points": 3,
+              "name": "Mulligan",
+              "user_description": null
+            },
+            {
+              "level": 3,
+              "points": 3,
+              "name": "Pocket Dimension",
+              "user_description": null
+            },
+            {
+              "level": 8,
+              "points": 16,
+              "name": "Portal",
+              "user_description": "(7 World Linkages + Pocket Dimension)"
+            },
+            {
+              "level": 4,
+              "baseLevel": 3,
+              "points": 8,
+              "name": "Reincarnation",
+              "user_description": "(Difficult to Stop -1)"
+            },
+            {
+              "level": 6,
+              "baseLevel": 1,
+              "points": 6,
+              "name": "Sixth Sense",
+              "user_description": "(World Gates; Area -5)"
+            },
+            {
+              "level": 6,
+              "points": 6,
+              "name": "Unique Attribute",
+              "user_description": "(Can Destroy World Gates)"
+            }
+          ],
+          "defects": [
+            {
+              "rank": 1,
+              "cp_refund": 1,
+              "name": "Marked",
+              "user_description": "(Infinity Symbol on Forehead)"
+            },
+            {
+              "rank": 3,
+              "cp_refund": 6,
+              "name": "Skeleton in the Closet",
+              "user_description": "(Skeleton Key)"
+            }
+          ],
+          "totalPoints": 60
+        },
+        {
+          "name": "SLIME",
+          "baseSize": {
+            "rank": -1,
+            "name": "Small"
+          },
+          "stats": [
+            {
+              "stat": "Soul",
+              "value": 2,
+              "points": 4
+            }
+          ],
+          "attributes": [
+            {
+              "level": 4,
+              "points": 4,
+              "name": "Elasticity",
+              "user_description": null
+            },
+            {
+              "level": 1,
+              "points": 1,
+              "name": "Features",
+              "user_description": "(Appearance: Cute, Slippery)"
+            },
+            {
+              "level": 2,
+              "points": 2,
+              "name": "Mulligan",
+              "user_description": null
+            },
+            {
+              "level": 1,
+              "points": 1,
+              "name": "Ranged Attack",
+              "user_description": "(All)"
+            },
+            {
+              "level": 2,
+              "points": 2,
+              "name": "Ranged Defence",
+              "user_description": "(All)"
+            },
+            {
+              "level": 1,
+              "points": 5,
+              "name": "Regeneration",
+              "user_description": null
+            },
+            {
+              "level": 6,
+              "points": 6,
+              "name": "Special Movement",
+              "user_description": "(Balance, Cat-Like, Fast 2, Light-Footed, Slithering)"
+            },
+            {
+              "level": 1,
+              "baseLevel": 4,
+              "points": 3,
+              "name": "Telepathy",
+              "user_description": "(Specific: Telepaths +3)"
+            },
+            {
+              "level": 1,
+              "points": 2,
+              "name": "Unique Attribute",
+              "user_description": "(Small, Light, and Unobtrusive)"
+            }
+          ],
+          "defects": [
+            {
+              "rank": 2,
+              "cp_refund": 2,
+              "name": "Fragile",
+              "user_description": null
+            },
+            {
+              "rank": 3,
+              "cp_refund": 9,
+              "name": "Impaired Manipulation",
+              "user_description": null
+            },
+            {
+              "rank": 1,
+              "cp_refund": 3,
+              "name": "Impaired Speech",
+              "user_description": null
+            },
+            {
+              "rank": 1,
+              "cp_refund": 1,
+              "name": "Magnet",
+              "user_description": null
+            },
+            {
+              "rank": 1,
+              "cp_refund": 2,
+              "name": "Unique Defect",
+              "user_description": "(-10 Strength Damage)"
+            },
+            {
+              "rank": 1,
+              "cp_refund": 1,
+              "name": "Unique Defect",
+              "user_description": "(Leaves Slime Trail)"
+            },
+            {
+              "rank": 1,
+              "cp_refund": 6,
+              "name": "Unique Defect",
+              "user_description": "(Lifting Capacity ÷5)"
+            },
+            {
+              "rank": 1,
+              "cp_refund": 1,
+              "name": "Unique Defect",
+              "user_description": "(÷2 Running Speed)"
+            },
+            {
+              "rank": 1,
+              "cp_refund": 4,
+              "name": "Unique Defect",
+              "user_description": "(Suffers 10 Extra Damage from all Attacks)"
+            },
+            {
+              "rank": 1,
+              "cp_refund": 1,
+              "name": "Unique Defect",
+              "user_description": "(÷2 Thrown Weapon Distance)"
+            }
+          ],
+          "totalPoints": 0
+        },
+        {
+          "name": "SNOW MAIDEN",
+          "baseSize": {
+            "rank": 0,
+            "name": "Medium"
+          },
+          "stats": [
+            {
+              "stat": "Soul",
+              "value": 2,
+              "points": 4
+            }
+          ],
+          "attributes": [
+            {
+              "level": 4,
+              "baseLevel": 6,
+              "points": 8,
+              "name": "Armour",
+              "user_description": "(Optimised: Cold +2)"
+            },
+            {
+              "level": 2,
+              "points": 4,
+              "name": "Cognition: Precognition",
+              "user_description": null
+            },
+            {
+              "level": 3,
+              "points": 3,
+              "name": "Energised",
+              "user_description": null
+            },
+            {
+              "level": 1,
+              "points": 1,
+              "name": "Features",
+              "user_description": "(Appearance)"
+            },
+            {
+              "level": 1,
+              "fluxCost": 2,
+              "points": 3,
+              "name": "Flight",
+              "user_description": "(Deplete +1)"
+            },
+            {
+              "level": 8,
+              "baseLevel": 4,
+              "points": 16,
+              "name": "Resilient",
+              "user_description": "(Ageing, Disease, Intense Cold, Lack of Food and Water; Complete -4)"
+            },
+            {
+              "level": 2,
+              "fluxCost": 3,
+              "points": 2,
+              "name": "Sensory Block: Blizzard",
+              "user_description": "(Hearing, Smell, Vision; Deplete +1)"
+            },
+            {
+              "level": 1,
+              "points": 1,
+              "name": "Supersense",
+              "user_description": "(Infrared Vision)"
+            },
+            {
+              "level": 1,
+              "baseLevel": 3,
+              "points": 4,
+              "name": "Superstrength",
+              "user_description": "(Environmental: Cold +2)"
+            },
+            {
+              "level": 5,
+              "baseLevel": 2,
+              "points": 10,
+              "name": "Weapon: Ice Storm",
+              "user_description": "(Range -2; Spreading -3; Deplete +2)"
+            },
+            {
+              "level": 6,
+              "baseLevel": 2,
+              "points": 12,
+              "name": "Weapon: Winter’s Kiss",
+              "user_description": "(Incapacitating: Frozen -2; Penetrating -4; Deplete +2)"
+            }
+          ],
+          "defects": [
+            {
+              "rank": 1,
+              "cp_refund": 2,
+              "name": "Achilles Heel",
+              "user_description": "(Fire Attacks)"
+            },
+            {
+              "rank": 1,
+              "cp_refund": 3,
+              "name": "Confined",
+              "user_description": "(Near World Gates)"
+            },
+            {
+              "rank": 1,
+              "cp_refund": 3,
+              "name": "Special Requirement",
+              "user_description": "(Fresh Blood)"
+            }
+          ],
+          "totalPoints": 60
+        },
+        {
+          "name": "SPIDER DEMON",
+          "baseSize": {
+            "rank": 0,
+            "name": "Medium"
+          },
+          "stats": [
+            {
+              "stat": "Body",
+              "value": 3,
+              "points": 6
+            }
+          ],
+          "attributes": [
+            {
+              "level": 8,
+              "baseLevel": 10,
+              "points": 32,
+              "name": "Alternate Form",
+              "user_description": "(Spider Hybrid: 50 Points; Activation +2)"
+            },
+            {
+              "level": 1,
+              "points": 1,
+              "name": "Attack Mastery",
+              "user_description": null
+            },
+            {
+              "level": 2,
+              "points": 2,
+              "name": "Immutable",
+              "user_description": null
+            },
+            {
+              "level": 2,
+              "points": 2,
+              "name": "Mind Shield",
+              "user_description": null
+            },
+            {
+              "level": 1,
+              "points": 2,
+              "name": "Resilient",
+              "user_description": "(Ageing)"
+            },
+            {
+              "level": 1,
+              "points": 1,
+              "name": "Sixth Sense",
+              "user_description": "(Goodness)"
+            },
+            {
+              "level": 1,
+              "points": 4,
+              "name": "Superstrength",
+              "user_description": null
+            },
+            {
+              "level": 3,
+              "points": 3,
+              "name": "Tough",
+              "user_description": null
+            }
+          ],
+          "defects": [
+            {
+              "rank": 1,
+              "cp_refund": 3,
+              "name": "Special Requirement",
+              "user_description": "(Feeds on Life Energy)"
+            }
+          ],
+          "totalPoints": 50
+        },
+        {
+          "name": "SPIDER HYBRID",
+          "baseSize": {
+            "rank": 0,
+            "name": "Medium"
+          },
+          "stats": [],
+          "attributes": [
+            {
+              "level": 3,
+              "points": 6,
+              "name": "Armour",
+              "user_description": "(AR 15)"
+            },
+            {
+              "level": 1,
+              "points": 2,
+              "name": "Augmented",
+              "user_description": "(Body Stat; Demonic Magic)"
+            },
+            {
+              "level": 3,
+              "points": 3,
+              "name": "Combat Technique",
+              "user_description": "(Brutal, Lethal Blow, Lightning Reflexes)"
+            },
+            {
+              "level": 1,
+              "points": 4,
+              "name": "Extra Actions",
+              "user_description": null
+            },
+            {
+              "level": 4,
+              "points": 4,
+              "name": "Extra Arms",
+              "user_description": null
+            },
+            {
+              "level": 1,
+              "points": 1,
+              "name": "Features",
+              "user_description": "(Low-Light Vision)"
+            },
+            {
+              "level": 2,
+              "points": 2,
+              "name": "Jumping",
+              "user_description": null
+            },
+            {
+              "level": 2,
+              "points": 2,
+              "name": "Special Movement",
+              "user_description": "(Wall-Crawling 2)"
+            },
+            {
+              "level": 1,
+              "points": 4,
+              "name": "Superstrength",
+              "user_description": null
+            },
+            {
+              "level": 8,
+              "baseLevel": 3,
+              "points": 16,
+              "name": "Weapon: Demonic Fangs",
+              "user_description": "(Enervation -2; Muscle -1; Vampiric -2)"
+            },
+            {
+              "level": 3,
+              "baseLevel": -1,
+              "points": 6,
+              "name": "Weapon: Web",
+              "user_description": "(Insidious -3; Range -2; Spreading -2; Tangle -3; Charges +3; Deplete +3)"
+            }
+          ],
+          "defects": [],
+          "totalPoints": 50
+        },
+        {
+          "name": "VAMPIRE",
+          "baseSize": {
+            "rank": 0,
+            "name": "Medium"
+          },
+          "stats": [
+            {
+              "stat": "Body",
+              "value": 2,
+              "points": 4
+            },
+            {
+              "stat": "Soul",
+              "value": -3,
+              "points": -6
+            }
+          ],
+          "attributes": [
+            {
+              "level": 1,
+              "points": 1,
+              "name": "Attack Mastery",
+              "user_description": null
+            },
+            {
+              "level": 2,
+              "points": 2,
+              "name": "Combat Technique",
+              "user_description": "(Brutal, Lethal Blow)"
+            },
+            {
+              "level": 1,
+              "points": 1,
+              "name": "Heightened Awareness",
+              "user_description": null
+            },
+            {
+              "level": 2,
+              "points": 2,
+              "name": "Heightened Senses",
+              "user_description": "(Hearing, Smell)"
+            },
+            {
+              "level": 9,
+              "baseLevel": 6,
+              "points": 18,
+              "name": "Metamorphosis",
+              "user_description": "(Weaker Vampire Race: 30 Points; Duration: Permanent -10; Delay: Days +3; Deplete +1; Unique Limiter: Vampire Must Personally Drain Victim’s Blood +3)"
+            },
+            {
+              "level": 4,
+              "baseLevel": 5,
+              "points": 20,
+              "name": "Mind Control",
+              "user_description": "(Deplete +1)"
+            },
+            {
+              "level": 2,
+              "points": 2,
+              "name": "Mind Shield",
+              "user_description": null
+            },
+            {
+              "level": 1,
+              "points": 5,
+              "name": "Regeneration",
+              "user_description": null
+            },
+            {
+              "level": 10,
+              "baseLevel": 5,
+              "points": 20,
+              "name": "Resilient",
+              "user_description": "(Ageing, Airborne Toxins, Disease, Lack of Air, Poisons; All Complete -5)"
+            },
+            {
+              "level": 1,
+              "points": 1,
+              "name": "Sixth Sense",
+              "user_description": "(Death and Decay)"
+            },
+            {
+              "level": 2,
+              "points": 2,
+              "name": "Special Movement",
+              "user_description": "(Cat-Like, Fast)"
+            },
+            {
+              "level": 1,
+              "points": 4,
+              "name": "Superstrength",
+              "user_description": null
+            },
+            {
+              "level": 2,
+              "points": 4,
+              "name": "Swarm",
+              "user_description": "(Bats or Rats)"
+            },
+            {
+              "level": 2,
+              "points": 2,
+              "name": "Tough",
+              "user_description": null
+            },
+            {
+              "level": 1,
+              "fluxCost": 2,
+              "points": 2,
+              "name": "Weapon: Fangs and Fingernails",
+              "user_description": "(Non-Penetrating +1)"
+            }
+          ],
+          "defects": [
+            {
+              "rank": 2,
+              "cp_refund": 4,
+              "name": "Achilles Heel",
+              "user_description": "(Wooden Weapons)"
+            },
+            {
+              "rank": 1,
+              "cp_refund": 2,
+              "name": "Bane",
+              "user_description": "(Holy Symbols)"
+            },
+            {
+              "rank": 3,
+              "cp_refund": 6,
+              "name": "Bane",
+              "user_description": "(Sunlight)"
+            },
+            {
+              "rank": 1,
+              "cp_refund": 1,
+              "name": "Easily Distracted",
+              "user_description": "(Past Memories)"
+            },
+            {
+              "rank": 1,
+              "cp_refund": 1,
+              "name": "Shortcoming",
+              "user_description": "(Soul: Major - Luck)"
+            }
+          ],
+          "totalPoints": 70
+        },
+        {
+          "name": "WEREWOLF - BASE FORM",
+          "baseSize": {
+            "rank": 0,
+            "name": "Medium"
+          },
+          "stats": [
+            {
+              "stat": "Body",
+              "value": 2,
+              "points": 4
+            }
+          ],
+          "attributes": [
+            {
+              "level": 1,
+              "baseLevel": 4,
+              "points": 4,
+              "name": "Alternate Form",
+              "user_description": "(Wolf Form: 20 Points; Delay +1; Concentration +2)"
+            },
+            {
+              "level": 1,
+              "points": 1,
+              "name": "Connected",
+              "user_description": "(Lycanthrope Community)"
+            },
+            {
+              "level": 2,
+              "points": 2,
+              "name": "Heightened Awareness",
+              "user_description": null
+            },
+            {
+              "level": 1,
+              "points": 5,
+              "name": "Regeneration",
+              "user_description": null
+            },
+            {
+              "level": 1,
+              "points": 1,
+              "name": "Sixth Sense",
+              "user_description": "(Blood)"
+            }
+          ],
+          "defects": [
+            {
+              "rank": 2,
+              "cp_refund": 4,
+              "name": "Cursed",
+              "user_description": "(Werewolf)"
+            },
+            {
+              "rank": 1,
+              "cp_refund": 1,
+              "name": "Involuntary Change",
+              "user_description": "(Full Moon)"
+            },
+            {
+              "rank": 1,
+              "cp_refund": 1,
+              "name": "Nightmares",
+              "user_description": "(Flashbacks of Wolf Kills)"
+            },
+            {
+              "rank": 3,
+              "cp_refund": 6,
+              "name": "Skeleton in the Closet",
+              "user_description": "(Werewolf)"
+            }
+          ],
+          "totalPoints": 5
+        },
+        {
+          "name": "WEREWOLF - WOLF FORM",
+          "baseSize": {
+            "rank": 0,
+            "name": "Medium"
+          },
+          "stats": [],
+          "attributes": [
+            {
+              "level": 1,
+              "points": 2,
+              "name": "Armour",
+              "user_description": "(AR 5)"
+            },
+            {
+              "level": 2,
+              "points": 4,
+              "name": "Augmented",
+              "user_description": "(Body Stat; Lycanthrope Magic)"
+            },
+            {
+              "level": 1,
+              "points": 1,
+              "name": "Features",
+              "user_description": "(Low-Light Vision)"
+            },
+            {
+              "level": 4,
+              "points": 4,
+              "name": "Heightened Senses",
+              "user_description": "(Hearing, Smell, Vision, Taste)"
+            },
+            {
+              "level": 2,
+              "points": 2,
+              "name": "Jumping",
+              "user_description": null
+            },
+            {
+              "level": 2,
+              "points": 2,
+              "name": "Melee Attack",
+              "user_description": "(Unarmed)"
+            },
+            {
+              "level": 2,
+              "points": 2,
+              "name": "Melee Defence",
+              "user_description": "(Unarmed)"
+            },
+            {
+              "level": 10,
+              "baseLevel": 4,
+              "points": 20,
+              "name": "Metamorphosis",
+              "user_description": "(Werewolf Form: 20 Points; Duration: Permanent -10; Delay +3; Dependent: Fangs Weapon +1)"
+            },
+            {
+              "level": 2,
+              "points": 2,
+              "name": "Special Movement",
+              "user_description": "(Fast 2)"
+            },
+            {
+              "level": 5,
+              "points": 5,
+              "name": "Tough",
+              "user_description": null
+            },
+            {
+              "level": 3,
+              "points": 6,
+              "name": "Weapon: Fangs",
+              "user_description": null
+            }
+          ],
+          "defects": [
+            {
+              "rank": 2,
+              "cp_refund": 4,
+              "name": "Bane",
+              "user_description": "(Less Common: Wolfsbane Plant)"
+            },
+            {
+              "rank": 2,
+              "cp_refund": 2,
+              "name": "Easily Distracted",
+              "user_description": "(Prey)"
+            },
+            {
+              "rank": 2,
+              "cp_refund": 6,
+              "name": "Impaired Manipulation",
+              "user_description": null
+            },
+            {
+              "rank": 2,
+              "cp_refund": 6,
+              "name": "Impaired Speech",
+              "user_description": null
+            },
+            {
+              "rank": 1,
+              "cp_refund": 1,
+              "name": "Involuntary Change",
+              "user_description": "(Sunrise)"
+            },
+            {
+              "rank": 3,
+              "cp_refund": 3,
+              "name": "Marked",
+              "user_description": "(Wolf Body)"
+            },
+            {
+              "rank": 6,
+              "cp_refund": 6,
+              "name": "Shortcoming",
+              "user_description": "(Mind: All Aspects; -3 Penalty to Mind Stat Rolls)"
+            },
+            {
+              "rank": 1,
+              " cp_refund": 2,
+              "name": "Unique Defect",
+              "user_description": "(Suffers Triple Damage from Silver Weapons)"
+            }
+          ],
+          "totalPoints": 20
+        },
+        {
+          "name": "WOOLIE",
+          "baseSize": {
+            "rank": 0,
+            "name": "Medium"
+          },
+          "stats": [
+            {
+              "stat": "Body",
+              "value": 2,
+              "points": 4
+            },
+            {
+              "stat": "Soul",
+              "value": 1,
+              "points": 2
+            }
+          ],
+          "attributes": [
+            {
+              "level": 1,
+              "points": 2,
+              "name": "Armour",
+              "user_description": "(AR 5)"
+            },
+            {
+              "level": 1,
+              "points": 1,
+              "name": "Combat Technique",
+              "user_description": "(Brutal)"
+            },
+            {
+              "level": 2,
+              "points": 2,
+              "name": "Features",
+              "user_description": "(Homing Instinct, Pouch, Scent Glands)"
+            },
+            {
+              "level": 1,
+              "points": 1,
+              "name": "Melee Attack",
+              "user_description": "(Unarmed)"
+            },
+            {
+              "level": 1,
+              "points": 2,
+              "name": "Resilient",
+              "user_description": "(Intense Cold)"
+            },
+            {
+              "level": 2,
+              "points": 2,
+              "name": "Skill Group",
+              "user_description": "(Domestic)"
+            },
+            {
+              "level": 1,
+              "points": 1,
+              "name": "Special Movement",
+              "user_description": "(Swinging)"
+            },
+            {
+              "level": 1,
+              "points": 4,
+              "name": "Superstrength",
+              "user_description": null
+            },
+            {
+              "level": 1,
+              "points": 1,
+              "name": "Tough",
+              "user_description": null
+            }
+          ],
+          "defects": [
+            {
+              "rank": 1,
+              "cp_refund": 1,
+              "name": "Shortcoming",
+              "user_description": "(Body: Major - Agility)"
+            },
+            {
+              "rank": 1,
+              "cp_refund": 1,
+              "name": "Shortcoming",
+              "user_description": "(Body: Minor - Manual Dexterity)"
+            }
+          ],
+          "totalPoints": 20
+        },
+        {
+          "name": "YUREI",
+          "baseSize": {
+            "rank": 0,
+            "name": "Medium"
+          },
+          "stats": [],
+          "attributes": [
+            {
+              "level": 1,
+              "baseLevel": 5,
+              "points": 3,
+              "name": "Change State",
+              "user_description": "(Incorporeal; Potent -1; Maximum +3; Semi-Permanent +2)"
+            },
+            {
+              "level": 1,
+              "points": 3,
+              "name": "Flight",
+              "user_description": null
+            },
+            {
+              "level": 2,
+              "points": 2,
+              "name": "Mind Shield",
+              "user_description": null
+            },
+            {
+              "level": 6,
+              "baseLevel": 5,
+              "points": 12,
+              "name": "Reincarnation",
+              "user_description": "(Difficult to Stop -1)"
+            },
+            {
+              "level": 10,
+              "baseLevel": 5,
+              "points": 20,
+              "name": "Resilient",
+              "user_description": "(Ageing, Airborne Toxins, Disease, Lack of Air, Poisons; All Complete -5)"
+            },
+            {
+              "level": 6,
+              "baseLevel": -1,
+              "points": 12,
+              "name": "Weapon: Deadly Touch",
+              "user_description": "(Drain: Soul -3; Psychic -4)"
+            }
+          ],
+          "defects": [
+            {
+              "rank": 2,
+              "cp_refund": 2,
+              "name": "Marked",
+              "user_description": "(Shrouded in Mist)"
+            }
+          ],
+          "totalPoints": 50
+        }
+      ]
+    }
+  }

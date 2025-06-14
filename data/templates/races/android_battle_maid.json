@@ -1,0 +1,222 @@
+{
+  "race_name": "ANDROID BATTLE MAID",
+  "key": "android_battle_maid",
+  "baseSize": {
+    "size_rank": 0,
+    "size_name": "Medium",
+    "options_source": "Race Template"
+  },
+  "stats": {
+    "body_adj": 2,
+    "mind_adj": 0,
+    "soul_adj": 0
+  },
+  "attributes": [
+    {
+      "custom_name": "Armour",
+      "key": "armour",
+      "level": 3,
+      "user_description": "AR 15",
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Race Template",
+      "valid": true
+    },
+    {
+      "custom_name": "Attack Mastery",
+      "key": "attack_mastery",
+      "level": 1,
+      "user_description": null,
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Race Template",
+      "valid": true
+    },
+    {
+      "custom_name": "Data Access",
+      "key": "data_access",
+      "level": 2,
+      "user_description": null,
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Race Template",
+      "valid": true
+    },
+    {
+      "custom_name": "Defence Mastery",
+      "key": "defence_mastery",
+      "level": 1,
+      "user_description": null,
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Race Template",
+      "valid": true
+    },
+    {
+      "custom_name": "Extra Actions",
+      "key": "extra_actions",
+      "level": 1,
+      "user_description": null,
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Race Template",
+      "valid": true
+    },
+    {
+      "custom_name": "Heightened Senses",
+      "key": "heightened_senses",
+      "level": 3,
+      "user_description": null,
+      "enhancements": [],
+      "limiters": [],
+      "options": [
+        "Hearing",
+        "Smell",
+        "Vision"
+      ],
+      "user_input": null,
+      "options_source": "Race Template",
+      "valid": true
+    },
+    {
+      "custom_name": "Jumping",
+      "key": "jumping",
+      "level": 2,
+      "user_description": null,
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Race Template",
+      "valid": true
+    },
+    {
+      "custom_name": "Power Flux: Skill Flux",
+      "key": "power_flux",
+      "level": 1,
+      "user_description": "Equipment: Programmes +1",
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": "skills",
+      "options_source": "Race Template",
+      "valid": true
+    },
+    {
+      "custom_name": "Resilient",
+      "key": "resilient",
+      "level": 5,
+      "user_description": null,
+      "enhancements": [
+        "complete"
+      ],
+      "limiters": [],
+      "options": [
+        "Ageing",
+        "Airborne Toxins",
+        "Disease",
+        "Lack of Air",
+        "Poisons"
+      ],
+      "user_input": null,
+      "options_source": "Race Template",
+      "valid": true
+    },
+    {
+      "custom_name": "Skill Group",
+      "key": "skill_group",
+      "level": 3,
+      "user_description": "(Domestic)",
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Race Template",
+      "valid": true
+    },
+    {
+      "custom_name": "Superspeed",
+      "key": "superspeed",
+      "level": 1,
+      "user_description": null,
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Race Template",
+      "valid": true
+    },
+    {
+      "custom_name": "Superstrength",
+      "key": "superstrength",
+      "level": 1,
+      "user_description": null,
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Race Template",
+      "valid": true
+    },
+    {
+      "custom_name": "Tough",
+      "key": "tough",
+      "level": 5,
+      "user_description": null,
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Race Template",
+      "valid": true
+    }
+  ],
+  "defects": [
+    {
+      "custom_name": "Ism - Android",
+      "key": "ism",
+      "rank": 1,
+      "user_description": null,
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Race Template",
+      "valid": true
+    },
+    {
+      "custom_name": "Production mark in embarrassing spot",
+      "key": "marked",
+      "rank": 1,
+      "user_description": null,
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Race Template",
+      "valid": true
+    },
+    {
+      "custom_name": "Obligated to purchaser",
+      "key": "obligated",
+      "rank": 2,
+      "user_description": null,
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Race Template",
+      "valid": true
+    }
+  ]
+}

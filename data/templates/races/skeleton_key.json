@@ -1,0 +1,150 @@
+{
+  "race_name": "SKELETON KEY",
+  "baseSize": {
+    "size_rank": 0,
+    "size_name": "Medium",
+    "options_source": "Race Template"
+  },
+  "stats": {
+    "body_adj": 0,
+    "mind_adj": 0,
+    "soul_adj": 5
+  },
+  "attributes": [
+    {
+      "custom_name": "Dynamic Powers",
+      "key": "dynamic_powers",
+      "level": 1,
+      "user_description": "(Minor: Keys and Gates)",
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Race Template",
+      "valid": true,
+      "name": "Dynamic Powers"
+    },
+    {
+      "custom_name": "Energised",
+      "key": "energised",
+      "level": 5,
+      "user_description": null,
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Race Template",
+      "valid": true,
+      "name": "Energised"
+    },
+    {
+      "custom_name": "Mulligan",
+      "key": "mulligan",
+      "level": 3,
+      "user_description": null,
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Race Template",
+      "valid": true,
+      "name": "Mulligan"
+    },
+    {
+      "custom_name": "Pocket Dimension",
+      "key": "pocket_dimension",
+      "level": 3,
+      "user_description": null,
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Race Template",
+      "valid": true,
+      "name": "Pocket Dimension"
+    },
+    {
+      "custom_name": "Portal",
+      "key": "portal",
+      "level": 8,
+      "user_description": "(7 World Linkages + Pocket Dimension)",
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Race Template",
+      "valid": true,
+      "name": "Portal"
+    },
+    {
+      "custom_name": "Reincarnation",
+      "key": "reincarnation",
+      "level": 3,
+      "user_description": "(Difficult to Stop -1)",
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Race Template",
+      "valid": true,
+      "name": "Reincarnation"
+    },
+    {
+      "custom_name": "Sixth Sense",
+      "key": "sixth_sense",
+      "level": 1,
+      "user_description": "(World Gates; Area -5)",
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Race Template",
+      "valid": true,
+      "name": "Sixth Sense"
+    },
+    {
+      "custom_name": "Unique Attribute",
+      "key": "unique_attribute",
+      "level": 6,
+      "user_description": "(Can Destroy World Gates)",
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Race Template",
+      "valid": true,
+      "name": "Unique Attribute"
+    }
+  ],
+  "defects": [
+    {
+      "custom_name": "Marked",
+      "key": "marked",
+      "rank": 1,
+      "user_description": "(Infinity Symbol on Forehead)",
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Race Template",
+      "valid": true,
+      "cp_refund": 1,
+      "name": "Marked"
+    },
+    {
+      "custom_name": "Skeleton in the Closet",
+      "key": "skeleton_in_the_closet",
+      "rank": 3,
+      "user_description": "(Skeleton Key)",
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Race Template",
+      "valid": true,
+      "cp_refund": 6,
+      "name": "Skeleton in the Closet"
+    }
+  ],
+  "key": "skeleton_key"
+}

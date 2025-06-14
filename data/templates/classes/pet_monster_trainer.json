@@ -1,0 +1,107 @@
+{
+  "class_name": "PET MONSTER TRAINER",
+  "baseSize": {
+    "rank": 0,
+    "name": "Medium",
+    "options_source": "Class Template"
+  },
+  "stats": {
+    "body_adj": 0,
+    "mind_adj": 0,
+    "soul_adj": 1
+  },
+  "attributes": [
+    {
+      "custom_name": "Combat Technique",
+      "key": "combat_technique",
+      "level": 1,
+      "user_description": "(Tournament Encyclopaedia: Pet Monster Duels)",
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Class Template",
+      "valid": true,
+      "name": "Combat Technique",
+      "details": "(Tournament Encyclopaedia: Pet Monster Duels)",
+      "rank": null
+    },
+    {
+      "custom_name": "Companion",
+      "key": "companion",
+      "level": 2,
+      "user_description": "(Novice Pet Monster; 20 Points)",
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Class Template",
+      "valid": true,
+      "name": "Companion",
+      "details": "(Novice Pet Monster; 20 Points)",
+      "rank": null
+    },
+    {
+      "custom_name": "Companion",
+      "key": "companion",
+      "level": 4,
+      "user_description": "(Veteran Pet Monster; 40 Points)",
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Class Template",
+      "valid": true,
+      "name": "Companion",
+      "details": "(Veteran Pet Monster; 40 Points)",
+      "rank": null
+    },
+    {
+      "custom_name": "Inspire",
+      "key": "inspire",
+      "level": 2,
+      "user_description": null,
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Class Template",
+      "valid": true,
+      "name": "Inspire",
+      "details": null,
+      "rank": null
+    },
+    {
+      "custom_name": "Skill Group",
+      "key": "skill_group",
+      "level": 2,
+      "user_description": "(Occupation: Pet Monster Trainer)",
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Class Template",
+      "valid": true,
+      "name": "Skill Group",
+      "details": "(Occupation: Pet Monster Trainer)",
+      "rank": null
+    }
+  ],
+  "defects": [
+    {
+      "custom_name": "Nemesis",
+      "key": "nemesis",
+      "rank": 1,
+      "user_description": "(One Rival)",
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Class Template",
+      "valid": true,
+      "name": "Nemesis",
+      "details": "(One Rival)",
+      "level": null
+    }
+  ]
+}

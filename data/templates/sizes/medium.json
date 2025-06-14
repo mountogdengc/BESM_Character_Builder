@@ -1,0 +1,21 @@
+{
+  "key": "medium",
+  "typicalHeight": "1-2 m",
+  "typicalMass": "50 - 150 kg",
+  "stats": {
+    "body_adj": 0,
+    "mind_adj": 0,
+    "soul_adj": 0
+  },
+  "name": "Medium",
+  "rank": 0,
+  "modifiers": {
+    "liftingCapacity": "\u2014",
+    "strengthDamage": "\u2014",
+    "armourEffect": "\u2014",
+    "rangedModifier": "\u2014",
+    "speedRangeMultiplier": "\u2014"
+  },
+  "attributes": [],
+  "defects": []
+}

@@ -1,0 +1,95 @@
+{
+  "race_name": "HALF-DRAGON",
+  "baseSize": {
+    "size_rank": 0,
+    "size_name": "Medium",
+    "options_source": "Race Template"
+  },
+  "stats": {
+    "body_adj": 2,
+    "mind_adj": 0,
+    "soul_adj": 0
+  },
+  "attributes": [
+    {
+      "custom_name": "Immunity",
+      "key": "immunity",
+      "level": 5,
+      "user_description": "(Heat)",
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Race Template",
+      "valid": true,
+      "name": "Immunity"
+    },
+    {
+      "custom_name": "Immutable",
+      "key": "immutable",
+      "level": 1,
+      "user_description": null,
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Race Template",
+      "valid": true,
+      "name": "Immutable"
+    },
+    {
+      "custom_name": "Flight",
+      "key": "flight",
+      "level": 2,
+      "user_description": null,
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Race Template",
+      "valid": true,
+      "name": "Flight"
+    },
+    {
+      "custom_name": "Superstrength",
+      "key": "superstrength",
+      "level": 1,
+      "user_description": null,
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Race Template",
+      "valid": true,
+      "name": "Superstrength"
+    },
+    {
+      "custom_name": "Tough",
+      "key": "tough",
+      "level": 1,
+      "user_description": null,
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Race Template",
+      "valid": true,
+      "name": "Tough"
+    },
+    {
+      "custom_name": "Weapon: Fire Breath",
+      "key": "weapon",
+      "level": 2,
+      "user_description": "(Continuing -1; Range -1; Deplete +2)",
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Race Template",
+      "valid": true,
+      "name": "Weapon: Fire Breath"
+    }
+  ],
+  "defects": [],
+  "key": "half-dragon"
+}

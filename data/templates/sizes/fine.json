@@ -1,0 +1,123 @@
+{
+  "size_name": "Fine",
+  "key": "fine",
+  "size_rank": -4,
+  "typicalHeight": "5-9 cm",
+  "typicalMass": "6-30 g",
+  "stats": {
+    "body_adj": 0,
+    "mind_adj": 0,
+    "soul_adj": 0
+  },
+  "modifiers": {
+    "liftingCapacity": "\u00f7 500",
+    "strengthDamage": "-40",
+    "armourEffect": "+40 damage",
+    "rangedModifier": "+8",
+    "speedRangeMultiplier": "\u00f7 15"
+  },
+  "attributes": [
+    {
+      "custom_name": "Ranged Attack",
+      "key": "ranged_attack",
+      "level": 4,
+      "user_description": null,
+      "enhancements": [
+        "all"
+      ],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Size Template",
+      "valid": true
+    },
+    {
+      "custom_name": "Ranged Defence",
+      "key": "ranged_defence",
+      "level": 4,
+      "user_description": null,
+      "enhancements": [
+        "all"
+      ],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Size Template",
+      "valid": true
+    },
+    {
+      "custom_name": "Small, Light, and Unobtrusive",
+      "key": "unique_attribute",
+      "level": 4,
+      "user_description": null,
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Size Template",
+      "valid": true
+    }
+  ],
+  "defects": [
+    {
+      "custom_name": "Lifting Capacity \u00f75",
+      "key": "unique_defect",
+      "rank": 4,
+      "user_description": null,
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Size Template",
+      "valid": true
+    },
+    {
+      "custom_name": "Running Speed",
+      "key": "unique_defect",
+      "rank": 4,
+      "user_description": "Running Speed \u00f716",
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Size Template",
+      "valid": true
+    },
+    {
+      "custom_name": "Strength Damage",
+      "key": "unique_defect",
+      "rank": 4,
+      "user_description": "-40 Strength Damage",
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Size Template",
+      "valid": true
+    },
+    {
+      "custom_name": "Vulnerable",
+      "key": "unique_defect",
+      "rank": 4,
+      "user_description": "Suffers 40 Extra Damage from all Attacks",
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Size Template",
+      "valid": true
+    },
+    {
+      "custom_name": "Weak Throw",
+      "key": "unique_defect",
+      "rank": 4,
+      "user_description": "Thrown weapon distance \u00f716",
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Size Template",
+      "valid": true
+    }
+  ]
+}

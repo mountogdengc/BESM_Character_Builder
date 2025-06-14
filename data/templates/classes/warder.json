@@ -1,0 +1,203 @@
+{
+  "class_name": "WARDER",
+  "baseSize": {
+    "rank": 0,
+    "name": "Medium",
+    "options_source": "Class Template"
+  },
+  "stats": {
+    "body_adj": 0,
+    "mind_adj": 0,
+    "soul_adj": 0
+  },
+  "attributes": [
+    {
+      "custom_name": "Absorption",
+      "key": "absorption",
+      "level": 2,
+      "user_description": "(Health Points)",
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Class Template",
+      "valid": true,
+      "name": "Absorption",
+      "details": "(Health Points)",
+      "rank": null
+    },
+    {
+      "custom_name": "Augmented",
+      "key": "augmented",
+      "level": 1,
+      "user_description": "(Body Stat; Source: Ward Magic)",
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Class Template",
+      "valid": true,
+      "name": "Augmented",
+      "details": "(Body Stat; Source: Ward Magic)",
+      "rank": null
+    },
+    {
+      "custom_name": "Combat Technique",
+      "key": "combat_technique",
+      "level": 2,
+      "user_description": "(Brutal; Lethal Blow)",
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Class Template",
+      "valid": true,
+      "name": "Combat Technique",
+      "details": "(Brutal; Lethal Blow)",
+      "rank": null
+    },
+    {
+      "custom_name": "Heightened Senses",
+      "key": "heightened_senses",
+      "level": 3,
+      "user_description": "(Hearing, Smell, Vision)",
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Class Template",
+      "valid": true,
+      "name": "Heightened Senses",
+      "details": "(Hearing, Smell, Vision)",
+      "rank": null
+    },
+    {
+      "custom_name": "Immutable",
+      "key": "immutable",
+      "level": 4,
+      "user_description": null,
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Class Template",
+      "valid": true,
+      "name": "Immutable",
+      "details": null,
+      "rank": null
+    },
+    {
+      "custom_name": "Melee Attack",
+      "key": "melee_attack",
+      "level": 3,
+      "user_description": "(Unarmed)",
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Class Template",
+      "valid": true,
+      "name": "Melee Attack",
+      "details": "(Unarmed)",
+      "rank": null
+    },
+    {
+      "custom_name": "Melee Defence",
+      "key": "melee_defence",
+      "level": 2,
+      "user_description": "(Unarmed)",
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Class Template",
+      "valid": true,
+      "name": "Melee Defence",
+      "details": "(Unarmed)",
+      "rank": null
+    },
+    {
+      "custom_name": "Power Flux",
+      "key": "power_flux",
+      "level": 4,
+      "user_description": "(Major: Combat; Activation: Wards; Unique Limiter: No Fluxing Attributes of Wards)",
+      "enhancements": [
+        "major",
+        "duration_3"
+      ],
+      "limiters": [
+        "activation_3",
+        "unique_limiter_3"
+      ],
+      "options": [],
+      "user_input": null,
+      "options_source": "Class Template",
+      "valid": true,
+      "name": "Power Flux",
+      "details": "(Major: Combat; Activation: Wards; Unique Limiter: No Fluxing Attributes of Wards)",
+      "rank": null
+    },
+    {
+      "custom_name": "Skill Group",
+      "key": "skill_group",
+      "level": 2,
+      "user_description": "(Adventuring)",
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Class Template",
+      "valid": true,
+      "name": "Skill Group",
+      "details": "(Adventuring)",
+      "rank": null
+    },
+    {
+      "custom_name": "Transfer",
+      "key": "transfer",
+      "level": 4,
+      "user_description": "(Specific Attribute: Power Flux +2)",
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Class Template",
+      "valid": true,
+      "name": "Transfer",
+      "details": "(Specific Attribute: Power Flux +2)",
+      "rank": null
+    },
+    {
+      "custom_name": "Tough",
+      "key": "tough",
+      "level": 5,
+      "user_description": null,
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Class Template",
+      "valid": true,
+      "name": "Tough",
+      "details": null,
+      "rank": null
+    }
+  ],
+  "defects": [
+    {
+      "custom_name": "Marked",
+      "key": "marked",
+      "rank": 3,
+      "user_description": "(Whole Body)",
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Class Template",
+      "valid": true,
+      "name": "Marked",
+      "details": "(Whole Body)",
+      "level": null
+    }
+  ]
+}

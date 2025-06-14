@@ -1,0 +1,219 @@
+{
+  "race_name": "ARCHFIEND",
+  "baseSize": {
+    "size_rank": 3,
+    "size_name": "Mammoth",
+    "options_source": "Race Template"
+  },
+  "stats": {
+    "body_adj": 0,
+    "mind_adj": 0,
+    "soul_adj": 0
+  },
+  "attributes": [
+    {
+      "custom_name": "Armour",
+      "key": "armour",
+      "level": 6,
+      "user_description": null,
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Race Template",
+      "valid": true
+    },
+    {
+      "custom_name": "Combat Technique",
+      "key": "combat_technique",
+      "level": 2,
+      "user_description": null,
+      "enhancements": [],
+      "limiters": [],
+      "options": [
+        "Brutal, Lethal Blow"
+      ],
+      "user_input": null,
+      "options_source": "Race Template",
+      "valid": true
+    },
+    {
+      "custom_name": "Conversion",
+      "key": "conversion",
+      "level": 2,
+      "user_description": null,
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Race Template",
+      "valid": true
+    },
+    {
+      "custom_name": "Melee Attack: Swords",
+      "key": "melee_attack",
+      "level": 3,
+      "user_description": null,
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Race Template",
+      "valid": true
+    },
+    {
+      "custom_name": "Melee Defence: Swords",
+      "key": "melee_defence",
+      "level": 2,
+      "user_description": null,
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Race Template",
+      "valid": true
+    },
+    {
+      "custom_name": "Mind Control",
+      "key": "mind_control",
+      "level": 2,
+      "user_description": null,
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Race Template",
+      "valid": true
+    },
+    {
+      "custom_name": "Special Movement",
+      "key": "special_movement",
+      "level": 3,
+      "user_description": null,
+      "enhancements": [],
+      "limiters": [],
+      "options": [
+        "Fast"
+      ],
+      "user_input": null,
+      "options_source": "Race Template",
+      "valid": true
+    },
+    {
+      "custom_name": "Summon Creatures",
+      "key": "summon_creatures",
+      "level": 4,
+      "user_description": "Dimensional -2; Narrow: Demons +2",
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Race Template",
+      "valid": true
+    },
+    {
+      "custom_name": "Superstrength",
+      "key": "superstrength",
+      "level": 6,
+      "user_description": null,
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Race Template",
+      "valid": true
+    },
+    {
+      "custom_name": "Tough",
+      "key": "tough",
+      "level": 4,
+      "user_description": null,
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Race Template",
+      "valid": true
+    },
+    {
+      "custom_name": "Tunnelling",
+      "key": "tunnelling",
+      "level": 1,
+      "user_description": null,
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Race Template",
+      "valid": false
+    },
+    {
+      "custom_name": "x8 Thrown Weapon Distance",
+      "key": "unique_attribute",
+      "level": 3,
+      "user_description": null,
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Race Template",
+      "valid": true
+    },
+    {
+      "custom_name": "Weapon: Soul Sword",
+      "key": "weapon",
+      "level": 7,
+      "user_description": null,
+      "enhancements": [
+        "multidimensional",
+        "muscle",
+        "penetrating",
+        "piercing"
+      ],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Race Template",
+      "valid": true
+    }
+  ],
+  "defects": [
+    {
+      "custom_name": "Inept Ranged Attack",
+      "key": "inept_attack",
+      "rank": 3,
+      "user_description": null,
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Race Template",
+      "valid": true
+    },
+    {
+      "custom_name": "Inept Ranged Defence",
+      "key": "inept_defence",
+      "rank": 3,
+      "user_description": null,
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Race Template",
+      "valid": true
+    },
+    {
+      "custom_name": "Big, Heavy, and Obvious",
+      "key": "unique_defect",
+      "rank": 3,
+      "user_description": null,
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Race Template",
+      "valid": true
+    }
+  ],
+  "key": "archfiend"
+}

@@ -1,0 +1,103 @@
+{
+  "race_name": "DARK ELF",
+  "baseSize": {
+    "size_rank": 0,
+    "size_name": "Medium",
+    "options_source": "Race Template"
+  },
+  "stats": {
+    "body_adj": 0,
+    "mind_adj": 0,
+    "soul_adj": 1
+  },
+  "attributes": [
+    {
+      "custom_name": "Control Environment",
+      "key": "unknown_key",
+      "level": 1,
+      "user_description": "(Darkness)",
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Race Template",
+      "valid": false
+    },
+    {
+      "custom_name": "Heightened Awareness",
+      "key": "unknown_key",
+      "level": 1,
+      "user_description": null,
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Race Template",
+      "valid": false
+    },
+    {
+      "custom_name": "Mind Shield",
+      "key": "unknown_key",
+      "level": 3,
+      "user_description": null,
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Race Template",
+      "valid": false
+    },
+    {
+      "custom_name": "Resilient",
+      "key": "unknown_key",
+      "level": 2,
+      "user_description": "(Ageing, Poisons)",
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Race Template",
+      "valid": false
+    },
+    {
+      "custom_name": "Supersense",
+      "key": "unknown_key",
+      "level": 2,
+      "user_description": "(Dark Vision, Magic)",
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Race Template",
+      "valid": false
+    },
+    {
+      "custom_name": "Unaffected",
+      "key": "unknown_key",
+      "level": 2,
+      "user_description": "(Source: Magic; All Attributes -3)",
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Race Template",
+      "valid": false
+    }
+  ],
+  "defects": [
+    {
+      "custom_name": "Sensory Impairment",
+      "key": "unknown_key",
+      "rank": 1,
+      "user_description": "(Diminished vision in sunlight)",
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Race Template",
+      "valid": false,
+      "cp_refund": 3
+    }
+  ],
+  "key": "dark_elf"
+}

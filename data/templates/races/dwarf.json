@@ -1,0 +1,116 @@
+{
+  "race_name": "DWARF",
+  "baseSize": {
+    "size_rank": 0,
+    "size_name": "Medium",
+    "options_source": "Race Template"
+  },
+  "stats": {
+    "body_adj": 1,
+    "mind_adj": 0,
+    "soul_adj": 0
+  },
+  "attributes": [
+    {
+      "custom_name": "Features",
+      "key": "unknown_key",
+      "level": 2,
+      "user_description": "(Depth Awareness, Longevity, Low-Light Vision)",
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Race Template",
+      "valid": false
+    },
+    {
+      "custom_name": "Immutable",
+      "key": "unknown_key",
+      "level": 4,
+      "user_description": null,
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Race Template",
+      "valid": false
+    },
+    {
+      "custom_name": "Mind Shield",
+      "key": "unknown_key",
+      "level": 2,
+      "user_description": null,
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Race Template",
+      "valid": false
+    },
+    {
+      "custom_name": "Resilient",
+      "key": "unknown_key",
+      "level": 2,
+      "user_description": "(Disease, Poison)",
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Race Template",
+      "valid": false
+    },
+    {
+      "custom_name": "Supersense",
+      "key": "unknown_key",
+      "level": 1,
+      "user_description": "(Infrared Vision)",
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Race Template",
+      "valid": false
+    },
+    {
+      "custom_name": "Tough",
+      "key": "unknown_key",
+      "level": 2,
+      "user_description": null,
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Race Template",
+      "valid": false
+    }
+  ],
+  "defects": [
+    {
+      "custom_name": "Shortcoming",
+      "key": "unknown_key",
+      "rank": 1,
+      "user_description": "(Body: Major - Agility)",
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Race Template",
+      "valid": false,
+      "cp_refund": -1
+    },
+    {
+      "custom_name": "Shortcoming",
+      "key": "unknown_key",
+      "rank": 1,
+      "user_description": "(Body: Minor - Running Speed)",
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Race Template",
+      "valid": false,
+      "cp_refund": -1
+    }
+  ],
+  "key": "dwarf"
+}

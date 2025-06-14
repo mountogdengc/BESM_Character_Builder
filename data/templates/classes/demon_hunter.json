@@ -1,0 +1,206 @@
+{
+  "class_name": "DEMON HUNTER",
+  "baseSize": {
+    "rank": 0,
+    "name": "Medium",
+    "options_source": "Class Template"
+  },
+  "stats": {
+    "body_adj": 1,
+    "mind_adj": 0,
+    "soul_adj": 0
+  },
+  "attributes": [
+    {
+      "custom_name": "Attack Mastery",
+      "key": "attack_mastery",
+      "level": 2,
+      "user_description": null,
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Class Template"
+    },
+    {
+      "custom_name": "Combat Technique",
+      "key": "combat_technique",
+      "level": 5,
+      "user_description": null,
+      "enhancements": [],
+      "limiters": [],
+      "options": [
+        "Brutal",
+        "Concealment",
+        "Judge Opponent",
+        "Lightning Reflexes",
+        "Reflection"
+      ],
+      "user_input": null,
+      "options_source": "Class Template"
+    },
+    {
+      "custom_name": "Features",
+      "key": "features",
+      "level": 2,
+      "user_description": null,
+      "enhancements": [],
+      "limiters": [],
+      "options": [
+        "Contacts: Demon Hunters"
+      ],
+      "user_input": null,
+      "options_source": "Class Template"
+    },
+    {
+      "custom_name": "Heightened Awareness",
+      "key": "heightened_awareness",
+      "level": 1,
+      "user_description": null,
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Class Template"
+    },
+    {
+      "custom_name": "Massive Damage: Demons",
+      "key": "massive_damage",
+      "level": 1,
+      "user_description": null,
+      "enhancements": [],
+      "limiters": [
+        "targetted"
+      ],
+      "options": [],
+      "user_input": null,
+      "options_source": "Class Template"
+    },
+    {
+      "custom_name": "Mind Shield",
+      "key": "mind_shield",
+      "level": 2,
+      "user_description": null,
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Class Template"
+    },
+    {
+      "custom_name": "Contacts: Demon Hunters",
+      "key": "organisational_ties",
+      "level": 1,
+      "user_description": null,
+      "enhancements": [],
+      "limiters": [],
+      "options": [
+        "Contacts: Demon Hunters"
+      ],
+      "user_input": null,
+      "options_source": "Class Template"
+    },
+    {
+      "custom_name": "Ranged Attack",
+      "key": "ranged_attack",
+      "level": 1,
+      "user_description": "(Select One)",
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Class Template"
+    },
+    {
+      "custom_name": "Ranged Defence",
+      "key": "ranged_defence",
+      "level": 1,
+      "user_description": "(Personal)",
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Class Template"
+    },
+    {
+      "custom_name": "Sixth Sense",
+      "key": "sixth_sense",
+      "level": 1,
+      "user_description": null,
+      "enhancements": [],
+      "limiters": [],
+      "options": [
+        "Demons"
+      ],
+      "user_input": null,
+      "options_source": "Class Template"
+    },
+    {
+      "custom_name": "Skill Group",
+      "key": "skill_group",
+      "level": 1,
+      "user_description": null,
+      "enhancements": [],
+      "limiters": [],
+      "options": [
+        "Adventuring"
+      ],
+      "user_input": null,
+      "options_source": "Class Template"
+    },
+    {
+      "custom_name": "Skill Group",
+      "key": "skill_group",
+      "level": 1,
+      "user_description": null,
+      "enhancements": [],
+      "limiters": [],
+      "options": [
+        "Military"
+      ],
+      "user_input": null,
+      "options_source": "Class Template"
+    },
+    {
+      "custom_name": "Skill Group",
+      "key": "skill_group",
+      "level": 1,
+      "user_description": null,
+      "enhancements": [],
+      "limiters": [],
+      "options": [
+        "Street"
+      ],
+      "user_input": null,
+      "options_source": "Class Template"
+    }
+  ],
+  "defects": [
+    {
+      "custom_name": "Easily Distracted: Demon Lore",
+      "key": "easily_distracted",
+      "rank": 1,
+      "user_description": null,
+      "enhancements": [],
+      "limiters": [],
+      "options": [
+        "Demon Lore"
+      ],
+      "user_input": null,
+      "options_source": "Class Template"
+    },
+    {
+      "custom_name": "Nightmares: Demon Attacks",
+      "key": "nightmares",
+      "rank": 1,
+      "user_description": null,
+      "enhancements": [],
+      "limiters": [],
+      "options": [
+        "Demon Attacks"
+      ],
+      "user_input": null,
+      "options_source": "Class Template"
+    }
+  ]
+}

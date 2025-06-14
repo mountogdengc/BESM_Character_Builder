@@ -1,0 +1,95 @@
+{
+  "race_name": "HALF-ONI",
+  "baseSize": {
+    "size_rank": 0,
+    "size_name": "Medium",
+    "options_source": "Race Template"
+  },
+  "stats": {
+    "body_adj": 1,
+    "mind_adj": 0,
+    "soul_adj": 1
+  },
+  "attributes": [
+    {
+      "custom_name": "Attack Mastery",
+      "key": "attack_mastery",
+      "level": 1,
+      "user_description": null,
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Race Template",
+      "valid": true,
+      "name": "Attack Mastery"
+    },
+    {
+      "custom_name": "Energised",
+      "key": "energised",
+      "level": 3,
+      "user_description": null,
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Race Template",
+      "valid": true,
+      "name": "Energised"
+    },
+    {
+      "custom_name": "Immutable",
+      "key": "immutable",
+      "level": 1,
+      "user_description": null,
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Race Template",
+      "valid": true,
+      "name": "Immutable"
+    },
+    {
+      "custom_name": "Superstrength",
+      "key": "superstrength",
+      "level": 1,
+      "user_description": null,
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Race Template",
+      "valid": true,
+      "name": "Superstrength"
+    },
+    {
+      "custom_name": "Tough",
+      "key": "tough",
+      "level": 1,
+      "user_description": null,
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Race Template",
+      "valid": true,
+      "name": "Tough"
+    },
+    {
+      "custom_name": "Weapon: Ogre Blast",
+      "key": "weapon",
+      "level": 4,
+      "user_description": "(Enervation -2; Insidious -3; Range -1; Stun -1; Deplete +3)",
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Race Template",
+      "valid": true,
+      "name": "Weapon: Ogre Blast"
+    }
+  ],
+  "defects": [],
+  "key": "half-oni"
+}

@@ -1,0 +1,152 @@
+{
+    "name": "Aria Dawnsworn",
+    "player": "Kara",
+    "gm": "Eli",
+    "race": "Celestian",
+    "class": "Starborn Sorceress",
+    "homeworld": "Elaris Prime",
+    "size": "5'7\" / 135 lbs / Female",
+    "background": {
+        "origin": "Noble House Dawnsworn",
+        "faction": "Starwatch Order",
+        "goals": "Uncover the truth behind the Nova Shards",
+        "personality": "Curious, fiercely independent, occasionally reckless",
+        "history": "Trained by the Celestial Academy before being cast out for questioning ancient doctrines."
+    },
+    "stats": {
+        "Body": 4,
+        "Mind": 9,
+        "Soul": 4
+    },
+    "derived": {
+        "CV": 7,
+        "ACV": 8,
+        "DCV": 7,
+        "HP": 60,
+        "EP": 85,
+        "DM": 6,
+        "SV": 14,
+        "SP": 17,
+        "SCV": 8,
+        "SOP": 8
+    },
+    "drama_points": {
+        "current": 2,
+        "max": 5
+    },
+    "attributes": [
+        {
+            "name": "Dynamic Powers: Star Magic (Arcane)",
+            "rank": 3,
+            "cost": 9,
+            "effective_level": 2,
+            "enhancers": [
+                "Flexible Effect"
+            ],
+            "limiters": [
+                "Requires Meditation"
+            ],
+            "custom_fields": {
+                "category_type": "Arcane",
+                "controlled_category": "Star Magic"
+            },
+            "official_description": "You can dynamically create magic effects related to the stars and light.",
+            "user_description": "Aria\u00e2\u20ac\u2122s powers shimmer like constellations and often cause faint starlight to glow around her."
+        },
+        {
+            "name": "Absorption",
+            "base_name": "Absorption",
+            "rank": 1,
+            "cost": 5,
+            "effective_level": 1,
+            "enhancers": [],
+            "limiters": [],
+            "official_description": "Absorbs physical damage and converts it into HP or EP, up to 5 per level. Cannot stack with Armor or Conversion. Not effective against non-physical attacks or certain enhancements.",
+            "user_description": "",
+            "custom_fields": {}
+        },
+        {
+            "name": "Metamorphosis",
+            "base_name": "Metamorphosis",
+            "rank": 1,
+            "cost": 2,
+            "effective_level": 1,
+            "enhancers": [],
+            "limiters": [],
+            "official_description": "Allows the character to transform themselves or others into a new species or form for a limited duration. This change replaces the subject\u00e2\u20ac\u2122s current Race Template with a new one of equivalent Character Point value, determined by the level of this Attribute.",
+            "user_description": "",
+            "custom_fields": {
+                "template_name": "",
+                "template_cp_value": ""
+            }
+        }
+    ],
+    "defects": [
+        {
+            "name": "Haunted Past",
+            "rank": 2,
+            "points": 2
+        }
+    ],
+    "skills": [
+        {
+            "name": "Academics: Celestial Lore",
+            "level": 3
+        },
+        {
+            "name": "Magic Theory",
+            "level": 2
+        }
+    ],
+    "weapons": [
+        {
+            "name": "Nova Wand",
+            "damage": "25",
+            "cost": 4
+        }
+    ],
+    "armor": [
+        {
+            "name": "Starweave Robe",
+            "protection": "10 vs Magic",
+            "cost": 2
+        }
+    ],
+    "items": [
+        {
+            "name": "Crystal Orb of Recall",
+            "effect": "Once per session, re-roll a failed Mind-based check"
+        }
+    ],
+    "techniques": [
+        {
+            "name": "Lunar Flare",
+            "description": "Deals radiant damage and blinds target for one round.",
+            "cp_cost": 3
+        }
+    ],
+    "templates": [],
+    "alternate_forms": [],
+    "metamorphosis": [],
+    "companions": [],
+    "minions": [],
+    "relationships": [
+        {
+            "name": "Thorne the Wanderer",
+            "type": "Mentor",
+            "notes": "Taught Aria the forbidden paths of Nova magic."
+        }
+    ],
+    "notes": "Aria wears a ring inscribed with a star rune that glows when danger is near.",
+    "custom_fields": {
+        "alignment": "Neutral Good",
+        "theme_song": "Eclipse of Hope"
+    },
+    "custom_rules": [
+        "May regain 1 Drama Point per session when following her star omen."
+    ],
+    "saved_loadouts": [],
+    "benchmark": "Heroic",
+    "version": "1.0",
+    "totalPoints": 35
+}

@@ -1,4 +1,0 @@
-0000000000000000000000000000000000000000 e10daf6e5be063b1bbf6090c55f59b439dcac16d davidthegnome <david.lee.morris@gmail.com> 1744511481 -0600	commit (initial): first commit
-e10daf6e5be063b1bbf6090c55f59b439dcac16d 4732de6d98814325cb928879809a25ebb0c0b08c davidthegnome <david.lee.morris@gmail.com> 1744515582 -0600	commit: Add defects system with builder dialog and JSON data
-4732de6d98814325cb928879809a25ebb0c0b08c 045fd80cc3661b5230e725e989f710345009d2e3 davidthegnome <david.lee.morris@gmail.com> 1744518218 -0600	commit: Add initial tab implementation and JSON data for character attributes
-045fd80cc3661b5230e725e989f710345009d2e3 a64030fffbd4b19533d0fe518535ba2ef32e715b davidthegnome <david.lee.morris@gmail.com> 1744521335 -0600	commit: Crashes when trying to edit attributes or defects. Have to click card titles to edit.

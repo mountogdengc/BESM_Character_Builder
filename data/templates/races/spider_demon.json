@@ -1,0 +1,136 @@
+{
+  "race_name": "SPIDER DEMON",
+  "baseSize": {
+    "size_rank": 0,
+    "size_name": "Medium",
+    "options_source": "Race Template"
+  },
+  "stats": {
+    "body_adj": 3,
+    "mind_adj": 0,
+    "soul_adj": 0
+  },
+  "attributes": [
+    {
+      "custom_name": "Alternate Form",
+      "key": "alternate_form",
+      "level": 10,
+      "user_description": "(Spider Hybrid: 50 Points; Activation +2)",
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Race Template",
+      "valid": true,
+      "name": "Alternate Form"
+    },
+    {
+      "custom_name": "Attack Mastery",
+      "key": "attack_mastery",
+      "level": 1,
+      "user_description": null,
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Race Template",
+      "valid": true,
+      "name": "Attack Mastery"
+    },
+    {
+      "custom_name": "Immutable",
+      "key": "immutable",
+      "level": 2,
+      "user_description": null,
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Race Template",
+      "valid": true,
+      "name": "Immutable"
+    },
+    {
+      "custom_name": "Mind Shield",
+      "key": "mind_shield",
+      "level": 2,
+      "user_description": null,
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Race Template",
+      "valid": true,
+      "name": "Mind Shield"
+    },
+    {
+      "custom_name": "Resilient",
+      "key": "resilient",
+      "level": 1,
+      "user_description": "(Ageing)",
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Race Template",
+      "valid": true,
+      "name": "Resilient"
+    },
+    {
+      "custom_name": "Sixth Sense",
+      "key": "sixth_sense",
+      "level": 1,
+      "user_description": "(Goodness)",
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Race Template",
+      "valid": true,
+      "name": "Sixth Sense"
+    },
+    {
+      "custom_name": "Superstrength",
+      "key": "superstrength",
+      "level": 1,
+      "user_description": null,
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Race Template",
+      "valid": true,
+      "name": "Superstrength"
+    },
+    {
+      "custom_name": "Tough",
+      "key": "tough",
+      "level": 3,
+      "user_description": null,
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Race Template",
+      "valid": true,
+      "name": "Tough"
+    }
+  ],
+  "defects": [
+    {
+      "custom_name": "Special Requirement",
+      "key": "special_requirement",
+      "rank": 1,
+      "user_description": "(Feeds on Life Energy)",
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Race Template",
+      "valid": true,
+      "cp_refund": 3,
+      "name": "Special Requirement"
+    }
+  ],
+  "key": "spider_demon"
+}

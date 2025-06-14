@@ -1,0 +1,104 @@
+{
+  "class_name": "ADVENTURER",
+  "baseSize": {
+    "rank": 0,
+    "name": "Medium",
+    "options_source": "Class Template"
+  },
+  "stats": {
+    "body_adj": 0,
+    "mind_adj": 0,
+    "soul_adj": 0
+  },
+  "attributes": [
+    {
+      "custom_name": "Combat Technique",
+      "key": "combat_technique",
+      "level": 1,
+      "user_description": "(Select 1)",
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Class Template"
+    },
+    {
+      "custom_name": "Gear",
+      "key": "gear",
+      "level": 3,
+      "user_description": "(Adventuring Supplies)",
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Class Template"
+    },
+    {
+      "custom_name": "Heightened Awareness",
+      "key": "heightened_awareness",
+      "level": 1,
+      "user_description": null,
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Class Template"
+    },
+    {
+      "custom_name": "Melee Attack",
+      "key": "melee_attack",
+      "level": 1,
+      "user_description": "(Select Weapon Type)",
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Class Template"
+    },
+    {
+      "custom_name": "Melee Defence",
+      "key": "melee_defence",
+      "level": 1,
+      "user_description": "(Select Weapon Type)",
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Class Template"
+    },
+    {
+      "custom_name": "Skill Group",
+      "key": "skill_group",
+      "level": 3,
+      "user_description": "(Adventuring)",
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Class Template"
+    },
+    {
+      "custom_name": "Skill Group",
+      "key": "skill_group",
+      "level": 1,
+      "user_description": "(Social)",
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Class Template"
+    },
+    {
+      "custom_name": "Skill Group",
+      "key": "skill_group",
+      "level": 1,
+      "user_description": "(Street)",
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Class Template"
+    }
+  ],
+  "defects": []
+}

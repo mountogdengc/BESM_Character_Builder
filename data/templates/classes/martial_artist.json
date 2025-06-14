@@ -1,0 +1,185 @@
+{
+  "class_name": "MARTIAL ARTIST",
+  "baseSize": {
+    "rank": 0,
+    "name": "Medium",
+    "options_source": "Class Template"
+  },
+  "stats": {
+    "body_adj": 2,
+    "mind_adj": 0,
+    "soul_adj": 0
+  },
+  "attributes": [
+    {
+      "custom_name": "Combat Technique",
+      "key": "combat_technique",
+      "level": 10,
+      "user_description": null,
+      "enhancements": [],
+      "limiters": [],
+      "options": [
+        "Blind Fighting",
+        "Brutal",
+        "Concealment",
+        "Deflection",
+        "Judge Opponent",
+        "Lethal Blow",
+        "Lightning Reflexes 2",
+        "Reflection",
+        "Tournament Encyclopaedia: Martial Arts"
+      ],
+      "user_input": null,
+      "options_source": "Class Template"
+    },
+    {
+      "custom_name": "Extra Actions",
+      "key": "extra_actions",
+      "level": 1,
+      "user_description": null,
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Class Template"
+    },
+    {
+      "custom_name": "Heightened Awareness",
+      "key": "heightened_awareness",
+      "level": 2,
+      "user_description": null,
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Class Template"
+    },
+    {
+      "custom_name": "Jumping",
+      "key": "jumping",
+      "level": 1,
+      "user_description": null,
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Class Template"
+    },
+    {
+      "custom_name": "Massive Damage: Unarmed",
+      "key": "massive_damage",
+      "level": 3,
+      "user_description": null,
+      "enhancements": [],
+      "limiters": [
+        "focused"
+      ],
+      "options": [],
+      "user_input": null,
+      "options_source": "Class Template"
+    },
+    {
+      "custom_name": "Melee Attack: Unarmed",
+      "key": "melee_attack",
+      "level": 4,
+      "user_description": null,
+      "enhancements": [],
+      "limiters": [
+        "focused"
+      ],
+      "options": [],
+      "user_input": null,
+      "options_source": "Class Template"
+    },
+    {
+      "custom_name": "Melee Defence: Unarmed",
+      "key": "melee_defence",
+      "level": 4,
+      "user_description": null,
+      "enhancements": [],
+      "limiters": [
+        "focused"
+      ],
+      "options": [],
+      "user_input": null,
+      "options_source": "Class Template"
+    },
+    {
+      "custom_name": "Ranged Defence",
+      "key": "ranged_defence",
+      "level": 3,
+      "user_description": null,
+      "enhancements": [],
+      "limiters": [
+        "personal"
+      ],
+      "options": [],
+      "user_input": null,
+      "options_source": "Class Template"
+    },
+    {
+      "custom_name": "Skill Group",
+      "key": "skill_group",
+      "level": 2,
+      "user_description": null,
+      "enhancements": [],
+      "limiters": [],
+      "options": [
+        "Adventuring"
+      ],
+      "user_input": null,
+      "options_source": "Class Template"
+    },
+    {
+      "custom_name": "Skill Group",
+      "key": "skill_group",
+      "level": 1,
+      "user_description": null,
+      "enhancements": [],
+      "limiters": [],
+      "options": [
+        "Street"
+      ],
+      "user_input": null,
+      "options_source": "Class Template"
+    },
+    {
+      "custom_name": "Tough",
+      "key": "tough",
+      "level": 4,
+      "user_description": null,
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Class Template"
+    },
+    {
+      "custom_name": "Weapon: Finishing Move",
+      "key": "weapon",
+      "level": 3,
+      "user_description": null,
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Class Template"
+    },
+    {
+      "custom_name": "Weapon: Ki Blast",
+      "key": "weapon",
+      "level": 2,
+      "user_description": "(Drain: Body -1; Enervation -1; Range -1; Backblast +2; Hands +1)",
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Class Template",
+      "valid": true,
+      "name": "Weapon: Ki Blast",
+      "details": "(Drain: Body -1; Enervation -1; Range -1; Backblast +2; Hands +1)",
+      "rank": null
+    }
+  ],
+  "defects": []
+}

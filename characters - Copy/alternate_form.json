@@ -1,0 +1,131 @@
+{
+    "name": "dsa",
+    "player": "",
+    "gm": "",
+    "race": "",
+    "class": "",
+    "homeworld": "",
+    "size": "",
+    "background": {
+        "origin": "",
+        "faction": "",
+        "goals": "",
+        "personality": "",
+        "history": ""
+    },
+    "stats": {
+        "Body": 4,
+        "Mind": 4,
+        "Soul": 4
+    },
+    "derived": {
+        "CV": 0,
+        "ACV": 0,
+        "DCV": 0,
+        "HP": 0,
+        "EP": 0,
+        "DM": 0,
+        "SV": 0,
+        "SP": 0,
+        "SCV": 0,
+        "SOP": 0
+    },
+    "drama_points": {
+        "current": 3,
+        "max": 5
+    },
+    "attributes": [
+        {
+            "name": "Alternate Form",
+            "base_name": "Alternate Form",
+            "rank": 3,
+            "cost": 12,
+            "effective_level": 3,
+            "enhancers": [],
+            "limiters": [],
+            "official_description": "Allows the character to transform into a different form with different Attributes and Defects. The form is built from 5 CP per level and stacks with existing Attributes. Reductions refund additional points.",
+            "user_description": "",
+            "custom_fields": {}
+        },
+        {
+            "name": "Alternate Form",
+            "base_name": "Alternate Form",
+            "rank": 7,
+            "cost": 28,
+            "effective_level": 7,
+            "enhancers": [],
+            "limiters": [],
+            "official_description": "Allows the character to transform into a different form with different Attributes and Defects. The form is built from 5 CP per level and stacks with existing Attributes. Reductions refund additional points.",
+            "user_description": "",
+            "custom_fields": {}
+        }
+    ],
+    "defects": [],
+    "skills": [],
+    "weapons": [],
+    "armor": [],
+    "items": [],
+    "techniques": [],
+    "templates": [],
+    "alternate_forms": [
+        {
+            "name": "Alternate Form (3 CP)",
+            "level": 3,
+            "cp_budget": 15,
+            "stats": {
+                "Body": 4,
+                "Mind": 4,
+                "Soul": 4
+            },
+            "derived": {
+                "CV": 0,
+                "ACV": 0,
+                "DCV": 0,
+                "HP": 0,
+                "EP": 0,
+                "DM": 0,
+                "SV": 0,
+                "SP": 0,
+                "SCV": 0,
+                "SOP": 0
+            },
+            "attributes": [],
+            "defects": []
+        },
+        {
+            "name": "Alternate Form (7 CP)",
+            "level": 7,
+            "cp_budget": 35,
+            "stats": {
+                "Body": 4,
+                "Mind": 4,
+                "Soul": 4
+            },
+            "derived": {
+                "CV": 0,
+                "ACV": 0,
+                "DCV": 0,
+                "HP": 0,
+                "EP": 0,
+                "DM": 0,
+                "SV": 0,
+                "SP": 0,
+                "SCV": 0,
+                "SOP": 0
+            },
+            "attributes": [],
+            "defects": []
+        }
+    ],
+    "metamorphosis": [],
+    "companions": [],
+    "minions": [],
+    "relationships": [],
+    "notes": "",
+    "custom_fields": {},
+    "custom_rules": [],
+    "saved_loadouts": [],
+    "benchmark": null,
+    "version": "1.0",
+    "totalPoints": 52
+}

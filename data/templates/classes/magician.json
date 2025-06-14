@@ -1,0 +1,167 @@
+{
+  "class_name": "MAGICIAN",
+  "baseSize": {
+    "rank": 0,
+    "name": "Medium",
+    "options_source": "Class Template"
+  },
+  "stats": {
+    "body_adj": 0,
+    "mind_adj": 0,
+    "soul_adj": 2
+  },
+  "attributes": [
+    {
+      "custom_name": "Astral Projection",
+      "key": "alternate_form",
+      "level": 2,
+      "user_description": null,
+      "enhancements": [],
+      "limiters": [],
+      "options": [
+        "Astral Projection"
+      ],
+      "user_input": null,
+      "options_source": "Class Template"
+    },
+    {
+      "custom_name": "Combat Technique",
+      "key": "combat_technique",
+      "level": 1,
+      "user_description": null,
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Class Template"
+    },
+    {
+      "custom_name": "Features",
+      "key": "features",
+      "level": 2,
+      "user_description": null,
+      "enhancements": [],
+      "limiters": [],
+      "options": [
+        "Contacts: Magical"
+      ],
+      "user_input": null,
+      "options_source": "Class Template"
+    },
+    {
+      "custom_name": "Heightened Awareness",
+      "key": "heightened_awareness",
+      "level": 2,
+      "user_description": null,
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Class Template"
+    },
+    {
+      "custom_name": "Organisational Ties",
+      "key": "organisational_ties",
+      "level": 1,
+      "user_description": null,
+      "enhancements": [],
+      "limiters": [],
+      "options": [
+        "Magical"
+      ],
+      "user_input": null,
+      "options_source": "Class Template"
+    },
+    {
+      "custom_name": "Power Flux: Magical",
+      "key": "power_flux",
+      "level": 3,
+      "user_description": null,
+      "enhancements": [
+        "major"
+      ],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Class Template"
+    },
+    {
+      "custom_name": "Sixth Sense",
+      "key": "sixth_sense",
+      "level": 1,
+      "user_description": "(Select One Aspect)",
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Class Template"
+    },
+    {
+      "custom_name": "Skill Group",
+      "key": "skill_group",
+      "level": 1,
+      "user_description": null,
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Class Template"
+    },
+    {
+      "custom_name": "Weapon: Magical Attack",
+      "key": "weapon",
+      "level": 4,
+      "user_description": "(Drain: 3 Soul)",
+      "enhancements": [
+        "area_1",
+        "drain_3",
+        "range_2",
+        "selective_1",
+        "targets_2"
+      ],
+      "limiters": [
+        "charges",
+        "deplete",
+        "maximum"
+      ],
+      "options": [],
+      "user_input": null,
+      "options_source": "Class Template"
+    }
+  ],
+  "defects": [
+    {
+      "custom_name": "Easily Distracted",
+      "key": "easily_distracted",
+      "rank": 1,
+      "user_description": null,
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Class Template"
+    },
+    {
+      "custom_name": "Nemesis",
+      "key": "nemesis",
+      "rank": 2,
+      "user_description": null,
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Class Template"
+    },
+    {
+      "custom_name": "Hidden Identity: Magical",
+      "key": "skeleton_in_the_closet",
+      "rank": 2,
+      "user_description": null,
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Class Template"
+    }
+  ]
+}

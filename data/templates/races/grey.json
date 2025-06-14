@@ -1,0 +1,152 @@
+{
+  "race_name": "GREY",
+  "baseSize": {
+    "size_rank": 0,
+    "size_name": "Medium",
+    "options_source": "Race Template"
+  },
+  "stats": {
+    "body_adj": 0,
+    "mind_adj": 3,
+    "soul_adj": 0
+  },
+  "attributes": [
+    {
+      "custom_name": "Features",
+      "key": "features",
+      "level": 2,
+      "user_description": "(Ambidexterity, Low-Light Vision, Ultrasonic Communication)",
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Race Template",
+      "valid": true,
+      "name": "Features"
+    },
+    {
+      "custom_name": "Healing",
+      "key": "healing",
+      "level": 3,
+      "user_description": null,
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Race Template",
+      "valid": true,
+      "name": "Healing"
+    },
+    {
+      "custom_name": "Heightened Senses",
+      "key": "heightened_senses",
+      "level": 2,
+      "user_description": "(Hearing, Taste)",
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Race Template",
+      "valid": true,
+      "name": "Heightened Senses"
+    },
+    {
+      "custom_name": "Mind Control",
+      "key": "mind_control",
+      "level": 5,
+      "user_description": "(Broad: Sentient Beings +1; Concentration +1)",
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Race Template",
+      "valid": true,
+      "name": "Mind Control"
+    },
+    {
+      "custom_name": "Mind Shield",
+      "key": "mind_shield",
+      "level": 4,
+      "user_description": null,
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Race Template",
+      "valid": true,
+      "name": "Mind Shield"
+    },
+    {
+      "custom_name": "Telekinesis",
+      "key": "telekinesis",
+      "level": 3,
+      "user_description": null,
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Race Template",
+      "valid": true,
+      "name": "Telekinesis"
+    }
+  ],
+  "defects": [
+    {
+      "custom_name": "Easily Distracted",
+      "key": "easily_distracted",
+      "rank": 1,
+      "user_description": "(Technology)",
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Race Template",
+      "valid": true,
+      "cp_refund": 1,
+      "name": "Easily Distracted"
+    },
+    {
+      "custom_name": "Fragile",
+      "key": "fragile",
+      "rank": 1,
+      "user_description": null,
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Race Template",
+      "valid": true,
+      "cp_refund": 1,
+      "name": "Fragile"
+    },
+    {
+      "custom_name": "Shortcoming",
+      "key": "shortcoming",
+      "rank": 1,
+      "user_description": "(Body: Major - Agility)",
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Race Template",
+      "valid": true,
+      "cp_refund": 1,
+      "name": "Shortcoming"
+    },
+    {
+      "custom_name": "Shortcoming",
+      "key": "shortcoming",
+      "rank": 1,
+      "user_description": "(Body: Minor - Running Speed)",
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Race Template",
+      "valid": true,
+      "cp_refund": 1,
+      "name": "Shortcoming"
+    }
+  ],
+  "key": "grey"
+}
