@@ -60,4 +60,6 @@ BESM (Big Eyes, Small Mouth) is a trademark of Dyskami Publishing Company. This 
 
 ## License
 
-This project is intended for personal use. See the [License](LICENSE) file for details.
+This project is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0). This means you are free to share and adapt the material for non-commercial purposes, as long as you give appropriate credit, provide a link to the license, and indicate if changes were made. If you remix, transform, or build upon the material, you must distribute your contributions under the same license as the original.
+
+See the [License](LICENSE.txt) file for full details or visit [Creative Commons](http://creativecommons.org/licenses/by-nc-sa/4.0/) for more information.
