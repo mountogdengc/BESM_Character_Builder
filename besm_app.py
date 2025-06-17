@@ -75,6 +75,8 @@ class BESMCharacterApp(QMainWindow):
         with open(os.path.join(base_path, "data", "defects.json")) as f:
             defects_list = json.load(f)["defects"]
             self.defects = {defect["name"]: defect for defect in defects_list}
+            # Create a dictionary indexed by key for faster lookups
+            self.defects_by_key = {defect["key"]: defect for defect in defects_list if "key" in defect}
         
         # Initialize character data
         self.character_data = {

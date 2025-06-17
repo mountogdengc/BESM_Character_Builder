@@ -1,0 +1,323 @@
+{
+    "version": "1.0",
+    "name": "",
+    "player": "",
+    "gm": "",
+    "race": "",
+    "class": "",
+    "homeworld": "",
+    "size": "Point",
+    "background": {
+        "origin": "",
+        "faction": "",
+        "goals": "",
+        "personality": "",
+        "history": ""
+    },
+    "stats": {
+        "Body": 4,
+        "Mind": 4,
+        "Soul": 4
+    },
+    "derived": {
+        "CV": 4,
+        "ACV": 4,
+        "DCV": 4,
+        "HP": 40,
+        "EP": 40,
+        "DM": 4,
+        "SV": 8,
+        "SP": 40,
+        "SCV": 4,
+        "SOP": 40
+    },
+    "drama_points": {
+        "current": 3,
+        "max": 5
+    },
+    "attributes": [],
+    "defects": [],
+    "skills": [],
+    "weapons": [],
+    "armor": [],
+    "items": [],
+    "techniques": [],
+    "templates": [],
+    "alternate_forms": [],
+    "metamorphosis": [],
+    "companions": [],
+    "minions": [],
+    "relationships": [],
+    "notes": "",
+    "custom_fields": {},
+    "custom_rules": [],
+    "saved_loadouts": [],
+    "benchmark": null,
+    "totalPoints": 24,
+    "applied_templates": [
+        {
+            "id": "39659175-baec-43dd-b14f-6b927d22627a",
+            "type": "size",
+            "name": "Point",
+            "changes": [
+                {
+                    "field": "size",
+                    "old_value": "Monumental",
+                    "new_value": "Point"
+                },
+                {
+                    "field": "attribute_add",
+                    "attribute_id": "b6f28ca4-125c-4705-af84-0f2845e06ff2",
+                    "attribute_data": {
+                        "name": "Ranged Attack",
+                        "cost_per_level": 1,
+                        "source": "BESM4e",
+                        "description": "Allows the character to perform precise ranged attacks with a specific weapon class.",
+                        "levels": {
+                            "1": {
+                                "acv_bonus": 2
+                            },
+                            "2": {
+                                "acv_bonus": 4
+                            },
+                            "3": {
+                                "acv_bonus": 6
+                            },
+                            "4": {
+                                "acv_bonus": 8
+                            },
+                            "5": {
+                                "acv_bonus": 10
+                            },
+                            "6": {
+                                "acv_bonus": 12
+                            }
+                        },
+                        "modifiers": [
+                            {
+                                "type": "derived",
+                                "target": "ACV",
+                                "value_per_level": 2,
+                                "condition": "only when using selected weapon class"
+                            }
+                        ],
+                        "user_input_required": [
+                            {
+                                "label": "Weapon Class",
+                                "key": "weapon_class",
+                                "field_type": "combo_editable",
+                                "description": "Enter a custom category of weapons this Ranged Attack applies to (e.g. Long Gun, Spell, Throwing).",
+                                "options": [
+                                    "Biotech Projectiles",
+                                    "Bows",
+                                    "Crossbows",
+                                    "Elemental Blasts",
+                                    "Energy Weapons",
+                                    "Explosives",
+                                    "Firearms",
+                                    "Guns (General)",
+                                    "Laser Pistols",
+                                    "Magic Spells",
+                                    "Thrown Weapons"
+                                ]
+                            }
+                        ],
+                        "key": "ranged_attack",
+                        "is_human_attribute": false,
+                        "id": "b6f28ca4-125c-4705-af84-0f2845e06ff2",
+                        "level": 10,
+                        "user_description": "All",
+                        "options_source": "Size Template",
+                        "cost": 10,
+                        "sources": [
+                            "39659175-baec-43dd-b14f-6b927d22627a"
+                        ]
+                    }
+                },
+                {
+                    "field": "attribute_add",
+                    "attribute_id": "fe7cf85f-dfba-4a82-b493-07185aad4f91",
+                    "attribute_data": {
+                        "name": "Ranged Defence",
+                        "cost_per_level": 1,
+                        "relevant_stat": null,
+                        "source": "BESM4e",
+                        "description": "Boosts Defence Combat Value when avoiding ranged attacks under a specific condition, such as while on foot or piloting a vehicle.",
+                        "levels": {
+                            "1": "+2 DCV against ranged attacks under a specific condition",
+                            "2": "+4 DCV against ranged attacks under a specific condition",
+                            "3": "+6 DCV against ranged attacks under a specific condition",
+                            "4": "+8 DCV against ranged attacks under a specific condition",
+                            "5": "+10 DCV against ranged attacks under a specific condition",
+                            "6": "+12 DCV against ranged attacks under a specific condition"
+                        },
+                        "user_input_required": [
+                            {
+                                "label": "Condition",
+                                "field_type": "dropdown",
+                                "options": [
+                                    "Personal",
+                                    "Movement"
+                                ]
+                            }
+                        ],
+                        "key": "ranged_defence",
+                        "is_human_attribute": false,
+                        "id": "fe7cf85f-dfba-4a82-b493-07185aad4f91",
+                        "level": 10,
+                        "user_description": "All",
+                        "options_source": "Size Template",
+                        "cost": 10,
+                        "sources": [
+                            "39659175-baec-43dd-b14f-6b927d22627a"
+                        ]
+                    }
+                },
+                {
+                    "field": "attribute_add",
+                    "attribute_id": "12095936-bfa5-4e19-8ddc-8d7c6f0bc6db",
+                    "attribute_data": {
+                        "name": "Unique Attribute: Small, Light, and Unobtrusive",
+                        "key": "small_light_unobtrusive",
+                        "cost_per_level": 2,
+                        "relevant_stat": "Body",
+                        "description": "You're small, light, and unobtrusive. You're difficult to detect, and your size and weight make you less of a target.",
+                        "source": "BESM4e",
+                        "levels": [
+                            {
+                                "1": "You're small, light, and unobtrusive. You're difficult to detect, and your size and weight make you less of a target.",
+                                "2": "You're small, light, and unobtrusive. You're difficult to detect, and your size and weight make you less of a target.",
+                                "3": "You're small, light, and unobtrusive. You're difficult to detect, and your size and weight make you less of a target.",
+                                "4": "You're small, light, and unobtrusive. You're difficult to detect, and your size and weight make you less of a target.",
+                                "5": "You're small, light, and unobtrusive. You're difficult to detect, and your size and weight make you less of a target.",
+                                "6": "You're small, light, and unobtrusive. You're difficult to detect, and your size and weight make you less of a target.",
+                                "7": "You're small, light, and unobtrusive. You're difficult to detect, and your size and weight make you less of a target.",
+                                "8": "You're small, light, and unobtrusive. You're difficult to detect, and your size and weight make you less of a target.",
+                                "9": "You're small, light, and unobtrusive. You're difficult to detect, and your size and weight make you less of a target.",
+                                "10": "You're small, light, and unobtrusive. You're difficult to detect, and your size and weight make you less of a target."
+                            }
+                        ],
+                        "is_human_attribute": false,
+                        "id": "12095936-bfa5-4e19-8ddc-8d7c6f0bc6db",
+                        "level": 10,
+                        "options_source": "Size Template",
+                        "cost": 20,
+                        "sources": [
+                            "39659175-baec-43dd-b14f-6b927d22627a"
+                        ]
+                    }
+                },
+                {
+                    "field": "defect_add",
+                    "defect_id": "29ca1d49-24c6-43e8-a013-a0d03e0b9d06",
+                    "defect_data": {
+                        "custom_name": "Unique Defect: Lifting Capacity",
+                        "enhancements": [],
+                        "key": "lifting_capacity",
+                        "limiters": [],
+                        "options": [],
+                        "options_source": "Size Template",
+                        "rank": 10,
+                        "user_description": "Lifting Capacity reduced",
+                        "user_input": null,
+                        "valid": true,
+                        "id": "29ca1d49-24c6-43e8-a013-a0d03e0b9d06",
+                        "name": "Unique Defect: Lifting Capacity",
+                        "cost": -10,
+                        "sources": [
+                            "39659175-baec-43dd-b14f-6b927d22627a"
+                        ]
+                    }
+                },
+                {
+                    "field": "defect_add",
+                    "defect_id": "ea48a258-7e18-4798-8ecc-605e9e401fc1",
+                    "defect_data": {
+                        "custom_name": "Unique Defect: Strength Damage",
+                        "enhancements": [],
+                        "key": "strength_damage",
+                        "limiters": [],
+                        "options": [],
+                        "options_source": "Size Template",
+                        "rank": 10,
+                        "user_description": "Strength Damage reduced",
+                        "user_input": null,
+                        "valid": true,
+                        "id": "ea48a258-7e18-4798-8ecc-605e9e401fc1",
+                        "name": "Unique Defect: Strength Damage",
+                        "cost": -10,
+                        "sources": [
+                            "39659175-baec-43dd-b14f-6b927d22627a"
+                        ]
+                    }
+                },
+                {
+                    "field": "defect_add",
+                    "defect_id": "4a141c00-a4f3-4f9a-9585-986bef4f654b",
+                    "defect_data": {
+                        "custom_name": "Unique Defect: Vulnerable",
+                        "enhancements": [],
+                        "key": "extra_damage_from_all_attacks",
+                        "limiters": [],
+                        "options": [],
+                        "options_source": "Size Template",
+                        "rank": 10,
+                        "user_description": "Extra Damage from all Attacks",
+                        "user_input": null,
+                        "valid": true,
+                        "id": "4a141c00-a4f3-4f9a-9585-986bef4f654b",
+                        "name": "Unique Defect: Vulnerable",
+                        "cost": -10,
+                        "sources": [
+                            "39659175-baec-43dd-b14f-6b927d22627a"
+                        ]
+                    }
+                },
+                {
+                    "field": "defect_add",
+                    "defect_id": "3e91a2ef-d2eb-4b4e-b9e5-e1cc4dc0e4e6",
+                    "defect_data": {
+                        "custom_name": "Unique Defect: Thrown Weapon Distance",
+                        "enhancements": [],
+                        "key": "thrown_weapon_distance",
+                        "limiters": [],
+                        "options": [],
+                        "options_source": "Size Template",
+                        "rank": 10,
+                        "user_description": "Thrown weapon distance reduced",
+                        "user_input": null,
+                        "valid": true,
+                        "id": "3e91a2ef-d2eb-4b4e-b9e5-e1cc4dc0e4e6",
+                        "name": "Unique Defect: Thrown Weapon Distance",
+                        "cost": -10,
+                        "sources": [
+                            "39659175-baec-43dd-b14f-6b927d22627a"
+                        ]
+                    }
+                },
+                {
+                    "field": "defect_add",
+                    "defect_id": "0ba79dd8-a5f2-4714-b77d-9169cd600f49",
+                    "defect_data": {
+                        "custom_name": "Unique Defect: Running Speed",
+                        "enhancements": [],
+                        "key": "running_speed",
+                        "limiters": [],
+                        "options": [],
+                        "options_source": "Size Template",
+                        "rank": 10,
+                        "user_description": "Running Speed reduced",
+                        "user_input": null,
+                        "valid": true,
+                        "id": "0ba79dd8-a5f2-4714-b77d-9169cd600f49",
+                        "name": "Unique Defect: Running Speed",
+                        "cost": -10,
+                        "sources": [
+                            "39659175-baec-43dd-b14f-6b927d22627a"
+                        ]
+                    }
+                }
+            ]
+        }
+    ]
+}

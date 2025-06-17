@@ -45,7 +45,7 @@
       "custom_name": "Special Movement",
       "key": "special_movement",
       "level": 4,
-      "user_description": null,
+      "user_description": "Fast",
       "enhancements": [],
       "limiters": [],
       "options": [
@@ -56,8 +56,8 @@
       "valid": true
     },
     {
-      "custom_name": "x2 Thrown Weapon Distance",
-      "key": "unique_attribute",
+      "custom_name": "Thrown Weapon Distance",
+      "key": "thrown_weapon_distance",
       "level": 4,
       "user_description": null,
       "enhancements": [],
@@ -70,22 +70,23 @@
   ],
   "defects": [
     {
-      "rank": 4,
       "custom_name": "Big, Heavy, and Obvious",
-      "key": "unique_defect",
+      "key": "big_heavy_obvious",
+      "rank": 4,
       "user_description": null,
       "enhancements": [],
       "limiters": [],
       "options": [],
       "user_input": null,
       "options_source": "Size Template",
-      "valid": true
+      "valid": true,
+      "cp_refund": 4
     },
     {
-      "rank": 4,
-      "custom_name": "Inept Attack: Ranged",
+      "custom_name": "Inept Attack",
       "key": "inept_attack",
-      "user_description": null,
+      "rank": 4,
+      "user_description": "Ranged",
       "enhancements": [],
       "limiters": [],
       "options": [],
@@ -94,10 +95,10 @@
       "valid": true
     },
     {
-      "rank": 4,
-      "custom_name": "Inept Defence: Ranged",
+      "custom_name": "Inept Defence",
       "key": "inept_defence",
-      "user_description": null,
+      "rank": 4,
+      "user_description": "Ranged",
       "enhancements": [],
       "limiters": [],
       "options": [],

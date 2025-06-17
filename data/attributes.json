@@ -1648,6 +1648,29 @@
             "is_human_attribute": false
         },
         {
+            "name": "Unique Attribute: Small, Light, and Unobtrusive",
+            "key": "small_light_unobtrusive",
+            "cost_per_level": 2,
+            "relevant_stat": "Body",
+            "description": "You're small, light, and unobtrusive. You're difficult to detect, and your size and weight make you less of a target.",
+            "source": "BESM4e",
+            "levels": [
+                {
+                  "1": "You're small, light, and unobtrusive. You're difficult to detect, and your size and weight make you less of a target.",
+                  "2": "You're small, light, and unobtrusive. You're difficult to detect, and your size and weight make you less of a target.",
+                  "3": "You're small, light, and unobtrusive. You're difficult to detect, and your size and weight make you less of a target.",
+                  "4": "You're small, light, and unobtrusive. You're difficult to detect, and your size and weight make you less of a target.",
+                  "5": "You're small, light, and unobtrusive. You're difficult to detect, and your size and weight make you less of a target.",
+                  "6": "You're small, light, and unobtrusive. You're difficult to detect, and your size and weight make you less of a target.",
+                  "7": "You're small, light, and unobtrusive. You're difficult to detect, and your size and weight make you less of a target.",
+                  "8": "You're small, light, and unobtrusive. You're difficult to detect, and your size and weight make you less of a target.",
+                  "9": "You're small, light, and unobtrusive. You're difficult to detect, and your size and weight make you less of a target.",
+                  "10": "You're small, light, and unobtrusive. You're difficult to detect, and your size and weight make you less of a target."
+                }
+            ],
+            "is_human_attribute": false
+        },
+        {
             "name": "Spaceflight",
             "cost_per_level": 1,
             "relevant_stat": "Body",
@@ -1863,6 +1886,30 @@
                 "6": "Teleport up to 1,000 kilometers"
             },
             "key": "teleport",
+            "is_human_attribute": false
+        },
+        {
+            "name": "Thrown Weapon Distance",
+            "key": "thrown_weapon_distance",
+            "cost_per_level": 1,
+            "relevant_stat": "Body",
+            "description": "The character's thrown weapons have a increased range.",
+            "requires_description": true,
+            "source": "BESM4e",
+            "levels": [
+                {
+                  "1": "x2 thrown weapon range",
+                  "2": "x4 thrown weapon range",
+                  "3": "x8 thrown weapon range",
+                  "4": "x16 thrown weapon range",
+                  "5": "x32 thrown weapon range",
+                  "6": "x64 thrown weapon range",
+                  "7": "x128 thrown weapon range",
+                  "8": "x256 thrown weapon range",
+                  "9": "x512 thrown weapon range",
+                  "10": "x1024 thrown weapon range"
+                }
+            ],
             "is_human_attribute": false
         },
         {

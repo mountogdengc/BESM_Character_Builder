@@ -58,6 +58,57 @@
           ]
     },
     {
+      "name": "Unique Defect: Big, Heavy, and Obvious",
+      "key": "big_heavy_obvious",
+      "rank_type": "Greater",
+      "cp_refund": 2,
+      "max_rank": 10,
+      "description": "You're impossible to miss—and not in a good way. Whether due to your massive size, thundering footsteps, gleaming armor, or crackling magical aura, you stand out in any crowd. Stealth is nearly impossible, subtlety isn't your style, and you'll often be the first target in any confrontation.",
+      "source": "BESM4e",
+      "ranks": [
+          {
+            "rank": "1",
+            "description": "You're impossible to miss—and not in a good way. Whether due to your massive size, thundering footsteps, gleaming armor, or crackling magical aura, you stand out in any crowd. Stealth is nearly impossible, subtlety isn't your style, and you'll often be the first target in any confrontation."
+          },
+          {
+            "rank": "2",
+            "description": "You're impossible to miss—and not in a good way. Whether due to your massive size, thundering footsteps, gleaming armor, or crackling magical aura, you stand out in any crowd. Stealth is nearly impossible, subtlety isn't your style, and you'll often be the first target in any confrontation."
+          },
+          {
+            "rank": "3",
+            "description": "You're impossible to miss—and not in a good way. Whether due to your massive size, thundering footsteps, gleaming armor, or crackling magical aura, you stand out in any crowd. Stealth is nearly impossible, subtlety isn't your style, and you'll often be the first target in any confrontation."
+          },
+          {
+            "rank": "4",
+            "description": "You're impossible to miss—and not in a good way. Whether due to your massive size, thundering footsteps, gleaming armor, or crackling magical aura, you stand out in any crowd. Stealth is nearly impossible, subtlety isn't your style, and you'll often be the first target in any confrontation."
+          },
+          {
+            "rank": "5",
+            "description": "You're impossible to miss—and not in a good way. Whether due to your massive size, thundering footsteps, gleaming armor, or crackling magical aura, you stand out in any crowd. Stealth is nearly impossible, subtlety isn't your style, and you'll often be the first target in any confrontation."
+          },
+          {
+            "rank": "6",
+            "description": "You're impossible to miss—and not in a good way. Whether due to your massive size, thundering footsteps, gleaming armor, or crackling magical aura, you stand out in any crowd. Stealth is nearly impossible, subtlety isn't your style, and you'll often be the first target in any confrontation."
+          },
+          {
+            "rank": "7",
+            "description": "You're impossible to miss—and not in a good way. Whether due to your massive size, thundering footsteps, gleaming armor, or crackling magical aura, you stand out in any crowd. Stealth is nearly impossible, subtlety isn't your style, and you'll often be the first target in any confrontation."
+          },
+          {
+            "rank": "8",
+            "description": "You're impossible to miss—and not in a good way. Whether due to your massive size, thundering footsteps, gleaming armor, or crackling magical aura, you stand out in any crowd. Stealth is nearly impossible, subtlety isn't your style, and you'll often be the first target in any confrontation."
+          },
+          {
+            "rank": "9",
+            "description": "You're impossible to miss—and not in a good way. Whether due to your massive size, thundering footsteps, gleaming armor, or crackling magical aura, you stand out in any crowd. Stealth is nearly impossible, subtlety isn't your style, and you'll often be the first target in any confrontation."
+          },
+          {
+            "rank": "10",
+            "description": "You're impossible to miss—and not in a good way. Whether due to your massive size, thundering footsteps, gleaming armor, or crackling magical aura, you stand out in any crowd. Stealth is nearly impossible, subtlety isn't your style, and you'll often be the first target in any confrontation."
+          }
+        ]
+    },
+    {
         "name": "Blind Fury",
         "key": "blind_fury",
         "rank_type": "Greater",
@@ -91,15 +142,15 @@
         "ranks": [
             {
               "rank": "1",
-              "description": "Mild conditions are imposed on the object’s ownership and usage"
+              "description": "Mild conditions are imposed on the object's ownership and usage"
             },
             {
               "rank": "2",
-              "description": "Strict conditions are imposed on the object’s ownership and usage"
+              "description": "Strict conditions are imposed on the object's ownership and usage"
             },
             {
               "rank": "3",
-              "description": "Severe conditions are imposed on the object’s ownership and usage"
+              "description": "Severe conditions are imposed on the object's ownership and usage"
             }
           ]
     },
@@ -171,6 +222,57 @@
               "description": "Severe consequences"
             }
           ]
+    },
+    {
+      "name": "Unique Defect: Extra Damage from all Attacks",
+      "key": "extra_damage_from_all_attacks",
+      "rank_type": "Serious",
+      "cp_refund": 4,
+      "max_rank": 10,
+      "description": "The character takes extra damage from all attacks.",
+      "source": "BESM4e",
+      "ranks": [
+          {
+            "rank": "1",
+            "description": "Suffers 10 Extra Damage from all Attacks"
+          },
+          {
+            "rank": "2",
+            "description": "Suffers 20 Extra Damage from all Attacks"
+          },
+          {
+            "rank": "3",
+            "description": "Suffers 30 Extra Damage from all Attacks"
+          },
+          {
+            "rank": "4",
+            "description": "Suffers 40 Extra Damage from all Attacks"
+          },
+          {
+            "rank": "5",
+            "description": "Suffers 50 Extra Damage from all Attacks"
+          },
+          {
+            "rank": "6",
+            "description": "Suffers 60 Extra Damage from all Attacks"
+          },
+          {
+            "rank": "7",
+            "description": "Suffers 70 Extra Damage from all Attacks"
+          },
+          {
+            "rank": "8",
+            "description": "Suffers 80 Extra Damage from all Attacks"
+          },
+          {
+            "rank": "9",
+            "description": "Suffers 90 Extra Damage from all Attacks"
+          },
+          {
+            "rank": "10",
+            "description": "Suffers 100 Extra Damage from all Attacks"
+          }
+        ]
     },
     {
         "name": "Fragile",
@@ -291,7 +393,7 @@
         "key": "inept_attack",
         "rank_type": "Lesser",
         "cp_refund": 1,
-        "max_rank": 3,
+        "max_rank": 10,
         "description": "Character is poor at offensive combat. They suffer reduced accuracy, either generally or in certain types of attacks (melee, ranged, etc.).",
         "source": "BESM4e",
         "ranks": [
@@ -314,7 +416,7 @@
         "key": "inept_defence",
         "rank_type": "Lesser",
         "cp_refund": 1,
-        "max_rank": 3,
+        "max_rank": 10,
         "description": "Character is ineffective at defending. They suffer a reduced ability to dodge or block, either generally or in specific types of combat.",
         "source": "BESM4e",
         "ranks": [
@@ -377,6 +479,57 @@
               "description": "Severe consequences"
             }
           ]
+    },
+    {
+      "name": "Lifting Capacity",
+      "key": "lifting_capacity",
+      "rank_type": "Serious",
+      "cp_refund": 6,
+      "max_rank": 10,
+      "description": "The character's lifting capacity is reduced.",
+      "source": "BESM4e",
+      "ranks": [
+        {
+          "rank": "1",
+          "description": "÷5 lifting capacity"
+        },
+        {
+          "rank": "2",
+          "description": "÷25 lifting capacity"
+        },
+        {
+          "rank": "3",
+          "description": "÷100 lifting capacity"
+        },
+        {
+          "rank": "4",
+          "description": "÷500 lifting capacity"
+        },
+        {
+          "rank": "5",
+          "description": "÷2,500 lifting capacity"
+        },
+        {
+          "rank": "6",
+          "description": "÷10,000 lifting capacity"
+        },
+        {
+          "rank": "7",
+          "description": "÷50,000 lifting capacity"
+        },
+        {
+          "rank": "8",
+          "description": "÷250,000 lifting capacity"
+        },
+        {
+          "rank": "9",
+          "description": "÷1,000,000 lifting capacity"
+        },
+        {
+          "rank": "10",
+          "description": "÷5,000,000 lifting capacity"
+        }
+      ]
     },
     {
         "name": "Magnet",
@@ -584,14 +737,65 @@
               "description": "Severe consequences"
             }
           ]
-      },
-      {
+    },
+    {
+      "name": "Running Speed",
+      "key": "running_speed",
+      "rank_type": "Lesser",
+      "cp_refund": 1,
+      "max_rank": 10,
+      "description": "The character's running speed is reduced.",
+      "source": "BESM4e",
+      "ranks": [
+        {
+          "rank": "1",
+          "description": "÷2 running speed"
+        },
+        {
+          "rank": "2",
+          "description": "÷4 running speed"
+        },
+        {
+          "rank": "3",
+          "description": "÷8 running speed"
+        },
+        {
+          "rank": "4",
+          "description": "÷16 running speed"
+        },
+        {
+          "rank": "5",
+          "description": "÷32 running speed"
+        },
+        {
+          "rank": "6",
+          "description": "÷64 running speed"
+        },
+        {
+          "rank": "7",
+          "description": "÷128 running speed"
+        },
+        {
+          "rank": "8",
+          "description": "÷256 running speed"
+        },
+        {
+          "rank": "9",
+          "description": "÷512 running speed"
+        },
+        {
+          "rank": "10",
+          "description": "÷1024 running speed"
+        }
+      ]
+  },
+    {
         "name": "Sensory Impairment",
         "key": "sensory_impairment",
         "rank_type": "Serious",
         "cp_refund": 3,
         "max_rank": 3,
-        "description": "One or more of the character\u2019s senses (sight, hearing, taste, touch, smell) are either diminished or lost.",
+        "description": "One or more of the character's senses (sight, hearing, taste, touch, smell) are either diminished or lost.",
         "source": "BESM4e",
         "ranks": [
             {
@@ -607,8 +811,8 @@
               "description": "Severe consequences"
             }
           ]
-      },
-      {
+    },
+    {
         "name": "Shortcoming",
         "key": "shortcoming",
         "rank_type": "Lesser",
@@ -630,8 +834,8 @@
               "description": "Severe consequences"
             }
           ]
-      },
-      {
+    },
+    {
         "name": "Significant Other",
         "key": "significant_other",
         "rank_type": "Lesser",
@@ -653,8 +857,8 @@
               "description": "Severe consequences"
             }
           ]
-      },
-      {
+    },
+    {
         "name": "Skeleton in the Closet",
         "key": "skeleton_in_the_closet",
         "rank_type": "Greater",
@@ -676,8 +880,8 @@
               "description": "Severe consequences"
             }
           ]
-      },
-      {
+    },
+    {
         "name": "Social Fault",
         "key": "social_fault",
         "rank_type": "Lesser",
@@ -699,8 +903,8 @@
               "description": "Severe consequences"
             }
           ]
-      },
-      {
+    },
+    {
         "name": "Special Requirement",
         "key": "special_requirement",
         "rank_type": "Serious",
@@ -722,8 +926,59 @@
               "description": "Severe consequences"
             }
           ]
-      },
-      {
+    },
+    {
+      "name": "Strength Damage",
+      "key": "strength_damage",
+      "rank_type": "Serious",
+      "cp_refund": 2,
+      "max_rank": 10,
+      "description": "The character's damage from Strength attacks is reduced.",
+      "source": "BESM4e",
+      "ranks": [
+        {
+          "rank": "1",
+          "description": "-10 Strength Damage"
+        },
+        {
+          "rank": "2",
+          "description": "-20 Strength Damage"
+        },
+        {
+          "rank": "3",
+          "description": "-30 Strength Damage"
+        },
+        {
+          "rank": "4",
+          "description": "-40 Strength Damage"
+        },
+        {
+          "rank": "5",
+          "description": "-50 Strength Damage"
+        },
+        {
+          "rank": "6",
+          "description": "-60 Strength Damage"
+        },
+        {
+          "rank": "7",
+          "description": "-70 Strength Damage"
+        },
+        {
+          "rank": "8",
+          "description": "-80 Strength Damage"
+        },
+        {
+          "rank": "9",
+          "description": "-90 Strength Damage"
+        },
+        {
+          "rank": "10",
+          "description": "-100 Strength Damage"
+        }
+      ]
+    },
+    {
         "name": "Unappealing",
         "key": "unappealing",
         "rank_type": "Lesser",
@@ -745,18 +1000,132 @@
               "description": "Severe consequences"
             }
           ]
-      },
-      {
-        "name": "Unique Defect",
-        "key": "unique_defect",
-        "rank_type": "Custom",
-        "cp_refund": null,
-        "max_rank": null,
-        "description": "A custom defect with GM-approved boundaries and limitations.",
+    },
+    {
+        "name": "Lesser Unique Defect",
+        "key": "lesser_unique_defect",
+        "rank_type": "Lesser",
+        "cp_refund": 1,
+        "max_rank": 3,
+        "description": "A minor unique defect that affects the character in a specific way. Each rank provides 1 CP refund.",
         "requires_description": true,
-        "is_custom": true
-      },
-      {
+        "source": "BESM4e",
+        "ranks": [
+            {
+              "rank": "1",
+              "description": "Minor unique defect with slight impact"
+            },
+            {
+              "rank": "2",
+              "description": "Minor unique defect with moderate impact"
+            },
+            {
+              "rank": "3",
+              "description": "Minor unique defect with significant impact"
+            }
+          ]
+    },
+    {
+        "name": "Greater Unique Defect",
+        "key": "greater_unique_defect",
+        "rank_type": "Greater",
+        "cp_refund": 2,
+        "max_rank": 3,
+        "description": "A significant unique defect that affects the character in a major way. Each rank provides 2 CP refund.",
+        "requires_description": true,
+        "source": "BESM4e",
+        "ranks": [
+            {
+              "rank": "1",
+              "description": "Major unique defect with moderate impact"
+            },
+            {
+              "rank": "2",
+              "description": "Major unique defect with significant impact"
+            },
+            {
+              "rank": "3",
+              "description": "Major unique defect with severe impact"
+            }
+          ]
+    },
+    {
+        "name": "Serious Unique Defect",
+        "key": "serious_unique_defect",
+        "rank_type": "Serious",
+        "cp_refund": 3,
+        "max_rank": 3,
+        "description": "A severe unique defect that affects the character in a critical way. Each rank provides 3 CP refund.",
+        "requires_description": true,
+        "source": "BESM4e",
+        "ranks": [
+            {
+              "rank": "1",
+              "description": "Severe unique defect with significant impact"
+            },
+            {
+              "rank": "2",
+              "description": "Severe unique defect with severe impact"
+            },
+            {
+              "rank": "3",
+              "description": "Severe unique defect with critical impact"
+            }
+          ]
+    },
+    {
+      "name": "Thrown Weapon Distance",
+      "key": "thrown_weapon_distance",
+      "rank_type": "Lesser",
+      "cp_refund": 1,
+      "max_rank": 10,
+      "description": "The character's thrown weapons have a decreased range.",
+      "requires_description": true,
+      "source": "BESM4e",
+      "ranks": [
+          {
+            "rank": "1",
+            "description": "÷2 thrown weapon range"
+          },
+          {
+            "rank": "2",
+            "description": "÷4 thrown weapon range"
+          },
+          {
+            "rank": "3",
+            "description": "÷8 thrown weapon range"
+          },
+          {
+            "rank": "4",
+            "description": "÷16 thrown weapon range"
+          },
+          {
+            "rank": "5",
+            "description": "÷32 thrown weapon range"
+          },
+          {
+            "rank": "6",
+            "description": "÷64 thrown weapon range"
+          },
+          {
+            "rank": "7",
+            "description": "÷128 thrown weapon range"
+          },
+          {
+            "rank": "8",
+            "description": "÷256 thrown weapon range"
+          },
+          {
+            "rank": "9",
+            "description": "÷512 thrown weapon range"
+          },
+          {
+            "rank": "10",
+            "description": "÷1024 thrown weapon range"
+          }
+        ]
+    },
+    {
         "name": "Vulnerability",
         "key": "vulnerability",
         "rank_type": "Greater",
@@ -778,8 +1147,8 @@
               "description": "Severe consequences"
             }
           ]
-      },
-      {
+    },
+    {
         "name": "Wanted",
         "key": "wanted",
         "rank_type": "Greater",
@@ -801,8 +1170,8 @@
               "description": "Severe consequences"
             }
           ]
-      },
-      {
+    },
+    {
         "name": "Weak Point",
         "key": "weak_point",
         "rank_type": "Greater",
@@ -824,6 +1193,6 @@
               "description": "Severe consequences"
             }
           ]
-      }
+    }
   ]
 }

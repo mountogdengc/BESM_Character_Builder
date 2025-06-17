@@ -234,22 +234,12 @@ class DefectBuilderDialog(QDialog):
         defect = self.defects[defect_name]
         rank = self.rank_spin.value()
         
-        # Base cost calculation - use cp_refund for defects
+        # Always use cp_refund from the defect JSON
         cp_refund = defect.get("cp_refund", 0)
-        rank_type = defect.get("rank_type", "")
-        
-        # Calculate cost based on rank and rank_type
-        if rank_type == "Lesser":
-            total_cost = rank * 1  # 1 CP per rank for Lesser defects
-        elif rank_type == "Greater":
-            total_cost = rank * 2  # 2 CP per rank for Greater defects
-        elif rank_type == "Serious":
-            total_cost = rank * 3  # 3 CP per rank for Serious defects
-        elif rank_type == "Custom" and cp_refund is not None:
+        if cp_refund is not None:
             total_cost = rank * cp_refund
         else:
-            # Default fallback
-            total_cost = rank * (cp_refund if cp_refund is not None else 1)
+            total_cost = rank  # fallback, should never happen if JSON is correct
         
         # Apply enhancements (increase cost)
         enhancement_multiplier = 1.0

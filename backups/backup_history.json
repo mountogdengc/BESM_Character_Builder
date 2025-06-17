@@ -89,5 +89,26 @@
         "type": "auto",
         "checksum": "6d6704ece1f6717b3410610d2cb4f68903bbf3ec68b579b14887334bc3ea0de1",
         "character_name": ""
+    },
+    {
+        "filename": "character_backup_auto_20250616_205911_1120292b.json",
+        "timestamp": "20250616_205911",
+        "type": "auto",
+        "checksum": "6be7d124796b4f9052d2a600083e4fb894ccac74cf3da3423c9ec91fe87a5fb0",
+        "character_name": ""
+    },
+    {
+        "filename": "character_backup_auto_20250616_210434_df06c008.json",
+        "timestamp": "20250616_210434",
+        "type": "auto",
+        "checksum": "826c3519271787505283e8aa06abb2a1e07d754f12f20e9e5137deaa09644e69",
+        "character_name": ""
+    },
+    {
+        "filename": "character_backup_auto_20250616_211429_f3635700.json",
+        "timestamp": "20250616_211429",
+        "type": "auto",
+        "checksum": "8355db6b1ab78a287cf4c0c99f574c43a539f44dd1a59e69c24a07dbc2860ae7",
+        "character_name": ""
     }
 ]

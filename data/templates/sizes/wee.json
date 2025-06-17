@@ -16,5 +16,105 @@
     "rangedModifier": "+12",
     "speedRangeMultiplier": "\u00f7 60"
   },
-  "totalPoints": -40
+  "attributes": [
+    {
+      "custom_name": "Ranged Attack",
+      "key": "ranged_attack",
+      "level": 6,
+      "user_description": "All",
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Size Template",
+      "valid": true
+    },
+    {
+      "custom_name": "Ranged Defence",
+      "key": "ranged_defence",
+      "level": 6,
+      "user_description": "All",
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Size Template",
+      "valid": true
+    },
+    {
+      "custom_name": "Unique Attribute: Small, Light, and Unobtrusive",
+      "key": "small_light_unobtrusive",
+      "level": 6,
+      "user_description": null,
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Size Template",
+      "valid": true
+    }
+  ],
+  "defects": [
+    {
+      "custom_name": "Unique Defect: Lifting Capacity",
+      "key": "lifting_capacity",
+      "rank": 6,
+      "user_description": "Lifting Capacity reduced",
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Size Template",
+      "valid": true
+    },
+    {
+      "custom_name": "Unique Defect: Strength Damage",
+      "key": "strength_damage",
+      "rank": 6,
+      "user_description": "Strength Damage reduced",
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Size Template",
+      "valid": true
+    },
+    {
+      "custom_name": "Unique Defect: Vulnerable",
+      "key": "extra_damage_from_all_attacks",
+      "rank": 6,
+      "user_description": "Extra Damage from all Attacks",
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Size Template",
+      "valid": true
+    },
+    {
+      "custom_name": "Unique Defect: Thrown Weapon Distance",
+      "key": "thrown_weapon_distance",
+      "rank": 6,
+      "user_description": "Thrown weapon distance reduced",
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Size Template",
+      "valid": true
+    },
+    {
+      "custom_name": "Unique Defect: Running Speed",
+      "key": "running_speed",
+      "rank": 6,
+      "user_description": "Running Speed reduced",
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Size Template",
+      "valid": true
+    }
+  ],
+  "totalPoints": -60
 }

@@ -1,0 +1,352 @@
+{
+    "version": "1.0",
+    "name": "",
+    "player": "",
+    "gm": "",
+    "race": "",
+    "class": "",
+    "homeworld": "",
+    "size": "Large",
+    "background": {
+        "origin": "",
+        "faction": "",
+        "goals": "",
+        "personality": "",
+        "history": ""
+    },
+    "stats": {
+        "Body": 4,
+        "Mind": 4,
+        "Soul": 4
+    },
+    "derived": {
+        "CV": 4,
+        "ACV": 4,
+        "DCV": 4,
+        "HP": 40,
+        "EP": 40,
+        "DM": 4,
+        "SV": 8,
+        "SP": 40,
+        "SCV": 4,
+        "SOP": 40
+    },
+    "drama_points": {
+        "current": 3,
+        "max": 5
+    },
+    "attributes": [],
+    "defects": [],
+    "skills": [],
+    "weapons": [],
+    "armor": [],
+    "items": [],
+    "techniques": [],
+    "templates": [],
+    "alternate_forms": [],
+    "metamorphosis": [],
+    "companions": [],
+    "minions": [],
+    "relationships": [],
+    "notes": "",
+    "custom_fields": {},
+    "custom_rules": [],
+    "saved_loadouts": [],
+    "benchmark": null,
+    "totalPoints": 24,
+    "applied_templates": [
+        {
+            "id": "7b6d627a-8383-492e-92e1-bb21fb8ed3fe",
+            "type": "size",
+            "name": "Large",
+            "changes": [
+                {
+                    "field": "size",
+                    "old_value": "",
+                    "new_value": "Large"
+                },
+                {
+                    "field": "attribute_add",
+                    "attribute_id": "c77a752e-7650-4931-83c4-bd6425392e60",
+                    "attribute_data": {
+                        "name": "Superstrength",
+                        "cost_per_level": 4,
+                        "relevant_stat": "Body",
+                        "description": "Allows lifting and carrying massive weights beyond normal strength. Adds +5 damage to unarmed attacks and +1 Damage Multiplier to melee/thrown weapons per level. Works independently of the Body Stat.",
+                        "source": "BESM4e",
+                        "levels": {
+                            "1": "Lift up to 250 kg (e.g., motorcycle)",
+                            "2": "Lift up to 500 kg (e.g., horse)",
+                            "3": "Lift up to 1 tonne (e.g., small car)",
+                            "4": "Lift up to 2 tonnes (e.g., truck)",
+                            "5": "Lift up to 5 tonnes (e.g., elephant)",
+                            "6": "Lift up to 10 tonnes (e.g., yacht)"
+                        },
+                        "key": "superstrength",
+                        "is_human_attribute": false,
+                        "id": "c77a752e-7650-4931-83c4-bd6425392e60",
+                        "level": 2,
+                        "options_source": "Size Template",
+                        "cost": 8,
+                        "sources": [
+                            "7b6d627a-8383-492e-92e1-bb21fb8ed3fe"
+                        ]
+                    }
+                },
+                {
+                    "field": "attribute_add",
+                    "attribute_id": "be5f4728-87b3-4fbf-b902-221253ff8825",
+                    "attribute_data": {
+                        "name": "Armour",
+                        "cost_per_level": 2,
+                        "relevant_stat": null,
+                        "is_human_attribute": false,
+                        "description": "Provides damage reduction of 5 per level against physical attacks. Can be enhanced/limited by damage type.",
+                        "source": "BESM4e",
+                        "levels": {
+                            "1": "Armour Rating = 5",
+                            "2": "Armour Rating = 10",
+                            "3": "Armour Rating = 15",
+                            "4": "Armour Rating = 20",
+                            "5": "Armour Rating = 25",
+                            "6": "Armour Rating = 30"
+                        },
+                        "stat_mods": {
+                            "derived": {
+                                "Armour Rating": 5
+                            }
+                        },
+                        "key": "armour",
+                        "id": "be5f4728-87b3-4fbf-b902-221253ff8825",
+                        "level": 2,
+                        "options_source": "Size Template",
+                        "cost": 4,
+                        "sources": [
+                            "7b6d627a-8383-492e-92e1-bb21fb8ed3fe"
+                        ]
+                    }
+                },
+                {
+                    "field": "attribute_add",
+                    "attribute_id": "598f37ef-fa45-4f23-8463-456cc3c06c35",
+                    "attribute_data": {
+                        "name": "Special Movement",
+                        "cost_per_level": 1,
+                        "relevant_stat": "Body",
+                        "description": "Grants unique movement types such as Wall-Crawling, Zen Direction, Swinging, or Water-Walking. Some types count as two abilities due to enhanced utility.",
+                        "source": "BESM4e",
+                        "levels": {
+                            "1": "1 Special Movement ability",
+                            "2": "2 Special Movement abilities",
+                            "3": "3 Special Movement abilities",
+                            "4": "4 Special Movement abilities",
+                            "5": "5 Special Movement abilities",
+                            "6": "6 Special Movement abilities"
+                        },
+                        "user_input_required": [
+                            {
+                                "label": "Movement Types",
+                                "key": "movement_types",
+                                "field_type": "list",
+                                "description": "List the Special Movement abilities the character possesses.",
+                                "autocomplete_options": [
+                                    "Balance",
+                                    "Cat-Like",
+                                    "Fast",
+                                    "Light-Footed",
+                                    "Slithering",
+                                    "Swinging",
+                                    "Untrackable",
+                                    "Wall-Bouncing",
+                                    "Wall-Crawling",
+                                    "Water-Walking",
+                                    "Zen Direction"
+                                ]
+                            }
+                        ],
+                        "key": "special_movement",
+                        "is_human_attribute": false,
+                        "id": "598f37ef-fa45-4f23-8463-456cc3c06c35",
+                        "level": 1,
+                        "user_description": "Fast",
+                        "options": [
+                            "fast"
+                        ],
+                        "options_source": "Size Template",
+                        "cost": 1,
+                        "sources": [
+                            "7b6d627a-8383-492e-92e1-bb21fb8ed3fe"
+                        ]
+                    }
+                },
+                {
+                    "field": "attribute_add",
+                    "attribute_id": "c785ab8e-fc73-4981-b670-dc174c2a066e",
+                    "attribute_data": {
+                        "name": "Unique Attribute: Thrown Weapon Distance",
+                        "key": "thrown_weapon_distance",
+                        "cost_per_level": 1,
+                        "relevant_stat": "Body",
+                        "description": "The character's thrown weapons have a increased range.",
+                        "requires_description": true,
+                        "source": "BESM4e",
+                        "levels": [
+                            {
+                                "1": "x2 thrown weapon range",
+                                "2": "x4 thrown weapon range",
+                                "3": "x8 thrown weapon range",
+                                "4": "x16 thrown weapon range",
+                                "5": "x32 thrown weapon range",
+                                "6": "x64 thrown weapon range",
+                                "7": "x128 thrown weapon range",
+                                "8": "x256 thrown weapon range",
+                                "9": "x512 thrown weapon range",
+                                "10": "x1024 thrown weapon range"
+                            }
+                        ],
+                        "is_human_attribute": false,
+                        "id": "c785ab8e-fc73-4981-b670-dc174c2a066e",
+                        "level": 1,
+                        "options_source": "Size Template",
+                        "cost": 1,
+                        "sources": [
+                            "7b6d627a-8383-492e-92e1-bb21fb8ed3fe"
+                        ]
+                    }
+                },
+                {
+                    "field": "defect_add",
+                    "defect_id": "5c7712be-9129-49ff-857a-a05a7e0b747a",
+                    "defect_data": {
+                        "name": "Unique Defect: Big, Heavy, and Obvious",
+                        "key": "big_heavy_obvious",
+                        "rank_type": "Greater",
+                        "cp_refund": 2,
+                        "max_rank": 10,
+                        "description": "You're impossible to miss\u00e2\u20ac\u201dand not in a good way. Whether due to your massive size, thundering footsteps, gleaming armor, or crackling magical aura, you stand out in any crowd. Stealth is nearly impossible, subtlety isn't your style, and you'll often be the first target in any confrontation.",
+                        "source": "BESM4e",
+                        "ranks": [
+                            {
+                                "rank": "1",
+                                "description": "You're impossible to miss\u00e2\u20ac\u201dand not in a good way. Whether due to your massive size, thundering footsteps, gleaming armor, or crackling magical aura, you stand out in any crowd. Stealth is nearly impossible, subtlety isn't your style, and you'll often be the first target in any confrontation."
+                            },
+                            {
+                                "rank": "2",
+                                "description": "You're impossible to miss\u00e2\u20ac\u201dand not in a good way. Whether due to your massive size, thundering footsteps, gleaming armor, or crackling magical aura, you stand out in any crowd. Stealth is nearly impossible, subtlety isn't your style, and you'll often be the first target in any confrontation."
+                            },
+                            {
+                                "rank": "3",
+                                "description": "You're impossible to miss\u00e2\u20ac\u201dand not in a good way. Whether due to your massive size, thundering footsteps, gleaming armor, or crackling magical aura, you stand out in any crowd. Stealth is nearly impossible, subtlety isn't your style, and you'll often be the first target in any confrontation."
+                            },
+                            {
+                                "rank": "4",
+                                "description": "You're impossible to miss\u00e2\u20ac\u201dand not in a good way. Whether due to your massive size, thundering footsteps, gleaming armor, or crackling magical aura, you stand out in any crowd. Stealth is nearly impossible, subtlety isn't your style, and you'll often be the first target in any confrontation."
+                            },
+                            {
+                                "rank": "5",
+                                "description": "You're impossible to miss\u00e2\u20ac\u201dand not in a good way. Whether due to your massive size, thundering footsteps, gleaming armor, or crackling magical aura, you stand out in any crowd. Stealth is nearly impossible, subtlety isn't your style, and you'll often be the first target in any confrontation."
+                            },
+                            {
+                                "rank": "6",
+                                "description": "You're impossible to miss\u00e2\u20ac\u201dand not in a good way. Whether due to your massive size, thundering footsteps, gleaming armor, or crackling magical aura, you stand out in any crowd. Stealth is nearly impossible, subtlety isn't your style, and you'll often be the first target in any confrontation."
+                            },
+                            {
+                                "rank": "7",
+                                "description": "You're impossible to miss\u00e2\u20ac\u201dand not in a good way. Whether due to your massive size, thundering footsteps, gleaming armor, or crackling magical aura, you stand out in any crowd. Stealth is nearly impossible, subtlety isn't your style, and you'll often be the first target in any confrontation."
+                            },
+                            {
+                                "rank": "8",
+                                "description": "You're impossible to miss\u00e2\u20ac\u201dand not in a good way. Whether due to your massive size, thundering footsteps, gleaming armor, or crackling magical aura, you stand out in any crowd. Stealth is nearly impossible, subtlety isn't your style, and you'll often be the first target in any confrontation."
+                            },
+                            {
+                                "rank": "9",
+                                "description": "You're impossible to miss\u00e2\u20ac\u201dand not in a good way. Whether due to your massive size, thundering footsteps, gleaming armor, or crackling magical aura, you stand out in any crowd. Stealth is nearly impossible, subtlety isn't your style, and you'll often be the first target in any confrontation."
+                            },
+                            {
+                                "rank": "10",
+                                "description": "You're impossible to miss\u00e2\u20ac\u201dand not in a good way. Whether due to your massive size, thundering footsteps, gleaming armor, or crackling magical aura, you stand out in any crowd. Stealth is nearly impossible, subtlety isn't your style, and you'll often be the first target in any confrontation."
+                            }
+                        ],
+                        "id": "5c7712be-9129-49ff-857a-a05a7e0b747a",
+                        "rank": 1,
+                        "options_source": "Size Template",
+                        "cost": -2,
+                        "sources": [
+                            "7b6d627a-8383-492e-92e1-bb21fb8ed3fe"
+                        ]
+                    }
+                },
+                {
+                    "field": "defect_add",
+                    "defect_id": "42115671-45cb-4fb0-bcf7-fdfa233b260d",
+                    "defect_data": {
+                        "name": "Inept Attack",
+                        "key": "inept_attack",
+                        "rank_type": "Lesser",
+                        "cp_refund": 1,
+                        "max_rank": 10,
+                        "description": "Character is poor at offensive combat. They suffer reduced accuracy, either generally or in certain types of attacks (melee, ranged, etc.).",
+                        "source": "BESM4e",
+                        "ranks": [
+                            {
+                                "rank": "1",
+                                "description": "Slight consequences"
+                            },
+                            {
+                                "rank": "2",
+                                "description": "Moderate consequences"
+                            },
+                            {
+                                "rank": "3",
+                                "description": "Severe consequences"
+                            }
+                        ],
+                        "id": "42115671-45cb-4fb0-bcf7-fdfa233b260d",
+                        "rank": 1,
+                        "user_description": "Ranged",
+                        "options_source": "Size Template",
+                        "cost": -1,
+                        "sources": [
+                            "7b6d627a-8383-492e-92e1-bb21fb8ed3fe"
+                        ]
+                    }
+                },
+                {
+                    "field": "defect_add",
+                    "defect_id": "1a45fb80-f59c-4c5a-ab12-fc755b649c91",
+                    "defect_data": {
+                        "name": "Inept Defence",
+                        "key": "inept_defence",
+                        "rank_type": "Lesser",
+                        "cp_refund": 1,
+                        "max_rank": 10,
+                        "description": "Character is ineffective at defending. They suffer a reduced ability to dodge or block, either generally or in specific types of combat.",
+                        "source": "BESM4e",
+                        "ranks": [
+                            {
+                                "rank": "1",
+                                "description": "Slight consequences"
+                            },
+                            {
+                                "rank": "2",
+                                "description": "Moderate consequences"
+                            },
+                            {
+                                "rank": "3",
+                                "description": "Severe consequences"
+                            }
+                        ],
+                        "id": "1a45fb80-f59c-4c5a-ab12-fc755b649c91",
+                        "rank": 1,
+                        "user_description": "Ranged",
+                        "options_source": "Size Template",
+                        "cost": -1,
+                        "sources": [
+                            "7b6d627a-8383-492e-92e1-bb21fb8ed3fe"
+                        ]
+                    }
+                }
+            ]
+        }
+    ]
+}

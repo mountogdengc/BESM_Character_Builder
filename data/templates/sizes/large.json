@@ -56,10 +56,10 @@
       "valid": true
     },
     {
-      "custom_name": "x2 Thrown Weapon Distance",
-      "key": "unique_attribute",
+      "custom_name": "Unique Attribute: Thrown Weapon Distance",
+      "key": "thrown_weapon_distance",
       "level": 1,
-      "user_description": "x2 Thrown Weapon Distance",
+      "user_description": null,
       "enhancements": [],
       "limiters": [],
       "options": [],
@@ -70,8 +70,8 @@
   ],
   "defects": [
     {
-      "custom_name": "Big, Heavy, and Obvious",
-      "key": "unique_defect",
+      "custom_name": "Unique Defect: Big, Heavy, and Obvious",
+      "key": "big_heavy_obvious",
       "rank": 1,
       "user_description": null,
       "enhancements": [],

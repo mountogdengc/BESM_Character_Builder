@@ -42,8 +42,8 @@
       "valid": true
     },
     {
-      "custom_name": "Small, Light, and Unobtrusive",
-      "key": "unique_attribute",
+      "custom_name": "Unique Attribute: Small, Light, and Unobtrusive",
+      "key": "small_light_unobtrusive",
       "level": 2,
       "user_description": null,
       "enhancements": [],
@@ -57,21 +57,9 @@
   "defects": [
     {
       "custom_name": "Lifting Capacity",
-      "key": "unique_defect",
+      "key": "lifting_capacity",
       "rank": 2,
-      "user_description": "Lifting Capacity \u00f725",
-      "enhancements": [],
-      "limiters": [],
-      "options": [],
-      "user_input": null,
-      "options_source": "Size Template",
-      "valid": true
-    },
-    {
-      "custom_name": "Running Speed",
-      "key": "unique_defect",
-      "rank": 2,
-      "user_description": "Running Speed \u00f74",
+      "user_description": "Lifting Capacity reduced",
       "enhancements": [],
       "limiters": [],
       "options": [],
@@ -81,9 +69,9 @@
     },
     {
       "custom_name": "Strength Damage",
-      "key": "unique_defect",
+      "key": "strength_damage",
       "rank": 2,
-      "user_description": "-20 Strength Damage",
+      "user_description": "Strength Damage reduced",
       "enhancements": [],
       "limiters": [],
       "options": [],
@@ -93,9 +81,9 @@
     },
     {
       "custom_name": "Vulnerable",
-      "key": "unique_defect",
+      "key": "extra_damage_from_all_attacks",
       "rank": 2,
-      "user_description": "Suffers 20 Extra Damage from all Attacks",
+      "user_description": "Extra Damage from all Attacks",
       "enhancements": [],
       "limiters": [],
       "options": [],
@@ -104,10 +92,22 @@
       "valid": true
     },
     {
-      "custom_name": "Weak Throw",
-      "key": "unique_defect",
+      "custom_name": "Thrown Weapon Distance",
+      "key": "thrown_weapon_distance",
       "rank": 2,
-      "user_description": "Thrown weapon distance \u00f74",
+      "user_description": "Thrown weapon distance reduced",
+      "enhancements": [],
+      "limiters": [],
+      "options": [],
+      "user_input": null,
+      "options_source": "Size Template",
+      "valid": true
+    },
+    {
+      "custom_name": "Running Speed",
+      "key": "running_speed",
+      "rank": 2,
+      "user_description": "Running Speed reduced",
       "enhancements": [],
       "limiters": [],
       "options": [],

@@ -671,12 +671,22 @@ def apply_defects(app, template_data, template_changes):
             
             print(f"[DEBUG] Processing defect: {defect_name} key: {defect_key} rank: {defect_rank}")
             
+            # Debug the cp_refund values
+            template_cp_refund = defect.get("cp_refund")
+            full_defect_cp_refund = full_defect.get("cp_refund") if full_defect else None
+            print(f"[DEBUG] CP refund values - Template: {template_cp_refund}, Full defect: {full_defect_cp_refund}")
+            
             # Fetch full defect details from defects.json using key if available
             full_defect = None
             if defect_key and hasattr(app, 'defects_by_key') and defect_key in app.defects_by_key:
                 full_defect = app.defects_by_key.get(defect_key, {})
+                print(f"[DEBUG] Found full defect by key: {defect_key}")
+            elif defect_name and hasattr(app, 'defects') and defect_name in app.defects:
+                full_defect = app.defects.get(defect_name, {})
+                print(f"[DEBUG] Found full defect by name: {defect_name}")
             else:
-                full_defect = app.defects.get(defect_name, {}) if hasattr(app, 'defects') else {}
+                print(f"[DEBUG] Could not find full defect definition for {defect_name} (key: {defect_key})")
+                full_defect = {}
             
             new_defect = copy.deepcopy(full_defect) if full_defect else copy.deepcopy(defect)
             new_defect["id"] = str(uuid.uuid4())
@@ -697,21 +707,31 @@ def apply_defects(app, template_data, template_changes):
                 new_defect["user_input"] = defect["user_input"]
             if "options_source" in defect:
                 new_defect["options_source"] = defect["options_source"]
-            if "cost" not in new_defect:
-                if "cp_refund" in new_defect and new_defect["cp_refund"] is not None:
-                    # cp_refund is positive magnitude, subtract it
-                    new_defect["cost"] = -abs(new_defect["cp_refund"])
-                elif "points" in new_defect and new_defect["points"] is not None:
-                    # legacy 'points' field treated as cp_refund
-                    new_defect["cost"] = -abs(new_defect["points"])
-                elif "rank" in new_defect and "cost_per_rank" in new_defect:
-                    new_defect["cost"] = -abs(new_defect["rank"] * new_defect["cost_per_rank"])
-                # Defects use rank in BESM 4e, not level
-                else:
-                    # default refund per rank
-                    rank = new_defect.get("rank", 1)
-                    new_defect["cost"] = -abs(rank)
-                    print(f"[DEBUG] Warning: No cost info for defect {new_defect.get('name', 'Unknown')}. Using default refund.")
+                
+            # Preserve cp_refund from full_defect if available (from defects.json)
+            # This ensures we use the authoritative CP value from defects.json
+            if full_defect and "cp_refund" in full_defect:
+                new_defect["cp_refund"] = full_defect["cp_refund"]
+                print(f"[DEBUG] Using cp_refund from defects.json: {new_defect['cp_refund']} for defect {new_defect.get('name', 'Unknown')}")
+            # Always recalculate the cost based on the current defect data
+            # This ensures we use the correct cp_refund value (especially from defects.json)
+            if "cp_refund" in new_defect and new_defect["cp_refund"] is not None:
+                # cp_refund is positive magnitude, subtract it
+                new_defect["cost"] = -abs(new_defect["cp_refund"] * new_defect.get("rank", 1))
+                print(f"[DEBUG] Calculated cost from cp_refund: {new_defect['cost']} for defect {new_defect.get('name', 'Unknown')}")
+            elif "points" in new_defect and new_defect["points"] is not None:
+                # legacy 'points' field treated as cp_refund
+                new_defect["cost"] = -abs(new_defect["points"] * new_defect.get("rank", 1))
+                print(f"[DEBUG] Calculated cost from points: {new_defect['cost']} for defect {new_defect.get('name', 'Unknown')}")
+            elif "rank" in new_defect and "cost_per_rank" in new_defect:
+                new_defect["cost"] = -abs(new_defect["rank"] * new_defect["cost_per_rank"])
+                print(f"[DEBUG] Calculated cost from cost_per_rank: {new_defect['cost']} for defect {new_defect.get('name', 'Unknown')}")
+            # Defects use rank in BESM 4e, not level
+            else:
+                # default refund per rank
+                rank = new_defect.get("rank", 1)
+                new_defect["cost"] = -abs(rank)
+                print(f"[DEBUG] Warning: No cost info for defect {new_defect.get('name', 'Unknown')}. Using default refund of {new_defect['cost']}.")
             if new_defect.get("name", "").lower() == "unique defect":
                 if "details" in new_defect and new_defect["details"]:
                     details_text = new_defect["details"].strip("()").strip()

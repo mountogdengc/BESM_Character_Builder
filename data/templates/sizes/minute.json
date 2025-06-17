@@ -21,7 +21,7 @@
       "custom_name": "Ranged Attack",
       "key": "ranged_attack",
       "level": 7,
-      "user_description": null,
+      "user_description": "All",
       "enhancements": [],
       "limiters": [],
       "options": [],
@@ -33,7 +33,7 @@
       "custom_name": "Ranged Defence",
       "key": "ranged_defence",
       "level": 7,
-      "user_description": null,
+      "user_description": "All",
       "enhancements": [],
       "limiters": [],
       "options": [],
@@ -42,8 +42,8 @@
       "valid": true
     },
     {
-      "custom_name": "Small, Light, and Unobtrusive",
-      "key": "unique_attribute",
+      "custom_name": "Unique Attribute: Small, Light, and Unobtrusive",
+      "key": "small_light_unobtrusive",
       "level": 7,
       "user_description": null,
       "enhancements": [],
@@ -56,10 +56,10 @@
   ],
   "defects": [
     {
-      "custom_name": "Lifting Capacity",
-      "key": "unique_defect",
+      "custom_name": "Unique Defect: Lifting Capacity",
+      "key": "lifting_capacity",
       "rank": 7,
-      "user_description": null,
+      "user_description": "Lifting Capacity reduced",
       "enhancements": [],
       "limiters": [],
       "options": [],
@@ -68,10 +68,10 @@
       "valid": true
     },
     {
-      "custom_name": "Strength Damage",
-      "key": "unique_defect",
+      "custom_name": "Unique Defect: Strength Damage",
+      "key": "strength_damage",
       "rank": 7,
-      "user_description": null,
+      "user_description": "Strength Damage reduced",
       "enhancements": [],
       "limiters": [],
       "options": [],
@@ -80,10 +80,10 @@
       "valid": true
     },
     {
-      "custom_name": "Vulnerable",
-      "key": "unique_defect",
+      "custom_name": "Unique Defect: Vulnerable",
+      "key": "extra_damage_from_all_attacks",
       "rank": 7,
-      "user_description": null,
+      "user_description": "Extra Damage from all Attacks",
       "enhancements": [],
       "limiters": [],
       "options": [],
@@ -92,10 +92,10 @@
       "valid": true
     },
     {
-      "custom_name": "Weak Throw",
-      "key": "unique_defect",
+      "custom_name": "Unique Defect: Thrown Weapon Distance",
+      "key": "thrown_weapon_distance",
       "rank": 7,
-      "user_description": "Thrown weapon distance \u00f7128",
+      "user_description": "Thrown weapon distance reduced",
       "enhancements": [],
       "limiters": [],
       "options": [],
@@ -104,10 +104,10 @@
       "valid": true
     },
     {
-      "custom_name": "Running Speed",
-      "key": "unique_defect",
+      "custom_name": "Unique Defect: Running Speed",
+      "key": "running_speed",
       "rank": 7,
-      "user_description": "Running Speed \u00f7128",
+      "user_description": "Running Speed reduced",
       "enhancements": [],
       "limiters": [],
       "options": [],
@@ -116,5 +116,5 @@
       "valid": true
     }
   ],
-  "totalPoints": -50
+  "totalPoints": -70
 }
