@@ -1,0 +1,734 @@
+{
+    "version": "1.0",
+    "name": "",
+    "player": "",
+    "gm": "",
+    "race": "",
+    "class": "MAGICIAN / DETECTIVE",
+    "homeworld": "",
+    "size": "Medium",
+    "background": {
+        "origin": "",
+        "faction": "",
+        "goals": "",
+        "personality": "",
+        "history": ""
+    },
+    "stats": {
+        "Body": 4,
+        "Mind": 4,
+        "Soul": 4
+    },
+    "derived": {
+        "CV": 4,
+        "ACV": 4,
+        "DCV": 4,
+        "HP": 40,
+        "EP": 40,
+        "DM": 4,
+        "SV": 8,
+        "SP": 40,
+        "SCV": 4,
+        "SOP": 40
+    },
+    "drama_points": {
+        "current": 3,
+        "max": 5
+    },
+    "attributes": [],
+    "defects": [],
+    "skills": [],
+    "weapons": [],
+    "armor": [],
+    "items": [],
+    "techniques": [],
+    "templates": [],
+    "alternate_forms": [],
+    "metamorphosis": [],
+    "companions": [],
+    "minions": [],
+    "relationships": [],
+    "notes": "",
+    "custom_fields": {},
+    "custom_rules": [],
+    "saved_loadouts": [],
+    "benchmark": null,
+    "totalPoints": 12,
+    "applied_templates": [
+        {
+            "id": "32fd7e1c-464f-4885-897b-a674bb1ef360",
+            "type": "class",
+            "name": "Unnamed Template",
+            "changes": [
+                {
+                    "field": "class",
+                    "old_value": "",
+                    "new_value": "MAGICIAN"
+                },
+                {
+                    "field": "size_template_applied",
+                    "size_name": "Medium",
+                    "applied_by": "Unnamed Template"
+                },
+                {
+                    "field": "attribute_add",
+                    "attribute_id": "a4018b3c-7434-49ce-9366-0aa4384c8fab",
+                    "attribute_data": {
+                        "name": "Astral Projection",
+                        "cost_per_level": 4,
+                        "relevant_stat": "Body",
+                        "is_human_attribute": false,
+                        "description": "Allows the character to transform into a different form with different Attributes and Defects. The form is built from 5 CP per level and stacks with existing Attributes. Reductions refund additional points.",
+                        "source": "BESM4e",
+                        "levels": {
+                            "1": "5 CP for alternate form",
+                            "2": "6\u00e2\u20ac\u201c10 CP for alternate form",
+                            "3": "11\u00e2\u20ac\u201c15 CP for alternate form",
+                            "4": "16\u00e2\u20ac\u201c20 CP for alternate form",
+                            "5": "21\u00e2\u20ac\u201c25 CP for alternate form",
+                            "6": "26\u00e2\u20ac\u201c30 CP for alternate form"
+                        },
+                        "key": "alternate_form",
+                        "id": "a4018b3c-7434-49ce-9366-0aa4384c8fab",
+                        "level": 2,
+                        "options": [
+                            "Astral Projection"
+                        ],
+                        "options_source": "Class Template",
+                        "cost": 8,
+                        "sources": [
+                            "32fd7e1c-464f-4885-897b-a674bb1ef360"
+                        ]
+                    }
+                },
+                {
+                    "field": "attribute_add",
+                    "attribute_id": "ab051328-f4f0-4418-bd8e-827ebbeda25a",
+                    "attribute_data": {
+                        "name": "Combat Technique",
+                        "cost_per_level": 1,
+                        "relevant_stat": null,
+                        "is_human_attribute": true,
+                        "description": "Each level grants the character a special combat technique (e.g. Blind Fighting, Brutal, Reflection). Can be taken multiple times.",
+                        "source": "BESM4e",
+                        "levels": {
+                            "1": "One combat technique",
+                            "2": "Two combat techniques",
+                            "3": "Three combat techniques",
+                            "4": "Four combat techniques",
+                            "5": "Five combat techniques",
+                            "6": "Six combat techniques"
+                        },
+                        "user_input_required": [
+                            {
+                                "label": "Technique Description",
+                                "key": "technique_description",
+                                "field_type": "list",
+                                "description": "Enter one combat technique per line.",
+                                "autocomplete_options": [
+                                    "Blind Fighting",
+                                    "Blind Shooting",
+                                    "Brutal",
+                                    "Concealment",
+                                    "Deflection",
+                                    "Extended Range",
+                                    "Judge Opponent",
+                                    "Lethal Blow",
+                                    "Lightning Reflexes",
+                                    "Portable Armoury",
+                                    "Reflection",
+                                    "Tournament Encyclopaedia",
+                                    "Weapons Encyclopaedia"
+                                ]
+                            }
+                        ],
+                        "key": "combat_technique",
+                        "id": "ab051328-f4f0-4418-bd8e-827ebbeda25a",
+                        "level": 1,
+                        "options_source": "Class Template",
+                        "cost": 1,
+                        "sources": [
+                            "32fd7e1c-464f-4885-897b-a674bb1ef360"
+                        ]
+                    }
+                },
+                {
+                    "field": "attribute_add",
+                    "attribute_id": "ba0806ec-6de9-444f-b6d5-8dd2fdbdcc01",
+                    "attribute_data": {
+                        "name": "Features",
+                        "cost_per_level": 1,
+                        "relevant_stat": "Variable",
+                        "is_human_attribute": true,
+                        "description": "The character possesses various minor abilities or qualities that grant useful but secondary advantages. Can be personal, racial, or technological in nature. These are typically flavor or small utility traits.",
+                        "source": "BESM4e",
+                        "levels": {
+                            "1": "1-2 Features",
+                            "2": "3-5 Features",
+                            "3": "6-10 Features",
+                            "4": "11-25 Features",
+                            "5": "26-50 Features",
+                            "6": "51-100 Features"
+                        },
+                        "user_input_required": [
+                            {
+                                "label": "Feature Type",
+                                "key": "feature_type",
+                                "field_type": "select",
+                                "description": "Select the general type of feature.",
+                                "options": [
+                                    "Personal",
+                                    "Racial",
+                                    "Technological"
+                                ]
+                            },
+                            {
+                                "label": "Features List",
+                                "key": "features_list",
+                                "field_type": "combo_editable",
+                                "description": "Enter one or more features (select from suggestions or write your own).",
+                                "options": [
+                                    "Ambidexterity",
+                                    "Animal Empathy",
+                                    "Appearance",
+                                    "Auditory Discrimination",
+                                    "Breath/Heartbeat Control",
+                                    "Depth Awareness",
+                                    "Direction Sense",
+                                    "Eidetic Memory",
+                                    "Famous (Beneficial)",
+                                    "Foreign Language",
+                                    "Hypermobility (Double-Jointed)",
+                                    "Light Sleeper",
+                                    "Lightning Calculator",
+                                    "Mimic Sound",
+                                    "Perfect Pitch",
+                                    "Range Sense",
+                                    "Spatial Sense",
+                                    "Speed Reading",
+                                    "Time Sense",
+                                    "Weather Sense",
+                                    "360-Degree Vision",
+                                    "Camouflage",
+                                    "Fluid Squirting",
+                                    "Gills",
+                                    "Heat Regulation",
+                                    "Homing Instinct",
+                                    "Light Armour (AR 1-4)",
+                                    "Light Weaponry (5 Damage)",
+                                    "Long Tongue",
+                                    "Longevity",
+                                    "Low-Light Vision",
+                                    "Multiple Hearts",
+                                    "Nictitating Membrane",
+                                    "Pouch",
+                                    "Retractable Claws",
+                                    "Scent Glands",
+                                    "Scentless",
+                                    "Sexual Duality",
+                                    "Ultrasonic Communication",
+                                    "Webbed Feet/Hands/Paws",
+                                    "Alarm System",
+                                    "Basic AI (0 Stats)",
+                                    "Camera",
+                                    "Comms Suite",
+                                    "Data Backup Auto System",
+                                    "Ejection Seat",
+                                    "Emergency Lights/Siren",
+                                    "Fast Acceleration",
+                                    "GPS",
+                                    "Gyrocompass",
+                                    "Highly Maneuverable",
+                                    "Identity Verifier",
+                                    "Life Monitoring Systems",
+                                    "Luxurious Decor",
+                                    "Modern Vehicle Tech Suite",
+                                    "Naked Enhancement",
+                                    "Radar Detector",
+                                    "Revolving License Plate",
+                                    "Smartphone",
+                                    "Tool Kit",
+                                    "Medical Kit"
+                                ]
+                            }
+                        ],
+                        "key": "features",
+                        "id": "ba0806ec-6de9-444f-b6d5-8dd2fdbdcc01",
+                        "level": 2,
+                        "options": [
+                            "Contacts: Magical"
+                        ],
+                        "options_source": "Class Template",
+                        "cost": 2,
+                        "sources": [
+                            "32fd7e1c-464f-4885-897b-a674bb1ef360",
+                            "a6abc32e-8084-4842-acc3-c9ffd7c43d9a"
+                        ]
+                    }
+                },
+                {
+                    "field": "attribute_add",
+                    "attribute_id": "cb707ac3-ebae-49e0-a86a-8de9238822cc",
+                    "attribute_data": {
+                        "name": "Heightened Awareness",
+                        "cost_per_level": 1,
+                        "relevant_stat": "Body or Mind",
+                        "description": "Grants a bonus on rolls to notice nearby hidden objects or ambushes.",
+                        "source": "BESM4e",
+                        "levels": {
+                            "1": "+2 Stat roll awareness bonus",
+                            "2": "+4 Stat roll awareness bonus",
+                            "3": "+6 Stat roll awareness bonus",
+                            "4": "+8 Stat roll awareness bonus",
+                            "5": "+10 Stat roll awareness bonus",
+                            "6": "+12 Stat roll awareness bonus"
+                        },
+                        "key": "heightened_awareness",
+                        "is_human_attribute": false,
+                        "id": "cb707ac3-ebae-49e0-a86a-8de9238822cc",
+                        "level": 2,
+                        "options_source": "Class Template",
+                        "cost": 2,
+                        "sources": [
+                            "32fd7e1c-464f-4885-897b-a674bb1ef360",
+                            "a6abc32e-8084-4842-acc3-c9ffd7c43d9a"
+                        ]
+                    }
+                },
+                {
+                    "field": "attribute_add",
+                    "attribute_id": "7c4d9d8c-6a4a-478e-8351-4f1ff8529b05",
+                    "attribute_data": {
+                        "id": "7c4d9d8c-6a4a-478e-8351-4f1ff8529b05",
+                        "name": "Organisational Ties",
+                        "key": "organisational_ties",
+                        "level": 1,
+                        "options": [
+                            "Magical"
+                        ],
+                        "options_source": "Class Template",
+                        "cost": 0,
+                        "sources": [
+                            "32fd7e1c-464f-4885-897b-a674bb1ef360",
+                            "a6abc32e-8084-4842-acc3-c9ffd7c43d9a"
+                        ]
+                    }
+                },
+                {
+                    "field": "attribute_add",
+                    "attribute_id": "f6d85b22-35f8-4804-b202-1d7d16401c87",
+                    "attribute_data": {
+                        "name": "Power Flux: Magical",
+                        "cost_per_level": 10,
+                        "relevant_stat": "Variable",
+                        "source": "BESM4e",
+                        "description": "Grants the user a pool of Flux Points to dynamically assign to thematic Attributes once per minute or dramatic scene. Attributes must be aligned to a user-defined concept.",
+                        "levels": {
+                            "1": "Reassign up to 5 Flux Points each minute",
+                            "2": "Reassign up to 10 Flux Points each minute",
+                            "3": "Reassign up to 15 Flux Points each minute",
+                            "4": "Reassign up to 20 Flux Points each minute",
+                            "5": "Reassign up to 25 Flux Points each minute",
+                            "6": "Reassign up to 30 Flux Points each minute"
+                        },
+                        "user_input_required": [
+                            {
+                                "label": "Flux Category",
+                                "key": "flux_category",
+                                "field_type": "text",
+                                "description": "Enter the thematic category (e.g., cats, fire, lust, gravity) that all Flux powers must align with."
+                            }
+                        ],
+                        "key": "power_flux",
+                        "is_human_attribute": false,
+                        "id": "f6d85b22-35f8-4804-b202-1d7d16401c87",
+                        "level": 3,
+                        "enhancements": [
+                            "major"
+                        ],
+                        "options_source": "Class Template",
+                        "cost": 30,
+                        "sources": [
+                            "32fd7e1c-464f-4885-897b-a674bb1ef360"
+                        ]
+                    }
+                },
+                {
+                    "field": "attribute_add",
+                    "attribute_id": "874f0269-eec7-4960-8c63-21fc42b11561",
+                    "attribute_data": {
+                        "name": "Sixth Sense",
+                        "cost_per_level": 1,
+                        "relevant_stat": "Soul",
+                        "source": "BESM4e",
+                        "description": "Allows character to sense phenomena others cannot, such as emotions, magic, danger.",
+                        "levels": {
+                            "1": "Sense 1 type of phenomenon",
+                            "2": "Sense 2 types of phenomena",
+                            "3": "Sense 3 types of phenomena",
+                            "4": "Sense 4 types of phenomena",
+                            "5": "Sense 5 types of phenomena",
+                            "6": "Sense 6 types of phenomena"
+                        },
+                        "key": "sixth_sense",
+                        "is_human_attribute": false,
+                        "id": "874f0269-eec7-4960-8c63-21fc42b11561",
+                        "level": 1,
+                        "user_description": "(Select One Aspect)",
+                        "options_source": "Class Template",
+                        "cost": 1,
+                        "sources": [
+                            "32fd7e1c-464f-4885-897b-a674bb1ef360"
+                        ]
+                    }
+                },
+                {
+                    "field": "attribute_add",
+                    "attribute_id": "71ccaa53-c534-44d2-b945-cc50d1d9419f",
+                    "attribute_data": {
+                        "name": "Skill Group",
+                        "source": "BESM4e",
+                        "description": "Represents training or natural talent in a broad skill field. Skill Groups are divided into Background, Field, and Action categories, each with a different cost per level. Each Skill Group is treated as a separate Attribute.",
+                        "relevant_stat": "Body, Mind, or Soul",
+                        "user_input_required": [
+                            {
+                                "field_type": "dropdown",
+                                "label": "Skill Group Category",
+                                "key": "category",
+                                "options": [
+                                    "Background",
+                                    "Field",
+                                    "Action"
+                                ]
+                            },
+                            {
+                                "field_type": "dropdown",
+                                "label": "Skill Group Name",
+                                "key": "skill_group_name",
+                                "options": [
+                                    "Academic",
+                                    "Artistic",
+                                    "Domestic",
+                                    "Occupation",
+                                    "Business",
+                                    "Social",
+                                    "Street",
+                                    "Technical",
+                                    "Adventuring",
+                                    "Detective",
+                                    "Military",
+                                    "Scientific"
+                                ]
+                            }
+                        ],
+                        "dynamic_cost": {
+                            "Background": 1,
+                            "Field": 2,
+                            "Action": 3
+                        },
+                        "levels": {
+                            "1": "Developing - Gaining proficiency through regular application",
+                            "2": "Trained - Moderate training and practice",
+                            "3": "Expert - Significant training and practice",
+                            "4": "Veteran - Extensive training and practice",
+                            "5": "Master - Exhaustive training and practice",
+                            "6": "Grand Master - Unparalleled ability and knowledge"
+                        },
+                        "key": "skill_group",
+                        "is_human_attribute": false,
+                        "id": "71ccaa53-c534-44d2-b945-cc50d1d9419f",
+                        "level": 1,
+                        "options_source": "Class Template",
+                        "cost": 0,
+                        "sources": [
+                            "32fd7e1c-464f-4885-897b-a674bb1ef360",
+                            "a6abc32e-8084-4842-acc3-c9ffd7c43d9a"
+                        ]
+                    }
+                },
+                {
+                    "field": "attribute_add",
+                    "attribute_id": "128909cb-fc15-4e06-8b9d-ffb85f54bc35",
+                    "attribute_data": {
+                        "name": "Weapon: Magical Attack",
+                        "cost_per_level": 2,
+                        "relevant_stat": "None",
+                        "source": "BESM4e",
+                        "description": "Many anime characters wield powerful offensive energies, such as electric zaps, magical fireballs, ki-powered martial arts strikes, or energy swords.",
+                        "levels": {
+                            "-1": "The attack doesn\u00e2\u20ac\u2122t inflict regular damage",
+                            "0": "The Weapon\u00e2\u20ac\u2122s Base Damage is 0 and thus the final damage is only equal to the character\u00e2\u20ac\u2122s Attack Combat Value",
+                            "1": "The Weapon\u00e2\u20ac\u2122s Base Damage is equal to 1 times the character\u00e2\u20ac\u2122s Damage Multiplier",
+                            "2": "The Weapon\u00e2\u20ac\u2122s Base Damage is equal to 2 times the character\u00e2\u20ac\u2122s Damage Multiplier",
+                            "3": "The Weapon\u00e2\u20ac\u2122s Base Damage is equal to 3 times the character\u00e2\u20ac\u2122s Damage Multiplier",
+                            "4": "The Weapon\u00e2\u20ac\u2122s Base Damage is equal to 4 times the character\u00e2\u20ac\u2122s Damage Multiplier",
+                            "5": "The Weapon\u00e2\u20ac\u2122s Base Damage is equal to 5 times the character\u00e2\u20ac\u2122s Damage Multiplier",
+                            "6": "The Weapon\u00e2\u20ac\u2122s Base Damage is equal to 6 times the character\u00e2\u20ac\u2122s Damage Multiplier"
+                        },
+                        "user_input_required": [
+                            {
+                                "label": "Weapon",
+                                "field_type": "list",
+                                "placeholder": "e.g., martial arts, magic, lightning, energy sword, etc."
+                            }
+                        ],
+                        "key": "weapon",
+                        "is_human_attribute": false,
+                        "id": "128909cb-fc15-4e06-8b9d-ffb85f54bc35",
+                        "level": 4,
+                        "user_description": "(Drain: 3 Soul)",
+                        "enhancements": [
+                            "area_1",
+                            "drain_3",
+                            "range_2",
+                            "selective_1",
+                            "targets_2"
+                        ],
+                        "limiters": [
+                            "charges",
+                            "deplete",
+                            "maximum"
+                        ],
+                        "options_source": "Class Template",
+                        "cost": 8,
+                        "sources": [
+                            "32fd7e1c-464f-4885-897b-a674bb1ef360"
+                        ]
+                    }
+                },
+                {
+                    "field": "defect_add",
+                    "defect_id": "e56815aa-1adc-412c-95d8-5a3e1946b137",
+                    "defect_data": {
+                        "name": "Easily Distracted",
+                        "key": "easily_distracted",
+                        "rank_type": "Lesser",
+                        "cp_refund": 1,
+                        "max_rank": 3,
+                        "description": "The character is frequently distracted by specific triggers.",
+                        "source": "BESM4e",
+                        "ranks": [
+                            {
+                                "rank": "1",
+                                "description": "Slight consequences"
+                            },
+                            {
+                                "rank": "2",
+                                "description": "Moderate consequences"
+                            },
+                            {
+                                "rank": "3",
+                                "description": "Severe consequences"
+                            }
+                        ],
+                        "id": "e56815aa-1adc-412c-95d8-5a3e1946b137",
+                        "rank": 1,
+                        "options_source": "Class Template",
+                        "cost": -1,
+                        "sources": [
+                            "32fd7e1c-464f-4885-897b-a674bb1ef360"
+                        ]
+                    }
+                },
+                {
+                    "field": "defect_add",
+                    "defect_id": "9e4e3537-ac72-43d8-a737-39c8a125ff31",
+                    "defect_data": {
+                        "name": "Nemesis",
+                        "key": "nemesis",
+                        "rank_type": "Lesser",
+                        "cp_refund": 1,
+                        "max_rank": 3,
+                        "description": "The character has someone in their life that actively interferes with their goals. This may be a professional, personal, or romantic rival. The Nemesis is persistent and disruptive, though not necessarily a mortal enemy.",
+                        "source": "BESM4e",
+                        "ranks": [
+                            {
+                                "rank": "1",
+                                "description": "Slight consequences"
+                            },
+                            {
+                                "rank": "2",
+                                "description": "Moderate consequences"
+                            },
+                            {
+                                "rank": "3",
+                                "description": "Severe consequences"
+                            }
+                        ],
+                        "id": "9e4e3537-ac72-43d8-a737-39c8a125ff31",
+                        "rank": 2,
+                        "options_source": "Class Template",
+                        "cost": -2,
+                        "sources": [
+                            "32fd7e1c-464f-4885-897b-a674bb1ef360"
+                        ]
+                    }
+                },
+                {
+                    "field": "defect_add",
+                    "defect_id": "223c10b2-e9c0-4858-a151-a886d3e7712e",
+                    "defect_data": {
+                        "name": "Hidden Identity: Magical",
+                        "key": "skeleton_in_the_closet",
+                        "rank_type": "Greater",
+                        "cp_refund": 2,
+                        "max_rank": 3,
+                        "description": "The character has a dark secret that could cause them harm if exposed.",
+                        "source": "BESM4e",
+                        "ranks": [
+                            {
+                                "rank": "1",
+                                "description": "Slight consequences"
+                            },
+                            {
+                                "rank": "2",
+                                "description": "Moderate consequences"
+                            },
+                            {
+                                "rank": "3",
+                                "description": "Severe consequences"
+                            }
+                        ],
+                        "id": "223c10b2-e9c0-4858-a151-a886d3e7712e",
+                        "rank": 2,
+                        "options_source": "Class Template",
+                        "cost": -4,
+                        "sources": [
+                            "32fd7e1c-464f-4885-897b-a674bb1ef360"
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": "a6abc32e-8084-4842-acc3-c9ffd7c43d9a",
+            "type": "class",
+            "name": "Unnamed Template",
+            "changes": [
+                {
+                    "field": "class",
+                    "old_value": "MAGICIAN",
+                    "new_value": "MAGICIAN / DETECTIVE"
+                },
+                {
+                    "field": "size_template_applied",
+                    "size_name": "Medium",
+                    "applied_by": "Unnamed Template"
+                },
+                {
+                    "field": "attribute_add",
+                    "attribute_id": "381763f5-0ae0-42ae-9fa1-672b2941107b",
+                    "attribute_data": {
+                        "name": "Combat Technique",
+                        "cost_per_level": 1,
+                        "relevant_stat": null,
+                        "is_human_attribute": true,
+                        "description": "Each level grants the character a special combat technique (e.g. Blind Fighting, Brutal, Reflection). Can be taken multiple times.",
+                        "source": "BESM4e",
+                        "levels": {
+                            "1": "One combat technique",
+                            "2": "Two combat techniques",
+                            "3": "Three combat techniques",
+                            "4": "Four combat techniques",
+                            "5": "Five combat techniques",
+                            "6": "Six combat techniques"
+                        },
+                        "user_input_required": [
+                            {
+                                "label": "Technique Description",
+                                "key": "technique_description",
+                                "field_type": "list",
+                                "description": "Enter one combat technique per line.",
+                                "autocomplete_options": [
+                                    "Blind Fighting",
+                                    "Blind Shooting",
+                                    "Brutal",
+                                    "Concealment",
+                                    "Deflection",
+                                    "Extended Range",
+                                    "Judge Opponent",
+                                    "Lethal Blow",
+                                    "Lightning Reflexes",
+                                    "Portable Armoury",
+                                    "Reflection",
+                                    "Tournament Encyclopaedia",
+                                    "Weapons Encyclopaedia"
+                                ]
+                            }
+                        ],
+                        "key": "combat_technique",
+                        "id": "381763f5-0ae0-42ae-9fa1-672b2941107b",
+                        "level": 1,
+                        "options": [
+                            "Judge Opponent"
+                        ],
+                        "options_source": "Class Template",
+                        "cost": 1,
+                        "sources": [
+                            "a6abc32e-8084-4842-acc3-c9ffd7c43d9a"
+                        ]
+                    }
+                },
+                {
+                    "field": "attribute_add",
+                    "attribute_id": "ba8f7797-3c19-4303-9c26-7e31014a4f32",
+                    "attribute_data": {
+                        "name": "Postcognition",
+                        "cost_per_level": 2,
+                        "relevant_stat": "Mind",
+                        "is_human_attribute": false,
+                        "description": "Grants either Precognition (future visions) or Postcognition (visions of the past). Chosen at creation. Scope is limited by the GM.",
+                        "source": "BESM4e",
+                        "levels": {
+                            "1": "See a few seconds ahead / 1 minute past",
+                            "2": "See 1 minute ahead / 1 hour past",
+                            "3": "See 10 minutes ahead / 1 day past",
+                            "4": "See 1 hour ahead / 1 week past",
+                            "5": "See 1 day ahead / 1 month past",
+                            "6": "See 1 week ahead / 1 year past"
+                        },
+                        "key": "cognition",
+                        "id": "ba8f7797-3c19-4303-9c26-7e31014a4f32",
+                        "level": 5,
+                        "limiters": [
+                            "equipment"
+                        ],
+                        "options_source": "Class Template",
+                        "cost": 10,
+                        "sources": [
+                            "a6abc32e-8084-4842-acc3-c9ffd7c43d9a"
+                        ]
+                    }
+                },
+                {
+                    "field": "attribute_add",
+                    "attribute_id": "7ca935bc-79cc-4cc6-a116-8d60b3b14baf",
+                    "attribute_data": {
+                        "name": "Wealth",
+                        "cost_per_level": 3,
+                        "relevant_stat": null,
+                        "description": "Represents disposable income, property, and assets. Used for lifestyle, hiring, and acquiring legal goods. Does not cover rare or restricted items.",
+                        "source": "BESM4e",
+                        "levels": {
+                            "1": "Financially stable ($300k)",
+                            "2": "Well off ($1M)",
+                            "3": "Moderately rich ($3M)",
+                            "4": "Very rich ($10M)",
+                            "5": "Extremely rich ($30M)",
+                            "6": "Wealthy ($100M)"
+                        },
+                        "key": "wealth",
+                        "is_human_attribute": true,
+                        "id": "7ca935bc-79cc-4cc6-a116-8d60b3b14baf",
+                        "level": 1,
+                        "options_source": "Class Template",
+                        "cost": 3,
+                        "sources": [
+                            "a6abc32e-8084-4842-acc3-c9ffd7c43d9a"
+                        ]
+                    }
+                }
+            ]
+        }
+    ]
+}

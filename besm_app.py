@@ -316,9 +316,9 @@ class BESMCharacterApp(QMainWindow):
                 "history": ""
             },
             "stats": {
-                "Body": 4,
-                "Mind": 4,
-                "Soul": 4
+                "Body": 0,
+                "Mind": 0,
+                "Soul": 0
             },
             "derived": {
                 "CV": 0,
@@ -615,6 +615,8 @@ class BESMCharacterApp(QMainWindow):
                 library_type = "metamorphosis"
             elif base_name == "Alternate Form":
                 library_type = "alternate_forms"
+            elif base_name == "Unknown Power":
+                library_type = "unknown_power"
                 
             # If this is a special attribute type, show the library selector
             if library_type:
@@ -625,9 +627,28 @@ class BESMCharacterApp(QMainWindow):
     
     def handle_special_attribute(self, attr, library_type):
         """Handle special attribute types that can use the library"""
-        # Remove the popup and always open the builder dialog directly
-        self._add_attribute_to_character(attr)
-        self._open_special_editor_for_new_attribute(attr, library_type)
+        # Check if this is the Unknown Power attribute
+        if library_type == "unknown_power":
+            # Add the attribute first
+            self._add_attribute_to_character(attr)
+            
+            # Then open the Unknown Power manager dialog for the GM
+            self.open_unknown_power_manager(attr)
+        else:
+            # For other special attributes
+            self._add_attribute_to_character(attr)
+            self._open_special_editor_for_new_attribute(attr, library_type)
+            
+    def open_unknown_power_manager(self, attr):
+        """Open the Unknown Power manager dialog for the GM"""
+        from dialogs.unknown_power_dialog import UnknownPowerDialog
+        dialog = UnknownPowerDialog(self, attr)
+        if dialog.exec_():
+            # Update the character sheet to reflect any changes
+            from tabs.attributes_tab import sync_attributes
+            sync_attributes(self)  # Refresh the attributes tab UI
+            self.update_derived_values()
+            self.update_point_total()
     
     def _add_attribute_to_character(self, attr):
         """Add an attribute to the character data"""
@@ -639,13 +660,20 @@ class BESMCharacterApp(QMainWindow):
         if "id" not in attr:
             attr["id"] = str(uuid.uuid4())
             
-        # Add the attribute to character data
-        self.character_data["attributes"].append(attr)
-        print(f"Attributes in character data: {len(self.character_data['attributes'])}")
-        
-        # Update the attributes tab UI
-        from tabs.attributes_tab import sync_attributes
-        sync_attributes(self)
+        # Special handling for Unknown Power attribute
+        if attr.get("key") == "unknown_power":
+            # Calculate the GM's bonus points (50% of player's allocation)
+            import math
+            cp_spent = attr.get("cp_spent", 0)
+            gm_points = math.ceil(cp_spent * 1.5)  # 50% bonus rounded up
+            
+            # Update the attribute with GM points
+            attr["gm_points"] = gm_points
+            attr["description"] = f"GM has {gm_points} points to assign to hidden attributes that will be revealed during play."
+            
+            # Ensure there's a hidden_attributes list for this character
+            if "hidden_attributes" not in self.character_data:
+                self.character_data["hidden_attributes"] = []
         
         # Sync all special attribute tabs based on the attribute type
         base_name = attr.get("base_name", attr["name"])
@@ -869,6 +897,8 @@ class BESMCharacterApp(QMainWindow):
         self.update_point_total()
 
     def update_point_total(self):
+        """Update the character point total"""
+        print("\n--- DEBUG: Attribute Cost Calculation ---")
         total = 0
         warnings = []
 
@@ -876,7 +906,7 @@ class BESMCharacterApp(QMainWindow):
         for stat in self.stat_spinners:
             value = self.stat_spinners[stat].value()
             self.character_data["stats"][stat] = value
-            total += value * 2  # Stats cost 2 CP per level in BESM 4e
+            total += value  # Stats cost 1 CP per level in BESM 4e
 
             # Validate stat max
             if self.selected_benchmark:
@@ -887,31 +917,121 @@ class BESMCharacterApp(QMainWindow):
                 except ValueError:
                     pass
 
-        for attr in self.character_data["attributes"]:
-            total += attr["cost"]
+        # Add up the cost of all attributes
+        for attr in self.character_data.get("attributes", []):
+            attr_name = attr.get("name", "")
+            attr_level = attr.get("level", 0)
+            attr_key = attr.get("key", "")
+            
+            if attr_key == "unknown_power" or attr_name == "Unknown Power":
+                # For Unknown Power, we use the cp_spent value directly
+                cp_spent = attr.get("cp_spent", attr_level)
+                print(f"Unknown Power: {attr_name}, Level: {attr_level}, CP Spent: {cp_spent}, Total: {total + cp_spent}")
+                total += cp_spent
+            elif attr_key == "skill_group" or attr_name == "Skill Group":
+                # For Skill Group, we need to calculate the cost based on the group type
+                cost_per_level = attr.get("cost_per_level", 0)
+                
+                # If cost_per_level is not set, try to determine it from the dynamic cost map
+                if cost_per_level == 0:
+                    # Try to get the skill group type from custom fields
+                    group_type = None
+                    if "custom_fields" in attr:
+                        if "skill_group_type" in attr["custom_fields"]:
+                            group_type = attr["custom_fields"]["skill_group_type"]
+                        elif "category" in attr["custom_fields"]:
+                            group_type = attr["custom_fields"]["category"]
+                    
+                    # If we have a group type, look up its cost in the attributes.json definition
+                    if group_type:
+                        # Get the attribute definition
+                        attr_def = self.attributes.get(attr_name, {})
+                        if not attr_def and "base_name" in attr:
+                            attr_def = self.attributes.get(attr["base_name"], {})
+                        
+                        # Get the dynamic cost map (support both legacy and new keys)
+                        dynamic_cost_map = attr_def.get("dynamic_cost", {}) or attr_def.get("dynamic_cost_map", {})
+                        
+                        # Look for an exact match first
+                        if group_type in dynamic_cost_map:
+                            cost_per_level = dynamic_cost_map[group_type]
+                        else:
+                            # Try to find a partial match (e.g., "BACKGROUND - Academic" in "BACKGROUND")
+                            for cost_key, cost_value in dynamic_cost_map.items():
+                                if cost_key in group_type:
+                                    cost_per_level = cost_value
+                                    break
+                                # Also check if group_type is in cost_key
+                                elif group_type in cost_key:
+                                    cost_per_level = cost_value
+                                    break
+                
+                # Calculate the cost. If cost_per_level is still 0, fall back to the stored 'cost' field so we at least capture it.
+                if cost_per_level == 0:
+                    # If we still couldn't resolve, but the attribute has a non-zero cost stored, use it.
+                    attr_cost = attr.get("cost", 0)
+                else:
+                    attr_cost = cost_per_level * attr_level
+                
+                # Get a readable group type for debugging
+                group_type_display = "UNKNOWN"
+                if "custom_fields" in attr:
+                    if "skill_group_type" in attr["custom_fields"]:
+                        group_type_display = attr["custom_fields"]["skill_group_type"]
+                    elif "category" in attr["custom_fields"] and "skill_group_name" in attr["custom_fields"]:
+                        group_type_display = f"{attr['custom_fields']['category']} - {attr['custom_fields']['skill_group_name']}"
+                    elif "category" in attr["custom_fields"]:
+                        group_type_display = attr["custom_fields"]["category"]
+                        category = attr["custom_fields"]["category"]
+                        name = attr["custom_fields"]["skill_group_name"]
+                        group_type_display = f"{category} - {name}"
+                
+                print(f"Skill Group: {attr_name}, Level: {attr_level}, Cost/Level: {cost_per_level}, Group Type: {group_type_display}, Total Cost: {attr_cost}")
+                total += attr_cost
+                
+                # Update the attribute with the correct cost_per_level for future reference
+                if cost_per_level > 0 and attr.get("cost_per_level", 0) != cost_per_level:
+                    attr["cost_per_level"] = cost_per_level
+                    attr["cost"] = attr_cost
+                    print(f"Updated Skill Group cost_per_level to {cost_per_level} and cost to {attr_cost}")
+            else:
+                # For regular attributes, we use the cost field
+                attr_cost = attr.get("cost", 0)
+                print(f"Regular Attribute: {attr_name}, Level: {attr_level}, Cost: {attr_cost}, Total: {total + attr_cost}")
+                total += attr_cost
+                
+            # Validate attribute level against benchmark
             if self.selected_benchmark:
                 try:
                     max_attr = int(self.selected_benchmark["max_attribute_level"])
-                    if attr["level"] > max_attr:  # Changed back to 'level'
-                        warnings.append(f"{attr['name']} level exceeds benchmark max")
+                    if attr_level > max_attr:
+                        warnings.append(f"{attr_name} level exceeds benchmark max")
                 except ValueError:
                     pass
-                    
+        
         # Process defects - use 'cost' instead of 'points'
-        for defect in self.character_data["defects"]:
-            # Note: defect costs are already negative values
-            total += defect["cost"]
+        for defect in self.character_data.get("defects", []):
+            defect_name = defect.get("name", "")
+            defect_rank = defect.get("rank", 0)
+            defect_cost = defect.get("cost", 0)
+            if defect_cost > 0:
+                # If cost is positive, it's actually a refund, so we subtract it
+                total -= defect_cost
+            else:
+                # If cost is negative, it's a penalty, so we add it (double negative)
+                total += defect_cost
         
         # Process weapons
-        for weapon in self.character_data["weapons"]:
-            total += weapon["cost"]
+        for weapon in self.character_data.get("weapons", []):
+            total += weapon.get("cost", 0)
 
+        # Update the UI
         self.character_data["totalPoints"] = total
         self.spent_cp_display.setText(str(total))
-
+        
         # Update the suggested benchmark label
         self.update_suggestion_label(total)
-
+        
         # --- Unspent CP Calculation ---
         starting = self.starting_cp_input.value()
         earned = self.earned_cp_input.value()
@@ -1411,9 +1531,9 @@ class BESMCharacterApp(QMainWindow):
                 "history": ""
             },
             "stats": {
-                "Body": 4,
-                "Mind": 4,
-                "Soul": 4
+                "Body": 0,
+                "Mind": 0,
+                "Soul": 0
             },
             "derived": {
                 "CV": 0,
@@ -1713,6 +1833,13 @@ class BESMCharacterApp(QMainWindow):
             ui.QMessageBox.warning(self, "Error", "Attribute not found.")
             return
         
+        # Special handling for Unknown Power attribute
+        if existing_attr.get("key") == "unknown_power":
+            # Open the Unknown Power manager dialog directly
+            self.open_unknown_power_manager(existing_attr)
+            return
+        
+        # Standard attribute editing flow
         dialog = AttributeBuilderDialog(self, existing_attr=existing_attr)
         
         if dialog.exec_() == ui.QDialog.Accepted:
@@ -2273,6 +2400,10 @@ class BESMCharacterApp(QMainWindow):
 
 if __name__ == "__main__":
     app = ui.QApplication(sys.argv)
+    
+    # Install popup suppressor to hide any stray windows
+    from tools.popup_suppressor import PopupSuppressor
+    PopupSuppressor.install()
 
     try:
         with open(resource_path("style.qss"), "r") as f:

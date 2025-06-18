@@ -6,6 +6,9 @@ from PyQt5.QtGui import QKeyEvent
 class ClickableCard(QWidget):
     clicked = pyqtSignal()
 
+    def __init__(self, parent=None):
+        super().__init__(parent)
+
     def mousePressEvent(self, event):
         self.clicked.emit()
 

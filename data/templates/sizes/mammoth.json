@@ -56,7 +56,7 @@
       "valid": true
     },
     {
-      "custom_name": "Thrown Weapon Distance",
+      "custom_name": "Unique Attribute: Thrown Weapon Distance",
       "key": "thrown_weapon_distance",
       "level": 3,
       "user_description": null,
@@ -70,7 +70,7 @@
   ],
   "defects": [
     {
-      "custom_name": "Big, Heavy, and Obvious",
+      "custom_name": "Unique Defect: Big, Heavy, and Obvious",
       "key": "big_heavy_obvious",
       "rank": 3,
       "user_description": null,

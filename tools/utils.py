@@ -6,13 +6,13 @@ from PyQt5.QtGui import QColor, QCursor
 from PyQt5.QtWidgets import QGraphicsDropShadowEffect
 from tools.widgets import ClickableCard
 
-def create_card_widget(title="", lines=None, on_click=None, on_remove=None, card_type="default", **kwargs):
+def create_card_widget(title="", lines=None, on_click=None, on_remove=None, card_type="default", parent=None, **kwargs):
     from PyQt5.QtWidgets import QWidget, QVBoxLayout, QHBoxLayout, QLabel, QPushButton, QSizePolicy
     from PyQt5.QtCore import Qt
 
     # Create all widgets before adding them to layouts
     card = ClickableCard()
-    container = QWidget()
+    container = QWidget(parent)  # Add parent parameter here
     title_label = QLabel(title)
     button_layout = QHBoxLayout()
     card_layout = QVBoxLayout(card)

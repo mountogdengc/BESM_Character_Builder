@@ -305,6 +305,14 @@ class AttributeBuilderDialog(QDialog):
         self._custom_name_edited = False
         attr_name = self.attr_dropdown.currentText()
         attribute_data = self.attributes[attr_name]
+        attr_key = attribute_data.get("key", "")
+
+        # Initialize attribute_data property for storing the current state
+        self.attribute_data = {
+            "name": attr_name,
+            "key": attr_key,
+            "custom_fields": {}
+        }
 
         print(f"[DEBUG] Attribute data for {attr_name}: {attribute_data}")
 
@@ -327,6 +335,14 @@ class AttributeBuilderDialog(QDialog):
         # Load dynamic cost info BEFORE building fields
         self.dynamic_cost_map = attribute_data.get("dynamic_cost", {})
         self.dynamic_cost_category_key = attribute_data.get("dynamic_cost_category", None)
+        
+        # Special handling for skill groups
+        if attr_key == "skill_group":
+            print(f"[DEBUG] Setting up skill group with dynamic cost map: {self.dynamic_cost_map}")
+            # Make sure we have the right dynamic cost category key
+            if not self.dynamic_cost_category_key:
+                self.dynamic_cost_category_key = "category"
+                print(f"[DEBUG] Setting dynamic_cost_category_key to 'category' for skill group")
         
         # Create custom fields based on attribute definition
         if "user_input_required" in attribute_data:
@@ -695,24 +711,27 @@ class AttributeBuilderDialog(QDialog):
         name = self.attr_dropdown.currentText()
         attribute = self.attributes[name]
         level = self.level_spin.value()
+        attr_key = attribute.get("key", "")
 
-        # Initialize category
+        # Initialize category and cost
         category = None
+        cost_per_level = attribute.get("cost_per_level", 0)
 
         # Dynamic cost support
-        base_cost = 0  # Default to 0 if no cost is found
         if self.dynamic_cost_map and self.dynamic_cost_category_key:
             widget = self.custom_input_widgets.get(self.dynamic_cost_category_key)
             if isinstance(widget, QComboBox):
                 category = widget.currentText()
-                base_cost = self.dynamic_cost_map.get(category, 0)  # Use cost from dynamic_cost or default to 0
+                if category in self.dynamic_cost_map:
+                    cost_per_level = self.dynamic_cost_map.get(category, cost_per_level)
+                    print(f"[DEBUG] Dynamic cost for {category}: {cost_per_level}")
 
         # enhancements / Limiters
         enhancement_count = len(self.enhancement_list.selectedItems())
         limiter_count = len(self.limiter_list.selectedItems())
 
-        # Calculate total CP using the same logic as the attribute card
-        total_cp = attribute.get("cost_per_level", 0) * level
+        # Calculate total CP using the cost per level
+        total_cp = cost_per_level * level
         effective_level = max(1, level - enhancement_count + limiter_count)
 
         # Update CP Cost label
@@ -720,7 +739,12 @@ class AttributeBuilderDialog(QDialog):
         self.cp_cost_label.setToolTip(f"Effective Level: {effective_level}")
 
         # Debug logging to verify calculations
-        print(f"[DEBUG] Attribute: {name}, Level: {level}, Base Cost: {base_cost}, Total CP: {total_cp}, Effective Level: {effective_level}")
+        print(f"[DEBUG] Attribute: {name} ({attr_key}), Level: {level}, Cost Per Level: {cost_per_level}, Total CP: {total_cp}, Effective Level: {effective_level}")
+        
+        # For skill groups, update the skill_group_type in custom_fields
+        if attr_key == "skill_group" and category:
+            # Make sure the cost is correctly reflected in the UI immediately
+            print(f"[DEBUG] Skill Group: Setting cost for {category} to {cost_per_level} per level")
 
     def on_controller_field_changed(self, controller_key, selected_value):
         if controller_key not in self.autocomplete_links:
@@ -756,23 +780,29 @@ class AttributeBuilderDialog(QDialog):
         limiters = [item.text() for item in self.limiter_list.selectedItems()]
 
         name = self.attr_dropdown.currentText()
+        attr_key = self.attributes[name].get("key", "")
         
         attribute = self.attributes[name]
-        base_cost = attribute.get("cost_per_level", attribute.get("base_cost"))
+        base_cost = attribute.get("cost_per_level", attribute.get("base_cost", 0))
 
         # Handle dynamic cost
+        cost_per_level = base_cost
         if self.dynamic_cost_map and self.dynamic_cost_category_key:
             widget = self.custom_input_widgets.get(self.dynamic_cost_category_key)
             if isinstance(widget, QComboBox):
                 category = widget.currentText()
                 if category in self.dynamic_cost_map:
-                    base_cost = self.dynamic_cost_map[category]
+                    cost_per_level = self.dynamic_cost_map[category]
+                    
+                    # For skill groups, make sure we store the category properly
+                    if attr_key == "skill_group":
+                        custom_fields["skill_group_type"] = category
 
         level = self.level_spin.value()
         enhancement_count = len(enhancements)
         limiter_count = len(limiters)
         
-        total_cp = base_cost * level
+        total_cp = cost_per_level * level
         effective_level = max(1, level - enhancement_count + limiter_count)
 
         # Force dynamic name update if user hasn't manually edited it
@@ -786,11 +816,15 @@ class AttributeBuilderDialog(QDialog):
 
         print("[DEBUG SUBMIT] Final Name:", self.custom_name_input.text())
         print("[DEBUG SUBMIT] Custom Fields:", custom_fields)
-        return {
+        
+        # Create the attribute data
+        attr_data = {
             "name": self.custom_name_input.text(),
             "base_name": name,
+            "key": attr_key,
             "level": level,
             "cost": total_cp,
+            "cost_per_level": cost_per_level,
             "effective_level": effective_level,
             "enhancements": enhancements,
             "limiters": limiters,
@@ -798,6 +832,12 @@ class AttributeBuilderDialog(QDialog):
             "user_description": self.user_description.toPlainText(),
             "custom_fields": custom_fields
         }
+        
+        # For skill groups, add the dynamic cost category key
+        if attr_key == "skill_group":
+            attr_data["dynamic_cost_category_key"] = "skill_group_type"
+            
+        return attr_data
 
     def add_custom_field_widget(self, field):
         label = field.get("label", "Unnamed")
@@ -880,17 +920,36 @@ class AttributeBuilderDialog(QDialog):
         return lambda _: self._set_dynamic_custom_name(attr_name)
 
     def _update_skill_group_name(self):
-        if self._custom_name_edited:
+        if not hasattr(self, '_custom_name_edited') or self._custom_name_edited:
             return  # don't overwrite user input
 
         cat_widget = self.custom_input_widgets.get("category")
         name_widget = self.custom_input_widgets.get("skill_group_name")
 
         if cat_widget and name_widget:
-            category = cat_widget.currentText()
-            group_name = name_widget.currentText()
-            if category and group_name:
-                self.custom_name_input.setText(f"Skill Group: {group_name} ({category})")
+            try:
+                category = cat_widget.currentText()
+                group_name = name_widget.currentText()
+                if category and group_name:
+                    # Update the custom name
+                    self.custom_name_input.setText(f"Skill Group: {group_name} ({category})")
+                    
+                    # Set the skill_group_type to match the category for cost calculation
+                    # This is the key fix for the crash - we need to ensure the skill_group_type
+                    # matches the category for proper cost calculation
+                    if "skill_group_type" not in self.custom_input_widgets:
+                        print("[DEBUG] Creating skill_group_type field")
+                        # We need to create this field in the custom fields
+                        if not hasattr(self, 'attribute_data'):
+                            self.attribute_data = {}
+                        if "custom_fields" not in self.attribute_data:
+                            self.attribute_data["custom_fields"] = {}
+                        self.attribute_data["custom_fields"]["skill_group_type"] = category
+                    
+                    # Update the cost calculation
+                    self.update_cp_cost()
+            except Exception as e:
+                print(f"Error in _update_skill_group_name: {str(e)}")
 
     def _set_dynamic_custom_name(self, attr_name):
         # Fallback

@@ -1,6 +1,67 @@
 {
     "attributes": [
         {
+            "name": "Skill Group",
+            "cost_per_level": null,
+            "relevant_stat": "Mind",
+            "is_human_attribute": true,
+            "description": "Represents a collection of related skills. The cost per level varies based on the type of skill group selected.",
+            "source": "BESM4e",
+            "levels": {
+                "1": "Basic proficiency",
+                "2": "Competent",
+                "3": "Professional",
+                "4": "Expert",
+                "5": "Master",
+                "6": "Legendary"
+            },
+            "user_input_required": [
+                {
+                    "label": "Skill Group Type",
+                    "key": "skill_group_type",
+                    "field_type": "dropdown",
+                    "options": [
+                        "BACKGROUND - Academic (1 CP/level)",
+                        "BACKGROUND - Artistic (1 CP/level)",
+                        "BACKGROUND - Domestic (1 CP/level)",
+                        "BACKGROUND - Occupation (1 CP/level)",
+                        "FIELD - Business (2 CP/level)",
+                        "FIELD - Social (2 CP/level)",
+                        "FIELD - Street (2 CP/level)",
+                        "FIELD - Technical (2 CP/level)",
+                        "ACTION - Adventuring (3 CP/level)",
+                        "ACTION - Detective (3 CP/level)",
+                        "ACTION - Military (3 CP/level)",
+                        "ACTION - Scientific (3 CP/level)"
+                    ],
+                    "required": true
+                },
+                {
+                    "label": "Custom Description",
+                    "key": "custom_description",
+                    "field_type": "textarea",
+                    "description": "Describe the specific skills included in this group."
+                }
+            ],
+            "key": "skill_group",
+            "is_dynamic_cost": true,
+            "dynamic_cost_map": {
+                "BACKGROUND - Academic (1 CP/level)": 1,
+                "BACKGROUND - Artistic (1 CP/level)": 1,
+                "BACKGROUND - Domestic (1 CP/level)": 1,
+                "BACKGROUND - Occupation (1 CP/level)": 1,
+                "FIELD - Business (2 CP/level)": 2,
+                "FIELD - Social (2 CP/level)": 2,
+                "FIELD - Street (2 CP/level)": 2,
+                "FIELD - Technical (2 CP/level)": 2,
+                "ACTION - Adventuring (3 CP/level)": 3,
+                "ACTION - Detective (3 CP/level)": 3,
+                "ACTION - Military (3 CP/level)": 3,
+                "ACTION - Scientific (3 CP/level)": 3
+            },
+            "dynamic_cost_category_key": "skill_group_type"
+        },
+        {
             "name": "Absorption",
             "cost_per_level": 5,
             "relevant_stat": "Body",

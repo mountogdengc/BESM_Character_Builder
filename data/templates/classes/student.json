@@ -105,7 +105,7 @@
       "custom_name": "Unknown Power",
       "key": "unknown_power",
       "level": 20,
-      "user_description": "(30 Points)",
+      "user_description": null,
       "enhancements": [],
       "limiters": [],
       "options": [],
@@ -113,7 +113,7 @@
       "options_source": "Class Template",
       "valid": true,
       "name": "Unknown Power",
-      "details": "(30 Points)",
+      "details": null,
       "rank": null
     }
   ],

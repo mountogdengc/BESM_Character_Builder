@@ -57,11 +57,17 @@ def clear_attributes_ui(self):
                 while layout.count():
                     item = layout.takeAt(0)
                     if item.widget():
-                        item.widget().setParent(None)
+                        w = item.widget()
+                        w.setParent(None)
+                        # Ensure the widget is deleted to avoid floating windows
+                        w.deleteLater()
             
-            # Remove the container from the scroll area if it exists
-            if hasattr(self, 'attributes_scroll_area') and self.attributes_scroll_area is not None:
+            # Remove the container from the scroll area if it exists and delete it
+            if hasattr(self, 'attributes_scroll_area') and self.attributes_scroll_area is not None and self.attr_card_container is not None:
                 self.attributes_scroll_area.takeWidget()
+                # Safely delete container and its children to avoid orphan pop-ups
+                self.attr_card_container.setParent(None)
+                self.attr_card_container.deleteLater()
             
             # Clear references
             self.attr_card_container = None
@@ -89,6 +95,8 @@ def populate_attributes_ui(self):
     for attr in self.character_data.get("attributes", []):
         # Create and add attribute card
         card = create_attribute_card(self, attr)
+        # Explicitly parent the card to the container to avoid stray windows
+        card.setParent(self.attr_card_container)
         self.attributes_layout.addWidget(card)
 
 def create_attribute_card(self, attr):
@@ -194,6 +202,16 @@ def create_attribute_card(self, attr):
                 f"Level: {attr.get('level', 0)}",
                 f"Cost: {attr.get('cost', 0)} CP"
             ]
+    elif attr.get("key") == "unknown_power":
+        # Special handling for Unknown Power attribute
+        cp_spent = attr.get("cp_spent", 0)
+        gm_points = attr.get("gm_points", 0)
+        lines = [
+            f"Level: {attr.get('level', 0)}",
+            f"Cost: {cp_spent} CP",
+            f"Description: Represents hidden or mysterious abilities not known to the character. The GM allocates Attributes equal to CP spent + 50% bonus, which manifest during play.",
+            f"Notes: ({gm_points} Points)"
+        ]
     else:
         # For all other attributes, show normal display
         lines = [

@@ -56,7 +56,7 @@
   ],
   "defects": [
     {
-      "custom_name": "Lifting Capacity",
+      "custom_name": "Unique Defect: Lifting Capacity",
       "key": "lifting_capacity",
       "rank": 2,
       "user_description": "Lifting Capacity reduced",
@@ -68,7 +68,7 @@
       "valid": true
     },
     {
-      "custom_name": "Strength Damage",
+      "custom_name": "Unique Defect: Strength Damage",
       "key": "strength_damage",
       "rank": 2,
       "user_description": "Strength Damage reduced",
@@ -80,7 +80,7 @@
       "valid": true
     },
     {
-      "custom_name": "Vulnerable",
+      "custom_name": "Unique Defect: Vulnerable",
       "key": "extra_damage_from_all_attacks",
       "rank": 2,
       "user_description": "Extra Damage from all Attacks",
@@ -92,7 +92,7 @@
       "valid": true
     },
     {
-      "custom_name": "Thrown Weapon Distance",
+      "custom_name": "Unique Defect: Thrown Weapon Distance",
       "key": "thrown_weapon_distance",
       "rank": 2,
       "user_description": "Thrown weapon distance reduced",
@@ -104,7 +104,7 @@
       "valid": true
     },
     {
-      "custom_name": "Running Speed",
+      "custom_name": "Unique Defect: Running Speed",
       "key": "running_speed",
       "rank": 2,
       "user_description": "Running Speed reduced",

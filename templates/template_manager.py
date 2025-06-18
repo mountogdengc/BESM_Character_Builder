@@ -589,7 +589,64 @@ def apply_attributes(app, template_data, template_changes):
             cost_per_level = new_attr.get("cost_per_level")
             if cost_per_level is None:
                 cost_per_level = 0  # Provide a default value if None
-            new_attr["cost"] = cost_per_level * attr_level
+            
+            # Special handling for Skill Group attribute
+            if attr_key == "skill_group" or attr_name == "Skill Group":
+                # Get the dynamic cost map (support both legacy and new key names)
+                dynamic_cost_map = new_attr.get("dynamic_cost", {}) or new_attr.get("dynamic_cost_map", {})
+                # Get the skill group type from user_description or custom fields
+                skill_group_type = None
+                
+                # First check if custom_fields is already set
+                if "custom_fields" in attr:
+                    cf = attr["custom_fields"]
+                    if "skill_group_type" in cf:
+                        skill_group_type = cf["skill_group_type"]
+                    elif "category" in cf:
+                        skill_group_type = cf["category"]
+                    # Copy custom fields over
+                    new_attr["custom_fields"] = cf
+                # If still not found, try to extract from user_description
+                elif "user_description" in attr and attr["user_description"]:
+                    # Extract the skill group type from the description
+                    desc = attr["user_description"]
+                    for group_type in dynamic_cost_map.keys():
+                        if group_type in desc:
+                            skill_group_type = group_type
+                            break
+                    
+                    # If we found a skill group type, store it in custom_fields
+                    if skill_group_type:
+                        if "custom_fields" not in new_attr:
+                            new_attr["custom_fields"] = {}
+                        new_attr["custom_fields"]["skill_group_type"] = skill_group_type
+                
+                # If we found a skill group type, use its cost per level
+                if skill_group_type and skill_group_type in dynamic_cost_map:
+                    cost_per_level = dynamic_cost_map[skill_group_type]
+                    # ensure custom_fields has unified key for later use
+                    if "custom_fields" not in new_attr:
+                        new_attr["custom_fields"] = {}
+                    new_attr["custom_fields"]["skill_group_type"] = skill_group_type
+                    # Store the cost_per_level in the attribute for reference
+                    new_attr["cost_per_level"] = cost_per_level
+                    print(f"DEBUG: Setting Skill Group cost_per_level to {cost_per_level} for type {skill_group_type}")
+            
+            # Calculate the cost – if we never resolved cost_per_level, fall back to existing cost field or 0
+            if cost_per_level == 0 and "cost" in attr and attr["cost"]:
+                new_attr["cost"] = attr["cost"]
+            else:
+                new_attr["cost"] = cost_per_level * attr_level
+            
+            # Special handling for Unknown Power attribute
+            if attr_key == "unknown_power" or attr_name == "Unknown Power":
+                import math
+                # Set cp_spent equal to the level
+                new_attr["cp_spent"] = attr_level
+                # Calculate GM points (50% bonus rounded up)
+                new_attr["gm_points"] = math.ceil(attr_level * 1.5)
+                # Update description
+                new_attr["description"] = f"Represents hidden or mysterious abilities not known to the character. The GM allocates Attributes equal to CP spent + 50% bonus, which manifest during play."
 
             # Deduplication key: name+details
             dedup_key = (new_attr.get("name", "").strip().lower(), str(new_attr.get("details", "")).strip().lower())
@@ -671,11 +728,6 @@ def apply_defects(app, template_data, template_changes):
             
             print(f"[DEBUG] Processing defect: {defect_name} key: {defect_key} rank: {defect_rank}")
             
-            # Debug the cp_refund values
-            template_cp_refund = defect.get("cp_refund")
-            full_defect_cp_refund = full_defect.get("cp_refund") if full_defect else None
-            print(f"[DEBUG] CP refund values - Template: {template_cp_refund}, Full defect: {full_defect_cp_refund}")
-            
             # Fetch full defect details from defects.json using key if available
             full_defect = None
             if defect_key and hasattr(app, 'defects_by_key') and defect_key in app.defects_by_key:
@@ -687,6 +739,11 @@ def apply_defects(app, template_data, template_changes):
             else:
                 print(f"[DEBUG] Could not find full defect definition for {defect_name} (key: {defect_key})")
                 full_defect = {}
+            
+            # Debug the cp_refund values
+            template_cp_refund = defect.get("cp_refund")
+            full_defect_cp_refund = full_defect.get("cp_refund") if full_defect else None
+            print(f"[DEBUG] CP refund values - Template: {template_cp_refund}, Full defect: {full_defect_cp_refund}")
             
             new_defect = copy.deepcopy(full_defect) if full_defect else copy.deepcopy(defect)
             new_defect["id"] = str(uuid.uuid4())
@@ -988,6 +1045,10 @@ def remove_template_from_character(app, template_id):
                         else:
                             defect["sources"] = sources
                         break
+    
+    # Process any pending events to ensure proper widget cleanup
+    from PyQt5.QtWidgets import QApplication
+    QApplication.processEvents()
     
     # Update the UI
     app.update_point_total()

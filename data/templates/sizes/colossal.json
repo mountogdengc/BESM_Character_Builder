@@ -57,7 +57,7 @@
       "valid": true
     },
     {
-      "custom_name": "Thrown Weapon Distance",
+      "custom_name": "Unique Attribute: Thrown Weapon Distance",
       "key": "thrown_weapon_distance",
       "level": 6,
       "user_description": null,
@@ -71,7 +71,7 @@
   ],
   "defects": [
     {
-      "custom_name": "Big, Heavy, and Obvious",
+      "custom_name": "Unique Defect: Big, Heavy, and Obvious",
       "key": "big_heavy_obvious",
       "rank": 6,
       "user_description": null,
@@ -80,8 +80,7 @@
       "options": [],
       "user_input": null,
       "options_source": "Size Template",
-      "valid": true,
-      "cp_refund": 4
+      "valid": true
     },
     {
       "custom_name": "Inept Attack",

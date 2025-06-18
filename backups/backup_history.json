@@ -110,5 +110,54 @@
         "type": "auto",
         "checksum": "8355db6b1ab78a287cf4c0c99f574c43a539f44dd1a59e69c24a07dbc2860ae7",
         "character_name": ""
+    },
+    {
+        "filename": "character_backup_auto_20250617_102745_c0913524.json",
+        "timestamp": "20250617_102745",
+        "type": "auto",
+        "checksum": "7da1274cf054a6693e4ee1d268d20a6ee81543a23161c6870cc8e82556a164f2",
+        "character_name": ""
+    },
+    {
+        "filename": "character_backup_auto_20250617_191332_c4a1093b.json",
+        "timestamp": "20250617_191332",
+        "type": "auto",
+        "checksum": "eaafb70e7240e49db8b7efa617041c561655f517493041e53dd0e5a295c5e547",
+        "character_name": ""
+    },
+    {
+        "filename": "character_backup_auto_20250617_212644_0dacc33c.json",
+        "timestamp": "20250617_212644",
+        "type": "auto",
+        "checksum": "68087bf29ea34bbfe31878ce788fda05a7898bb8618fac625698a55705f3bfd9",
+        "character_name": ""
+    },
+    {
+        "filename": "character_backup_auto_20250617_213912_cbf1eeb6.json",
+        "timestamp": "20250617_213912",
+        "type": "auto",
+        "checksum": "1fd1c338298e171447dabc8e50df37250be02cbffa60e9561b50456904f35c5a",
+        "character_name": ""
+    },
+    {
+        "filename": "character_backup_auto_20250617_214010_4a6fe142.json",
+        "timestamp": "20250617_214010",
+        "type": "auto",
+        "checksum": "99e69cfeef7ab9fb96d6a7354c72c8c48bbc9cd53394721151d079f5cc180416",
+        "character_name": ""
+    },
+    {
+        "filename": "character_backup_auto_20250617_214018_582d6037.json",
+        "timestamp": "20250617_214018",
+        "type": "auto",
+        "checksum": "609d02e01f60cf1db02f0b1279a788aa26272fab02b96c14517e52984ae7be22",
+        "character_name": ""
+    },
+    {
+        "filename": "character_backup_auto_20250617_221054_c71a42f4.json",
+        "timestamp": "20250617_221054",
+        "type": "auto",
+        "checksum": "7e2ef5e4cd495e484940030cf8db4fe117ec4c3b2f5d97734f9dc23c92aeb9ae",
+        "character_name": ""
     }
 ]
