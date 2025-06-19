@@ -45,37 +45,49 @@
       "options_source": "Class Template"
     },
     {
-      "custom_name": "Skill Group",
+      "custom_name": "Skill Group: Artistic (Field)",
       "key": "skill_group",
       "level": 2,
-      "user_description": "(Artistic)",
+      "user_description": "Creative and crafting skills",
       "enhancements": [],
       "limiters": [],
       "options": [],
       "user_input": null,
-      "options_source": "Class Template"
+      "options_source": "Class Template",
+      "custom_fields": {
+        "category": "Field",
+        "skill_group_name": "Artistic"
+      }
     },
     {
-      "custom_name": "Skill Group",
+      "custom_name": "Skill Group: Scientific (Field)",
       "key": "skill_group",
       "level": 1,
-      "user_description": "(Scientific)",
+      "user_description": "Research and scientific knowledge",
       "enhancements": [],
       "limiters": [],
       "options": [],
       "user_input": null,
-      "options_source": "Class Template"
+      "options_source": "Class Template",
+      "custom_fields": {
+        "category": "Field",
+        "skill_group_name": "Scientific"
+      }
     },
     {
-      "custom_name": "Skill Group",
+      "custom_name": "Skill Group: Technical (Field)",
       "key": "skill_group",
       "level": 3,
-      "user_description": "(Technical)",
+      "user_description": "Engineering and technical expertise",
       "enhancements": [],
       "limiters": [],
       "options": [],
       "user_input": null,
-      "options_source": "Class Template"
+      "options_source": "Class Template",
+      "custom_fields": {
+        "category": "Field",
+        "skill_group_name": "Technical"
+      }
     }
   ],
   "defects": []

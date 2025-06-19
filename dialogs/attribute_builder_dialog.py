@@ -458,6 +458,7 @@ class AttributeBuilderDialog(QDialog):
         """Calculate and update the CP cost based on selections"""
         attribute_name = self.attr_dropdown.currentText()
         if not attribute_name:
+            self.cp_cost_label.setText("0")
             return
             
         # Calculate base attribute cost
@@ -466,16 +467,38 @@ class AttributeBuilderDialog(QDialog):
             self.cp_cost_label.setText("0")
             return
 
-        # Get the cost per level - handle dictionary costs
+        # Get current level
+        level = self.level_spin.value()
+            
         try:
-            if isinstance(attribute.get("cost_per_level"), dict):
+            # Check if this attribute has dynamic cost calculation based on a category
+            dynamic_cost_category = attribute.get("dynamic_cost_category")
+            cost_map = attribute.get("cost_map", {})
+            
+            if dynamic_cost_category and hasattr(self, "custom_input_widgets"):
+                # Get the category value from the custom field
+                category_value = None
+                if dynamic_cost_category in self.custom_input_widgets:
+                    category_widget = self.custom_input_widgets[dynamic_cost_category]
+                    if hasattr(category_widget, "currentText"):
+                        category_value = category_widget.currentText()
+                
+                # Get the cost from the cost map based on the category
+                if category_value and category_value in cost_map:
+                    cost_per_level = cost_map[category_value]
+                    print(f"Using dynamic cost: {cost_per_level} based on {category_value}")
+                else:
+                    cost_per_level = 1
+                    print(f"Warning: Could not find cost for category {category_value} in cost_map {cost_map}")
+            
+            # Check if this attribute has a cost map with level bands
+            elif isinstance(attribute.get("cost_per_level"), dict):
                 # Handle level bands
-                level = self.level_spin.value()
-                cost_map = attribute.get("cost_per_level")
+                level_band_costs = attribute.get("cost_per_level")
                 cost_per_level = 0
                 
                 # Find the right level band
-                for level_band, cost in cost_map.items():
+                for level_band, cost in level_band_costs.items():
                     level_min, level_max = level_band.split("-")
                     level_min = int(level_min)
                     level_max = int(level_max) if level_max != "max" else float('inf')
@@ -484,13 +507,20 @@ class AttributeBuilderDialog(QDialog):
                         cost_per_level = cost
                         break
             else:
-                cost_per_level = attribute.get("cost_per_level", 1)
+                # Standard cost per level
+                cost_per_level = attribute.get("cost_per_level")
+                
+            # Ensure cost_per_level is not None
+            if cost_per_level is None:
+                cost_per_level = 1
+                print(f"Warning: No cost_per_level defined for {attribute_name}, using default of 1")
+                
         except Exception as e:
             print(f"Error calculating cost: {e}")
             cost_per_level = 1
 
         # Calculate base cost
-        base_cost = self.level_spin.value() * cost_per_level
+        base_cost = level * cost_per_level
         
         # Add costs for enhancements
         enhancement_multiplier = 1.0

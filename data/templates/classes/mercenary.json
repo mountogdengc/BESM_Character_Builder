@@ -87,94 +87,118 @@
       "rank": null
     },
     {
-      "custom_name": "Skill Group",
+      "custom_name": "Skill Group: Adventuring (Action)",
       "key": "skill_group",
       "level": 2,
-      "user_description": "(Adventuring)",
+      "user_description": "Survival and field skills",
       "enhancements": [],
       "limiters": [],
       "options": [],
       "user_input": null,
       "options_source": "Class Template",
       "valid": true,
-      "name": "Skill Group",
-      "details": "(Adventuring)",
-      "rank": null
+      "name": "Skill Group: Adventuring (Action)",
+      "details": "Survival and field skills",
+      "rank": null,
+      "custom_fields": {
+        "category": "Action",
+        "skill_group_name": "Adventuring"
+      }
     },
     {
-      "custom_name": "Skill Group",
+      "custom_name": "Skill Group: Business (Field)",
       "key": "skill_group",
       "level": 1,
-      "user_description": "(Business)",
+      "user_description": "Contract negotiation and management",
       "enhancements": [],
       "limiters": [],
       "options": [],
       "user_input": null,
       "options_source": "Class Template",
       "valid": true,
-      "name": "Skill Group",
-      "details": "(Business)",
-      "rank": null
+      "name": "Skill Group: Business (Field)",
+      "details": "Contract negotiation and management",
+      "rank": null,
+      "custom_fields": {
+        "category": "Field",
+        "skill_group_name": "Business"
+      }
     },
     {
-      "custom_name": "Skill Group",
+      "custom_name": "Skill Group: Military (Action)",
       "key": "skill_group",
       "level": 1,
-      "user_description": "(Military)",
+      "user_description": "Tactical training and knowledge",
       "enhancements": [],
       "limiters": [],
       "options": [],
       "user_input": null,
       "options_source": "Class Template",
       "valid": true,
-      "name": "Skill Group",
-      "details": "(Military)",
-      "rank": null
+      "name": "Skill Group: Military (Action)",
+      "details": "Tactical training and knowledge",
+      "rank": null,
+      "custom_fields": {
+        "category": "Action",
+        "skill_group_name": "Military"
+      }
     },
     {
-      "custom_name": "Skill Group",
+      "custom_name": "Skill Group: Social (Field)",
       "key": "skill_group",
       "level": 1,
-      "user_description": "(Social)",
+      "user_description": "Networking and client relations",
       "enhancements": [],
       "limiters": [],
       "options": [],
       "user_input": null,
       "options_source": "Class Template",
       "valid": true,
-      "name": "Skill Group",
-      "details": "(Social)",
-      "rank": null
+      "name": "Skill Group: Social (Field)",
+      "details": "Networking and client relations",
+      "rank": null,
+      "custom_fields": {
+        "category": "Field",
+        "skill_group_name": "Social"
+      }
     },
     {
-      "custom_name": "Skill Group",
+      "custom_name": "Skill Group: Street (Field)",
       "key": "skill_group",
       "level": 2,
-      "user_description": "(Street)",
+      "user_description": "Black market and underground contacts",
       "enhancements": [],
       "limiters": [],
       "options": [],
       "user_input": null,
       "options_source": "Class Template",
       "valid": true,
-      "name": "Skill Group",
-      "details": "(Street)",
-      "rank": null
+      "name": "Skill Group: Street (Field)",
+      "details": "Black market and underground contacts",
+      "rank": null,
+      "custom_fields": {
+        "category": "Field",
+        "skill_group_name": "Street"
+      }
     },
     {
-      "custom_name": "Skill Group",
+      "custom_name": "Skill Group: Technical (Field)",
       "key": "skill_group",
       "level": 1,
-      "user_description": "(Technical)",
+      "user_description": "Equipment and weapons knowledge",
       "enhancements": [],
       "limiters": [],
       "options": [],
       "user_input": null,
       "options_source": "Class Template",
       "valid": true,
-      "name": "Skill Group",
-      "details": "(Technical)",
-      "rank": null
+      "name": "Skill Group: Technical (Field)",
+      "details": "Equipment and weapons knowledge",
+      "rank": null,
+      "custom_fields": {
+        "category": "Field",
+        "skill_group_name": "Technical"
+      }
     },
     {
       "custom_name": "Wealth",

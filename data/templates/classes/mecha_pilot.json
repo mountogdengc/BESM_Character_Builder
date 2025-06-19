@@ -102,34 +102,42 @@
       "rank": null
     },
     {
-      "custom_name": "Skill Group",
+      "custom_name": "Skill Group: Military (Field)",
       "key": "skill_group",
       "level": 1,
-      "user_description": "(Military)",
+      "user_description": "Military protocols and combat strategy",
       "enhancements": [],
       "limiters": [],
       "options": [],
       "user_input": null,
       "options_source": "Class Template",
       "valid": true,
-      "name": "Skill Group",
-      "details": "(Military)",
-      "rank": null
+      "name": "Skill Group: Military (Field)",
+      "details": "Military protocols and combat strategy",
+      "rank": null,
+      "custom_fields": {
+        "category": "Field",
+        "skill_group_name": "Military"
+      }
     },
     {
-      "custom_name": "Skill Group",
+      "custom_name": "Skill Group: Occupation (Field)",
       "key": "skill_group",
       "level": 3,
-      "user_description": "(Occupation: Mecha Pilot)",
+      "user_description": "Mecha piloting and maintenance",
       "enhancements": [],
       "limiters": [],
       "options": [],
       "user_input": null,
       "options_source": "Class Template",
       "valid": true,
-      "name": "Skill Group",
-      "details": "(Occupation: Mecha Pilot)",
-      "rank": null
+      "name": "Skill Group: Occupation (Field)",
+      "details": "Mecha piloting and maintenance",
+      "rank": null,
+      "custom_fields": {
+        "category": "Field",
+        "skill_group_name": "Occupation"
+      }
     }
   ],
   "defects": []

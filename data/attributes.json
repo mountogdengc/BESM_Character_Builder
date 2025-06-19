@@ -1600,6 +1600,13 @@
             "source": "BESM4e",
             "description": "Represents training or natural talent in a broad skill field. Skill Groups are divided into Background, Field, and Action categories, each with a different cost per level. Each Skill Group is treated as a separate Attribute.",
             "relevant_stat": "Body, Mind, or Soul",
+            "cost_per_level": null,
+            "cost_map": {
+                "Background": 1,
+                "Field": 2,
+                "Action": 3
+            },
+            "dynamic_cost_category": "category",
             "user_input_required": [
                 {
                     "field_type": "dropdown",
@@ -1631,11 +1638,6 @@
                     ]
                 }
             ],
-            "dynamic_cost": {
-                "Background": 1,
-                "Field": 2,
-                "Action": 3
-            },
             "levels": {
                 "1": "Developing - Gaining proficiency through regular application",
                 "2": "Trained - Moderate training and practice",
@@ -2072,7 +2074,7 @@
         },
         {
             "name": "Unknown Power",
-            "cost_per_level": null,
+            "cost_per_level": 1.5,
             "relevant_stat": "Special",
             "description": "Represents hidden or mysterious abilities not known to the character. The GM allocates Attributes equal to CP spent + 50% bonus, which manifest during play.",
             "source": "BESM4e",

@@ -56,48 +56,64 @@
       "options_source": "Class Template"
     },
     {
-      "custom_name": "Skill Group",
+      "custom_name": "Skill Group: Business (Field)",
       "key": "skill_group",
       "level": 3,
-      "user_description": "(Business)",
+      "user_description": "Finance and commerce expertise",
       "enhancements": [],
       "limiters": [],
       "options": [],
       "user_input": null,
-      "options_source": "Class Template"
+      "options_source": "Class Template",
+      "custom_fields": {
+        "category": "Field",
+        "skill_group_name": "Business"
+      }
     },
     {
-      "custom_name": "Skill Group",
+      "custom_name": "Skill Group: Social (Field)",
       "key": "skill_group",
       "level": 2,
-      "user_description": "(Social)",
+      "user_description": "Interpersonal and negotiation skills",
       "enhancements": [],
       "limiters": [],
       "options": [],
       "user_input": null,
-      "options_source": "Class Template"
+      "options_source": "Class Template",
+      "custom_fields": {
+        "category": "Field",
+        "skill_group_name": "Social"
+      }
     },
     {
-      "custom_name": "Skill Group",
+      "custom_name": "Skill Group: Street (Field)",
       "key": "skill_group",
       "level": 2,
-      "user_description": "(Street)",
+      "user_description": "Underground markets and street connections",
       "enhancements": [],
       "limiters": [],
       "options": [],
       "user_input": null,
-      "options_source": "Class Template"
+      "options_source": "Class Template",
+      "custom_fields": {
+        "category": "Field",
+        "skill_group_name": "Street"
+      }
     },
     {
-      "custom_name": "Skill Group",
+      "custom_name": "Skill Group: Technical (Field)",
       "key": "skill_group",
       "level": 2,
-      "user_description": "(Technical)",
+      "user_description": "Technical knowledge of items and artifacts",
       "enhancements": [],
       "limiters": [],
       "options": [],
       "user_input": null,
-      "options_source": "Class Template"
+      "options_source": "Class Template",
+      "custom_fields": {
+        "category": "Field",
+        "skill_group_name": "Technical"
+      }
     }
   ],
   "defects": []

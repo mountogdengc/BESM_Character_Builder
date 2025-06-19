@@ -97,15 +97,19 @@
       "options_source": "Class Template"
     },
     {
-      "custom_name": "Skill Group",
+      "custom_name": "Skill Group: Academic (Background)",
       "key": "skill_group",
       "level": 1,
-      "user_description": null,
+      "user_description": "Magical theory and arcane knowledge",
       "enhancements": [],
       "limiters": [],
-      "options": [],
+      "options": ["Academic"],
       "user_input": null,
-      "options_source": "Class Template"
+      "options_source": "Class Template",
+      "custom_fields": {
+        "category": "Background",
+        "skill_group_name": "Academic"
+      }
     },
     {
       "custom_name": "Weapon: Magical Attack",

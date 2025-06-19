@@ -72,34 +72,42 @@
       "rank": null
     },
     {
-      "custom_name": "Skill Group",
+      "custom_name": "Skill Group: Business (Field)",
       "key": "skill_group",
       "level": 1,
-      "user_description": "(Business)",
+      "user_description": "Financial management and entrepreneurship",
       "enhancements": [],
       "limiters": [],
       "options": [],
       "user_input": null,
       "options_source": "Class Template",
       "valid": true,
-      "name": "Skill Group",
-      "details": "(Business)",
-      "rank": null
+      "name": "Skill Group: Business (Field)",
+      "details": "Financial management and entrepreneurship",
+      "rank": null,
+      "custom_fields": {
+        "category": "Field",
+        "skill_group_name": "Business"
+      }
     },
     {
-      "custom_name": "Skill Group",
+      "custom_name": "Skill Group: Technical (Field)",
       "key": "skill_group",
       "level": 6,
-      "user_description": "(Technical)",
+      "user_description": "Engineering, scientific, and computing expertise",
       "enhancements": [],
       "limiters": [],
       "options": [],
       "user_input": null,
       "options_source": "Class Template",
       "valid": true,
-      "name": "Skill Group",
-      "details": "(Technical)",
-      "rank": null
+      "name": "Skill Group: Technical (Field)",
+      "details": "Engineering, scientific, and computing expertise",
+      "rank": null,
+      "custom_fields": {
+        "category": "Field",
+        "skill_group_name": "Technical"
+      }
     }
   ],
   "defects": []

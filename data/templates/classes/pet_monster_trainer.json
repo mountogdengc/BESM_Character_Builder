@@ -72,19 +72,23 @@
       "rank": null
     },
     {
-      "custom_name": "Skill Group",
+      "custom_name": "Skill Group: Occupation (Field)",
       "key": "skill_group",
       "level": 2,
-      "user_description": "(Occupation: Pet Monster Trainer)",
+      "user_description": "Knowledge and techniques for training pet monsters",
       "enhancements": [],
       "limiters": [],
       "options": [],
       "user_input": null,
       "options_source": "Class Template",
       "valid": true,
-      "name": "Skill Group",
-      "details": "(Occupation: Pet Monster Trainer)",
-      "rank": null
+      "name": "Skill Group: Occupation (Field)",
+      "details": "Knowledge and techniques for training pet monsters",
+      "rank": null,
+      "custom_fields": {
+        "category": "Field",
+        "skill_group_name": "Occupation"
+      }
     }
   ],
   "defects": [

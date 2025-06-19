@@ -147,49 +147,61 @@
       "rank": null
     },
     {
-      "custom_name": "Skill Group",
+      "custom_name": "Skill Group: Adventuring (Action)",
       "key": "skill_group",
       "level": 3,
-      "user_description": "(Adventuring)",
+      "user_description": "Stealth, infiltration, and survival skills",
       "enhancements": [],
       "limiters": [],
       "options": [],
       "user_input": null,
       "options_source": "Class Template",
       "valid": true,
-      "name": "Skill Group",
-      "details": "(Adventuring)",
-      "rank": null
+      "name": "Skill Group: Adventuring (Action)",
+      "details": "Stealth, infiltration, and survival skills",
+      "rank": null,
+      "custom_fields": {
+        "category": "Action",
+        "skill_group_name": "Adventuring"
+      }
     },
     {
-      "custom_name": "Skill Group",
+      "custom_name": "Skill Group: Artistic (Background)",
       "key": "skill_group",
       "level": 2,
-      "user_description": "(Artistic)",
+      "user_description": "Cultural and artistic knowledge",
       "enhancements": [],
       "limiters": [],
       "options": [],
       "user_input": null,
       "options_source": "Class Template",
       "valid": true,
-      "name": "Skill Group",
-      "details": "(Artistic)",
-      "rank": null
+      "name": "Skill Group: Artistic (Background)",
+      "details": "Cultural and artistic knowledge",
+      "rank": null,
+      "custom_fields": {
+        "category": "Background",
+        "skill_group_name": "Artistic"
+      }
     },
     {
-      "custom_name": "Skill Group",
+      "custom_name": "Skill Group: Street (Field)",
       "key": "skill_group",
       "level": 2,
-      "user_description": "(Street)",
+      "user_description": "Underground information networks",
       "enhancements": [],
       "limiters": [],
       "options": [],
       "user_input": null,
       "options_source": "Class Template",
       "valid": true,
-      "name": "Skill Group",
-      "details": "(Street)",
-      "rank": null
+      "name": "Skill Group: Street (Field)",
+      "details": "Underground information networks",
+      "rank": null,
+      "custom_fields": {
+        "category": "Field",
+        "skill_group_name": "Street"
+      }
     },
     {
       "custom_name": "Special Movement",

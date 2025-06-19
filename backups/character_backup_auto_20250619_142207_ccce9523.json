@@ -1,0 +1,1103 @@
+{
+    "version": "1.0",
+    "name": "",
+    "player": "",
+    "gm": "",
+    "race": "ASRAI",
+    "class": "STUDENT / BROKER",
+    "homeworld": "",
+    "size": "Medium",
+    "background": {
+        "origin": "",
+        "faction": "",
+        "goals": "",
+        "personality": "",
+        "history": ""
+    },
+    "stats": {
+        "Body": 4,
+        "Mind": 4,
+        "Soul": 4
+    },
+    "derived": {
+        "CV": 4,
+        "ACV": 4,
+        "DCV": 4,
+        "HP": 40,
+        "EP": 40,
+        "DM": 4,
+        "SV": 8,
+        "SP": 40,
+        "SCV": 4,
+        "SOP": 40
+    },
+    "drama_points": {
+        "current": 3,
+        "max": 5
+    },
+    "attributes": [],
+    "defects": [],
+    "skills": [],
+    "weapons": [],
+    "armor": [],
+    "items": [],
+    "techniques": [],
+    "templates": [],
+    "alternate_forms": [],
+    "metamorphosis": [],
+    "companions": [],
+    "minions": [],
+    "relationships": [],
+    "notes": "",
+    "custom_fields": {},
+    "custom_rules": [],
+    "saved_loadouts": [],
+    "benchmark": null,
+    "totalPoints": 24,
+    "applied_templates": [
+        {
+            "id": "08879792-0419-4ef1-9caa-8c287f0814a0",
+            "type": "class",
+            "name": "Unnamed Template",
+            "changes": [
+                {
+                    "field": "class",
+                    "old_value": "",
+                    "new_value": "STUDENT"
+                },
+                {
+                    "field": "size_template_applied",
+                    "size_name": "Medium",
+                    "applied_by": "Unnamed Template"
+                },
+                {
+                    "field": "attribute_add",
+                    "attribute_id": "8f30f5fe-e6fd-4cd7-9162-bdc8c43989c3",
+                    "attribute_data": {
+                        "name": "Connected",
+                        "cost_per_level": 1,
+                        "relevant_stat": "Soul",
+                        "is_human_attribute": true,
+                        "description": "Character has ties to a powerful organization (corporation, government, crime syndicate, etc.) and can access resources and privileges.",
+                        "source": "BESM4e",
+                        "levels": {
+                            "1": "Associated (e.g. student rep, police officer)",
+                            "2": "Respected (e.g. sergeant, small biz owner)",
+                            "3": "Modest Authority (e.g. lieutenant, mayor)",
+                            "4": "Local Authority (e.g. captain, knight with land)",
+                            "5": "Regional Authority (e.g. colonel, baron)",
+                            "6": "Provincial Authority (e.g. senator, VP)",
+                            "7": "National Authority (e.g. king, cabinet official)",
+                            "8": "International Authority (e.g. president, pope)",
+                            "9": "Planetary Authority (e.g. world ruler)",
+                            "10": "Extraplanetary Authority (e.g. galactic emperor)"
+                        },
+                        "user_input_required": [
+                            {
+                                "label": "Organization or Individual Connected To",
+                                "key": "connection_target",
+                                "field_type": "text",
+                                "description": "Name the organization, faction, or individual the character is connected to."
+                            }
+                        ],
+                        "key": "connected",
+                        "id": "8f30f5fe-e6fd-4cd7-9162-bdc8c43989c3",
+                        "level": 1,
+                        "user_description": "(Select One)",
+                        "options_source": "Class Template",
+                        "cost": 1,
+                        "sources": [
+                            "08879792-0419-4ef1-9caa-8c287f0814a0"
+                        ]
+                    }
+                },
+                {
+                    "field": "attribute_add",
+                    "attribute_id": "d730d281-7d8a-4ac2-8bfb-df4d53e8cfcf",
+                    "attribute_data": {
+                        "name": "Energised",
+                        "cost_per_level": 1,
+                        "relevant_stat": null,
+                        "description": "Increases total Energy Points (EP) by 10 per level. Can be modified with Limiters to create a secondary conditional EP pool.",
+                        "source": "BESM4e",
+                        "levels": {
+                            "1": "+10 EP",
+                            "2": "+20 EP",
+                            "3": "+30 EP",
+                            "4": "+40 EP",
+                            "5": "+50 EP",
+                            "6": "+60 EP"
+                        },
+                        "key": "energised",
+                        "is_human_attribute": false,
+                        "id": "d730d281-7d8a-4ac2-8bfb-df4d53e8cfcf",
+                        "level": 4,
+                        "options_source": "Class Template",
+                        "cost": 4,
+                        "sources": [
+                            "08879792-0419-4ef1-9caa-8c287f0814a0"
+                        ]
+                    }
+                },
+                {
+                    "field": "attribute_add",
+                    "attribute_id": "ba4d8cce-4f83-4e08-b464-604f890d9e27",
+                    "attribute_data": {
+                        "name": "Features",
+                        "cost_per_level": 1,
+                        "relevant_stat": "Variable",
+                        "is_human_attribute": true,
+                        "description": "The character possesses various minor abilities or qualities that grant useful but secondary advantages. Can be personal, racial, or technological in nature. These are typically flavor or small utility traits.",
+                        "source": "BESM4e",
+                        "levels": {
+                            "1": "1-2 Features",
+                            "2": "3-5 Features",
+                            "3": "6-10 Features",
+                            "4": "11-25 Features",
+                            "5": "26-50 Features",
+                            "6": "51-100 Features"
+                        },
+                        "user_input_required": [
+                            {
+                                "label": "Feature Type",
+                                "key": "feature_type",
+                                "field_type": "select",
+                                "description": "Select the general type of feature.",
+                                "options": [
+                                    "Personal",
+                                    "Racial",
+                                    "Technological"
+                                ]
+                            },
+                            {
+                                "label": "Features List",
+                                "key": "features_list",
+                                "field_type": "combo_editable",
+                                "description": "Enter one or more features (select from suggestions or write your own).",
+                                "options": [
+                                    "Ambidexterity",
+                                    "Animal Empathy",
+                                    "Appearance",
+                                    "Auditory Discrimination",
+                                    "Breath/Heartbeat Control",
+                                    "Depth Awareness",
+                                    "Direction Sense",
+                                    "Eidetic Memory",
+                                    "Famous (Beneficial)",
+                                    "Foreign Language",
+                                    "Hypermobility (Double-Jointed)",
+                                    "Light Sleeper",
+                                    "Lightning Calculator",
+                                    "Mimic Sound",
+                                    "Perfect Pitch",
+                                    "Range Sense",
+                                    "Spatial Sense",
+                                    "Speed Reading",
+                                    "Time Sense",
+                                    "Weather Sense",
+                                    "360-Degree Vision",
+                                    "Camouflage",
+                                    "Fluid Squirting",
+                                    "Gills",
+                                    "Heat Regulation",
+                                    "Homing Instinct",
+                                    "Light Armour (AR 1-4)",
+                                    "Light Weaponry (5 Damage)",
+                                    "Long Tongue",
+                                    "Longevity",
+                                    "Low-Light Vision",
+                                    "Multiple Hearts",
+                                    "Nictitating Membrane",
+                                    "Pouch",
+                                    "Retractable Claws",
+                                    "Scent Glands",
+                                    "Scentless",
+                                    "Sexual Duality",
+                                    "Ultrasonic Communication",
+                                    "Webbed Feet/Hands/Paws",
+                                    "Alarm System",
+                                    "Basic AI (0 Stats)",
+                                    "Camera",
+                                    "Comms Suite",
+                                    "Data Backup Auto System",
+                                    "Ejection Seat",
+                                    "Emergency Lights/Siren",
+                                    "Fast Acceleration",
+                                    "GPS",
+                                    "Gyrocompass",
+                                    "Highly Maneuverable",
+                                    "Identity Verifier",
+                                    "Life Monitoring Systems",
+                                    "Luxurious Decor",
+                                    "Modern Vehicle Tech Suite",
+                                    "Naked Enhancement",
+                                    "Radar Detector",
+                                    "Revolving License Plate",
+                                    "Smartphone",
+                                    "Tool Kit",
+                                    "Medical Kit"
+                                ]
+                            }
+                        ],
+                        "key": "features",
+                        "id": "ba4d8cce-4f83-4e08-b464-604f890d9e27",
+                        "level": 1,
+                        "user_description": "(Animal Empathy)",
+                        "options_source": "Class Template",
+                        "cost": 1,
+                        "sources": [
+                            "08879792-0419-4ef1-9caa-8c287f0814a0",
+                            "3e81b5a5-d15e-4c50-90be-639fed94ae65",
+                            "7da0055a-9a55-4e58-bb84-154c687bef78"
+                        ]
+                    }
+                },
+                {
+                    "field": "attribute_add",
+                    "attribute_id": "198bcd10-a6eb-406d-8dd1-1b58c987d086",
+                    "attribute_data": {
+                        "name": "Heightened Awareness",
+                        "cost_per_level": 1,
+                        "relevant_stat": "Body or Mind",
+                        "description": "Grants a bonus on rolls to notice nearby hidden objects or ambushes.",
+                        "source": "BESM4e",
+                        "levels": {
+                            "1": "+2 Stat roll awareness bonus",
+                            "2": "+4 Stat roll awareness bonus",
+                            "3": "+6 Stat roll awareness bonus",
+                            "4": "+8 Stat roll awareness bonus",
+                            "5": "+10 Stat roll awareness bonus",
+                            "6": "+12 Stat roll awareness bonus"
+                        },
+                        "key": "heightened_awareness",
+                        "is_human_attribute": false,
+                        "id": "198bcd10-a6eb-406d-8dd1-1b58c987d086",
+                        "level": 1,
+                        "options_source": "Class Template",
+                        "cost": 1,
+                        "sources": [
+                            "08879792-0419-4ef1-9caa-8c287f0814a0",
+                            "3e81b5a5-d15e-4c50-90be-639fed94ae65"
+                        ]
+                    }
+                },
+                {
+                    "field": "attribute_add",
+                    "attribute_id": "2b39268e-930f-4ca3-b79c-5a32b60a249f",
+                    "attribute_data": {
+                        "name": "Mulligan",
+                        "cost_per_level": 1,
+                        "relevant_stat": "Soul",
+                        "source": "BESM4e",
+                        "description": "Allows a character to reroll all dice for an action. You may choose from any result (original or rerolled).",
+                        "levels": {
+                            "1": "2 rerolls per session",
+                            "2": "4 rerolls per session",
+                            "3": "6 rerolls per session",
+                            "4": "8 rerolls per session",
+                            "5": "10 rerolls per session",
+                            "6": "12 rerolls per session"
+                        },
+                        "key": "mulligan",
+                        "is_human_attribute": false,
+                        "id": "2b39268e-930f-4ca3-b79c-5a32b60a249f",
+                        "level": 3,
+                        "options_source": "Class Template",
+                        "cost": 3,
+                        "sources": [
+                            "08879792-0419-4ef1-9caa-8c287f0814a0"
+                        ]
+                    }
+                },
+                {
+                    "field": "attribute_add",
+                    "attribute_id": "3a121019-bcdf-4cf7-aacd-6f1e9cb66936",
+                    "attribute_data": {
+                        "name": "Skill Group: Occupation (Background)",
+                        "source": "BESM4e",
+                        "description": "Represents training or natural talent in a broad skill field. Skill Groups are divided into Background, Field, and Action categories, each with a different cost per level. Each Skill Group is treated as a separate Attribute.",
+                        "relevant_stat": "Body, Mind, or Soul",
+                        "cost_per_level": null,
+                        "cost_map": {
+                            "Background": 1,
+                            "Field": 2,
+                            "Action": 3
+                        },
+                        "dynamic_cost_category": "category",
+                        "user_input_required": [
+                            {
+                                "field_type": "dropdown",
+                                "label": "Skill Group Category",
+                                "key": "category",
+                                "options": [
+                                    "Background",
+                                    "Field",
+                                    "Action"
+                                ]
+                            },
+                            {
+                                "field_type": "dropdown",
+                                "label": "Skill Group Name",
+                                "key": "skill_group_name",
+                                "options": [
+                                    "Academic",
+                                    "Artistic",
+                                    "Domestic",
+                                    "Occupation",
+                                    "Business",
+                                    "Social",
+                                    "Street",
+                                    "Technical",
+                                    "Adventuring",
+                                    "Detective",
+                                    "Military",
+                                    "Scientific"
+                                ]
+                            }
+                        ],
+                        "levels": {
+                            "1": "Developing - Gaining proficiency through regular application",
+                            "2": "Trained - Moderate training and practice",
+                            "3": "Expert - Significant training and practice",
+                            "4": "Veteran - Extensive training and practice",
+                            "5": "Master - Exhaustive training and practice",
+                            "6": "Grand Master - Unparalleled ability and knowledge"
+                        },
+                        "key": "skill_group",
+                        "is_human_attribute": false,
+                        "id": "3a121019-bcdf-4cf7-aacd-6f1e9cb66936",
+                        "level": 2,
+                        "user_description": "Student-related skills",
+                        "options_source": "Class Template",
+                        "cost": 0,
+                        "sources": [
+                            "08879792-0419-4ef1-9caa-8c287f0814a0"
+                        ]
+                    }
+                },
+                {
+                    "field": "attribute_add",
+                    "attribute_id": "914a549a-1bf4-47aa-9bbd-dd189683aff5",
+                    "attribute_data": {
+                        "name": "Unknown Power",
+                        "cost_per_level": 1.5,
+                        "relevant_stat": "Special",
+                        "description": "Represents hidden or mysterious abilities not known to the character. The GM allocates Attributes equal to CP spent + 50% bonus, which manifest during play.",
+                        "source": "BESM4e",
+                        "levels": {},
+                        "key": "unknown_power",
+                        "is_human_attribute": false,
+                        "id": "914a549a-1bf4-47aa-9bbd-dd189683aff5",
+                        "level": 20,
+                        "user_description": "(30 Points)",
+                        "options_source": "Class Template",
+                        "cost": 30.0,
+                        "sources": [
+                            "08879792-0419-4ef1-9caa-8c287f0814a0"
+                        ]
+                    }
+                },
+                {
+                    "field": "defect_add",
+                    "defect_id": "f354cf05-0cb3-4d77-89c6-d4dbde86fdd3",
+                    "defect_data": {
+                        "name": "Magnet",
+                        "key": "magnet",
+                        "rank_type": "Lesser",
+                        "cp_refund": 1,
+                        "max_rank": 3,
+                        "description": "Character attracts obsessive or amorous attention from others. This is not due to charisma, but some unseen fate or aura. Attention is usually unwanted and problematic.",
+                        "source": "BESM4e",
+                        "ranks": [
+                            {
+                                "rank": "1",
+                                "description": "Slight consequences"
+                            },
+                            {
+                                "rank": "2",
+                                "description": "Moderate consequences"
+                            },
+                            {
+                                "rank": "3",
+                                "description": "Severe consequences"
+                            }
+                        ],
+                        "id": "f354cf05-0cb3-4d77-89c6-d4dbde86fdd3",
+                        "rank": 1,
+                        "options_source": "Class Template",
+                        "cost": -1,
+                        "sources": [
+                            "08879792-0419-4ef1-9caa-8c287f0814a0"
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": "3e81b5a5-d15e-4c50-90be-639fed94ae65",
+            "type": "class",
+            "name": "Unnamed Template",
+            "changes": [
+                {
+                    "field": "class",
+                    "old_value": "STUDENT",
+                    "new_value": "STUDENT / BROKER"
+                },
+                {
+                    "field": "size_template_applied",
+                    "size_name": "Medium",
+                    "applied_by": "Unnamed Template"
+                },
+                {
+                    "field": "attribute_add",
+                    "attribute_id": "454b45c0-d7eb-4ffd-a30c-499094ef4583",
+                    "attribute_data": {
+                        "name": "Cognition",
+                        "cost_per_level": 2,
+                        "relevant_stat": "Mind",
+                        "is_human_attribute": false,
+                        "description": "Grants either Precognition (future visions) or Postcognition (visions of the past). Chosen at creation. Scope is limited by the GM.",
+                        "source": "BESM4e",
+                        "levels": {
+                            "1": "See a few seconds ahead / 1 minute past",
+                            "2": "See 1 minute ahead / 1 hour past",
+                            "3": "See 10 minutes ahead / 1 day past",
+                            "4": "See 1 hour ahead / 1 week past",
+                            "5": "See 1 day ahead / 1 month past",
+                            "6": "See 1 week ahead / 1 year past"
+                        },
+                        "key": "cognition",
+                        "id": "454b45c0-d7eb-4ffd-a30c-499094ef4583",
+                        "level": 5,
+                        "user_description": "(Postcognition; Equipment: Concerning Object History Only +1)",
+                        "options_source": "Class Template",
+                        "cost": 10,
+                        "sources": [
+                            "3e81b5a5-d15e-4c50-90be-639fed94ae65"
+                        ]
+                    }
+                },
+                {
+                    "field": "attribute_add",
+                    "attribute_id": "ca81eba0-c401-4211-a4de-663270262a90",
+                    "attribute_data": {
+                        "id": "ca81eba0-c401-4211-a4de-663270262a90",
+                        "name": "Organisational Ties",
+                        "key": "organisational_ties",
+                        "level": 2,
+                        "user_description": "(Select One)",
+                        "options_source": "Class Template",
+                        "cost": 0,
+                        "sources": [
+                            "3e81b5a5-d15e-4c50-90be-639fed94ae65"
+                        ]
+                    }
+                },
+                {
+                    "field": "attribute_add",
+                    "attribute_id": "2e129bb4-521b-4576-a850-e0f04573b91d",
+                    "attribute_data": {
+                        "name": "Skill Group: Business (Field)",
+                        "source": "BESM4e",
+                        "description": "Represents training or natural talent in a broad skill field. Skill Groups are divided into Background, Field, and Action categories, each with a different cost per level. Each Skill Group is treated as a separate Attribute.",
+                        "relevant_stat": "Body, Mind, or Soul",
+                        "cost_per_level": null,
+                        "cost_map": {
+                            "Background": 1,
+                            "Field": 2,
+                            "Action": 3
+                        },
+                        "dynamic_cost_category": "category",
+                        "user_input_required": [
+                            {
+                                "field_type": "dropdown",
+                                "label": "Skill Group Category",
+                                "key": "category",
+                                "options": [
+                                    "Background",
+                                    "Field",
+                                    "Action"
+                                ]
+                            },
+                            {
+                                "field_type": "dropdown",
+                                "label": "Skill Group Name",
+                                "key": "skill_group_name",
+                                "options": [
+                                    "Academic",
+                                    "Artistic",
+                                    "Domestic",
+                                    "Occupation",
+                                    "Business",
+                                    "Social",
+                                    "Street",
+                                    "Technical",
+                                    "Adventuring",
+                                    "Detective",
+                                    "Military",
+                                    "Scientific"
+                                ]
+                            }
+                        ],
+                        "levels": {
+                            "1": "Developing - Gaining proficiency through regular application",
+                            "2": "Trained - Moderate training and practice",
+                            "3": "Expert - Significant training and practice",
+                            "4": "Veteran - Extensive training and practice",
+                            "5": "Master - Exhaustive training and practice",
+                            "6": "Grand Master - Unparalleled ability and knowledge"
+                        },
+                        "key": "skill_group",
+                        "is_human_attribute": false,
+                        "id": "2e129bb4-521b-4576-a850-e0f04573b91d",
+                        "level": 3,
+                        "user_description": "Finance and commerce expertise",
+                        "options_source": "Class Template",
+                        "cost": 0,
+                        "sources": [
+                            "3e81b5a5-d15e-4c50-90be-639fed94ae65"
+                        ]
+                    }
+                },
+                {
+                    "field": "attribute_add",
+                    "attribute_id": "5ab22267-fdd2-4df3-a4d3-2fc032d04c37",
+                    "attribute_data": {
+                        "name": "Skill Group: Social (Field)",
+                        "source": "BESM4e",
+                        "description": "Represents training or natural talent in a broad skill field. Skill Groups are divided into Background, Field, and Action categories, each with a different cost per level. Each Skill Group is treated as a separate Attribute.",
+                        "relevant_stat": "Body, Mind, or Soul",
+                        "cost_per_level": null,
+                        "cost_map": {
+                            "Background": 1,
+                            "Field": 2,
+                            "Action": 3
+                        },
+                        "dynamic_cost_category": "category",
+                        "user_input_required": [
+                            {
+                                "field_type": "dropdown",
+                                "label": "Skill Group Category",
+                                "key": "category",
+                                "options": [
+                                    "Background",
+                                    "Field",
+                                    "Action"
+                                ]
+                            },
+                            {
+                                "field_type": "dropdown",
+                                "label": "Skill Group Name",
+                                "key": "skill_group_name",
+                                "options": [
+                                    "Academic",
+                                    "Artistic",
+                                    "Domestic",
+                                    "Occupation",
+                                    "Business",
+                                    "Social",
+                                    "Street",
+                                    "Technical",
+                                    "Adventuring",
+                                    "Detective",
+                                    "Military",
+                                    "Scientific"
+                                ]
+                            }
+                        ],
+                        "levels": {
+                            "1": "Developing - Gaining proficiency through regular application",
+                            "2": "Trained - Moderate training and practice",
+                            "3": "Expert - Significant training and practice",
+                            "4": "Veteran - Extensive training and practice",
+                            "5": "Master - Exhaustive training and practice",
+                            "6": "Grand Master - Unparalleled ability and knowledge"
+                        },
+                        "key": "skill_group",
+                        "is_human_attribute": false,
+                        "id": "5ab22267-fdd2-4df3-a4d3-2fc032d04c37",
+                        "level": 2,
+                        "user_description": "Interpersonal and negotiation skills",
+                        "options_source": "Class Template",
+                        "cost": 0,
+                        "sources": [
+                            "3e81b5a5-d15e-4c50-90be-639fed94ae65"
+                        ]
+                    }
+                },
+                {
+                    "field": "attribute_add",
+                    "attribute_id": "66543a1a-bca2-43cf-b030-2b7474bf3f09",
+                    "attribute_data": {
+                        "name": "Skill Group: Street (Field)",
+                        "source": "BESM4e",
+                        "description": "Represents training or natural talent in a broad skill field. Skill Groups are divided into Background, Field, and Action categories, each with a different cost per level. Each Skill Group is treated as a separate Attribute.",
+                        "relevant_stat": "Body, Mind, or Soul",
+                        "cost_per_level": null,
+                        "cost_map": {
+                            "Background": 1,
+                            "Field": 2,
+                            "Action": 3
+                        },
+                        "dynamic_cost_category": "category",
+                        "user_input_required": [
+                            {
+                                "field_type": "dropdown",
+                                "label": "Skill Group Category",
+                                "key": "category",
+                                "options": [
+                                    "Background",
+                                    "Field",
+                                    "Action"
+                                ]
+                            },
+                            {
+                                "field_type": "dropdown",
+                                "label": "Skill Group Name",
+                                "key": "skill_group_name",
+                                "options": [
+                                    "Academic",
+                                    "Artistic",
+                                    "Domestic",
+                                    "Occupation",
+                                    "Business",
+                                    "Social",
+                                    "Street",
+                                    "Technical",
+                                    "Adventuring",
+                                    "Detective",
+                                    "Military",
+                                    "Scientific"
+                                ]
+                            }
+                        ],
+                        "levels": {
+                            "1": "Developing - Gaining proficiency through regular application",
+                            "2": "Trained - Moderate training and practice",
+                            "3": "Expert - Significant training and practice",
+                            "4": "Veteran - Extensive training and practice",
+                            "5": "Master - Exhaustive training and practice",
+                            "6": "Grand Master - Unparalleled ability and knowledge"
+                        },
+                        "key": "skill_group",
+                        "is_human_attribute": false,
+                        "id": "66543a1a-bca2-43cf-b030-2b7474bf3f09",
+                        "level": 2,
+                        "user_description": "Underground markets and street connections",
+                        "options_source": "Class Template",
+                        "cost": 0,
+                        "sources": [
+                            "3e81b5a5-d15e-4c50-90be-639fed94ae65"
+                        ]
+                    }
+                },
+                {
+                    "field": "attribute_add",
+                    "attribute_id": "0a893463-6cb2-423a-b850-98ec500a26a4",
+                    "attribute_data": {
+                        "name": "Skill Group: Technical (Field)",
+                        "source": "BESM4e",
+                        "description": "Represents training or natural talent in a broad skill field. Skill Groups are divided into Background, Field, and Action categories, each with a different cost per level. Each Skill Group is treated as a separate Attribute.",
+                        "relevant_stat": "Body, Mind, or Soul",
+                        "cost_per_level": null,
+                        "cost_map": {
+                            "Background": 1,
+                            "Field": 2,
+                            "Action": 3
+                        },
+                        "dynamic_cost_category": "category",
+                        "user_input_required": [
+                            {
+                                "field_type": "dropdown",
+                                "label": "Skill Group Category",
+                                "key": "category",
+                                "options": [
+                                    "Background",
+                                    "Field",
+                                    "Action"
+                                ]
+                            },
+                            {
+                                "field_type": "dropdown",
+                                "label": "Skill Group Name",
+                                "key": "skill_group_name",
+                                "options": [
+                                    "Academic",
+                                    "Artistic",
+                                    "Domestic",
+                                    "Occupation",
+                                    "Business",
+                                    "Social",
+                                    "Street",
+                                    "Technical",
+                                    "Adventuring",
+                                    "Detective",
+                                    "Military",
+                                    "Scientific"
+                                ]
+                            }
+                        ],
+                        "levels": {
+                            "1": "Developing - Gaining proficiency through regular application",
+                            "2": "Trained - Moderate training and practice",
+                            "3": "Expert - Significant training and practice",
+                            "4": "Veteran - Extensive training and practice",
+                            "5": "Master - Exhaustive training and practice",
+                            "6": "Grand Master - Unparalleled ability and knowledge"
+                        },
+                        "key": "skill_group",
+                        "is_human_attribute": false,
+                        "id": "0a893463-6cb2-423a-b850-98ec500a26a4",
+                        "level": 2,
+                        "user_description": "Technical knowledge of items and artifacts",
+                        "options_source": "Class Template",
+                        "cost": 0,
+                        "sources": [
+                            "3e81b5a5-d15e-4c50-90be-639fed94ae65"
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": "7da0055a-9a55-4e58-bb84-154c687bef78",
+            "type": "race",
+            "name": "Unnamed Template",
+            "changes": [
+                {
+                    "field": "race",
+                    "old_value": "",
+                    "new_value": "ASRAI"
+                },
+                {
+                    "field": "stat_Mind",
+                    "old_value": 4,
+                    "new_value": 5,
+                    "modifier": "+1"
+                },
+                {
+                    "field": "stat_Soul",
+                    "old_value": 4,
+                    "new_value": 6,
+                    "modifier": "+2"
+                },
+                {
+                    "field": "attribute_add",
+                    "attribute_id": "458074b0-fea1-446c-b991-d87d190d4af6",
+                    "attribute_data": {
+                        "name": "Dynamic Powers",
+                        "cost_per_level": 10,
+                        "relevant_stat": "Variable",
+                        "is_human_attribute": false,
+                        "description": "Gives story-driven power over a specific concept, natural force, or influence. Choose a category type and define what your character controls. Must be discussed with the GM.",
+                        "source": "BESM4e",
+                        "levels": {
+                            "1": "Minimal control over area",
+                            "2": "Minor control over area",
+                            "3": "Moderate control over area",
+                            "4": "Good control over area",
+                            "5": "Significant control over area",
+                            "6": "Major control over area"
+                        },
+                        "user_input_required": [
+                            {
+                                "label": "Category Type",
+                                "key": "category_type",
+                                "field_type": "select",
+                                "description": "Select the scope of influence your character has.",
+                                "options": [
+                                    "Minor",
+                                    "Major",
+                                    "Primal"
+                                ]
+                            },
+                            {
+                                "label": "Controlled Category",
+                                "key": "controlled_category",
+                                "field_type": "combo_editable",
+                                "description": "Enter the specific category your character controls.",
+                                "autocomplete_by_category": {
+                                    "Minor": [
+                                        "Always Being On Time",
+                                        "Always Dressed for the Occasion",
+                                        "Cats",
+                                        "Charm",
+                                        "Earth",
+                                        "Fashion",
+                                        "Fire",
+                                        "Friction",
+                                        "Having the Right Amount of Money",
+                                        "Insects",
+                                        "Keys",
+                                        "Lust",
+                                        "Making People Laugh",
+                                        "Nutrition",
+                                        "Pride",
+                                        "Protection",
+                                        "Shadow",
+                                        "Silence",
+                                        "Sunlight",
+                                        "Temperature",
+                                        "Water",
+                                        "Wind",
+                                        "Writing"
+                                    ],
+                                    "Major": [
+                                        "Animals",
+                                        "Cities",
+                                        "Communication",
+                                        "Computer Data",
+                                        "Drugs",
+                                        "Electricity",
+                                        "Fertility",
+                                        "Gravity",
+                                        "Health",
+                                        "Love",
+                                        "Magnetism",
+                                        "Manufacturing",
+                                        "Necromancy",
+                                        "Shapeshifting",
+                                        "Strength",
+                                        "Travel",
+                                        "Truth",
+                                        "Weapons",
+                                        "Weather"
+                                    ],
+                                    "Primal": [
+                                        "Chaos",
+                                        "Death",
+                                        "Dimensions",
+                                        "Dreams",
+                                        "Earth (as a cosmic force)",
+                                        "Force",
+                                        "Heaven",
+                                        "Hell",
+                                        "Law",
+                                        "Life",
+                                        "Magic",
+                                        "Math",
+                                        "Self",
+                                        "Stars",
+                                        "Thought",
+                                        "Time",
+                                        "War"
+                                    ]
+                                }
+                            }
+                        ],
+                        "key": "unknown_key",
+                        "id": "458074b0-fea1-446c-b991-d87d190d4af6",
+                        "level": 2,
+                        "user_description": "(Major: Natural Magic -1)",
+                        "options_source": "Race Template",
+                        "cost": 20,
+                        "sources": [
+                            "7da0055a-9a55-4e58-bb84-154c687bef78"
+                        ]
+                    }
+                },
+                {
+                    "field": "attribute_add",
+                    "attribute_id": "66c0cc8a-ee1c-442b-a0e0-eca35a9f7eb3",
+                    "attribute_data": {
+                        "name": "Energised",
+                        "cost_per_level": 1,
+                        "relevant_stat": null,
+                        "description": "Increases total Energy Points (EP) by 10 per level. Can be modified with Limiters to create a secondary conditional EP pool.",
+                        "source": "BESM4e",
+                        "levels": {
+                            "1": "+10 EP",
+                            "2": "+20 EP",
+                            "3": "+30 EP",
+                            "4": "+40 EP",
+                            "5": "+50 EP",
+                            "6": "+60 EP"
+                        },
+                        "key": "unknown_key",
+                        "is_human_attribute": false,
+                        "id": "66c0cc8a-ee1c-442b-a0e0-eca35a9f7eb3",
+                        "level": 2,
+                        "options_source": "Race Template",
+                        "cost": 2,
+                        "sources": [
+                            "7da0055a-9a55-4e58-bb84-154c687bef78"
+                        ]
+                    }
+                },
+                {
+                    "field": "attribute_add",
+                    "attribute_id": "d957a5f9-92b1-4aa8-b80f-274847dbb2d0",
+                    "attribute_data": {
+                        "name": "Flight",
+                        "cost_per_level": 3,
+                        "relevant_stat": "Body",
+                        "description": "Allows the character to fly through an atmosphere using any method such as wings, magic, or anti-gravity.",
+                        "source": "BESM4e",
+                        "levels": {
+                            "1": "Fly at speeds up to 10 kph",
+                            "2": "Fly at speeds up to 30 kph",
+                            "3": "Fly at speeds up to 100 kph",
+                            "4": "Fly at speeds up to 300 kph",
+                            "5": "Fly at speeds up to 1,000 kph",
+                            "6": "Fly at speeds up to 3,000 kph"
+                        },
+                        "key": "unknown_key",
+                        "is_human_attribute": false,
+                        "id": "d957a5f9-92b1-4aa8-b80f-274847dbb2d0",
+                        "level": 1,
+                        "options_source": "Race Template",
+                        "cost": 3,
+                        "sources": [
+                            "7da0055a-9a55-4e58-bb84-154c687bef78"
+                        ]
+                    }
+                },
+                {
+                    "field": "attribute_add",
+                    "attribute_id": "3e8707c0-749b-4baa-b542-462effa4c523",
+                    "attribute_data": {
+                        "name": "Sixth Sense",
+                        "cost_per_level": 1,
+                        "relevant_stat": "Soul",
+                        "source": "BESM4e",
+                        "description": "Allows character to sense phenomena others cannot, such as emotions, magic, danger.",
+                        "levels": {
+                            "1": "Sense 1 type of phenomenon",
+                            "2": "Sense 2 types of phenomena",
+                            "3": "Sense 3 types of phenomena",
+                            "4": "Sense 4 types of phenomena",
+                            "5": "Sense 5 types of phenomena",
+                            "6": "Sense 6 types of phenomena"
+                        },
+                        "key": "unknown_key",
+                        "is_human_attribute": false,
+                        "id": "3e8707c0-749b-4baa-b542-462effa4c523",
+                        "level": 1,
+                        "user_description": "(Danger)",
+                        "options_source": "Race Template",
+                        "cost": 1,
+                        "sources": [
+                            "7da0055a-9a55-4e58-bb84-154c687bef78"
+                        ]
+                    }
+                },
+                {
+                    "field": "attribute_add",
+                    "attribute_id": "b21da1b4-4f8f-4d82-b39e-705e7b2aa491",
+                    "attribute_data": {
+                        "name": "Skill Group",
+                        "source": "BESM4e",
+                        "description": "Represents training or natural talent in a broad skill field. Skill Groups are divided into Background, Field, and Action categories, each with a different cost per level. Each Skill Group is treated as a separate Attribute.",
+                        "relevant_stat": "Body, Mind, or Soul",
+                        "cost_per_level": null,
+                        "cost_map": {
+                            "Background": 1,
+                            "Field": 2,
+                            "Action": 3
+                        },
+                        "dynamic_cost_category": "category",
+                        "user_input_required": [
+                            {
+                                "field_type": "dropdown",
+                                "label": "Skill Group Category",
+                                "key": "category",
+                                "options": [
+                                    "Background",
+                                    "Field",
+                                    "Action"
+                                ]
+                            },
+                            {
+                                "field_type": "dropdown",
+                                "label": "Skill Group Name",
+                                "key": "skill_group_name",
+                                "options": [
+                                    "Academic",
+                                    "Artistic",
+                                    "Domestic",
+                                    "Occupation",
+                                    "Business",
+                                    "Social",
+                                    "Street",
+                                    "Technical",
+                                    "Adventuring",
+                                    "Detective",
+                                    "Military",
+                                    "Scientific"
+                                ]
+                            }
+                        ],
+                        "levels": {
+                            "1": "Developing - Gaining proficiency through regular application",
+                            "2": "Trained - Moderate training and practice",
+                            "3": "Expert - Significant training and practice",
+                            "4": "Veteran - Extensive training and practice",
+                            "5": "Master - Exhaustive training and practice",
+                            "6": "Grand Master - Unparalleled ability and knowledge"
+                        },
+                        "key": "unknown_key",
+                        "is_human_attribute": false,
+                        "id": "b21da1b4-4f8f-4d82-b39e-705e7b2aa491",
+                        "level": 1,
+                        "user_description": "(Domestic)",
+                        "options_source": "Race Template",
+                        "cost": 0,
+                        "sources": [
+                            "7da0055a-9a55-4e58-bb84-154c687bef78"
+                        ]
+                    }
+                },
+                {
+                    "field": "attribute_add",
+                    "attribute_id": "4f1aa817-4196-40bb-b20b-7f8ec4a5e99b",
+                    "attribute_data": {
+                        "name": "Special Movement",
+                        "cost_per_level": 1,
+                        "relevant_stat": "Body",
+                        "description": "Grants unique movement types such as Wall-Crawling, Zen Direction, Swinging, or Water-Walking. Some types count as two abilities due to enhanced utility.",
+                        "source": "BESM4e",
+                        "levels": {
+                            "1": "1 Special Movement ability",
+                            "2": "2 Special Movement abilities",
+                            "3": "3 Special Movement abilities",
+                            "4": "4 Special Movement abilities",
+                            "5": "5 Special Movement abilities",
+                            "6": "6 Special Movement abilities"
+                        },
+                        "user_input_required": [
+                            {
+                                "label": "Movement Types",
+                                "key": "movement_types",
+                                "field_type": "list",
+                                "description": "List the Special Movement abilities the character possesses.",
+                                "autocomplete_options": [
+                                    "Balance",
+                                    "Cat-Like",
+                                    "Fast",
+                                    "Light-Footed",
+                                    "Slithering",
+                                    "Swinging",
+                                    "Untrackable",
+                                    "Wall-Bouncing",
+                                    "Wall-Crawling",
+                                    "Water-Walking",
+                                    "Zen Direction"
+                                ]
+                            }
+                        ],
+                        "key": "unknown_key",
+                        "is_human_attribute": false,
+                        "id": "4f1aa817-4196-40bb-b20b-7f8ec4a5e99b",
+                        "level": 1,
+                        "user_description": "(Zen Direction)",
+                        "options_source": "Race Template",
+                        "cost": 1,
+                        "sources": [
+                            "7da0055a-9a55-4e58-bb84-154c687bef78"
+                        ]
+                    }
+                }
+            ]
+        }
+    ]
+}

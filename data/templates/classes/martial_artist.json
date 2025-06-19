@@ -118,30 +118,38 @@
       "options_source": "Class Template"
     },
     {
-      "custom_name": "Skill Group",
+      "custom_name": "Skill Group: Adventuring (Action)",
       "key": "skill_group",
       "level": 2,
-      "user_description": null,
+      "user_description": "Physical conditioning and survival skills",
       "enhancements": [],
       "limiters": [],
       "options": [
         "Adventuring"
       ],
       "user_input": null,
-      "options_source": "Class Template"
+      "options_source": "Class Template",
+      "custom_fields": {
+        "category": "Action",
+        "skill_group_name": "Adventuring"
+      }
     },
     {
-      "custom_name": "Skill Group",
+      "custom_name": "Skill Group: Street (Field)",
       "key": "skill_group",
       "level": 1,
-      "user_description": null,
+      "user_description": "Streetwise knowledge and contacts",
       "enhancements": [],
       "limiters": [],
       "options": [
         "Street"
       ],
       "user_input": null,
-      "options_source": "Class Template"
+      "options_source": "Class Template",
+      "custom_fields": {
+        "category": "Field",
+        "skill_group_name": "Street"
+      }
     },
     {
       "custom_name": "Tough",

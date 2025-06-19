@@ -138,19 +138,23 @@
       "rank": null
     },
     {
-      "custom_name": "Skill Group",
+      "custom_name": "Skill Group: Adventuring (Action)",
       "key": "skill_group",
       "level": 2,
-      "user_description": "(Adventuring)",
+      "user_description": "Wilderness survival and tactical scouting",
       "enhancements": [],
       "limiters": [],
       "options": [],
       "user_input": null,
       "options_source": "Class Template",
       "valid": true,
-      "name": "Skill Group",
-      "details": "(Adventuring)",
-      "rank": null
+      "name": "Skill Group: Adventuring (Action)",
+      "details": "Wilderness survival and tactical scouting",
+      "rank": null,
+      "custom_fields": {
+        "category": "Action",
+        "skill_group_name": "Adventuring"
+      }
     },
     {
       "custom_name": "Transfer",

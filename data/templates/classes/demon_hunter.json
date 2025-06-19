@@ -136,43 +136,55 @@
       "options_source": "Class Template"
     },
     {
-      "custom_name": "Skill Group",
+      "custom_name": "Skill Group: Adventuring (Action)",
       "key": "skill_group",
       "level": 1,
-      "user_description": null,
+      "user_description": "Survival and tracking skills",
       "enhancements": [],
       "limiters": [],
       "options": [
         "Adventuring"
       ],
       "user_input": null,
-      "options_source": "Class Template"
+      "options_source": "Class Template",
+      "custom_fields": {
+        "category": "Action",
+        "skill_group_name": "Adventuring"
+      }
     },
     {
-      "custom_name": "Skill Group",
+      "custom_name": "Skill Group: Military (Action)",
       "key": "skill_group",
       "level": 1,
-      "user_description": null,
+      "user_description": "Combat and tactical knowledge",
       "enhancements": [],
       "limiters": [],
       "options": [
         "Military"
       ],
       "user_input": null,
-      "options_source": "Class Template"
+      "options_source": "Class Template",
+      "custom_fields": {
+        "category": "Action",
+        "skill_group_name": "Military"
+      }
     },
     {
-      "custom_name": "Skill Group",
+      "custom_name": "Skill Group: Street (Field)",
       "key": "skill_group",
       "level": 1,
-      "user_description": null,
+      "user_description": "Urban navigation and contacts",
       "enhancements": [],
       "limiters": [],
       "options": [
         "Street"
       ],
       "user_input": null,
-      "options_source": "Class Template"
+      "options_source": "Class Template",
+      "custom_fields": {
+        "category": "Field",
+        "skill_group_name": "Street"
+      }
     }
   ],
   "defects": [

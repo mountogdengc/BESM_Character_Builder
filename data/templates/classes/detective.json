@@ -75,56 +75,72 @@
       "options_source": "Class Template"
     },
     {
-      "custom_name": "Skill Group",
+      "custom_name": "Skill Group: Adventuring (Action)",
       "key": "skill_group",
       "level": 1,
-      "user_description": null,
+      "user_description": "Investigation techniques in the field",
       "enhancements": [],
       "limiters": [],
       "options": [
         "Adventuring"
       ],
       "user_input": null,
-      "options_source": "Class Template"
+      "options_source": "Class Template",
+      "custom_fields": {
+        "category": "Action",
+        "skill_group_name": "Adventuring"
+      }
     },
     {
-      "custom_name": "Skill Group",
+      "custom_name": "Skill Group: Social (Field)",
       "key": "skill_group",
       "level": 1,
-      "user_description": null,
+      "user_description": "Interview and information gathering skills",
       "enhancements": [],
       "limiters": [],
       "options": [
         "Social"
       ],
       "user_input": null,
-      "options_source": "Class Template"
+      "options_source": "Class Template",
+      "custom_fields": {
+        "category": "Field",
+        "skill_group_name": "Social"
+      }
     },
     {
-      "custom_name": "Skill Group",
+      "custom_name": "Skill Group: Street (Field)",
       "key": "skill_group",
       "level": 2,
-      "user_description": null,
+      "user_description": "Contacts and information networks",
       "enhancements": [],
       "limiters": [],
       "options": [
         "Street"
       ],
       "user_input": null,
-      "options_source": "Class Template"
+      "options_source": "Class Template",
+      "custom_fields": {
+        "category": "Field",
+        "skill_group_name": "Street"
+      }
     },
     {
-      "custom_name": "Skill Group",
+      "custom_name": "Skill Group: Technical (Field)",
       "key": "skill_group",
       "level": 1,
-      "user_description": null,
+      "user_description": "Forensic and analytical techniques",
       "enhancements": [],
       "limiters": [],
       "options": [
         "Technical"
       ],
       "user_input": null,
-      "options_source": "Class Template"
+      "options_source": "Class Template",
+      "custom_fields": {
+        "category": "Field",
+        "skill_group_name": "Technical"
+      }
     },
     {
       "custom_name": "Wealth",

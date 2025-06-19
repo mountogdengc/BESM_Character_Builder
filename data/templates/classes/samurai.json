@@ -162,64 +162,80 @@
       "rank": null
     },
     {
-      "custom_name": "Skill Group",
+      "custom_name": "Skill Group: Adventuring (Action)",
       "key": "skill_group",
       "level": 2,
-      "user_description": "(Adventuring)",
+      "user_description": "Exploration and battlefield tactics",
       "enhancements": [],
       "limiters": [],
       "options": [],
       "user_input": null,
       "options_source": "Class Template",
       "valid": true,
-      "name": "Skill Group",
-      "details": "(Adventuring)",
-      "rank": null
+      "name": "Skill Group: Adventuring (Action)",
+      "details": "Exploration and battlefield tactics",
+      "rank": null,
+      "custom_fields": {
+        "category": "Action",
+        "skill_group_name": "Adventuring"
+      }
     },
     {
-      "custom_name": "Skill Group",
+      "custom_name": "Skill Group: Artistic (Background)",
       "key": "skill_group",
       "level": 2,
-      "user_description": "(Artistic)",
+      "user_description": "Calligraphy and artistic disciplines",
       "enhancements": [],
       "limiters": [],
       "options": [],
       "user_input": null,
       "options_source": "Class Template",
       "valid": true,
-      "name": "Skill Group",
-      "details": "(Artistic)",
-      "rank": null
+      "name": "Skill Group: Artistic (Background)",
+      "details": "Calligraphy and artistic disciplines",
+      "rank": null,
+      "custom_fields": {
+        "category": "Background",
+        "skill_group_name": "Artistic"
+      }
     },
     {
-      "custom_name": "Skill Group",
+      "custom_name": "Skill Group: Domestic (Background)",
       "key": "skill_group",
       "level": 2,
-      "user_description": "(Domestic)",
+      "user_description": "Household management and etiquette",
       "enhancements": [],
       "limiters": [],
       "options": [],
       "user_input": null,
       "options_source": "Class Template",
       "valid": true,
-      "name": "Skill Group",
-      "details": "(Domestic)",
-      "rank": null
+      "name": "Skill Group: Domestic (Background)",
+      "details": "Household management and etiquette",
+      "rank": null,
+      "custom_fields": {
+        "category": "Background",
+        "skill_group_name": "Domestic"
+      }
     },
     {
-      "custom_name": "Skill Group",
+      "custom_name": "Skill Group: Social (Field)",
       "key": "skill_group",
       "level": 2,
-      "user_description": "(Social)",
+      "user_description": "Court politics and negotiations",
       "enhancements": [],
       "limiters": [],
       "options": [],
       "user_input": null,
       "options_source": "Class Template",
       "valid": true,
-      "name": "Skill Group",
-      "details": "(Social)",
-      "rank": null
+      "name": "Skill Group: Social (Field)",
+      "details": "Court politics and negotiations",
+      "rank": null,
+      "custom_fields": {
+        "category": "Field",
+        "skill_group_name": "Social"
+      }
     },
     {
       "custom_name": "Special Movement",

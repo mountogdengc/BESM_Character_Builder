@@ -117,19 +117,23 @@
       "rank": null
     },
     {
-      "custom_name": "Skill Group",
+      "custom_name": "Skill Group: Street (Field)",
       "key": "skill_group",
       "level": 1,
-      "user_description": "(Street)",
+      "user_description": "Stealth and urban navigation",
       "enhancements": [],
       "limiters": [],
       "options": [],
       "user_input": null,
       "options_source": "Class Template",
       "valid": true,
-      "name": "Skill Group",
-      "details": "(Street)",
-      "rank": null
+      "name": "Skill Group: Street (Field)",
+      "details": "Stealth and urban navigation",
+      "rank": null,
+      "custom_fields": {
+        "category": "Field",
+        "skill_group_name": "Street"
+      }
     },
     {
       "custom_name": "Tough",

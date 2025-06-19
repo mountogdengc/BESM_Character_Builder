@@ -671,13 +671,13 @@ def apply_defects(app, template_data, template_changes):
             
             print(f"[DEBUG] Processing defect: {defect_name} key: {defect_key} rank: {defect_rank}")
             
+            # Initialize full_defect before using it
+            full_defect = None
+            
             # Debug the cp_refund values
             template_cp_refund = defect.get("cp_refund")
             full_defect_cp_refund = full_defect.get("cp_refund") if full_defect else None
             print(f"[DEBUG] CP refund values - Template: {template_cp_refund}, Full defect: {full_defect_cp_refund}")
-            
-            # Fetch full defect details from defects.json using key if available
-            full_defect = None
             if defect_key and hasattr(app, 'defects_by_key') and defect_key in app.defects_by_key:
                 full_defect = app.defects_by_key.get(defect_key, {})
                 print(f"[DEBUG] Found full defect by key: {defect_key}")

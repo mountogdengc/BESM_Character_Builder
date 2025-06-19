@@ -72,94 +72,118 @@
       "rank": null
     },
     {
-      "custom_name": "Skill Group",
+      "custom_name": "Skill Group: Academic (Background)",
       "key": "skill_group",
       "level": 2,
-      "user_description": "(Academic)",
+      "user_description": "Educational knowledge and research capabilities",
       "enhancements": [],
       "limiters": [],
       "options": [],
       "user_input": null,
       "options_source": "Class Template",
       "valid": true,
-      "name": "Skill Group",
-      "details": "(Academic)",
-      "rank": null
+      "name": "Skill Group: Academic (Background)",
+      "details": "Educational knowledge and research capabilities",
+      "rank": null,
+      "custom_fields": {
+        "category": "Background",
+        "skill_group_name": "Academic"
+      }
     },
     {
-      "custom_name": "Skill Group",
+      "custom_name": "Skill Group: Adventuring (Action)",
       "key": "skill_group",
       "level": 1,
-      "user_description": "(Adventuring)",
+      "user_description": "Physical navigation and survival skills",
       "enhancements": [],
       "limiters": [],
       "options": [],
       "user_input": null,
       "options_source": "Class Template",
       "valid": true,
-      "name": "Skill Group",
-      "details": "(Adventuring)",
-      "rank": null
+      "name": "Skill Group: Adventuring (Action)",
+      "details": "Physical navigation and survival skills",
+      "rank": null,
+      "custom_fields": {
+        "category": "Action",
+        "skill_group_name": "Adventuring"
+      }
     },
     {
-      "custom_name": "Skill Group",
+      "custom_name": "Skill Group: Occupation (Background)",
       "key": "skill_group",
       "level": 5,
-      "user_description": "(Occupation: Thief)",
+      "user_description": "Professional thieving expertise",
       "enhancements": [],
       "limiters": [],
       "options": [],
       "user_input": null,
       "options_source": "Class Template",
       "valid": true,
-      "name": "Skill Group",
-      "details": "(Occupation: Thief)",
-      "rank": null
+      "name": "Skill Group: Occupation (Background)",
+      "details": "Professional thieving expertise",
+      "rank": null,
+      "custom_fields": {
+        "category": "Background",
+        "skill_group_name": "Occupation"
+      }
     },
     {
-      "custom_name": "Skill Group",
+      "custom_name": "Skill Group: Social (Field)",
       "key": "skill_group",
       "level": 3,
-      "user_description": "(Social)",
+      "user_description": "Interpersonal and deception skills",
       "enhancements": [],
       "limiters": [],
       "options": [],
       "user_input": null,
       "options_source": "Class Template",
       "valid": true,
-      "name": "Skill Group",
-      "details": "(Social)",
-      "rank": null
+      "name": "Skill Group: Social (Field)",
+      "details": "Interpersonal and deception skills",
+      "rank": null,
+      "custom_fields": {
+        "category": "Field",
+        "skill_group_name": "Social"
+      }
     },
     {
-      "custom_name": "Skill Group",
+      "custom_name": "Skill Group: Street (Field)",
       "key": "skill_group",
       "level": 3,
-      "user_description": "(Street)",
+      "user_description": "Underground connections and knowledge",
       "enhancements": [],
       "limiters": [],
       "options": [],
       "user_input": null,
       "options_source": "Class Template",
       "valid": true,
-      "name": "Skill Group",
-      "details": "(Street)",
-      "rank": null
+      "name": "Skill Group: Street (Field)",
+      "details": "Underground connections and knowledge",
+      "rank": null,
+      "custom_fields": {
+        "category": "Field",
+        "skill_group_name": "Street"
+      }
     },
     {
-      "custom_name": "Skill Group",
+      "custom_name": "Skill Group: Technical (Field)",
       "key": "skill_group",
       "level": 2,
-      "user_description": "(Technical)",
+      "user_description": "Security systems and tools knowledge",
       "enhancements": [],
       "limiters": [],
       "options": [],
       "user_input": null,
       "options_source": "Class Template",
       "valid": true,
-      "name": "Skill Group",
-      "details": "(Technical)",
-      "rank": null
+      "name": "Skill Group: Technical (Field)",
+      "details": "Security systems and tools knowledge",
+      "rank": null,
+      "custom_fields": {
+        "category": "Field",
+        "skill_group_name": "Technical"
+      }
     },
     {
       "custom_name": "Wealth",

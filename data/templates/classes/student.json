@@ -87,10 +87,10 @@
       "rank": null
     },
     {
-      "custom_name": "Skill Group",
+      "custom_name": "Skill Group: Occupation (Background)",
       "key": "skill_group",
       "level": 2,
-      "user_description": "(Occupation: Student)",
+      "user_description": "Student-related skills",
       "enhancements": [],
       "limiters": [],
       "options": [],
@@ -98,8 +98,12 @@
       "options_source": "Class Template",
       "valid": true,
       "name": "Skill Group",
-      "details": "(Occupation: Student)",
-      "rank": null
+      "details": null,
+      "rank": null,
+      "custom_fields": {
+        "category": "Background",
+        "skill_group_name": "Occupation"
+      }
     },
     {
       "custom_name": "Unknown Power",
