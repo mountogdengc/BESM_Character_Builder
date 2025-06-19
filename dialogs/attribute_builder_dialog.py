@@ -359,17 +359,55 @@ class AttributeBuilderDialog(QDialog):
         # Update cost per level
         self.attribute_cost_per_level = attr_data.get("cost_per_level", 1)
         
+        # Handle dynamic cost map for Skill Group and other attributes with variable costs
+        if "dynamic_cost" in attr_data:
+            self.dynamic_cost_map = attr_data["dynamic_cost"]
+            
+            # For Skill Group, the category determines the cost
+            if attr_name == "Skill Group":
+                self.dynamic_cost_category_key = "category"
+            else:
+                # Other attributes might use different keys
+                self.dynamic_cost_category_key = ""
+        else:
+            self.dynamic_cost_map = {}
+            self.dynamic_cost_category_key = ""
+        
         # Clear and recreate custom fields
         self.clear_custom_fields()
         
+        # Reset custom field trackers
+        self.custom_input_widgets = {}
+        
         # Add custom fields if any
-        if "custom_fields" in attr_data and isinstance(attr_data["custom_fields"], list):
-            for field in attr_data["custom_fields"]:
+        user_input_fields = attr_data.get("user_input_required", [])
+        if user_input_fields and len(user_input_fields) > 0:
+            for field in user_input_fields:
                 self.add_custom_field_widget(field)
                 
-        # Show/hide the custom fields group
-        has_custom_fields = "custom_fields" in attr_data and len(attr_data["custom_fields"]) > 0
-        self.custom_field_group.setVisible(has_custom_fields)
+            # Show the custom fields group
+            self.custom_field_group.setVisible(True)
+            
+            # For Skill Group, connect signals to update the name
+            if attr_name == "Skill Group":
+                print("Setting up Skill Group signal connections")
+                try:
+                    cat_widget = self.custom_input_widgets.get("category")
+                    name_widget = self.custom_input_widgets.get("skill_group_name")
+                    
+                    if cat_widget and hasattr(cat_widget, 'currentTextChanged'):
+                        cat_widget.currentTextChanged.connect(self._update_skill_group_name)
+                        
+                    if name_widget and hasattr(name_widget, 'currentTextChanged'):
+                        name_widget.currentTextChanged.connect(self._update_skill_group_name)
+                        
+                    # Trigger an initial update of the name
+                    QTimer.singleShot(100, self._update_skill_group_name)
+                except Exception as e:
+                    print(f"Error connecting skill group signals: {str(e)}")
+        else:
+            # Hide the custom fields group if no fields
+            self.custom_field_group.setVisible(False)
         
         # Update the CP cost
         self.update_cp_cost()
@@ -382,20 +420,36 @@ class AttributeBuilderDialog(QDialog):
     def add_custom_field_widget(self, field):
         """Add a widget for a custom field"""
         field_name = field.get("name", "")
-        field_type = field.get("type", "text")
+        field_key = field.get("key", field_name)  # Use key if available, otherwise name
+        field_type = field.get("type", field.get("field_type", "text"))  # Check both type and field_type
         field_label = field.get("label", field_name)
         field_options = field.get("options", [])
         
-        if field_type == "select":
-            # Create dropdown for select fields
+        print(f"Creating field: {field_key}, type: {field_type}, label: {field_label}")
+        
+        # Create appropriate widget based on field type
+        if field_type in ["select", "dropdown"]:
+            # Create dropdown for select/dropdown fields
             widget = QComboBox()
             widget.addItems(field_options)
+            print(f"Added dropdown with options: {field_options}")
+        elif field_type == "combo_editable":
+            # Create editable combo box
+            widget = QComboBox()
+            widget.setEditable(True)
+            widget.addItems(field_options)
+        elif field_type == "list":
+            # Create multiline text edit for list input
+            widget = QTextEdit()
+            widget.setMaximumHeight(100)
         else:
             # Default to text input
             widget = QLineEdit()
-            
-        # Store reference to widget
-        self.custom_input_widgets[field_name] = widget
+            if "placeholder" in field:
+                widget.setPlaceholderText(field.get("placeholder"))
+        
+        # Store reference to widget using the key
+        self.custom_input_widgets[field_key] = widget
         
         # Add to form layout
         self.custom_field_form.addRow(field_label + ":", widget)
@@ -546,6 +600,64 @@ class AttributeBuilderDialog(QDialog):
 
     def _track_custom_name_edit(self):
         self._custom_name_edited = True
+        
+    def _update_skill_group_name(self):
+        """Update the custom name field based on the selections in the skill group dropdowns.
+        Also sets the skill_group_type in custom fields for cost calculation."""
+        try:
+            # Skip if custom name has been manually edited
+            if hasattr(self, '_custom_name_edited') and self._custom_name_edited:
+                return  # don't overwrite user input
+            
+            # Get references to the category and name widgets
+            cat_widget = self.custom_input_widgets.get("category")
+            name_widget = self.custom_input_widgets.get("skill_group_name")
+            
+            # If the widgets don't exist, create them with default values
+            # This is a fallback to prevent crashes
+            if not cat_widget:
+                print("Warning: category widget not found, creating one")
+                cat_widget = QComboBox()
+                cat_widget.addItems(["Background", "Field", "Action"])
+                self.custom_input_widgets["category"] = cat_widget
+                
+            if not name_widget:
+                print("Warning: skill_group_name widget not found, creating one")
+                name_widget = QComboBox()
+                name_widget.addItems([
+                    "Academic", "Artistic", "Domestic", "Occupation", 
+                    "Business", "Social", "Street", "Technical", 
+                    "Adventuring", "Detective", "Military", "Scientific"
+                ])
+                self.custom_input_widgets["skill_group_name"] = name_widget
+            
+            # Get the selected values (with fallbacks)
+            category = cat_widget.currentText() if hasattr(cat_widget, 'currentText') else ""
+            group_name = name_widget.currentText() if hasattr(name_widget, 'currentText') else ""
+            
+            # Debug output
+            print(f"Skill Group Update: Category={category}, Name={group_name}")
+            
+            # Check that we have valid selections before updating the name
+            if category and group_name:
+                # Update the custom name field
+                self.custom_name_input.setText(f"Skill Group: {group_name} ({category})")
+                
+                # Store the category as skill_group_type for cost calculation
+                if "custom_fields" not in self.__dict__:
+                    self.custom_fields = {}
+                self.custom_fields["skill_group_type"] = category
+                
+                # Update the cost based on the category
+                try:
+                    self.update_cp_cost()
+                except Exception as cost_error:
+                    print(f"Error updating cost: {str(cost_error)}")
+        except Exception as e:
+            # Provide detailed error information without crashing
+            print(f"Error in _update_skill_group_name: {str(e)}")
+            import traceback
+            traceback.print_exc()
 
     def show_power_pack_dialog(self):
         """Show dialog to select and apply a power pack"""
