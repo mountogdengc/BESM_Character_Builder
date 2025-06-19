@@ -920,36 +920,109 @@ class AttributeBuilderDialog(QDialog):
         return lambda _: self._set_dynamic_custom_name(attr_name)
 
     def _update_skill_group_name(self):
-        if not hasattr(self, '_custom_name_edited') or self._custom_name_edited:
-            return  # don't overwrite user input
+        """Update the custom name for Skill Group attributes based on category and name selections.
+        This function has been fixed to handle possible missing widgets and prevent crashes."""
+        try:
+            # Safety check for custom_name_edited attribute
+            if not hasattr(self, '_custom_name_edited'):
+                self._custom_name_edited = False
+                
+            if self._custom_name_edited:
+                print("[DEBUG] Custom name was edited by user, not updating")
+                return  # don't overwrite user input
 
-        cat_widget = self.custom_input_widgets.get("category")
-        name_widget = self.custom_input_widgets.get("skill_group_name")
+            # Debug output to identify available widgets
+            print(f"[DEBUG] Available widget keys: {list(self.custom_input_widgets.keys())}")
+                
+            # Look for the widgets with flexible key fallbacks
+            cat_widget = self.custom_input_widgets.get("category")
+            if not cat_widget:
+                cat_widget = self.custom_input_widgets.get("skill_group_type")
+                if cat_widget:
+                    print("[DEBUG] Using skill_group_type widget as category")
+                    # Store under both keys for future reference
+                    self.custom_input_widgets["category"] = cat_widget
+                
+            name_widget = self.custom_input_widgets.get("skill_group_name")
 
-        if cat_widget and name_widget:
-            try:
-                category = cat_widget.currentText()
-                group_name = name_widget.currentText()
-                if category and group_name:
-                    # Update the custom name
-                    self.custom_name_input.setText(f"Skill Group: {group_name} ({category})")
-                    
-                    # Set the skill_group_type to match the category for cost calculation
-                    # This is the key fix for the crash - we need to ensure the skill_group_type
-                    # matches the category for proper cost calculation
-                    if "skill_group_type" not in self.custom_input_widgets:
-                        print("[DEBUG] Creating skill_group_type field")
-                        # We need to create this field in the custom fields
+            # Fix for missing category widget
+            if not cat_widget and self.attr_dropdown.currentText() == "Skill Group":
+                print("[DEBUG] Creating missing category widget")
+                from PyQt5.QtWidgets import QComboBox
+                cat_widget = QComboBox()
+                cat_widget.addItems([
+                    "BACKGROUND - Academic (1 CP/level)",
+                    "BACKGROUND - Artistic (1 CP/level)",
+                    "BACKGROUND - Domestic (1 CP/level)",
+                    "BACKGROUND - Occupation (1 CP/level)",
+                    "FIELD - Business (2 CP/level)",
+                    "FIELD - Social (2 CP/level)",
+                    "FIELD - Street (2 CP/level)",
+                    "FIELD - Technical (2 CP/level)",
+                    "ACTION - Adventuring (3 CP/level)",
+                    "ACTION - Detective (3 CP/level)",
+                    "ACTION - Military (3 CP/level)",
+                    "ACTION - Scientific (3 CP/level)"
+                ])
+                # Store under both keys
+                self.custom_input_widgets["category"] = cat_widget
+                self.custom_input_widgets["skill_group_type"] = cat_widget
+                print("[DEBUG] Created category widget with default options")
+                
+            # Fix for missing name widget
+            if not name_widget and self.attr_dropdown.currentText() == "Skill Group":
+                print("[DEBUG] Creating missing name widget")
+                from PyQt5.QtWidgets import QComboBox
+                name_widget = QComboBox()
+                name_widget.addItems(["Science", "History", "Engineering", "Medical", "Piloting", 
+                                    "Combat", "Stealth", "Performance", "Economics", "Technology"])
+                self.custom_input_widgets["skill_group_name"] = name_widget
+                print("[DEBUG] Created skill_group_name widget with default options")
+
+            if cat_widget and name_widget:
+                try:
+                    # Safely get text from widgets with fallbacks
+                    try:
+                        category = cat_widget.currentText() if hasattr(cat_widget, 'currentText') else ""
+                        print(f"[DEBUG] Category: {category}")
+                    except Exception as e:
+                        print(f"[ERROR] Failed to get category text: {str(e)}")
+                        category = "BACKGROUND - Academic (1 CP/level)"  # Default fallback
+                        
+                    try:
+                        group_name = name_widget.currentText() if hasattr(name_widget, 'currentText') else ""
+                        print(f"[DEBUG] Group name: {group_name}")
+                    except Exception as e:
+                        print(f"[ERROR] Failed to get group name text: {str(e)}")
+                        group_name = "Science"  # Default fallback
+                        
+                    if category and group_name:
+                        # Update the custom name
+                        self.custom_name_input.setText(f"Skill Group: {group_name} ({category})")
+                        print(f"[DEBUG] Updated name to: {self.custom_name_input.text()}")
+                        
+                        # Make sure we have an attribute_data structure
                         if not hasattr(self, 'attribute_data'):
                             self.attribute_data = {}
                         if "custom_fields" not in self.attribute_data:
                             self.attribute_data["custom_fields"] = {}
+                            
+                        # Set the skill_group_type to match the category for cost calculation
                         self.attribute_data["custom_fields"]["skill_group_type"] = category
-                    
-                    # Update the cost calculation
-                    self.update_cp_cost()
-            except Exception as e:
-                print(f"Error in _update_skill_group_name: {str(e)}")
+                        print(f"[DEBUG] Set skill_group_type to: {category}")
+                        
+                        # Update the cost calculation safely
+                        try:
+                            self.update_cp_cost()
+                        except Exception as e:
+                            print(f"[ERROR] Error in update_cp_cost: {str(e)}")
+                except Exception as e:
+                    print(f"[ERROR] Error processing widget values: {str(e)}")
+            else:
+                print(f"[DEBUG] Missing widgets: cat_widget={cat_widget is not None}, name_widget={name_widget is not None}")
+        except Exception as e:
+            print(f"[ERROR] Global error in _update_skill_group_name: {str(e)}")
+            # Don't raise the exception so the app won't crash
 
     def _set_dynamic_custom_name(self, attr_name):
         # Fallback

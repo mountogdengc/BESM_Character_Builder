@@ -1,0 +1,5 @@
+Skill Group Debugging Log
+------------------------
+Patching AttributeBuilderDialog for debugging
+Adding missing update_attribute_info method
+AttributeBuilderDialog successfully patched
