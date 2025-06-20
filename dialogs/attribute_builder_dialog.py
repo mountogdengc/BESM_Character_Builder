@@ -455,28 +455,20 @@ class AttributeBuilderDialog(QDialog):
             # Hide the custom fields group if no fields
             self.custom_field_group.setVisible(False)
         
-        # Adjust controls depending on whether the attribute is Unknown Power
+        # For initial attribute creation, Unknown Power should use the standard
+        # attribute builder UI just like any other attribute. The dedicated
+        # Unknown Power manager dialog will handle GM allocation and secret
+        # attributes after the attribute is added.
+        self.customization_group.setVisible(True)
+        self.gm_allocate_btn.setVisible(False)
+        self.gm_cp_label.setVisible(False)
+        self.secret_attr_label.setVisible(False)
+        self.secret_attr_list.setVisible(False)
+
+        # Allow larger CP allocation for Unknown Power while preserving normal UI.
         if attr_data.get("key") == "unknown_power":
-            # Hide standard customization; show GM controls & secret attribute list
-            self.customization_group.setVisible(False)
-            self.gm_allocate_btn.setVisible(True)
-            self.gm_cp_label.setVisible(True)
-            self.secret_attr_label.setVisible(True)
-            self.secret_attr_list.setVisible(True)
-
-            # Update GM CP label
-            gm_cp = math.ceil(self.level_spin.value() * 1.5)
-            self.gm_cp_label.setText(str(gm_cp))
-
-            # Level spin represents CP allocation – allow large range
             self.level_spin.setRange(0, 999)
         else:
-            # Restore standard controls for normal attributes
-            self.customization_group.setVisible(True)
-            self.gm_allocate_btn.setVisible(False)
-            self.gm_cp_label.setVisible(False)
-            self.secret_attr_label.setVisible(False)
-            self.secret_attr_list.setVisible(False)
             self.level_spin.setRange(1, 10)
 
         # Update the CP cost

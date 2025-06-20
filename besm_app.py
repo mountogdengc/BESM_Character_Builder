@@ -615,6 +615,8 @@ class BESMCharacterApp(QMainWindow):
                 library_type = "metamorphosis"
             elif base_name == "Alternate Form":
                 library_type = "alternate_forms"
+            elif base_name == "Unknown Power":
+                library_type = "unknown_power"
                 
             # If this is a special attribute type, show the library selector
             if library_type:
@@ -625,10 +627,26 @@ class BESMCharacterApp(QMainWindow):
     
     def handle_special_attribute(self, attr, library_type):
         """Handle special attribute types that can use the library"""
-        # Remove the popup and always open the builder dialog directly
-        self._add_attribute_to_character(attr)
-        self._open_special_editor_for_new_attribute(attr, library_type)
+        if library_type == "unknown_power":
+            # Unknown Power uses its own manager dialog for the GM
+            self._add_attribute_to_character(attr)  # Add first so it appears in data/UI
+            self.open_unknown_power_manager(attr)
+        else:
+            # Other special attributes use their respective editors
+            self._add_attribute_to_character(attr)
+            self._open_special_editor_for_new_attribute(attr, library_type)
     
+    def open_unknown_power_manager(self, attr):
+        """Open the Unknown Power manager dialog for the GM"""
+        from dialogs.unknown_power_dialog import UnknownPowerDialog
+        dialog = UnknownPowerDialog(self, attr)
+        if dialog.exec_():
+            # Update the character sheet to reflect any changes
+            from tabs.attributes_tab import sync_attributes
+            sync_attributes(self)  # Refresh the attributes tab UI
+            self.update_derived_values()
+            self.update_point_total()
+
     def _add_attribute_to_character(self, attr):
         """Add an attribute to the character data"""
         # Ensure attributes list exists
@@ -638,6 +656,20 @@ class BESMCharacterApp(QMainWindow):
         # Add a unique ID to the attribute if it doesn't have one
         if "id" not in attr:
             attr["id"] = str(uuid.uuid4())
+
+        # Special handling for Unknown Power attribute: calculate GM bonus points
+        if attr.get("key") == "unknown_power" or attr.get("name") == "Unknown Power":
+            import math
+            cp_spent = attr.get("cp_spent", attr.get("level", 0))
+            attr["cp_spent"] = cp_spent
+            attr["cost"] = cp_spent  # Cost equals points spent by the player
+            gm_points = math.ceil(cp_spent * 1.5)  # GM receives 50% bonus, rounded up
+            attr["gm_points"] = gm_points
+            attr["description"] = (
+                f"GM has {gm_points} points to assign to hidden attributes revealed during play."
+            )
+            # Ensure a hidden_attributes list exists on the character
+            self.character_data.setdefault("hidden_attributes", [])
             
         # Add the attribute to character data
         self.character_data["attributes"].append(attr)
@@ -1706,6 +1738,11 @@ class BESMCharacterApp(QMainWindow):
         existing_attr = next((a for a in self.character_data.get("attributes", []) if a.get("id") == attr_id), None)
         if not existing_attr:
             ui.QMessageBox.warning(self, "Error", "Attribute not found.")
+            return
+
+        # If this is Unknown Power, open its dedicated manager instead of the generic builder
+        if existing_attr.get("key") == "unknown_power" or existing_attr.get("name") == "Unknown Power":
+            self.open_unknown_power_manager(existing_attr)
             return
 
         dialog = AttributeBuilderDialog(self, existing_attr=existing_attr)
