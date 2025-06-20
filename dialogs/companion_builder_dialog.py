@@ -125,8 +125,8 @@ class CompanionBuilderDialog(QDialog):
         self.stat_inputs = {}
         for stat in ["Body", "Mind", "Soul"]:
             spin = QSpinBox()
-            spin.setRange(1, 20)
-            spin.setValue(self.companion_data.get("stats", {}).get(stat, 4))
+            spin.setRange(0, 99)
+            spin.setValue(self.companion_data.get("stats", {}).get(stat, 0))
             # Connect valueChanged to update both derived values and CP totals
             spin.valueChanged.connect(self.update_derived_values)
             spin.valueChanged.connect(self.calculate_cp_totals)

@@ -56,7 +56,7 @@
       "valid": true
     },
     {
-      "custom_name": "Thrown Weapon Distance",
+      "custom_name": "Unique Attribute: Thrown Weapon Distance",
       "key": "thrown_weapon_distance",
       "level": 10,
       "user_description": null,

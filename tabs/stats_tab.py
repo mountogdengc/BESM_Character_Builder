@@ -16,8 +16,8 @@ def init_stats_tab(self):
 
     for stat in ["Body", "Mind", "Soul"]:
         spin = QSpinBox()
-        spin.setMinimum(1)
-        spin.setMaximum(12)
+        spin.setMinimum(0)
+        spin.setMaximum(99)
         spin.setValue(self.character_data["stats"][stat])
         
         # Connect to update_stat method which will handle derived values

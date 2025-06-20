@@ -130,8 +130,8 @@ class MinionBuilderDialog(QDialog):
         self.stat_inputs = {}
         for stat in ["Body", "Mind", "Soul"]:
             spin = QSpinBox()
-            spin.setRange(1, 12)  # Standard BESM range
-            spin.setValue(self.minion_data.get("stats", {}).get(stat, 4))  # Default to 4
+            spin.setRange(0, 99)  # Standard BESM range
+            spin.setValue(self.minion_data.get("stats", {}).get(stat, 0))  # Default to 4
             spin.valueChanged.connect(self.calculate_cp_totals)
             self.stat_inputs[stat] = spin
             form.addRow(f"{stat}:", spin)

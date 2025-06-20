@@ -316,9 +316,9 @@ class BESMCharacterApp(QMainWindow):
                 "history": ""
             },
             "stats": {
-                "Body": 4,
-                "Mind": 4,
-                "Soul": 4
+                "Body": 0,
+                "Mind": 0,
+                "Soul": 0
             },
             "derived": {
                 "CV": 0,
@@ -1411,9 +1411,9 @@ class BESMCharacterApp(QMainWindow):
                 "history": ""
             },
             "stats": {
-                "Body": 4,
-                "Mind": 4,
-                "Soul": 4
+                "Body": 0,
+                "Mind": 0,
+                "Soul": 0
             },
             "derived": {
                 "CV": 0,
@@ -1701,87 +1701,97 @@ class BESMCharacterApp(QMainWindow):
             self.update_point_total()
     
     def edit_attribute_by_id(self, attr_id):
-        """Edit an attribute by its ID"""
-        # Find the attribute with this ID
-        existing_attr = None
-        for attr in self.character_data.get("attributes", []):
-            if attr.get("id") == attr_id:
-                existing_attr = attr
-                break
-                
+        """Edit an attribute by its ID and keep UI/points in sync."""
+        # Locate the attribute to edit
+        existing_attr = next((a for a in self.character_data.get("attributes", []) if a.get("id") == attr_id), None)
         if not existing_attr:
             ui.QMessageBox.warning(self, "Error", "Attribute not found.")
             return
-        
+
         dialog = AttributeBuilderDialog(self, existing_attr=existing_attr)
-        
+
         if dialog.exec_() == ui.QDialog.Accepted:
-            print("Dialog accepted, getting attribute data...")
             new_attr = dialog.get_attribute_data()
-            print(f"Attribute data: {new_attr}")
-            
-            # Replace the old attribute with the new one
+            # Ensure the ID is preserved
+            new_attr["id"] = attr_id
+
+            # Replace the old attribute with the edited one
             for i, attr in enumerate(self.character_data["attributes"]):
                 if attr.get("id") == attr_id:
                     self.character_data["attributes"][i] = new_attr
                     break
-                
-            # Refresh the UI
-            print(f"Attributes in character data: {len(self.character_data['attributes'])}")
-            self._safe_refresh_attributes_ui()
-            
-            # Update derived values
+
+            # Safely refresh the attribute list UI next event cycle
+            from PyQt5 import QtCore
+            QtCore.QTimer.singleShot(0, self._safe_refresh_attributes_ui)
+
+            # Update any related special tabs, if applicable
+            base_name = new_attr.get("base_name", new_attr["name"])
+            if base_name == "Alternate Form":
+                QtCore.QTimer.singleShot(10, lambda: sync_alternate_forms_from_attributes(self))
+            elif base_name in ["Companion", "Companions"]:
+                from tabs.companions_tab import sync_companions_from_attributes
+                QtCore.QTimer.singleShot(10, lambda: sync_companions_from_attributes(self))
+            elif base_name in ["Item", "Items"]:
+                from tabs.items_tab import sync_items_from_attributes
+                QtCore.QTimer.singleShot(10, lambda: sync_items_from_attributes(self))
+            elif base_name == "Metamorphosis":
+                from tabs.metamorphosis_tab import sync_metamorphosis_from_attributes
+                QtCore.QTimer.singleShot(10, lambda: sync_metamorphosis_from_attributes(self))
+            elif base_name == "Minions":
+                from tabs.minions_tab import sync_minions_from_attributes
+                QtCore.QTimer.singleShot(10, lambda: sync_minions_from_attributes(self))
+
+            # Recalculate derived stats and point totals immediately
             self.update_derived_values()
-    
+            self.update_point_total()
+
+            # Update dynamic tab visibility shortly after so counts are correct
+            QtCore.QTimer.singleShot(20, self.update_dynamic_tabs_visibility)
+
     def remove_attribute_by_id(self, attr_id):
-        """Remove an attribute by its ID and update the UI safely."""
-        # Find the attribute with the given ID
+        """Remove an attribute by its ID and update UI/CP."""
         removed_attr = None
         base_name = None
-        
-        # First, find and remove the attribute from the data model
-        for i, attr in enumerate(self.character_data["attributes"]):
+
+        # Remove the attribute from character data
+        for i, attr in enumerate(self.character_data.get("attributes", [])):
             if attr.get("id") == attr_id:
-                # Store the base name before removing for special attribute handling
                 base_name = attr.get("base_name", attr["name"])
                 removed_attr = self.character_data["attributes"].pop(i)
-                print(f"[DEBUG] Removed attribute: {removed_attr['name']}")
                 break
-        
-        # If we didn't find the attribute, nothing to do
+
         if removed_attr is None:
             print(f"[DEBUG] Attribute with ID {attr_id} not found")
             return
-        
-        # Schedule a UI refresh for the next event loop cycle
-        # This is safer than trying to modify the UI directly
+
+        # Refresh attribute UI next event cycle
         from PyQt5 import QtCore
         QtCore.QTimer.singleShot(0, self._safe_refresh_attributes_ui)
-        
-        # Update related tabs based on the attribute type
+
+        # Sync special tabs if necessary
         if base_name == "Alternate Form":
-            # Schedule this for the next event cycle too
             QtCore.QTimer.singleShot(10, lambda: sync_alternate_forms_from_attributes(self))
         elif base_name in ["Companion", "Companions"]:
-            # Schedule this for the next event cycle too
             from tabs.companions_tab import sync_companions_from_attributes
             QtCore.QTimer.singleShot(10, lambda: sync_companions_from_attributes(self))
         elif base_name in ["Item", "Items"]:
-            # Schedule this for the next event cycle too
             from tabs.items_tab import sync_items_from_attributes
             QtCore.QTimer.singleShot(10, lambda: sync_items_from_attributes(self))
         elif base_name == "Metamorphosis":
-            # Schedule this for the next event cycle too
             from tabs.metamorphosis_tab import sync_metamorphosis_from_attributes
             QtCore.QTimer.singleShot(10, lambda: sync_metamorphosis_from_attributes(self))
         elif base_name == "Minions":
-            # Schedule this for the next event cycle too
             from tabs.minions_tab import sync_minions_from_attributes
             QtCore.QTimer.singleShot(10, lambda: sync_minions_from_attributes(self))
-        
-        # Update dynamic tabs and point total
+
+        # Update derived values and CP totals
+        self.update_derived_values()
+        self.update_point_total()
+
+        # Adjust dynamic tabs shortly after
         QtCore.QTimer.singleShot(20, self.update_dynamic_tabs_visibility)
-        QtCore.QTimer.singleShot(30, self.update_point_total)
+
     
     def remove_defect_by_id(self, defect_id):
         """Remove a defect by its ID and update the UI"""
