@@ -1,0 +1,788 @@
+{
+    "version": "1.0",
+    "name": "",
+    "player": "",
+    "gm": "",
+    "race": "",
+    "class": "STUDENT / SHADOW WARRIOR",
+    "homeworld": "",
+    "size": "Medium",
+    "background": {
+        "origin": "",
+        "faction": "",
+        "goals": "",
+        "personality": "",
+        "history": ""
+    },
+    "stats": {
+        "Body": 0,
+        "Mind": 0,
+        "Soul": 0
+    },
+    "derived": {
+        "CV": 1,
+        "ACV": 1,
+        "DCV": 1,
+        "HP": 10,
+        "EP": 10,
+        "DM": 1,
+        "SV": 2,
+        "SP": 10,
+        "SCV": 1,
+        "SOP": 10
+    },
+    "drama_points": {
+        "current": 3,
+        "max": 5
+    },
+    "attributes": [],
+    "defects": [],
+    "skills": [],
+    "weapons": [],
+    "armor": [],
+    "items": [
+        {
+            "id": "7c69736a-578f-434e-9efe-2e212e7864eb",
+            "name": "New Item",
+            "description": "",
+            "cost": 0,
+            "attributes": [],
+            "defects": [],
+            "total_cp": 0,
+            "parent_attribute_id": "7ebae606-24b7-4538-8775-f3d6c9f5dc85"
+        }
+    ],
+    "techniques": [],
+    "templates": [],
+    "alternate_forms": [],
+    "metamorphosis": [],
+    "companions": [],
+    "minions": [],
+    "relationships": [],
+    "notes": "",
+    "custom_fields": {},
+    "custom_rules": [],
+    "saved_loadouts": [],
+    "benchmark": null,
+    "totalPoints": 0,
+    "applied_templates": [
+        {
+            "id": "66150b74-a9bf-4d02-8f4d-9882387928a1",
+            "type": "class",
+            "name": "Unnamed Template",
+            "changes": [
+                {
+                    "field": "class",
+                    "old_value": "",
+                    "new_value": "STUDENT"
+                },
+                {
+                    "field": "size_template_applied",
+                    "size_name": "Medium",
+                    "applied_by": "Unnamed Template"
+                },
+                {
+                    "field": "attribute_add",
+                    "attribute_id": "2263ca60-4a20-4d98-8201-51676c29d27b",
+                    "attribute_data": {
+                        "name": "Connected",
+                        "cost_per_level": 1,
+                        "relevant_stat": "Soul",
+                        "is_human_attribute": true,
+                        "description": "Character has ties to a powerful organization (corporation, government, crime syndicate, etc.) and can access resources and privileges.",
+                        "source": "BESM4e",
+                        "levels": {
+                            "1": "Associated (e.g. student rep, police officer)",
+                            "2": "Respected (e.g. sergeant, small biz owner)",
+                            "3": "Modest Authority (e.g. lieutenant, mayor)",
+                            "4": "Local Authority (e.g. captain, knight with land)",
+                            "5": "Regional Authority (e.g. colonel, baron)",
+                            "6": "Provincial Authority (e.g. senator, VP)",
+                            "7": "National Authority (e.g. king, cabinet official)",
+                            "8": "International Authority (e.g. president, pope)",
+                            "9": "Planetary Authority (e.g. world ruler)",
+                            "10": "Extraplanetary Authority (e.g. galactic emperor)"
+                        },
+                        "user_input_required": [
+                            {
+                                "label": "Organization or Individual Connected To",
+                                "key": "connection_target",
+                                "field_type": "text",
+                                "description": "Name the organization, faction, or individual the character is connected to."
+                            }
+                        ],
+                        "key": "connected",
+                        "id": "2263ca60-4a20-4d98-8201-51676c29d27b",
+                        "level": 1,
+                        "user_description": "(Select One)",
+                        "options_source": "Class Template",
+                        "cost": 1,
+                        "sources": [
+                            "66150b74-a9bf-4d02-8f4d-9882387928a1"
+                        ]
+                    }
+                },
+                {
+                    "field": "attribute_add",
+                    "attribute_id": "08817ff4-86b5-4d79-8626-30ca1839f8eb",
+                    "attribute_data": {
+                        "name": "Energised",
+                        "cost_per_level": 1,
+                        "relevant_stat": null,
+                        "description": "Increases total Energy Points (EP) by 10 per level. Can be modified with Limiters to create a secondary conditional EP pool.",
+                        "source": "BESM4e",
+                        "levels": {
+                            "1": "+10 EP",
+                            "2": "+20 EP",
+                            "3": "+30 EP",
+                            "4": "+40 EP",
+                            "5": "+50 EP",
+                            "6": "+60 EP"
+                        },
+                        "key": "energised",
+                        "is_human_attribute": false,
+                        "id": "08817ff4-86b5-4d79-8626-30ca1839f8eb",
+                        "level": 4,
+                        "options_source": "Class Template",
+                        "cost": 4,
+                        "sources": [
+                            "66150b74-a9bf-4d02-8f4d-9882387928a1"
+                        ]
+                    }
+                },
+                {
+                    "field": "attribute_add",
+                    "attribute_id": "8b26a32f-303a-415e-8d2c-d38be87240d4",
+                    "attribute_data": {
+                        "name": "Features",
+                        "cost_per_level": 1,
+                        "relevant_stat": "Variable",
+                        "is_human_attribute": true,
+                        "description": "The character possesses various minor abilities or qualities that grant useful but secondary advantages. Can be personal, racial, or technological in nature. These are typically flavor or small utility traits.",
+                        "source": "BESM4e",
+                        "levels": {
+                            "1": "1-2 Features",
+                            "2": "3-5 Features",
+                            "3": "6-10 Features",
+                            "4": "11-25 Features",
+                            "5": "26-50 Features",
+                            "6": "51-100 Features"
+                        },
+                        "user_input_required": [
+                            {
+                                "label": "Feature Type",
+                                "key": "feature_type",
+                                "field_type": "select",
+                                "description": "Select the general type of feature.",
+                                "options": [
+                                    "Personal",
+                                    "Racial",
+                                    "Technological"
+                                ]
+                            },
+                            {
+                                "label": "Features List",
+                                "key": "features_list",
+                                "field_type": "combo_editable",
+                                "description": "Enter one or more features (select from suggestions or write your own).",
+                                "options": [
+                                    "Ambidexterity",
+                                    "Animal Empathy",
+                                    "Appearance",
+                                    "Auditory Discrimination",
+                                    "Breath/Heartbeat Control",
+                                    "Depth Awareness",
+                                    "Direction Sense",
+                                    "Eidetic Memory",
+                                    "Famous (Beneficial)",
+                                    "Foreign Language",
+                                    "Hypermobility (Double-Jointed)",
+                                    "Light Sleeper",
+                                    "Lightning Calculator",
+                                    "Mimic Sound",
+                                    "Perfect Pitch",
+                                    "Range Sense",
+                                    "Spatial Sense",
+                                    "Speed Reading",
+                                    "Time Sense",
+                                    "Weather Sense",
+                                    "360-Degree Vision",
+                                    "Camouflage",
+                                    "Fluid Squirting",
+                                    "Gills",
+                                    "Heat Regulation",
+                                    "Homing Instinct",
+                                    "Light Armour (AR 1-4)",
+                                    "Light Weaponry (5 Damage)",
+                                    "Long Tongue",
+                                    "Longevity",
+                                    "Low-Light Vision",
+                                    "Multiple Hearts",
+                                    "Nictitating Membrane",
+                                    "Pouch",
+                                    "Retractable Claws",
+                                    "Scent Glands",
+                                    "Scentless",
+                                    "Sexual Duality",
+                                    "Ultrasonic Communication",
+                                    "Webbed Feet/Hands/Paws",
+                                    "Alarm System",
+                                    "Basic AI (0 Stats)",
+                                    "Camera",
+                                    "Comms Suite",
+                                    "Data Backup Auto System",
+                                    "Ejection Seat",
+                                    "Emergency Lights/Siren",
+                                    "Fast Acceleration",
+                                    "GPS",
+                                    "Gyrocompass",
+                                    "Highly Maneuverable",
+                                    "Identity Verifier",
+                                    "Life Monitoring Systems",
+                                    "Luxurious Decor",
+                                    "Modern Vehicle Tech Suite",
+                                    "Naked Enhancement",
+                                    "Radar Detector",
+                                    "Revolving License Plate",
+                                    "Smartphone",
+                                    "Tool Kit",
+                                    "Medical Kit"
+                                ]
+                            }
+                        ],
+                        "key": "features",
+                        "id": "8b26a32f-303a-415e-8d2c-d38be87240d4",
+                        "level": 1,
+                        "user_description": "(Animal Empathy)",
+                        "options_source": "Class Template",
+                        "cost": 1,
+                        "sources": [
+                            "66150b74-a9bf-4d02-8f4d-9882387928a1"
+                        ]
+                    }
+                },
+                {
+                    "field": "attribute_add",
+                    "attribute_id": "901211f6-cdbf-43f1-8029-30bb4711ea2a",
+                    "attribute_data": {
+                        "name": "Heightened Awareness",
+                        "cost_per_level": 1,
+                        "relevant_stat": "Body or Mind",
+                        "description": "Grants a bonus on rolls to notice nearby hidden objects or ambushes.",
+                        "source": "BESM4e",
+                        "levels": {
+                            "1": "+2 Stat roll awareness bonus",
+                            "2": "+4 Stat roll awareness bonus",
+                            "3": "+6 Stat roll awareness bonus",
+                            "4": "+8 Stat roll awareness bonus",
+                            "5": "+10 Stat roll awareness bonus",
+                            "6": "+12 Stat roll awareness bonus"
+                        },
+                        "key": "heightened_awareness",
+                        "is_human_attribute": false,
+                        "id": "901211f6-cdbf-43f1-8029-30bb4711ea2a",
+                        "level": 1,
+                        "options_source": "Class Template",
+                        "cost": 1,
+                        "sources": [
+                            "66150b74-a9bf-4d02-8f4d-9882387928a1"
+                        ]
+                    }
+                },
+                {
+                    "field": "attribute_add",
+                    "attribute_id": "ad8c0d3c-06da-4759-bb5b-dedf4029dc9a",
+                    "attribute_data": {
+                        "name": "Mulligan",
+                        "cost_per_level": 1,
+                        "relevant_stat": "Soul",
+                        "source": "BESM4e",
+                        "description": "Allows a character to reroll all dice for an action. You may choose from any result (original or rerolled).",
+                        "levels": {
+                            "1": "2 rerolls per session",
+                            "2": "4 rerolls per session",
+                            "3": "6 rerolls per session",
+                            "4": "8 rerolls per session",
+                            "5": "10 rerolls per session",
+                            "6": "12 rerolls per session"
+                        },
+                        "key": "mulligan",
+                        "is_human_attribute": false,
+                        "id": "ad8c0d3c-06da-4759-bb5b-dedf4029dc9a",
+                        "level": 3,
+                        "options_source": "Class Template",
+                        "cost": 3,
+                        "sources": [
+                            "66150b74-a9bf-4d02-8f4d-9882387928a1"
+                        ]
+                    }
+                },
+                {
+                    "field": "attribute_add",
+                    "attribute_id": "ef808262-e87c-4a2f-9cad-ff0f97120ccf",
+                    "attribute_data": {
+                        "name": "Skill Group: Occupation (Background)",
+                        "source": "BESM4e",
+                        "description": "Represents training or natural talent in a broad skill field. Skill Groups are divided into Background, Field, and Action categories, each with a different cost per level. Each Skill Group is treated as a separate Attribute.",
+                        "relevant_stat": "Body, Mind, or Soul",
+                        "cost_per_level": null,
+                        "cost_map": {
+                            "Background": 1,
+                            "Field": 2,
+                            "Action": 3
+                        },
+                        "dynamic_cost_category": "category",
+                        "user_input_required": [
+                            {
+                                "field_type": "dropdown",
+                                "label": "Skill Group Category",
+                                "key": "category",
+                                "options": [
+                                    "Background",
+                                    "Field",
+                                    "Action"
+                                ]
+                            },
+                            {
+                                "field_type": "dropdown",
+                                "label": "Skill Group Name",
+                                "key": "skill_group_name",
+                                "options": [
+                                    "Academic",
+                                    "Artistic",
+                                    "Domestic",
+                                    "Occupation",
+                                    "Business",
+                                    "Social",
+                                    "Street",
+                                    "Technical",
+                                    "Adventuring",
+                                    "Detective",
+                                    "Military",
+                                    "Scientific"
+                                ]
+                            }
+                        ],
+                        "levels": {
+                            "1": "Developing - Gaining proficiency through regular application",
+                            "2": "Trained - Moderate training and practice",
+                            "3": "Expert - Significant training and practice",
+                            "4": "Veteran - Extensive training and practice",
+                            "5": "Master - Exhaustive training and practice",
+                            "6": "Grand Master - Unparalleled ability and knowledge"
+                        },
+                        "key": "skill_group",
+                        "is_human_attribute": false,
+                        "id": "ef808262-e87c-4a2f-9cad-ff0f97120ccf",
+                        "level": 2,
+                        "user_description": "Student-related skills",
+                        "options_source": "Class Template",
+                        "cost": 0,
+                        "sources": [
+                            "66150b74-a9bf-4d02-8f4d-9882387928a1"
+                        ]
+                    }
+                },
+                {
+                    "field": "attribute_add",
+                    "attribute_id": "a34fc082-405b-4937-9132-59d450806cd8",
+                    "attribute_data": {
+                        "name": "Unknown Power",
+                        "cost_per_level": 1.5,
+                        "relevant_stat": "Special",
+                        "description": "GM has 30 points to assign to hidden attributes that will be revealed during play.",
+                        "source": "BESM4e",
+                        "levels": {},
+                        "key": "unknown_power",
+                        "is_human_attribute": false,
+                        "id": "a34fc082-405b-4937-9132-59d450806cd8",
+                        "level": 20,
+                        "user_description": "(30 Points)",
+                        "options_source": "Class Template",
+                        "cost": 20,
+                        "sources": [
+                            "66150b74-a9bf-4d02-8f4d-9882387928a1"
+                        ],
+                        "cp_spent": 20,
+                        "gm_points": 30
+                    }
+                },
+                {
+                    "field": "defect_add",
+                    "defect_id": "5706c7b3-78e5-4466-8c1a-935c87e6522f",
+                    "defect_data": {
+                        "name": "Magnet",
+                        "key": "magnet",
+                        "rank_type": "Lesser",
+                        "cp_refund": 1,
+                        "max_rank": 3,
+                        "description": "Character attracts obsessive or amorous attention from others. This is not due to charisma, but some unseen fate or aura. Attention is usually unwanted and problematic.",
+                        "source": "BESM4e",
+                        "ranks": [
+                            {
+                                "rank": "1",
+                                "description": "Slight consequences"
+                            },
+                            {
+                                "rank": "2",
+                                "description": "Moderate consequences"
+                            },
+                            {
+                                "rank": "3",
+                                "description": "Severe consequences"
+                            }
+                        ],
+                        "id": "5706c7b3-78e5-4466-8c1a-935c87e6522f",
+                        "rank": 1,
+                        "options_source": "Class Template",
+                        "cost": -1,
+                        "sources": [
+                            "66150b74-a9bf-4d02-8f4d-9882387928a1"
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": "bda05fb9-ea3d-421f-9603-95ceccc951bd",
+            "type": "class",
+            "name": "Unnamed Template",
+            "changes": [
+                {
+                    "field": "class",
+                    "old_value": "STUDENT",
+                    "new_value": "STUDENT / SHADOW WARRIOR"
+                },
+                {
+                    "field": "size_template_applied",
+                    "size_name": "Medium",
+                    "applied_by": "Unnamed Template"
+                },
+                {
+                    "field": "attribute_add",
+                    "attribute_id": "3ee00006-7592-4b82-b328-f3b59dd4c1e3",
+                    "attribute_data": {
+                        "name": "Change State",
+                        "cost_per_level": 3,
+                        "relevant_stat": "Body",
+                        "is_human_attribute": false,
+                        "description": "Allows transformation into a different state of matter (liquid, gaseous, incorporeal, or energy) for varying durations. Useful for characters like spirits, elementals, or wizards.",
+                        "source": "BESM4e",
+                        "levels": {
+                            "1": "Liquid state, short duration",
+                            "2": "Liquid state, long duration",
+                            "3": "Gaseous state, short duration",
+                            "4": "Gaseous state, long duration",
+                            "5": "Incorporeal state, short duration",
+                            "6": "Incorporeal state, long duration",
+                            "7": "Energy state, short duration",
+                            "8": "Energy state, long duration"
+                        },
+                        "user_input_required": [
+                            {
+                                "label": "State Type",
+                                "key": "state_type",
+                                "field_type": "dropdown",
+                                "options": [
+                                    "Liquid",
+                                    "Gaseous",
+                                    "Incorporeal",
+                                    "Energy"
+                                ],
+                                "required": true
+                            }
+                        ],
+                        "key": "change_state",
+                        "id": "3ee00006-7592-4b82-b328-f3b59dd4c1e3",
+                        "level": 5,
+                        "options_source": "Class Template",
+                        "cost": 15,
+                        "sources": [
+                            "bda05fb9-ea3d-421f-9603-95ceccc951bd"
+                        ]
+                    }
+                },
+                {
+                    "field": "attribute_add",
+                    "attribute_id": "c76fc772-cfd0-46f2-b2c2-7b1953e083b3",
+                    "attribute_data": {
+                        "name": "Immutable",
+                        "cost_per_level": 1,
+                        "relevant_stat": "Body or Soul",
+                        "description": "Protects the character from transformation, displacement, or nullification effects. Grants a bonus to resist certain abilities and includes minor armor protection against insidious attacks.",
+                        "source": "BESM4e",
+                        "levels": {
+                            "1": "+2 Stat roll bonus when resisting effects",
+                            "2": "+4 Stat roll bonus when resisting effects",
+                            "3": "+6 Stat roll bonus when resisting effects",
+                            "4": "+8 Stat roll bonus when resisting effects",
+                            "5": "+10 Stat roll bonus when resisting effects",
+                            "6": "+12 Stat roll bonus when resisting effects"
+                        },
+                        "key": "immutable",
+                        "is_human_attribute": false,
+                        "id": "c76fc772-cfd0-46f2-b2c2-7b1953e083b3",
+                        "level": 1,
+                        "options_source": "Class Template",
+                        "cost": 1,
+                        "sources": [
+                            "bda05fb9-ea3d-421f-9603-95ceccc951bd"
+                        ]
+                    }
+                },
+                {
+                    "field": "attribute_add",
+                    "attribute_id": "7ebae606-24b7-4538-8775-f3d6c9f5dc85",
+                    "attribute_data": {
+                        "id": "7ebae606-24b7-4538-8775-f3d6c9f5dc85",
+                        "name": "Item",
+                        "key": "item",
+                        "level": 10,
+                        "user_description": "(Weapons; 20 Points)",
+                        "options_source": "Class Template",
+                        "cost": 0,
+                        "sources": [
+                            "bda05fb9-ea3d-421f-9603-95ceccc951bd"
+                        ]
+                    }
+                },
+                {
+                    "field": "attribute_add",
+                    "attribute_id": "7e6967cc-4975-440a-9fa3-1dcaba0fe7e5",
+                    "attribute_data": {
+                        "name": "Massive Damage",
+                        "cost_per_level": 3,
+                        "relevant_stat": null,
+                        "description": "Increases damage multiplier by striking at weaknesses.",
+                        "source": "BESM4e",
+                        "levels": {
+                            "1": "Damage Multiplier increases by 1",
+                            "2": "Damage Multiplier increases by 2",
+                            "3": "Damage Multiplier increases by 3",
+                            "4": "Damage Multiplier increases by 4",
+                            "5": "Damage Multiplier increases by 5",
+                            "6": "Damage Multiplier increases by 6"
+                        },
+                        "key": "massive_damage",
+                        "is_human_attribute": false,
+                        "id": "7e6967cc-4975-440a-9fa3-1dcaba0fe7e5",
+                        "level": 6,
+                        "user_description": "(Focussed: Sword +1)",
+                        "options_source": "Class Template",
+                        "cost": 18,
+                        "sources": [
+                            "bda05fb9-ea3d-421f-9603-95ceccc951bd"
+                        ]
+                    }
+                },
+                {
+                    "field": "attribute_add",
+                    "attribute_id": "044d0af1-65e9-49b9-856a-64ae3c169373",
+                    "attribute_data": {
+                        "name": "Melee Attack",
+                        "cost_per_level": 1,
+                        "relevant_stat": null,
+                        "description": "Adds +2 ACV per level when using a specific fighting technique.",
+                        "source": "BESM4e",
+                        "levels": {
+                            "1": "Attack Combat Value increases by 2 when using a specific fighting technique",
+                            "2": "Attack Combat Value increases by 4 when using a specific fighting technique",
+                            "3": "Attack Combat Value increases by 6 when using a specific fighting technique",
+                            "4": "Attack Combat Value increases by 8 when using a specific fighting technique",
+                            "5": "Attack Combat Value increases by 10 when using a specific fighting technique",
+                            "6": "Attack Combat Value increases by 12 when using a specific fighting technique"
+                        },
+                        "user_input_required": [
+                            {
+                                "label": "Weapon Class or Technique",
+                                "key": "weapon_class",
+                                "field_type": "text",
+                                "description": "Enter the class of weapon or specific fighting style this bonus applies to."
+                            }
+                        ],
+                        "key": "melee_attack",
+                        "is_human_attribute": false,
+                        "id": "044d0af1-65e9-49b9-856a-64ae3c169373",
+                        "level": 6,
+                        "user_description": "(Sword)",
+                        "options_source": "Class Template",
+                        "cost": 6,
+                        "sources": [
+                            "bda05fb9-ea3d-421f-9603-95ceccc951bd"
+                        ]
+                    }
+                },
+                {
+                    "field": "attribute_add",
+                    "attribute_id": "aa4bbad9-3f45-496f-aaf8-7a1a6fb2f4d1",
+                    "attribute_data": {
+                        "name": "Melee Defence",
+                        "cost_per_level": 1,
+                        "relevant_stat": null,
+                        "description": "Adds +2 DCV per level when using a specific fighting technique.",
+                        "source": "BESM4e",
+                        "levels": {
+                            "1": "Defence Combat Value increases by 2 when using a specific technique",
+                            "2": "Defence Combat Value increases by 4 when using a specific technique",
+                            "3": "Defence Combat Value increases by 6 when using a specific technique",
+                            "4": "Defence Combat Value increases by 8 when using a specific technique",
+                            "5": "Defence Combat Value increases by 10 when using a specific technique",
+                            "6": "Defence Combat Value increases by 12 when using a specific technique"
+                        },
+                        "user_input_required": [
+                            {
+                                "label": "Weapon Class or Technique",
+                                "key": "weapon_class",
+                                "field_type": "text",
+                                "description": "Enter the class of weapon or specific fighting style this bonus applies to."
+                            }
+                        ],
+                        "key": "melee_defence",
+                        "is_human_attribute": false,
+                        "id": "aa4bbad9-3f45-496f-aaf8-7a1a6fb2f4d1",
+                        "level": 6,
+                        "user_description": "(Sword)",
+                        "options_source": "Class Template",
+                        "cost": 6,
+                        "sources": [
+                            "bda05fb9-ea3d-421f-9603-95ceccc951bd"
+                        ]
+                    }
+                },
+                {
+                    "field": "attribute_add",
+                    "attribute_id": "c823739e-e70c-4389-bdae-d30a3f42c445",
+                    "attribute_data": {
+                        "name": "Regeneration",
+                        "cost_per_level": 5,
+                        "relevant_stat": "Body",
+                        "source": "BESM4e",
+                        "description": "The character regenerates Health or Energy each round. Must choose one focus when assigned.",
+                        "levels": {
+                            "1": "Regenerates up to 5 HP or EP per round",
+                            "2": "Regenerates up to 10 HP or EP per round",
+                            "3": "Regenerates up to 15 HP or EP per round",
+                            "4": "Regenerates up to 20 HP or EP per round",
+                            "5": "Regenerates up to 25 HP or EP per round",
+                            "6": "Regenerates up to 30 HP or EP per round"
+                        },
+                        "user_input_required": [
+                            {
+                                "label": "Regeneration Focus",
+                                "field_type": "dropdown",
+                                "options": [
+                                    "Health",
+                                    "Energy"
+                                ]
+                            }
+                        ],
+                        "key": "regeneration",
+                        "is_human_attribute": false,
+                        "id": "c823739e-e70c-4389-bdae-d30a3f42c445",
+                        "level": 2,
+                        "options_source": "Class Template",
+                        "cost": 10,
+                        "sources": [
+                            "bda05fb9-ea3d-421f-9603-95ceccc951bd"
+                        ]
+                    }
+                },
+                {
+                    "field": "attribute_add",
+                    "attribute_id": "47ac841e-ec15-4c5e-a7c0-c6b2a6ea5d6e",
+                    "attribute_data": {
+                        "name": "Skill Group: Street (Field)",
+                        "source": "BESM4e",
+                        "description": "Represents training or natural talent in a broad skill field. Skill Groups are divided into Background, Field, and Action categories, each with a different cost per level. Each Skill Group is treated as a separate Attribute.",
+                        "relevant_stat": "Body, Mind, or Soul",
+                        "cost_per_level": null,
+                        "cost_map": {
+                            "Background": 1,
+                            "Field": 2,
+                            "Action": 3
+                        },
+                        "dynamic_cost_category": "category",
+                        "user_input_required": [
+                            {
+                                "field_type": "dropdown",
+                                "label": "Skill Group Category",
+                                "key": "category",
+                                "options": [
+                                    "Background",
+                                    "Field",
+                                    "Action"
+                                ]
+                            },
+                            {
+                                "field_type": "dropdown",
+                                "label": "Skill Group Name",
+                                "key": "skill_group_name",
+                                "options": [
+                                    "Academic",
+                                    "Artistic",
+                                    "Domestic",
+                                    "Occupation",
+                                    "Business",
+                                    "Social",
+                                    "Street",
+                                    "Technical",
+                                    "Adventuring",
+                                    "Detective",
+                                    "Military",
+                                    "Scientific"
+                                ]
+                            }
+                        ],
+                        "levels": {
+                            "1": "Developing - Gaining proficiency through regular application",
+                            "2": "Trained - Moderate training and practice",
+                            "3": "Expert - Significant training and practice",
+                            "4": "Veteran - Extensive training and practice",
+                            "5": "Master - Exhaustive training and practice",
+                            "6": "Grand Master - Unparalleled ability and knowledge"
+                        },
+                        "key": "skill_group",
+                        "is_human_attribute": false,
+                        "id": "47ac841e-ec15-4c5e-a7c0-c6b2a6ea5d6e",
+                        "level": 1,
+                        "user_description": "Stealth and urban navigation",
+                        "options_source": "Class Template",
+                        "cost": 0,
+                        "sources": [
+                            "bda05fb9-ea3d-421f-9603-95ceccc951bd"
+                        ]
+                    }
+                },
+                {
+                    "field": "attribute_add",
+                    "attribute_id": "c6ef1c7d-21b8-494b-917d-19c347a7f097",
+                    "attribute_data": {
+                        "name": "Tough",
+                        "cost_per_level": 1,
+                        "relevant_stat": null,
+                        "description": "Increases Health Points by 10 per level. Represents enhanced durability or size. Often used for large, dense, or extremely healthy characters or items.",
+                        "source": "BESM4e",
+                        "levels": {
+                            "1": "+10 Health Points",
+                            "2": "+20 Health Points",
+                            "3": "+30 Health Points",
+                            "4": "+40 Health Points",
+                            "5": "+50 Health Points",
+                            "6": "+60 Health Points"
+                        },
+                        "key": "tough",
+                        "is_human_attribute": false,
+                        "id": "c6ef1c7d-21b8-494b-917d-19c347a7f097",
+                        "level": 6,
+                        "options_source": "Class Template",
+                        "cost": 6,
+                        "sources": [
+                            "bda05fb9-ea3d-421f-9603-95ceccc951bd"
+                        ]
+                    }
+                }
+            ]
+        }
+    ],
+    "hidden_attributes": []
+}

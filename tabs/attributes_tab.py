@@ -90,12 +90,16 @@ def populate_attributes_ui(self):
         # Create and add attribute card
         card = create_attribute_card(self, attr)
         self.attributes_layout.addWidget(card)
+    # Debug: log how many attribute cards were added
+    print(f"[DEBUG] populate_attributes_ui: added {len(self.character_data.get('attributes', []))} cards to UI")
 
 def create_attribute_card(self, attr):
     """Create a card widget for an attribute"""
     # Create a unique identifier for this attribute if it doesn't have one
     if "id" not in attr:
         attr["id"] = str(uuid4())
+    # Debug: log when we start building a card
+    print(f"[DEBUG] create_attribute_card: building card for {attr.get('name')} id {attr.get('id')}")
         
     # Create the remove function for this specific attribute
     def make_remove_handler(attr_id):
@@ -238,6 +242,7 @@ def create_attribute_card(self, attr):
             lines.append(f"Notes: {attr['user_description']}")
     
     # Create and return the card widget
+    print(f"[DEBUG] create_attribute_card: returning card for {attr.get('name')} id {attr.get('id')}")
     return create_card_widget(
         title=attr.get("name", "Unnamed Attribute"),
         lines=lines,

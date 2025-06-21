@@ -287,94 +287,85 @@ class AttributeBuilderDialog(QDialog):
                 categories[category] = []
             categories[category].append(item)
         return categories
-        
+
     def load_existing_attribute(self, existing_attr):
-        """Load data from an existing attribute"""
+        """Load data from an existing attribute into the dialog widget fields.
+
+        Handles legacy structures where only a `key` is provided by mapping it
+        back to the correct base attribute name. After populating fields the
+        method recalculates CP cost and updates UI lists.
+        """
         try:
-            # Set base attribute name
-            base_name = existing_attr.get("base_name", existing_attr.get("name", ""))
+            # Resolve the base attribute name -------------------------------
+            base_name = existing_attr.get("base_name")
+            if not base_name and "key" in existing_attr:
+                for name, data in self.attributes.items():
+                    if data.get("key") == existing_attr["key"]:
+                        base_name = name
+                        break
+            if not base_name:
+                base_name = existing_attr.get("name", "")
+
+            # Set dropdown ---------------------------------------------------
             if base_name in self.attributes:
                 self.attr_dropdown.setCurrentText(base_name)
-                
-            # Set custom name if different
+            else:
+                self.attr_dropdown.setCurrentIndex(0)
+
+            # Custom name ----------------------------------------------------
             custom_name = existing_attr.get("name", "")
-            if custom_name != base_name:
+            if custom_name and custom_name != base_name:
                 self.custom_name_input.setText(custom_name)
                 self._custom_name_edited = True
-                
-            # Set level
-            level = existing_attr.get("level", 1)
-            self.level_spin.setValue(level)
-            
-            # Set user description if any
-            user_desc = existing_attr.get("user_description", "")
-            self.user_description.setPlainText(user_desc)
-            
-            # Load existing enhancements and limiters if any
-            if "enhancements" in existing_attr and existing_attr["enhancements"]:
-                for enhancement in existing_attr["enhancements"]:
-                    # Handle both string and dictionary enhancements
-                    if isinstance(enhancement, str):
-                        enhancement_name = enhancement
-                        self.enhancement_counts[enhancement_name] = 1
-                    else:
-                        enhancement_name = enhancement.get("name")
-                        count = enhancement.get("count", 1)
-                        self.enhancement_counts[enhancement_name] = count
-            
-            # Load existing limiters if any
-            if "limiters" in existing_attr and existing_attr["limiters"]:
-                for limiter in existing_attr["limiters"]:
-                    # Handle both string and dictionary limiters
-                    if isinstance(limiter, str):
-                        limiter_name = limiter
-                        self.limiter_counts[limiter_name] = 1
-                    else:
-                        limiter_name = limiter.get("name")
-                        count = limiter.get("count", 1)
-                        self.limiter_counts[limiter_name] = count
-        except Exception as e:
-            print(f"Error loading enhancements and limiters: {e}")
 
-        # Load dynamic cost info BEFORE building fields if available in existing_attr
-        self.dynamic_cost_map = existing_attr.get("dynamic_cost", {})
-        self.dynamic_cost_category_key = None  # will be set in add_custom_field_widget
-        
-        # Get the base attribute data for the current attribute
-        attr_name = existing_attr.get("base_name", self.attr_dropdown.currentText())
-        attr_data = self.attributes.get(attr_name, {})
-        
-        # Load custom fields from attribute definition
-        user_fields = attr_data.get("user_input_required", [])
-        for field in user_fields:
-            self.add_custom_field_widget(field)
-            
-        # Load values for custom fields
-        custom_fields = existing_attr.get("custom_fields", {})
-        for field_name, value in custom_fields.items():
-            if field_name in self.custom_input_widgets:
-                widget = self.custom_input_widgets[field_name]
+            # Level ----------------------------------------------------------
+            self.level_spin.setValue(existing_attr.get("level", 1))
+
+            # Descriptions ---------------------------------------------------
+            self.user_description.setPlainText(existing_attr.get("user_description", ""))
+            # Keep the base description already set by update_attribute_info
+
+            # Enhancements / Limiters ---------------------------------------
+            self.enhancement_counts = {}
+            self.limiter_counts = {}
+            for enh in existing_attr.get("enhancements", []):
+                name = enh if isinstance(enh, str) else enh.get("name")
+                count = 1 if isinstance(enh, str) else enh.get("count", 1)
+                if name:
+                    self.enhancement_counts[name] = count
+            for lim in existing_attr.get("limiters", []):
+                name = lim if isinstance(lim, str) else lim.get("name")
+                count = 1 if isinstance(lim, str) else lim.get("count", 1)
+                if name:
+                    self.limiter_counts[name] = count
+
+            # Dynamic cost map ----------------------------------------------
+            self.dynamic_cost_map = existing_attr.get("dynamic_cost", {})
+
+            # Build / refresh custom fields UI ------------------------------
+            self.update_attribute_info()  # ensures fields exist
+            for field_name, value in existing_attr.get("custom_fields", {}).items():
+                widget = self.custom_input_widgets.get(field_name)
                 if isinstance(widget, QComboBox):
                     widget.setCurrentText(value)
                 elif isinstance(widget, QLineEdit):
                     widget.setText(value)
-                # Add support for other widget types as needed
-                
-        # Update the enhanced/limiter displays
-        self.update_selected_enhancements_display()
-        self.update_selected_limiters_display()
-                
-        # Update CP cost
-        self.update_cp_cost()
 
-        # Ensure the attribute-specific UI (e.g., Unknown Power view) is refreshed
-        # Because the attribute dropdown's signal may not yet be connected when
-        # load_existing_attribute runs (connection is deferred with QTimer), we
-        # manually call update_attribute_info here.
-        try:
-            self.update_attribute_info()
+            # UI lists & cost ------------------------------------------------
+            self.update_selected_enhancements_display()
+            self.update_selected_limiters_display()
+            try:
+                self._update_skill_group_name()
+            except Exception:
+                pass
+            self.update_cp_cost()
         except Exception as e:
-            print(f"Error refreshing attribute UI: {e}")
+            print(f"Error in load_existing_attribute: {e}")
+                
+
+
+
+
 
     def update_attribute_info(self):
         """Update attribute info based on the selected attribute"""
@@ -475,158 +466,6 @@ class AttributeBuilderDialog(QDialog):
         self.update_cp_cost()
 
 
-    def update_cp_cost(self):
-        """Calculate and update the CP cost based on selections"""
-        attribute_name = self.attr_dropdown.currentText()
-        if not attribute_name:
-            self.cp_cost_label.setText("0")
-            return
-
-        attribute = self.attributes.get(attribute_name)
-
-        # Special handling for Unknown Power: cost equals CP allocated (stored in level_spin)
-        if attribute and attribute.get("key") == "unknown_power":
-            total_cost = self.level_spin.value()
-            self.cp_cost_label.setText(str(total_cost))
-            # Update GM CP label if visible
-            self.gm_cp_label.setText(str(math.ceil(total_cost * 1.5)))
-            return
-
-        if not attribute:
-            self.cp_cost_label.setText("0")
-            return
-
-        # Current level (or other numeric value determining cost)
-        level = self.level_spin.value()
-
-        # Determine cost_per_level (may vary by category or level band)
-        cost_per_level = attribute.get("cost_per_level")
-
-        try:
-            # Handle dynamic cost category (e.g. Skill Group)
-            dynamic_cost_category = attribute.get("dynamic_cost_category")
-            if dynamic_cost_category and hasattr(self, "custom_input_widgets"):
-                cat_widget = self.custom_input_widgets.get(dynamic_cost_category)
-                if cat_widget and hasattr(cat_widget, "currentText"):
-                    cat_value = cat_widget.currentText()
-                    cost_map = attribute.get("cost_map", {})
-                    if cat_value in cost_map:
-                        cost_per_level = cost_map[cat_value]
-
-            # Handle level-banded cost maps (e.g. 1-2:2, 3-4:3, etc.)
-            if isinstance(cost_per_level, dict):
-                cost_band = 0
-                for band, band_cost in cost_per_level.items():
-                    min_level, max_level = band.split("-")
-                    min_level = int(min_level)
-                    max_level = float('inf') if max_level == "max" else int(max_level)
-                    if min_level <= level <= max_level:
-                        cost_band = band_cost
-                        break
-                cost_per_level = cost_band or 1
-        except Exception as e:
-            print(f"Error determining dynamic cost_per_level: {e}")
-            cost_per_level = cost_per_level or 1
-
-        # Base cost
-        base_cost = level * (cost_per_level or 1)
-
-        # Enhancements increase cost (typically +0.5x per count)
-        enhancement_multiplier = 1.0
-        for name, count in self.enhancement_counts.items():
-            if count > 0:
-                enhancement_multiplier += 0.5 * count
-
-        # Apply enhancements
-        total_cost = base_cost * enhancement_multiplier
-
-        # Limiters reduce cost (typically −0.1x per count, but floor at 0.5x)
-        limiter_multiplier = 1.0
-        for name, count in self.limiter_counts.items():
-            if count > 0:
-                limiter_multiplier -= 0.1 * count
-        limiter_multiplier = max(limiter_multiplier, 0.5)
-        total_cost *= limiter_multiplier
-
-        # Round and update UI
-        total_cost = round(total_cost)
-        self.cp_cost_label.setText(str(total_cost))
-
-
-        
-
-    def get_attribute_data(self):
-        """Return the attribute data based on the dialog inputs"""
-        # Get base attribute name and custom name
-        base_name = self.attr_dropdown.currentText()
-        name = self.custom_name_input.text() or base_name
-        
-        # Build attribute data structure
-        attribute = {
-            "name": name,
-            "base_name": base_name,
-            "level": self.level_spin.value(),
-            "cost": int(self.cp_cost_label.text()),
-            "user_description": self.user_description.toPlainText()
-        }
-
-        # For Unknown Power, store GM CP allocation (player CP * 1.5, rounded up)
-        # Include any GM secret attributes
-        if hasattr(self, 'secret_attributes') and self.secret_attributes:
-            attribute["secret_attributes"] = self.secret_attributes
-        if base_name == "Unknown Power" or (self.attributes.get(base_name, {}).get("key") == "unknown_power"):
-            player_cp = self.level_spin.value()
-            attribute["gm_cp"] = math.ceil(player_cp * 1.5)
-        
-        # Get custom field values
-        custom_fields = {}
-        for field_name, widget in self.custom_input_widgets.items():
-            if isinstance(widget, QComboBox):
-                value = widget.currentText()
-            elif isinstance(widget, QLineEdit):
-                value = widget.text()
-            else:
-                value = ""
-            
-            custom_fields[field_name] = value
-            
-        # Add custom fields if any
-        if custom_fields:
-            attribute["custom_fields"] = custom_fields
-            
-        # Add description from base attribute
-        base_attr = self.attributes.get(base_name, {})
-        if "description" in base_attr:
-            attribute["description"] = base_attr["description"]
-            
-        # Get the official attribute key if available
-        if "key" in base_attr:
-            attribute["key"] = base_attr["key"]
-            
-        # Add selected enhancements if any
-        enhancements = self.get_selected_enhancements()
-        if enhancements:
-            attribute["enhancements"] = enhancements
-            
-        # Add enhancement counts if any
-        if self.enhancement_counts:
-            attribute["enhancement_counts"] = self.enhancement_counts
-            
-        # Add selected limiters if any
-        limiters = self.get_selected_limiters()
-        if limiters:
-            attribute["limiters"] = limiters
-            
-        # Add limiter counts if any
-        if self.limiter_counts:
-            attribute["limiter_counts"] = self.limiter_counts
-        
-        # Preserve the existing ID if editing an existing attribute
-        if hasattr(self, 'existing_attribute_id') and self.existing_attribute_id:
-            attribute["id"] = self.existing_attribute_id
-            
-        return attribute
-
     def add_custom_field_widget(self, field):
         """Add a widget for a custom field"""
         field_name = field.get("name", "")
@@ -650,6 +489,11 @@ class AttributeBuilderDialog(QDialog):
             widget = QLineEdit()
             if field.get("placeholder"):
                 widget.setPlaceholderText(field["placeholder"])
+
+        # Connect signals for dynamic updates on skill group selector widgets
+        if field_key in ("category", "skill_group_name") and isinstance(widget, QComboBox):
+            # Whenever the user changes category or name, update the derived name and CP cost
+            widget.currentTextChanged.connect(self._update_skill_group_name)
 
         # Store for later retrieval
         self.custom_input_widgets[field_key] = widget
@@ -890,6 +734,126 @@ class AttributeBuilderDialog(QDialog):
                 message += f"- {limiter['name']} (×{limiter['count']})\n"
         
         QMessageBox.information(self, "Power Pack Applied", message)
+
+    def get_attribute_data(self):
+        """Collect the current dialog inputs and return them as a structured dict.
+
+        The returned object follows the structure used throughout the
+        application (see besm_app.add_attribute et al.). This mirrors the
+        implementation that existed in the CoreGPT prototype while being
+        fully compatible with the re-worked dialog in this file.
+        """
+        # Ensure the cost label reflects the latest state
+        try:
+            self.update_cp_cost()
+        except Exception:
+            pass  # fail-soft – cost will fallback to label text if update fails
+
+        # --- Basic fields ---------------------------------------------------
+        attr_name = self.attr_dropdown.currentText()
+        base_attr_data = self.attributes.get(attr_name, {})
+        level = self.level_spin.value()
+
+        # Custom / display name (may be equal to base name)
+        display_name = self.custom_name_input.text().strip() or attr_name
+
+        # Cost values --------------------------------------------------------
+        cost_text = self.cp_cost_label.text().strip()
+        # Expected format "<num> CP" but be defensive
+        try:
+            total_cp = int(cost_text.split()[0])
+        except (ValueError, IndexError):
+            total_cp = 0
+
+        # Effective level mirrors update_cp_cost logic
+        enhancement_count = sum(self.enhancement_counts.values()) if hasattr(self, "enhancement_counts") else 0
+        limiter_count = sum(self.limiter_counts.values()) if hasattr(self, "limiter_counts") else 0
+        effective_level = max(1, level - enhancement_count + limiter_count)
+
+        # --- Enhancements / limiters ---------------------------------------
+        enhancements = self.get_selected_enhancements()
+        limiters = self.get_selected_limiters()
+
+        # --- Custom field values -------------------------------------------
+        custom_fields = {}
+        for key, widget in self.custom_input_widgets.items():
+            if isinstance(widget, QLineEdit):
+                custom_fields[key] = widget.text()
+            elif isinstance(widget, QComboBox):
+                custom_fields[key] = widget.currentText()
+            # Extend here for other widget types as needed
+
+        # Preserve any programmatically-set custom_fields (e.g., skill_group_type)
+        if hasattr(self, "custom_fields"):
+            custom_fields.update(getattr(self, "custom_fields"))
+
+        # Assemble final dict -------------------------------------------------
+        attribute_data = {
+            "name": display_name,
+            "base_name": attr_name,
+            "level": level,
+            "effective_level": effective_level,
+            "cost": total_cp,
+            "cost_per_level": base_attr_data.get("cost_per_level", 1),
+            "key": base_attr_data.get("key"),
+            "enhancements": enhancements,
+            "limiters": limiters,
+            "description": self.description.toPlainText(),
+            "user_description": self.user_description.toPlainText(),
+            "custom_fields": custom_fields,
+        }
+
+        # Carry over existing ID when editing
+        if getattr(self, "existing_attribute_id", None):
+            attribute_data["id"] = self.existing_attribute_id
+
+        return attribute_data
+
+    def update_cp_cost(self):
+        """Calculate and display the Character Point (CP) cost based on the current dialog selections."""
+        try:
+            # 1. Identify the base attribute and its data
+            attr_name = self.attr_dropdown.currentText()
+            if not attr_name:
+                self.cp_cost_label.setText("0 CP")
+                self.cp_cost_label.setToolTip("")
+                return
+
+            attribute = self.attributes.get(attr_name, {})
+            level = self.level_spin.value()
+
+            # 2. Determine the base cost per level — may come from a static value or a dynamic map.
+            base_cost = attribute.get("cost_per_level")
+            if base_cost in (None, "", 0):
+                # Attributes like Skill Group use a dynamic cost map keyed by a custom field (e.g., category).
+                cost_map = attribute.get("cost_map", {})
+                dynamic_key = attribute.get("dynamic_cost_category", "category")
+
+                # Attempt to read the category/type from stored custom_fields first (set by helper functions).
+                category = getattr(self, "custom_fields", {}).get("skill_group_type") or \
+                          getattr(self, "custom_fields", {}).get(dynamic_key)
+
+                # Fallback: fetch directly from the associated widget if available.
+                input_widget = self.custom_input_widgets.get(dynamic_key)
+                if isinstance(input_widget, QComboBox):
+                    category = input_widget.currentText()
+
+                base_cost = cost_map.get(category, 0)
+
+            # 3. Factor in enhancements and limiters to derive the effective level (per BESM 4e rules).
+            enhancement_count = sum(self.enhancement_counts.values()) if hasattr(self, "enhancement_counts") else 0
+            limiter_count = sum(self.limiter_counts.values()) if hasattr(self, "limiter_counts") else 0
+            effective_level = max(1, level - enhancement_count + limiter_count)
+
+            # 4. Calculate the total CP cost.
+            total_cp = (base_cost or 0) * effective_level
+
+            # 5. Update the UI.
+            self.cp_cost_label.setText(f"{total_cp} CP")
+            self.cp_cost_label.setToolTip(f"Effective Level: {effective_level}")
+        except Exception as e:
+            # Fail-soft: log the error for troubleshooting but do not crash the dialog.
+            print(f"Error in update_cp_cost: {e}")
 
     def save_to_library(self):
         """Save the current attribute to the library for reuse"""

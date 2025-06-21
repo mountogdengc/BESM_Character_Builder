@@ -647,6 +647,58 @@ class BESMCharacterApp(QMainWindow):
             self.update_derived_values()
             self.update_point_total()
 
+    def _calculate_attribute_cost(self, attr):
+        """Recalculate and return the CP cost for an attribute.
+
+        This is primarily used to ensure older character files that did not
+        store the correct `cost` field (for example, early Skill Group
+        attributes) are automatically upgraded when loaded.  The logic is a
+        simplified mirror of the calculation that happens in
+        `AttributeBuilderDialog.update_cp_cost()`.  It does not try to handle
+        every possible enhancement / limiter combination, but it will always
+        return a best-guess cost that is at least correct for standard
+        Attributes and Skill Groups which use a dynamic cost map.
+        """
+        level = int(attr.get("level", 0))
+        if level == 0:
+            return 0
+
+        # Locate the base attribute definition using key (preferred) or name.
+        base_def = None
+        if "key" in attr and attr["key"] in getattr(self, "attributes_by_key", {}):
+            base_def = self.attributes_by_key[attr["key"]]
+        else:
+            base_name = attr.get("base_name", attr.get("name"))
+            base_def = self.attributes.get(base_name, {}) if hasattr(self, "attributes") else {}
+
+        if not base_def:
+            # Fallback – assume cost_per_level of 1 so the attribute at least
+            # registers some cost instead of breaking the UI.
+            return level
+
+        cost_per_level = base_def.get("cost_per_level")
+
+        # Handle dynamic cost (e.g. Skill Group)
+        if cost_per_level is None and base_def.get("cost_map"):
+            # Which field controls the cost category?
+            category_field = base_def.get("dynamic_cost_category", "category")
+            # Skill Group stores this inside custom_fields as well as, in newer
+            # versions, duplicated at the top level for quick access.
+            category_value = (
+                attr.get("custom_fields", {}).get(category_field)
+                or attr.get(category_field)
+                or attr.get("skill_group_type")
+            )
+            cost_per_level = base_def["cost_map"].get(category_value, 0)
+
+        # Ensure we ended up with an int
+        try:
+            cost_per_level = int(cost_per_level)
+        except (TypeError, ValueError):
+            cost_per_level = 0
+
+        return cost_per_level * level
+
     def _add_attribute_to_character(self, attr):
         """Add an attribute to the character data"""
         # Ensure attributes list exists
@@ -656,6 +708,16 @@ class BESMCharacterApp(QMainWindow):
         # Add a unique ID to the attribute if it doesn't have one
         if "id" not in attr:
             attr["id"] = str(uuid.uuid4())
+
+        # Guarantee `cost` is a correct integer value. If it is absent, a string,
+        # or plainly wrong, recalculate it now so that *_point_total* always
+        # sees the right number.
+        try:
+            # Many paths deliver cost as a string (e.g. "4"), so cast to int.
+            attr["cost"] = int(attr.get("cost", 0))
+        except (TypeError, ValueError):
+            # Re-evaluate using our helper.
+            attr["cost"] = self._calculate_attribute_cost(attr)
 
         # Special handling for Unknown Power attribute: calculate GM bonus points
         if attr.get("key") == "unknown_power" or attr.get("name") == "Unknown Power":
@@ -701,6 +763,10 @@ class BESMCharacterApp(QMainWindow):
             
         # Update dynamic tabs visibility
         self.update_dynamic_tabs_visibility()
+
+        # Recalculate derived stats and CP totals
+        self.update_derived_values()
+        self.update_point_total()
     
     def _open_special_editor_for_new_attribute(self, attr, library_type):
         """Open the appropriate editor for the newly created special attribute"""
@@ -1526,7 +1592,20 @@ class BESMCharacterApp(QMainWindow):
     def load_character_into_ui(self):
         # Set stat spinners
         for stat, spinner in self.stat_spinners.items():
-            spinner.setValue(self.character_data["stats"].get(stat, 4))
+            spinner.setValue(self.character_data["stats"].get(stat, 0))
+
+        # --- Recalculate/patch attribute costs BEFORE we rebuild the UI so the
+        #     cards and CP totals are correct ---
+        for attr in self.character_data.get("attributes", []):
+            try:
+                attr["cost"] = int(attr.get("cost", 0))
+            except (TypeError, ValueError):
+                attr["cost"] = 0
+
+            # If cost seems zero or negative for something that should cost
+            # points (e.g. Skill Group), refresh it.
+            if attr["cost"] <= 0:
+                attr["cost"] = self._calculate_attribute_cost(attr)
 
         # Rebuild attributes list
         from tabs.attributes_tab import sync_attributes
@@ -1938,7 +2017,7 @@ class BESMCharacterApp(QMainWindow):
 
         # Reset stats
         for stat in self.stat_spinners:
-            self.stat_spinners[stat].setValue(4)
+            self.stat_spinners[stat].setValue(0)
 
         # Clear attributes, defects, weapons
         self.character_data["attributes"].clear()

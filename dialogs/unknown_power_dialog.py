@@ -310,16 +310,105 @@ class UnknownPowerDialog(QDialog):
         self.remaining_points_label.setText(f"{self.available_points - self.used_points}")
     
     def accept(self):
-        """Save changes and close the dialog"""
-        # Save the hidden attributes to the character data
+        """Save changes and close the dialog and update parent totals"""
+        # Save hidden attributes back to the character data
         self.parent.character_data["hidden_attributes"] = self.hidden_attributes
-        
-        # Update the unknown power attribute with new CP spent and GM points
+
+        # Update the Unknown Power attribute with the latest CP values
         for attr in self.parent.character_data["attributes"]:
             if attr.get("key") == "unknown_power" and attr["id"] == self.unknown_power_attr["id"]:
                 attr["cp_spent"] = self.cp_spent
+                attr["cost"] = self.cp_spent  # Charge the player ONLY what they actually spent
                 attr["gm_points"] = self.available_points
-                attr["description"] = f"GM has {self.available_points} points to assign to hidden attributes that will be revealed during play."
+                attr["description"] = (
+                    f"GM has {self.available_points} points to assign to hidden attributes that will be revealed during play."
+                )
                 break
-                
+
+        # Refresh UI elements in the parent window so the change is visible immediately
+        from tabs.attributes_tab import sync_attributes
+        sync_attributes(self.parent)
+        self.parent.update_point_total()
+
         super().accept()
+        
+def reveal_hidden_attribute(self):
+    """Reveal the selected hidden attribute to the player"""
+    selected_items = self.hidden_attrs_list.selectedItems()
+    if not selected_items:
+        QMessageBox.warning(self, "No Selection", "Please select an attribute to reveal.")
+        return
+        
+    # Get the selected attribute
+    selected_item = selected_items[0]
+    attr = selected_item.data(Qt.UserRole)
+    
+    # Check if it's already revealed
+    if attr.get("revealed", False):
+        QMessageBox.information(self, "Already Revealed", "This attribute has already been revealed.")
+        return
+        
+    # Confirm revelation
+    reply = QMessageBox.question(
+        self,
+        "Reveal Hidden Attribute",
+        f"Are you sure you want to reveal '{attr.get('custom_name', attr.get('name', 'Unknown'))}' to the player?\n\n"
+        "This will add it to their character sheet as a regular attribute.",
+        QMessageBox.Yes | QMessageBox.No
+    )
+    
+    if reply == QMessageBox.Yes:
+        # Mark as revealed
+        for a in self.hidden_attributes:
+            if a["id"] == attr["id"]:
+                a["revealed"] = True
+                
+                # Add to character's attributes
+                revealed_attr = a.copy()
+                revealed_attr["id"] = str(uuid.uuid4())  # New ID for the revealed attribute
+                revealed_attr["source"] = "Unknown Power"
+                self.parent.character_data["attributes"].append(revealed_attr)
+                break
+        
+        # Refresh the list and the parent's UI
+        self.refresh_hidden_attrs_list()
+        from tabs.attributes_tab import sync_attributes
+        sync_attributes(self.parent)
+        self.parent.update_derived_values()
+        
+def update_cp_spent(self, value):
+    """Update CP spent and recalculate GM points"""
+    import math
+    
+    # Update the CP spent value
+    self.cp_spent = value
+    
+    # Recalculate GM points (50% bonus rounded up)
+    self.available_points = math.ceil(self.cp_spent * 1.5)
+    
+    # Update labels
+    self.gm_points_label.setText(f"{self.available_points}")
+    self.remaining_points_label.setText(f"{self.available_points - self.used_points}")
+    
+def accept(self):
+    """Save changes and close the dialog"""
+    # Save the hidden attributes to the character data
+    self.parent.character_data["hidden_attributes"] = self.hidden_attributes
+    
+    # Update the unknown power attribute with new CP spent and GM points
+    for attr in self.parent.character_data["attributes"]:
+        if attr.get("key") == "unknown_power" and attr["id"] == self.unknown_power_attr["id"]:
+            attr["cp_spent"] = self.cp_spent
+            # The player should only pay the CP they actually spent, NOT the GM bonus
+            attr["cost"] = self.cp_spent
+            attr["gm_points"] = self.available_points
+            attr["description"] = (
+                f"GM has {self.available_points} points to assign to hidden attributes that will be revealed during play."
+            )
+            break
+            
+    # Refresh parent's UI and CP totals so the change is visible immediately
+    from tabs.attributes_tab import sync_attributes
+    sync_attributes(self.parent)
+    self.parent.update_point_total()
+    super().accept()

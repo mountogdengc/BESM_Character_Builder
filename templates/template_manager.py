@@ -5,6 +5,7 @@ from PyQt5.QtWidgets import (
     QTabWidget, QWidget, QMessageBox, QListWidgetItem
 )
 from PyQt5.QtCore import Qt
+import math
 
 class TemplateDialog(QDialog):
     def __init__(self, parent=None, template_type="race"):
@@ -527,6 +528,42 @@ def apply_class_template(app, template_data, template_changes):
     if "baseSize" in template_data:
         apply_size_from_template(app, template_data["baseSize"], template_changes)
     
+    # Apply stat changes specified in the class template
+    if "stats" in template_data:
+        if isinstance(template_data["stats"], dict):
+            stat_mapping = {
+                "body_adj": "Body",
+                "mind_adj": "Mind",
+                "soul_adj": "Soul",
+            }
+            for adj_field, spinner_key in stat_mapping.items():
+                value = template_data["stats"].get(adj_field, 0)
+                if value and spinner_key in app.stat_spinners:
+                    old_val = app.stat_spinners[spinner_key].value()
+                    new_val = old_val + value
+                    app.stat_spinners[spinner_key].setValue(new_val)
+                    template_changes["changes"].append({
+                        "field": f"stat_{spinner_key}",
+                        "old_value": old_val,
+                        "new_value": new_val,
+                        "modifier": f"+{value}"
+                    })
+        else:
+            # Legacy list format
+            for stat_entry in template_data["stats"]:
+                stat = stat_entry.get("stat")
+                value = stat_entry.get("value")
+                if stat in app.stat_spinners and value:
+                    old_val = app.stat_spinners[stat].value()
+                    new_val = old_val + value
+                    app.stat_spinners[stat].setValue(new_val)
+                    template_changes["changes"].append({
+                        "field": f"stat_{stat}",
+                        "old_value": old_val,
+                        "new_value": new_val,
+                        "modifier": f"+{value}"
+                    })
+
     # Apply attribute changes
     apply_attributes(app, template_data, template_changes)
     
@@ -570,6 +607,22 @@ def apply_attributes(app, template_data, template_changes):
             new_attr["name"] = attr_name
             new_attr["key"] = attr_key or full_attr.get("key", "")
             new_attr["level"] = attr_level
+
+            # Special handling for Unknown Power to ensure correct CP calculation
+            if new_attr.get("key") == "unknown_power":
+                # In templates, `level` represents the CP the player spends.
+                cp_spent = attr.get("cp_spent", attr_level)
+                new_attr["cp_spent"] = cp_spent
+                                
+                # GM receives a 50% bonus (rounded up)
+                gm_points = math.ceil(cp_spent * 1.5)
+                new_attr["gm_points"] = gm_points
+                # Charge the player only what they spent
+                new_attr["cost"] = cp_spent
+                # Helpful description for later display
+                new_attr["description"] = (
+                    f"GM has {gm_points} points to assign to hidden attributes that will be revealed during play."
+                )
             
             # Copy additional fields from the template attribute
             if "user_description" in attr and attr["user_description"]:

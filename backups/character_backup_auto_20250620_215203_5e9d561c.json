@@ -1,0 +1,437 @@
+{
+    "version": "1.0",
+    "name": "",
+    "player": "",
+    "gm": "",
+    "race": "",
+    "class": "STUDENT",
+    "homeworld": "",
+    "size": "Medium",
+    "background": {
+        "origin": "",
+        "faction": "",
+        "goals": "",
+        "personality": "",
+        "history": ""
+    },
+    "stats": {
+        "Body": 4,
+        "Mind": 4,
+        "Soul": 4
+    },
+    "derived": {
+        "CV": 4,
+        "ACV": 4,
+        "DCV": 4,
+        "HP": 40,
+        "EP": 40,
+        "DM": 4,
+        "SV": 8,
+        "SP": 40,
+        "SCV": 4,
+        "SOP": 40
+    },
+    "drama_points": {
+        "current": 3,
+        "max": 5
+    },
+    "attributes": [],
+    "defects": [],
+    "skills": [],
+    "weapons": [],
+    "armor": [],
+    "items": [],
+    "techniques": [],
+    "templates": [],
+    "alternate_forms": [],
+    "metamorphosis": [],
+    "companions": [],
+    "minions": [],
+    "relationships": [],
+    "notes": "",
+    "custom_fields": {},
+    "custom_rules": [],
+    "saved_loadouts": [],
+    "benchmark": null,
+    "totalPoints": 24,
+    "applied_templates": [
+        {
+            "id": "111919c4-c7d2-41fb-a07a-e0bbf586ae84",
+            "type": "class",
+            "name": "Unnamed Template",
+            "changes": [
+                {
+                    "field": "class",
+                    "old_value": "",
+                    "new_value": "STUDENT"
+                },
+                {
+                    "field": "size_template_applied",
+                    "size_name": "Medium",
+                    "applied_by": "Unnamed Template"
+                },
+                {
+                    "field": "attribute_add",
+                    "attribute_id": "413aaa50-e9f7-4523-90ea-3e9ad7517ce2",
+                    "attribute_data": {
+                        "name": "Connected",
+                        "cost_per_level": 1,
+                        "relevant_stat": "Soul",
+                        "is_human_attribute": true,
+                        "description": "Character has ties to a powerful organization (corporation, government, crime syndicate, etc.) and can access resources and privileges.",
+                        "source": "BESM4e",
+                        "levels": {
+                            "1": "Associated (e.g. student rep, police officer)",
+                            "2": "Respected (e.g. sergeant, small biz owner)",
+                            "3": "Modest Authority (e.g. lieutenant, mayor)",
+                            "4": "Local Authority (e.g. captain, knight with land)",
+                            "5": "Regional Authority (e.g. colonel, baron)",
+                            "6": "Provincial Authority (e.g. senator, VP)",
+                            "7": "National Authority (e.g. king, cabinet official)",
+                            "8": "International Authority (e.g. president, pope)",
+                            "9": "Planetary Authority (e.g. world ruler)",
+                            "10": "Extraplanetary Authority (e.g. galactic emperor)"
+                        },
+                        "user_input_required": [
+                            {
+                                "label": "Organization or Individual Connected To",
+                                "key": "connection_target",
+                                "field_type": "text",
+                                "description": "Name the organization, faction, or individual the character is connected to."
+                            }
+                        ],
+                        "key": "connected",
+                        "id": "413aaa50-e9f7-4523-90ea-3e9ad7517ce2",
+                        "level": 1,
+                        "user_description": "(Select One)",
+                        "options_source": "Class Template",
+                        "cost": 1,
+                        "sources": [
+                            "111919c4-c7d2-41fb-a07a-e0bbf586ae84"
+                        ]
+                    }
+                },
+                {
+                    "field": "attribute_add",
+                    "attribute_id": "fff64b1e-e6c5-460e-824e-c53711795ecb",
+                    "attribute_data": {
+                        "name": "Energised",
+                        "cost_per_level": 1,
+                        "relevant_stat": null,
+                        "description": "Increases total Energy Points (EP) by 10 per level. Can be modified with Limiters to create a secondary conditional EP pool.",
+                        "source": "BESM4e",
+                        "levels": {
+                            "1": "+10 EP",
+                            "2": "+20 EP",
+                            "3": "+30 EP",
+                            "4": "+40 EP",
+                            "5": "+50 EP",
+                            "6": "+60 EP"
+                        },
+                        "key": "energised",
+                        "is_human_attribute": false,
+                        "id": "fff64b1e-e6c5-460e-824e-c53711795ecb",
+                        "level": 4,
+                        "options_source": "Class Template",
+                        "cost": 4,
+                        "sources": [
+                            "111919c4-c7d2-41fb-a07a-e0bbf586ae84"
+                        ]
+                    }
+                },
+                {
+                    "field": "attribute_add",
+                    "attribute_id": "984b9c09-abdc-481f-a4e7-80d397271dfa",
+                    "attribute_data": {
+                        "name": "Features",
+                        "cost_per_level": 1,
+                        "relevant_stat": "Variable",
+                        "is_human_attribute": true,
+                        "description": "The character possesses various minor abilities or qualities that grant useful but secondary advantages. Can be personal, racial, or technological in nature. These are typically flavor or small utility traits.",
+                        "source": "BESM4e",
+                        "levels": {
+                            "1": "1-2 Features",
+                            "2": "3-5 Features",
+                            "3": "6-10 Features",
+                            "4": "11-25 Features",
+                            "5": "26-50 Features",
+                            "6": "51-100 Features"
+                        },
+                        "user_input_required": [
+                            {
+                                "label": "Feature Type",
+                                "key": "feature_type",
+                                "field_type": "select",
+                                "description": "Select the general type of feature.",
+                                "options": [
+                                    "Personal",
+                                    "Racial",
+                                    "Technological"
+                                ]
+                            },
+                            {
+                                "label": "Features List",
+                                "key": "features_list",
+                                "field_type": "combo_editable",
+                                "description": "Enter one or more features (select from suggestions or write your own).",
+                                "options": [
+                                    "Ambidexterity",
+                                    "Animal Empathy",
+                                    "Appearance",
+                                    "Auditory Discrimination",
+                                    "Breath/Heartbeat Control",
+                                    "Depth Awareness",
+                                    "Direction Sense",
+                                    "Eidetic Memory",
+                                    "Famous (Beneficial)",
+                                    "Foreign Language",
+                                    "Hypermobility (Double-Jointed)",
+                                    "Light Sleeper",
+                                    "Lightning Calculator",
+                                    "Mimic Sound",
+                                    "Perfect Pitch",
+                                    "Range Sense",
+                                    "Spatial Sense",
+                                    "Speed Reading",
+                                    "Time Sense",
+                                    "Weather Sense",
+                                    "360-Degree Vision",
+                                    "Camouflage",
+                                    "Fluid Squirting",
+                                    "Gills",
+                                    "Heat Regulation",
+                                    "Homing Instinct",
+                                    "Light Armour (AR 1-4)",
+                                    "Light Weaponry (5 Damage)",
+                                    "Long Tongue",
+                                    "Longevity",
+                                    "Low-Light Vision",
+                                    "Multiple Hearts",
+                                    "Nictitating Membrane",
+                                    "Pouch",
+                                    "Retractable Claws",
+                                    "Scent Glands",
+                                    "Scentless",
+                                    "Sexual Duality",
+                                    "Ultrasonic Communication",
+                                    "Webbed Feet/Hands/Paws",
+                                    "Alarm System",
+                                    "Basic AI (0 Stats)",
+                                    "Camera",
+                                    "Comms Suite",
+                                    "Data Backup Auto System",
+                                    "Ejection Seat",
+                                    "Emergency Lights/Siren",
+                                    "Fast Acceleration",
+                                    "GPS",
+                                    "Gyrocompass",
+                                    "Highly Maneuverable",
+                                    "Identity Verifier",
+                                    "Life Monitoring Systems",
+                                    "Luxurious Decor",
+                                    "Modern Vehicle Tech Suite",
+                                    "Naked Enhancement",
+                                    "Radar Detector",
+                                    "Revolving License Plate",
+                                    "Smartphone",
+                                    "Tool Kit",
+                                    "Medical Kit"
+                                ]
+                            }
+                        ],
+                        "key": "features",
+                        "id": "984b9c09-abdc-481f-a4e7-80d397271dfa",
+                        "level": 1,
+                        "user_description": "(Animal Empathy)",
+                        "options_source": "Class Template",
+                        "cost": 1,
+                        "sources": [
+                            "111919c4-c7d2-41fb-a07a-e0bbf586ae84"
+                        ]
+                    }
+                },
+                {
+                    "field": "attribute_add",
+                    "attribute_id": "9ff4b99b-1680-4da0-a22a-bd2e12a0c647",
+                    "attribute_data": {
+                        "name": "Heightened Awareness",
+                        "cost_per_level": 1,
+                        "relevant_stat": "Body or Mind",
+                        "description": "Grants a bonus on rolls to notice nearby hidden objects or ambushes.",
+                        "source": "BESM4e",
+                        "levels": {
+                            "1": "+2 Stat roll awareness bonus",
+                            "2": "+4 Stat roll awareness bonus",
+                            "3": "+6 Stat roll awareness bonus",
+                            "4": "+8 Stat roll awareness bonus",
+                            "5": "+10 Stat roll awareness bonus",
+                            "6": "+12 Stat roll awareness bonus"
+                        },
+                        "key": "heightened_awareness",
+                        "is_human_attribute": false,
+                        "id": "9ff4b99b-1680-4da0-a22a-bd2e12a0c647",
+                        "level": 1,
+                        "options_source": "Class Template",
+                        "cost": 1,
+                        "sources": [
+                            "111919c4-c7d2-41fb-a07a-e0bbf586ae84"
+                        ]
+                    }
+                },
+                {
+                    "field": "attribute_add",
+                    "attribute_id": "9db2979f-9cad-4379-8edf-ac969131537f",
+                    "attribute_data": {
+                        "name": "Mulligan",
+                        "cost_per_level": 1,
+                        "relevant_stat": "Soul",
+                        "source": "BESM4e",
+                        "description": "Allows a character to reroll all dice for an action. You may choose from any result (original or rerolled).",
+                        "levels": {
+                            "1": "2 rerolls per session",
+                            "2": "4 rerolls per session",
+                            "3": "6 rerolls per session",
+                            "4": "8 rerolls per session",
+                            "5": "10 rerolls per session",
+                            "6": "12 rerolls per session"
+                        },
+                        "key": "mulligan",
+                        "is_human_attribute": false,
+                        "id": "9db2979f-9cad-4379-8edf-ac969131537f",
+                        "level": 3,
+                        "options_source": "Class Template",
+                        "cost": 3,
+                        "sources": [
+                            "111919c4-c7d2-41fb-a07a-e0bbf586ae84"
+                        ]
+                    }
+                },
+                {
+                    "field": "attribute_add",
+                    "attribute_id": "0484b176-542b-44ba-983d-a5538579356e",
+                    "attribute_data": {
+                        "name": "Skill Group: Occupation (Background)",
+                        "source": "BESM4e",
+                        "description": "Represents training or natural talent in a broad skill field. Skill Groups are divided into Background, Field, and Action categories, each with a different cost per level. Each Skill Group is treated as a separate Attribute.",
+                        "relevant_stat": "Body, Mind, or Soul",
+                        "cost_per_level": null,
+                        "cost_map": {
+                            "Background": 1,
+                            "Field": 2,
+                            "Action": 3
+                        },
+                        "dynamic_cost_category": "category",
+                        "user_input_required": [
+                            {
+                                "field_type": "dropdown",
+                                "label": "Skill Group Category",
+                                "key": "category",
+                                "options": [
+                                    "Background",
+                                    "Field",
+                                    "Action"
+                                ]
+                            },
+                            {
+                                "field_type": "dropdown",
+                                "label": "Skill Group Name",
+                                "key": "skill_group_name",
+                                "options": [
+                                    "Academic",
+                                    "Artistic",
+                                    "Domestic",
+                                    "Occupation",
+                                    "Business",
+                                    "Social",
+                                    "Street",
+                                    "Technical",
+                                    "Adventuring",
+                                    "Detective",
+                                    "Military",
+                                    "Scientific"
+                                ]
+                            }
+                        ],
+                        "levels": {
+                            "1": "Developing - Gaining proficiency through regular application",
+                            "2": "Trained - Moderate training and practice",
+                            "3": "Expert - Significant training and practice",
+                            "4": "Veteran - Extensive training and practice",
+                            "5": "Master - Exhaustive training and practice",
+                            "6": "Grand Master - Unparalleled ability and knowledge"
+                        },
+                        "key": "skill_group",
+                        "is_human_attribute": false,
+                        "id": "0484b176-542b-44ba-983d-a5538579356e",
+                        "level": 2,
+                        "user_description": "Student-related skills",
+                        "options_source": "Class Template",
+                        "cost": 0,
+                        "sources": [
+                            "111919c4-c7d2-41fb-a07a-e0bbf586ae84"
+                        ]
+                    }
+                },
+                {
+                    "field": "attribute_add",
+                    "attribute_id": "9874503e-30d4-4264-aa0a-f4b2e554ffcb",
+                    "attribute_data": {
+                        "name": "Unknown Power",
+                        "cost_per_level": 1.5,
+                        "relevant_stat": "Special",
+                        "description": "GM has 30 points to assign to hidden attributes that will be revealed during play.",
+                        "source": "BESM4e",
+                        "levels": {},
+                        "key": "unknown_power",
+                        "is_human_attribute": false,
+                        "id": "9874503e-30d4-4264-aa0a-f4b2e554ffcb",
+                        "level": 20,
+                        "user_description": "(30 Points)",
+                        "options_source": "Class Template",
+                        "cost": 30.0,
+                        "sources": [
+                            "111919c4-c7d2-41fb-a07a-e0bbf586ae84"
+                        ],
+                        "cp_spent": 20,
+                        "gm_points": 30
+                    }
+                },
+                {
+                    "field": "defect_add",
+                    "defect_id": "a42c5a76-ab0f-4299-87fe-645f8c7bc093",
+                    "defect_data": {
+                        "name": "Magnet",
+                        "key": "magnet",
+                        "rank_type": "Lesser",
+                        "cp_refund": 1,
+                        "max_rank": 3,
+                        "description": "Character attracts obsessive or amorous attention from others. This is not due to charisma, but some unseen fate or aura. Attention is usually unwanted and problematic.",
+                        "source": "BESM4e",
+                        "ranks": [
+                            {
+                                "rank": "1",
+                                "description": "Slight consequences"
+                            },
+                            {
+                                "rank": "2",
+                                "description": "Moderate consequences"
+                            },
+                            {
+                                "rank": "3",
+                                "description": "Severe consequences"
+                            }
+                        ],
+                        "id": "a42c5a76-ab0f-4299-87fe-645f8c7bc093",
+                        "rank": 1,
+                        "options_source": "Class Template",
+                        "cost": -1,
+                        "sources": [
+                            "111919c4-c7d2-41fb-a07a-e0bbf586ae84"
+                        ]
+                    }
+                }
+            ]
+        }
+    ],
+    "hidden_attributes": []
+}
